@@ -1,0 +1,59 @@
+---
+interface Props {
+	slug: string;
+	increment?: boolean;
+}
+const { slug, increment = false } = Astro.props;
+---
+
+<span class="view-counter" data-slug={slug} data-increment={increment ? 'true' : 'false'}>
+	<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+		<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+		<circle cx="12" cy="12" r="3"/>
+	</svg>
+	<span class="view-count">—</span>
+</span>
+
+<style>
+	.view-counter {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35em;
+		font-family: var(--font-mono);
+		font-size: 0.68em;
+		color: var(--text-muted);
+		letter-spacing: 0.03em;
+	}
+	.view-counter svg {
+		opacity: 0.6;
+	}
+</style>
+
+<script>
+	document.addEventListener('astro:page-load', () => {
+		document.querySelectorAll('.view-counter').forEach((el) => {
+			const slug = (el as HTMLElement).dataset.slug || '';
+			const shouldIncrement = (el as HTMLElement).dataset.increment === 'true';
+			const countEl = el.querySelector('.view-count');
+			if (!countEl || !slug) return;
+
+			const storageKey = `jrl_views`;
+			let views: Record<string, number> = {};
+			try {
+				views = JSON.parse(localStorage.getItem(storageKey) || '{}');
+			} catch { views = {}; }
+
+			if (shouldIncrement) {
+				const sessionKey = `jrl_viewed_${slug}`;
+				if (!sessionStorage.getItem(sessionKey)) {
+					views[slug] = (views[slug] || 0) + 1;
+					localStorage.setItem(storageKey, JSON.stringify(views));
+					sessionStorage.setItem(sessionKey, '1');
+				}
+			}
+
+			const count = views[slug] || 0;
+			countEl.textContent = count > 0 ? String(count) : '—';
+		});
+	});
+</script>

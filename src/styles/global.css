@@ -14,8 +14,8 @@
 
 	/* ── Text ── */
 	--text-primary: #f0ece5;
-	--text-secondary: #9c978e;
-	--text-muted: #5c5851;
+	--text-secondary: #b5b0a6;
+	--text-muted: #7d766a;
 
 	/* ── Accent ── */
 	--accent: #b8a07a;
@@ -32,6 +32,7 @@
 	/* ── Shadows ── */
 	--shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 	--shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.25);
+	--shadow-card-hover: inset 0 0 0 1px rgba(184, 160, 122, 0.06), 0 2px 16px rgba(0, 0, 0, 0.18);
 
 	/* ── Typography ── */
 	--font-serif: "Noto Serif KR", "Georgia", serif;
@@ -48,8 +49,8 @@ body {
 	padding: 0;
 	background: var(--bg-primary);
 	color: var(--text-primary);
-	font-size: 17px;
-	line-height: 1.85;
+	font-size: 18px;
+	line-height: 1.9;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	-webkit-font-smoothing: antialiased;
@@ -62,6 +63,7 @@ main {
 	max-width: calc(100% - 3em);
 	margin: 0 auto;
 	padding: 2.5em 1em 4em;
+	animation: pageReveal 0.5s ease both;
 }
 
 /* ── Headings (serif) ── */
@@ -71,7 +73,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: var(--text-primary);
 	line-height: 1.35;
 }
-h1 { font-size: 2.6em; font-weight: 300; letter-spacing: -0.02em; }
+h1 { font-size: 2.8em; font-weight: 300; letter-spacing: -0.02em; }
 h2 { font-size: 1.6em; font-weight: 400; }
 h3 { font-size: 1.25em; font-weight: 600; }
 h4 { font-size: 1.05em; font-weight: 600; }
@@ -108,16 +110,28 @@ pre {
 }
 pre > code { all: unset; font-family: inherit; }
 
-/* ── Blockquote ── */
+/* ── Blockquote (pull-quote style) ── */
 blockquote {
+	position: relative;
 	border-left: 2px solid var(--accent);
-	padding: 0 0 0 1.5em;
-	margin: 2em 0;
+	padding: 0.5em 0 0.5em 1.8em;
+	margin: 2.5em 0;
 	color: var(--text-secondary);
 	font-family: var(--font-serif);
 	font-style: italic;
 	font-size: 1.05em;
 	line-height: 1.8;
+}
+blockquote::before {
+	content: "\201C";
+	position: absolute;
+	left: 0.3em;
+	top: -0.15em;
+	font-family: var(--font-serif);
+	font-size: 2.8em;
+	color: var(--accent-glow);
+	line-height: 1;
+	pointer-events: none;
 }
 
 /* ── Dividers ── */
@@ -161,6 +175,12 @@ li { margin-bottom: 0.5em; color: var(--text-secondary); }
 	letter-spacing: 0.03em;
 }
 
+/* ── Page reveal ── */
+@keyframes pageReveal {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
 /* ── Fade-in animation ── */
 @keyframes fadeIn {
 	from { opacity: 0; }
@@ -174,6 +194,13 @@ li { margin-bottom: 0.5em; color: var(--text-secondary); }
 @keyframes breathe {
 	0%, 100% { opacity: 0.9; }
 	50% { opacity: 0.3; }
+}
+
+/* ── Cycling status text animation ── */
+@keyframes statusCycle {
+	0%, 22% { opacity: 1; }
+	25%, 97% { opacity: 0; }
+	100% { opacity: 0; }
 }
 
 /* ── Responsive ── */
