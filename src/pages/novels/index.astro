@@ -15,27 +15,59 @@ const novels = (await getCollection('novels')).sort(
 	<head>
 		<BaseHead title={`Novels | ${SITE_TITLE}`} description="AI 시대 소설 시리즈" />
 		<style>
-			main { width: 960px; max-width: calc(100% - 2em); margin: auto; padding: 2em 0; }
-			h1 { font-size: 2em; margin-bottom: 0.5em; }
-			.novel-list { list-style: none; padding: 0; display: grid; gap: 1.5em; }
-			.novel-item { border: 1px solid rgba(var(--gray-light), 0.5); border-radius: 8px; padding: 1.5em; transition: box-shadow 0.2s; }
-			.novel-item:hover { box-shadow: var(--box-shadow); }
-			.novel-item a { text-decoration: none; color: rgb(var(--black)); }
-			.novel-item h3 { margin: 0 0 0.5em; font-size: 1.2em; }
-			.novel-item .desc { color: rgb(var(--gray)); font-size: 0.9em; }
-			.ep-badge { display: inline-block; background: rgb(var(--accent)); color: white; padding: 0.2em 0.6em; border-radius: 4px; font-size: 0.8em; margin-right: 0.5em; }
+			.page-header { padding: 2em 0 1em; }
+			.page-header h1 { font-size: 2em; margin-bottom: 0.3em; }
+			.page-header p { color: var(--text-muted); font-size: 0.9em; }
+			.novel-list { display: grid; gap: 1em; padding: 0; list-style: none; }
+			.novel-card {
+				background: var(--bg-card);
+				border: 1px solid var(--border);
+				border-radius: 12px;
+				padding: 1.5em 2em;
+				transition: all 0.25s;
+				position: relative;
+				overflow: hidden;
+			}
+			.novel-card::before {
+				content: '';
+				position: absolute;
+				top: 0; left: 0; right: 0;
+				height: 3px;
+				background: linear-gradient(90deg, var(--accent), #a78bfa);
+			}
+			.novel-card:hover {
+				border-color: var(--border-light);
+				transform: translateY(-2px);
+				box-shadow: var(--box-shadow);
+			}
+			.novel-card a { text-decoration: none; color: inherit; display: block; }
+			.ep-badge {
+				display: inline-block;
+				padding: 0.2em 0.6em;
+				background: var(--accent-dim);
+				color: var(--accent);
+				border-radius: 4px;
+				font-size: 0.75em;
+				font-weight: 700;
+				margin-bottom: 0.6em;
+			}
+			.novel-card h3 { font-size: 1.15em; margin-bottom: 0.5em; line-height: 1.4; }
+			.novel-card .desc { font-size: 0.85em; color: var(--text-muted); line-height: 1.6; }
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>Novels</h1>
-			<p style="color: rgb(var(--gray));">AI 시대를 배경으로 한 소설 시리즈</p>
+			<div class="page-header">
+				<h1>Novels</h1>
+				<p>AI 시대를 배경으로 한 소설 시리즈</p>
+			</div>
 			<ul class="novel-list">
 				{novels.map((novel) => (
-					<li class="novel-item">
+					<li class="novel-card">
 						<a href={`/profji-library/novels/${novel.id}/`}>
-							<h3><span class="ep-badge">EP.{novel.data.episode}</span>{novel.data.title}</h3>
+							<span class="ep-badge">EP.{novel.data.episode}</span>
+							<h3>{novel.data.title}</h3>
 							<div class="desc">{novel.data.description}</div>
 						</a>
 					</li>

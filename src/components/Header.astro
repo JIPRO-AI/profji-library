@@ -5,8 +5,11 @@ import HeaderLink from './HeaderLink.astro';
 
 <header>
 	<nav>
-		<h2><a href="/profji-library/">{SITE_TITLE}</a></h2>
-		<div class="internal-links">
+		<a class="logo" href="/profji-library/">
+			<span class="logo-icon">Ji</span>
+			<span class="logo-text">{SITE_TITLE}</span>
+		</a>
+		<div class="nav-links">
 			<HeaderLink href="/profji-library/">Home</HeaderLink>
 			<HeaderLink href="/profji-library/articles">Articles</HeaderLink>
 			<HeaderLink href="/profji-library/novels">Novels</HeaderLink>
@@ -16,37 +19,60 @@ import HeaderLink from './HeaderLink.astro';
 </header>
 <style>
 	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-	}
-	h2 {
-		margin: 0;
-		font-size: 1em;
-	}
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: rgba(10, 11, 15, 0.85);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--border);
 	}
 	nav {
+		max-width: 960px;
+		margin: 0 auto;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		padding: 0.8em 1em;
 	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
+	.logo {
+		display: flex;
+		align-items: center;
+		gap: 0.6em;
 		text-decoration: none;
+		color: var(--text-primary);
 	}
-	nav a.active {
+	.logo:hover { color: var(--text-primary); }
+	.logo-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		background: linear-gradient(135deg, var(--accent), #a78bfa);
+		border-radius: 8px;
+		font-size: 0.75em;
+		font-weight: 700;
+		color: white;
+	}
+	.logo-text { font-weight: 700; font-size: 0.95em; }
+	.nav-links { display: flex; gap: 0.3em; }
+	.nav-links :global(a) {
+		padding: 0.4em 0.8em;
+		color: var(--text-secondary);
 		text-decoration: none;
-		border-bottom-color: var(--accent);
+		font-size: 0.85em;
+		border-radius: 6px;
+		transition: all 0.2s;
+	}
+	.nav-links :global(a:hover),
+	.nav-links :global(a.active) {
+		color: var(--text-primary);
+		background: var(--accent-dim);
 	}
 	@media (max-width: 720px) {
-		.internal-links {
-			font-size: 0.9em;
-		}
+		.logo-text { display: none; }
+		.nav-links { gap: 0; }
+		.nav-links :global(a) { padding: 0.4em 0.5em; font-size: 0.8em; }
 	}
 </style>

@@ -9,7 +9,13 @@ import { SITE_TITLE } from '../../consts';
 const articles = (await getCollection('articles')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-const categories = [...new Set(articles.map(a => a.data.category))];
+
+const catColors: Record<string, string> = {
+	'AI 심리학': 'var(--cat-psychology)',
+	'인지 융합': 'var(--cat-cognition)',
+	'AI 기술': 'var(--cat-tech)',
+	'에이전트': 'var(--cat-agent)',
+};
 ---
 
 <!doctype html>
@@ -17,37 +23,98 @@ const categories = [...new Set(articles.map(a => a.data.category))];
 	<head>
 		<BaseHead title={`Articles | ${SITE_TITLE}`} description="AI 연구 아티클 모음" />
 		<style>
-			main { width: 960px; max-width: calc(100% - 2em); margin: auto; padding: 2em 0; }
-			h1 { font-size: 2em; margin-bottom: 0.5em; }
-			.category-filter { display: flex; gap: 0.5em; flex-wrap: wrap; margin-bottom: 2em; }
-			.cat-btn { padding: 0.4em 1em; border: 1px solid rgba(var(--gray-light), 0.5); border-radius: 20px; font-size: 0.85em; cursor: pointer; background: white; }
-			.cat-btn:hover { background: rgba(var(--accent), 0.1); }
-			.article-list { list-style: none; padding: 0; }
-			.article-list li { padding: 1em 0; border-bottom: 1px solid rgba(var(--gray-light), 0.3); }
-			.article-list a { text-decoration: none; color: rgb(var(--black)); }
-			.article-list a:hover h3 { color: rgb(var(--accent)); }
-			.article-list h3 { margin: 0 0 0.3em; font-size: 1.1em; }
-			.meta { color: rgb(var(--gray)); font-size: 0.85em; }
-			.desc { color: rgb(var(--gray)); font-size: 0.9em; margin-top: 0.3em; }
-			.category-tag { display: inline-block; padding: 0.15em 0.5em; background: rgba(var(--accent), 0.1); border-radius: 4px; font-size: 0.8em; margin-right: 0.5em; }
+			.page-header {
+				padding: 2em 0 1em;
+			}
+			.page-header h1 {
+				font-size: 2em;
+				margin-bottom: 0.3em;
+			}
+			.page-header p {
+				color: var(--text-muted);
+				font-size: 0.9em;
+			}
+			.article-grid {
+				display: grid;
+				gap: 1px;
+				background: var(--border);
+				border-radius: 12px;
+				overflow: hidden;
+			}
+			.article-card {
+				background: var(--bg-card);
+				padding: 1.2em 1.5em;
+				transition: background 0.2s;
+			}
+			.article-card:hover { background: var(--bg-card-hover); }
+			.article-card a { text-decoration: none; color: inherit; display: block; }
+			.card-top {
+				display: flex;
+				align-items: center;
+				gap: 0.8em;
+				margin-bottom: 0.5em;
+			}
+			.cat-dot {
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				flex-shrink: 0;
+			}
+			.cat-label {
+				font-size: 0.7em;
+				color: var(--text-muted);
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+			}
+			.card-date {
+				font-size: 0.7em;
+				color: var(--text-muted);
+				margin-left: auto;
+			}
+			.article-card h3 {
+				margin: 0;
+				font-size: 1em;
+				font-weight: 600;
+				color: var(--text-primary);
+				line-height: 1.4;
+			}
+			.card-desc {
+				margin-top: 0.4em;
+				font-size: 0.8em;
+				color: var(--text-muted);
+				line-height: 1.5;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>Articles</h1>
-			<p style="color: rgb(var(--gray));">AI 시대의 인간 지능을 탐구하는 연구 아티클 ({articles.length}편)</p>
-			<ul class="article-list">
-				{articles.map((article) => (
-					<li>
-						<a href={`/profji-library/articles/${article.id}/`}>
-							<h3><span class="category-tag">{article.data.category}</span>{article.data.title}</h3>
-							<div class="meta"><FormattedDate date={article.data.pubDate} /></div>
-							<div class="desc">{article.data.description}</div>
-						</a>
-					</li>
-				))}
-			</ul>
+			<div class="page-header">
+				<h1>Articles</h1>
+				<p>AI 시대의 인간 지능을 탐구하는 연구 아티클 ({articles.length}편)</p>
+			</div>
+			<div class="article-grid">
+				{articles.map((article) => {
+					const color = catColors[article.data.category] || 'var(--accent)';
+					return (
+						<div class="article-card">
+							<a href={`/profji-library/articles/${article.id}/`}>
+								<div class="card-top">
+									<span class="cat-dot" style={`background: ${color}`}></span>
+									<span class="cat-label">{article.data.category}</span>
+									<span class="card-date"><FormattedDate date={article.data.pubDate} /></span>
+								</div>
+								<h3>{article.data.title}</h3>
+								<div class="card-desc">{article.data.description}</div>
+							</a>
+						</div>
+					);
+				})}
+			</div>
 		</main>
 		<Footer />
 	</body>

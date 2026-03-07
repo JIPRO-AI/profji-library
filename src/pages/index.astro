@@ -13,6 +13,13 @@ const novels = (await getCollection('novels')).sort(
 	(a, b) => a.data.episode - b.data.episode,
 );
 const categories = [...new Set(articles.map(a => a.data.category))];
+
+const catColors: Record<string, string> = {
+	'AI 심리학': 'var(--cat-psychology)',
+	'인지 융합': 'var(--cat-cognition)',
+	'AI 기술': 'var(--cat-tech)',
+	'에이전트': 'var(--cat-agent)',
+};
 ---
 
 <!doctype html>
@@ -20,68 +27,319 @@ const categories = [...new Set(articles.map(a => a.data.category))];
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
-			main { width: 960px; max-width: calc(100% - 2em); margin: auto; padding: 2em 0; }
-			.hero { text-align: center; padding: 2em 0 1em; }
-			.hero h1 { font-size: 2em; margin-bottom: 0.5em; }
-			.hero p { color: rgb(var(--gray)); font-size: 1.1em; }
-			.section-title { font-size: 1.4em; margin: 2em 0 1em; padding-bottom: 0.3em; border-bottom: 2px solid rgb(var(--accent)); }
-			.category-tag { display: inline-block; padding: 0.2em 0.6em; background: rgba(var(--accent), 0.1); border-radius: 4px; font-size: 0.8em; margin-right: 0.5em; }
-			.article-list { list-style: none; padding: 0; }
-			.article-list li { padding: 1em 0; border-bottom: 1px solid rgba(var(--gray-light), 0.5); }
-			.article-list a { text-decoration: none; color: rgb(var(--black)); }
-			.article-list a:hover h3 { color: rgb(var(--accent)); }
-			.article-list h3 { margin: 0 0 0.3em; font-size: 1.1em; }
-			.article-list .meta { color: rgb(var(--gray)); font-size: 0.85em; }
-			.article-list .desc { color: rgb(var(--gray)); font-size: 0.9em; margin-top: 0.3em; }
-			.novel-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5em; padding: 0; list-style: none; }
-			.novel-card { border: 1px solid rgba(var(--gray-light), 0.5); border-radius: 8px; padding: 1.2em; transition: box-shadow 0.2s; }
-			.novel-card:hover { box-shadow: var(--box-shadow); }
-			.novel-card a { text-decoration: none; color: rgb(var(--black)); }
-			.novel-card h3 { margin: 0 0 0.5em; font-size: 1em; }
-			.novel-card .desc { color: rgb(var(--gray)); font-size: 0.85em; }
-			.stats { display: flex; gap: 2em; justify-content: center; padding: 1em 0; }
-			.stat { text-align: center; }
-			.stat-num { font-size: 2em; font-weight: bold; color: rgb(var(--accent)); }
-			.stat-label { color: rgb(var(--gray)); font-size: 0.85em; }
+			/* Hero */
+			.hero {
+				text-align: center;
+				padding: 4em 1em 3em;
+				position: relative;
+			}
+			.hero::before {
+				content: '';
+				position: absolute;
+				top: -60px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 500px;
+				height: 500px;
+				background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+				opacity: 0.3;
+				pointer-events: none;
+			}
+			.hero-badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.4em;
+				padding: 0.35em 1em;
+				background: var(--accent-dim);
+				border: 1px solid rgba(108, 138, 255, 0.2);
+				border-radius: 100px;
+				font-size: 0.75em;
+				color: var(--accent);
+				margin-bottom: 1.5em;
+				font-weight: 600;
+			}
+			.hero-badge .dot {
+				width: 6px;
+				height: 6px;
+				background: var(--cat-tech);
+				border-radius: 50%;
+				animation: pulse 2s infinite;
+			}
+			@keyframes pulse {
+				0%, 100% { opacity: 1; }
+				50% { opacity: 0.4; }
+			}
+			.hero h1 {
+				font-size: 2.8em;
+				margin-bottom: 0.3em;
+				background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+			.hero .subtitle {
+				color: var(--text-secondary);
+				font-size: 1.15em;
+				max-width: 600px;
+				margin: 0 auto 2em;
+				line-height: 1.6;
+			}
+			.hero .desc {
+				color: var(--text-muted);
+				font-size: 0.85em;
+				max-width: 500px;
+				margin: 0 auto;
+				line-height: 1.7;
+			}
+
+			/* Stats */
+			.stats {
+				display: flex;
+				gap: 1px;
+				justify-content: center;
+				margin: 2em 0 3em;
+				background: var(--border);
+				border-radius: 12px;
+				overflow: hidden;
+				max-width: 480px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.stat {
+				flex: 1;
+				text-align: center;
+				padding: 1.2em 1em;
+				background: var(--bg-card);
+			}
+			.stat-num {
+				font-size: 1.8em;
+				font-weight: 700;
+				color: var(--accent);
+				line-height: 1;
+			}
+			.stat-label {
+				color: var(--text-muted);
+				font-size: 0.7em;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				margin-top: 0.3em;
+			}
+
+			/* Section */
+			.section-header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				margin: 3em 0 1.2em;
+			}
+			.section-title {
+				font-size: 1.2em;
+				color: var(--text-primary);
+				display: flex;
+				align-items: center;
+				gap: 0.5em;
+			}
+			.section-title .icon {
+				font-size: 0.9em;
+				opacity: 0.6;
+			}
+			.section-link {
+				font-size: 0.8em;
+				color: var(--text-muted);
+				transition: color 0.2s;
+			}
+			.section-link:hover { color: var(--accent); }
+
+			/* Article cards */
+			.article-grid {
+				display: grid;
+				gap: 1px;
+				background: var(--border);
+				border-radius: 12px;
+				overflow: hidden;
+			}
+			.article-card {
+				background: var(--bg-card);
+				padding: 1.2em 1.5em;
+				transition: background 0.2s;
+			}
+			.article-card:hover { background: var(--bg-card-hover); }
+			.article-card a {
+				text-decoration: none;
+				color: inherit;
+				display: block;
+			}
+			.article-card .card-top {
+				display: flex;
+				align-items: center;
+				gap: 0.8em;
+				margin-bottom: 0.5em;
+			}
+			.cat-dot {
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				flex-shrink: 0;
+			}
+			.cat-label {
+				font-size: 0.7em;
+				color: var(--text-muted);
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+			}
+			.card-date {
+				font-size: 0.7em;
+				color: var(--text-muted);
+				margin-left: auto;
+			}
+			.article-card h3 {
+				margin: 0;
+				font-size: 1em;
+				font-weight: 600;
+				color: var(--text-primary);
+				line-height: 1.4;
+			}
+			.article-card .card-desc {
+				margin-top: 0.4em;
+				font-size: 0.8em;
+				color: var(--text-muted);
+				line-height: 1.5;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			/* Novel cards */
+			.novel-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 1em;
+			}
+			.novel-card {
+				background: var(--bg-card);
+				border: 1px solid var(--border);
+				border-radius: 12px;
+				padding: 1.5em;
+				transition: all 0.25s;
+				position: relative;
+				overflow: hidden;
+			}
+			.novel-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 3px;
+				background: linear-gradient(90deg, var(--accent), var(--cat-cognition));
+			}
+			.novel-card:hover {
+				border-color: var(--border-light);
+				transform: translateY(-2px);
+				box-shadow: var(--box-shadow);
+			}
+			.novel-card a { text-decoration: none; color: inherit; display: block; }
+			.novel-card .ep {
+				display: inline-block;
+				padding: 0.2em 0.5em;
+				background: var(--accent-dim);
+				color: var(--accent);
+				border-radius: 4px;
+				font-size: 0.7em;
+				font-weight: 700;
+				margin-bottom: 0.8em;
+			}
+			.novel-card h3 {
+				font-size: 0.95em;
+				margin-bottom: 0.5em;
+				line-height: 1.4;
+			}
+			.novel-card .card-desc {
+				font-size: 0.8em;
+				color: var(--text-muted);
+				line-height: 1.5;
+			}
+
+			@media (max-width: 720px) {
+				.hero h1 { font-size: 2em; }
+				.novel-grid { grid-template-columns: 1fr; }
+				.stats { max-width: 100%; }
+			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
 			<div class="hero">
-				<h1>Prof. Ji e-Library</h1>
-				<p>AI 시대의 인간 지능을 탐구하는 지교수의 연구 라이브러리</p>
+				<div class="hero-badge">
+					<span class="dot"></span>
+					AI-Powered Research Library
+				</div>
+				<h1>Professor Ji</h1>
+				<p class="subtitle">
+					AI 시대, 인간의 사고는 어떻게 변화하는가?<br/>
+					자율 AI 에이전트가 연구하고, 인간이 큐레이션하는 지식 라이브러리.
+				</p>
+				<p class="desc">
+					AI 심리학, 인지 융합, LLM 기술, 에이전트 시스템을 탐구합니다.
+					모든 콘텐츠는 AI 파이프라인으로 리서치 · 작성 · 검토되며, 인간이 최종 품질을 관리합니다.
+				</p>
 			</div>
+
 			<div class="stats">
-				<div class="stat"><div class="stat-num">{articles.length}</div><div class="stat-label">Articles</div></div>
-				<div class="stat"><div class="stat-num">{novels.length}</div><div class="stat-label">Novels</div></div>
-				<div class="stat"><div class="stat-num">{categories.length}</div><div class="stat-label">Categories</div></div>
+				<div class="stat">
+					<div class="stat-num">{articles.length}</div>
+					<div class="stat-label">Articles</div>
+				</div>
+				<div class="stat">
+					<div class="stat-num">{novels.length}</div>
+					<div class="stat-label">Novels</div>
+				</div>
+				<div class="stat">
+					<div class="stat-num">{categories.length}</div>
+					<div class="stat-label">Categories</div>
+				</div>
 			</div>
 
-			<h2 class="section-title">Latest Articles</h2>
-			<ul class="article-list">
-				{articles.slice(0, 6).map((article) => (
-					<li>
-						<a href={`/profji-library/articles/${article.id}/`}>
-							<h3><span class="category-tag">{article.data.category}</span>{article.data.title}</h3>
-							<div class="meta"><FormattedDate date={article.data.pubDate} /></div>
-							<div class="desc">{article.data.description}</div>
-						</a>
-					</li>
-				))}
-			</ul>
+			<div class="section-header">
+				<h2 class="section-title"><span class="icon">&#9672;</span> Latest Articles</h2>
+				<a class="section-link" href="/profji-library/articles">View all &rarr;</a>
+			</div>
+			<div class="article-grid">
+				{articles.slice(0, 6).map((article) => {
+					const color = catColors[article.data.category] || 'var(--accent)';
+					return (
+						<div class="article-card">
+							<a href={`/profji-library/articles/${article.id}/`}>
+								<div class="card-top">
+									<span class="cat-dot" style={`background: ${color}`}></span>
+									<span class="cat-label">{article.data.category}</span>
+									<span class="card-date"><FormattedDate date={article.data.pubDate} /></span>
+								</div>
+								<h3>{article.data.title}</h3>
+								<div class="card-desc">{article.data.description}</div>
+							</a>
+						</div>
+					);
+				})}
+			</div>
 
-			<h2 class="section-title">AI시대 인간 직장인 생존법</h2>
-			<ul class="novel-cards">
+			<div class="section-header">
+				<h2 class="section-title"><span class="icon">&#9671;</span> AI시대 인간 직장인 생존법</h2>
+				<a class="section-link" href="/profji-library/novels">Series &rarr;</a>
+			</div>
+			<div class="novel-grid">
 				{novels.map((novel) => (
-					<li class="novel-card">
+					<div class="novel-card">
 						<a href={`/profji-library/novels/${novel.id}/`}>
+							<span class="ep">EP.{novel.data.episode}</span>
 							<h3>{novel.data.title}</h3>
-							<div class="desc">{novel.data.description}</div>
+							<div class="card-desc">{novel.data.description}</div>
 						</a>
-					</li>
+					</div>
 				))}
-			</ul>
+			</div>
 		</main>
 		<Footer />
 	</body>
