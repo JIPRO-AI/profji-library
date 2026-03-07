@@ -8,166 +8,211 @@ import { SITE_TITLE } from '../consts';
 <!doctype html>
 <html lang="ko">
 	<head>
-		<BaseHead title={`About | ${SITE_TITLE}`} description="지교수 e-Library 소개" />
+		<BaseHead title={`About | ${SITE_TITLE}`} description="Ji Research Library 소개" />
 		<style>
-			.about-hero {
-				text-align: center;
-				padding: 3em 1em;
+			.about-header {
+				padding: 5em 0 3em;
 			}
-			.about-avatar {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				width: 80px;
-				height: 80px;
-				background: linear-gradient(135deg, var(--accent), #a78bfa);
-				border-radius: 20px;
-				font-size: 2em;
-				font-weight: 700;
-				color: white;
-				margin-bottom: 1em;
+			.about-header .label {
+				font-family: var(--font-mono);
+				font-size: 0.7em;
+				color: var(--text-muted);
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				margin-bottom: 1.5em;
 			}
-			.about-hero h1 { font-size: 2em; margin-bottom: 0.3em; }
-			.about-hero p { color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+			.about-header h1 {
+				font-size: 2.8em;
+				font-weight: 300;
+				margin-bottom: 0.5em;
+			}
+			.about-header .tagline {
+				font-family: var(--font-serif);
+				font-size: 1.1em;
+				color: var(--text-secondary);
+				font-style: italic;
+				line-height: 1.7;
+				max-width: 480px;
+			}
 
-			.about-content {
-				max-width: 640px;
-				margin: 0 auto;
-				padding: 0 1em;
-			}
+			/* ── Sections ── */
 			.about-section {
-				margin-bottom: 3em;
+				padding: 3em 0;
+				border-top: 1px solid var(--border);
 			}
 			.about-section h2 {
-				font-size: 1.2em;
-				color: var(--accent);
-				margin-bottom: 1em;
-				display: flex;
-				align-items: center;
-				gap: 0.5em;
+				font-size: 1em;
+				font-weight: 400;
+				color: var(--text-muted);
+				margin-bottom: 1.5em;
+				font-family: var(--font-mono);
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
 			}
-			.about-section h2::before {
-				content: '';
-				width: 3px;
-				height: 1em;
-				background: var(--accent);
-				border-radius: 2px;
+			.about-section p {
+				color: var(--text-secondary);
+				max-width: 560px;
+				line-height: 1.85;
 			}
 
-			.domain-grid {
+			/* ── Domains ── */
+			.domain-list {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
+				gap: 2em 3em;
+			}
+			.domain-item {
+				display: flex;
+				align-items: flex-start;
 				gap: 0.8em;
 			}
-			.domain-card {
-				padding: 1em;
-				background: var(--bg-card);
-				border: 1px solid var(--border);
-				border-radius: 10px;
-			}
-			.domain-card .domain-name {
-				font-weight: 600;
-				font-size: 0.9em;
-				margin-bottom: 0.3em;
-				display: flex;
-				align-items: center;
-				gap: 0.4em;
-			}
-			.domain-card .domain-dot {
+			.domain-dot {
 				width: 8px;
 				height: 8px;
 				border-radius: 50%;
+				flex-shrink: 0;
+				margin-top: 0.5em;
 			}
-			.domain-card .domain-desc {
-				font-size: 0.8em;
+			.domain-name {
+				font-family: var(--font-serif);
+				font-weight: 600;
+				font-size: 0.95em;
+				margin-bottom: 0.3em;
+			}
+			.domain-desc {
+				font-size: 0.82em;
 				color: var(--text-muted);
-				line-height: 1.5;
+				line-height: 1.6;
 			}
 
-			.tech-list {
-				list-style: none;
-				padding: 0;
-			}
-			.tech-list li {
+			/* ── Pipeline ── */
+			.pipeline {
 				display: flex;
 				align-items: center;
-				gap: 0.8em;
+				gap: 1em;
+				flex-wrap: wrap;
+				font-family: var(--font-mono);
+				font-size: 0.75em;
+				color: var(--text-secondary);
+				letter-spacing: 0.02em;
+			}
+			.pipeline .arrow {
+				color: var(--text-muted);
+			}
+			.pipeline .step {
+				padding: 0.4em 0.8em;
+				background: var(--bg-card);
+				border: 1px solid var(--border);
+				border-radius: 3px;
+			}
+
+			/* ── Stack ── */
+			.stack-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.stack-list li {
+				display: flex;
+				align-items: baseline;
+				gap: 1.5em;
 				padding: 0.7em 0;
 				border-bottom: 1px solid var(--border);
-				font-size: 0.9em;
-				color: var(--text-secondary);
+				font-size: 0.88em;
 			}
-			.tech-list li:last-child { border-bottom: none; }
-			.tech-label {
-				font-weight: 600;
-				color: var(--text-primary);
+			.stack-list li:last-child { border-bottom: none; }
+			.stack-label {
+				font-family: var(--font-mono);
+				font-size: 0.78em;
+				color: var(--text-muted);
 				min-width: 120px;
-				font-size: 0.85em;
+				flex-shrink: 0;
+				letter-spacing: 0.02em;
+			}
+			.stack-value {
+				color: var(--text-secondary);
 			}
 
 			@media (max-width: 720px) {
-				.domain-grid { grid-template-columns: 1fr; }
+				.about-header h1 { font-size: 2em; }
+				.domain-list { grid-template-columns: 1fr; gap: 1.5em; }
+				.pipeline { flex-direction: column; align-items: flex-start; }
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<div class="about-hero">
-				<div class="about-avatar">Ji</div>
-				<h1>Professor Ji</h1>
-				<p>AI 시대의 인간 지능을 탐구하는 자율 연구 시스템</p>
+			<div class="about-header">
+				<div class="label">About</div>
+				<h1>Ji Research Library</h1>
+				<p class="tagline">AI 시대의 인간 지능을 탐구하는 자율 연구 시스템</p>
 			</div>
 
-			<div class="about-content">
-				<div class="about-section">
-					<h2>Mission</h2>
-					<p style="color: var(--text-secondary);">
-						인간이 AI와 공존하는 시대, 우리의 사고방식, 전문성, 인지 구조는 어떻게 변화하는가?
-						Professor Ji는 이 질문에 대한 답을 자율적으로 리서치하고, 분석하며, 기록합니다.
-					</p>
-				</div>
+			<div class="about-section">
+				<h2>Mission</h2>
+				<p>
+					인간이 AI와 공존하는 시대, 우리의 사고방식, 전문성, 인지 구조는 어떻게 변화하는가?
+					Ji Research Library는 이 질문에 대한 답을 자율적으로 리서치하고, 분석하며, 기록합니다.
+				</p>
+			</div>
 
-				<div class="about-section">
-					<h2>Research Domains</h2>
-					<div class="domain-grid">
-						<div class="domain-card">
-							<div class="domain-name"><span class="domain-dot" style="background: var(--cat-psychology)"></span>AI 심리학</div>
+			<div class="about-section">
+				<h2>Research Domains</h2>
+				<div class="domain-list">
+					<div class="domain-item">
+						<span class="domain-dot" style="background: var(--cat-psychology)"></span>
+						<div>
+							<div class="domain-name">AI 심리학</div>
 							<div class="domain-desc">자동화 편향, 탈숙련화, AI 시대의 전문성 변화</div>
 						</div>
-						<div class="domain-card">
-							<div class="domain-name"><span class="domain-dot" style="background: var(--cat-cognition)"></span>인지 융합</div>
+					</div>
+					<div class="domain-item">
+						<span class="domain-dot" style="background: var(--cat-cognition)"></span>
+						<div>
+							<div class="domain-name">인지 융합</div>
 							<div class="domain-desc">인간-AI 하이브리드 마인드, 확장된 인지 모델</div>
 						</div>
-						<div class="domain-card">
-							<div class="domain-name"><span class="domain-dot" style="background: var(--cat-tech)"></span>AI 기술</div>
+					</div>
+					<div class="domain-item">
+						<span class="domain-dot" style="background: var(--cat-tech)"></span>
+						<div>
+							<div class="domain-name">AI 기술</div>
 							<div class="domain-desc">LLM 환각, RAG 한계, 로컬 LLM, 컨텍스트 윈도우</div>
 						</div>
-						<div class="domain-card">
-							<div class="domain-name"><span class="domain-dot" style="background: var(--cat-agent)"></span>에이전트</div>
+					</div>
+					<div class="domain-item">
+						<span class="domain-dot" style="background: var(--cat-agent)"></span>
+						<div>
+							<div class="domain-name">에이전트</div>
 							<div class="domain-desc">멀티에이전트, 오케스트레이션, 토큰 경제학</div>
 						</div>
 					</div>
 				</div>
+			</div>
 
-				<div class="about-section">
-					<h2>How It Works</h2>
-					<p style="color: var(--text-secondary);">
-						이 라이브러리의 모든 콘텐츠는 AI 에이전트 파이프라인을 통해 생산됩니다.
-						자율 리서치 → AI 작성 → AI 리뷰 → 인간 큐레이션의 과정을 거쳐 최종본만 퍼블리시됩니다.
-					</p>
+			<div class="about-section">
+				<h2>Process</h2>
+				<div class="pipeline">
+					<span class="step">Autonomous Research</span>
+					<span class="arrow">&rarr;</span>
+					<span class="step">AI Writing</span>
+					<span class="arrow">&rarr;</span>
+					<span class="step">AI Review</span>
+					<span class="arrow">&rarr;</span>
+					<span class="step">Human Curation</span>
 				</div>
+			</div>
 
-				<div class="about-section">
-					<h2>Tech Stack</h2>
-					<ul class="tech-list">
-						<li><span class="tech-label">Agent System</span> OpenClaw + Ollama</li>
-						<li><span class="tech-label">Writer / Reviewer</span> qwen3.5:9b (local)</li>
-						<li><span class="tech-label">Web Search</span> Gemini Search API</li>
-						<li><span class="tech-label">Website</span> Astro + GitHub Pages</li>
-						<li><span class="tech-label">Auto Deploy</span> GitHub Actions (on push)</li>
-					</ul>
-				</div>
+			<div class="about-section">
+				<h2>Stack</h2>
+				<ul class="stack-list">
+					<li><span class="stack-label">Agent System</span><span class="stack-value">OpenClaw + Ollama</span></li>
+					<li><span class="stack-label">Writer / Review</span><span class="stack-value">qwen3.5:9b (local)</span></li>
+					<li><span class="stack-label">Web Search</span><span class="stack-value">Gemini Search API</span></li>
+					<li><span class="stack-label">Website</span><span class="stack-value">Astro + GitHub Pages</span></li>
+					<li><span class="stack-label">Deploy</span><span class="stack-value">GitHub Actions (on push)</span></li>
+				</ul>
 			</div>
 		</main>
 		<Footer />

@@ -15,44 +15,63 @@ const novels = (await getCollection('novels')).sort(
 	<head>
 		<BaseHead title={`Novels | ${SITE_TITLE}`} description="AI 시대 소설 시리즈" />
 		<style>
-			.page-header { padding: 2em 0 1em; }
-			.page-header h1 { font-size: 2em; margin-bottom: 0.3em; }
-			.page-header p { color: var(--text-muted); font-size: 0.9em; }
-			.novel-list { display: grid; gap: 1em; padding: 0; list-style: none; }
-			.novel-card {
-				background: var(--bg-card);
-				border: 1px solid var(--border);
-				border-radius: 12px;
-				padding: 1.5em 2em;
-				transition: all 0.25s;
-				position: relative;
-				overflow: hidden;
+			.page-header {
+				padding: 4em 0 1em;
 			}
-			.novel-card::before {
-				content: '';
-				position: absolute;
-				top: 0; left: 0; right: 0;
-				height: 3px;
-				background: linear-gradient(90deg, var(--accent), #a78bfa);
+			.page-header h1 {
+				font-size: 2.4em;
+				font-weight: 300;
+				margin-bottom: 0.3em;
 			}
-			.novel-card:hover {
-				border-color: var(--border-light);
-				transform: translateY(-2px);
-				box-shadow: var(--box-shadow);
+			.page-header .series-name {
+				font-family: var(--font-serif);
+				font-size: 0.95em;
+				color: var(--text-secondary);
+				font-style: italic;
 			}
-			.novel-card a { text-decoration: none; color: inherit; display: block; }
-			.ep-badge {
-				display: inline-block;
-				padding: 0.2em 0.6em;
-				background: var(--accent-dim);
-				color: var(--accent);
-				border-radius: 4px;
-				font-size: 0.75em;
-				font-weight: 700;
+			.chapter-list {
+				border-top: 1px solid var(--border);
+				margin-top: 2em;
+			}
+			.chapter {
+				display: block;
+				padding: 2em 0;
+				border-bottom: 1px solid var(--border);
+				text-decoration: none;
+				color: inherit;
+				transition: padding-left 0.3s ease;
+			}
+			.chapter:hover { padding-left: 0.8em; }
+			.chapter-top {
+				display: flex;
+				align-items: baseline;
+				gap: 1.2em;
 				margin-bottom: 0.6em;
 			}
-			.novel-card h3 { font-size: 1.15em; margin-bottom: 0.5em; line-height: 1.4; }
-			.novel-card .desc { font-size: 0.85em; color: var(--text-muted); line-height: 1.6; }
+			.chapter-ep {
+				font-family: var(--font-mono);
+				font-size: 0.72em;
+				color: var(--accent);
+				letter-spacing: 0.03em;
+			}
+			.chapter h2 {
+				font-size: 1.3em;
+				font-weight: 400;
+				margin: 0;
+				line-height: 1.4;
+			}
+			.chapter .desc {
+				font-size: 0.88em;
+				color: var(--text-secondary);
+				line-height: 1.7;
+				max-width: 560px;
+				padding-left: 4.5em;
+			}
+			@media (max-width: 720px) {
+				.page-header h1 { font-size: 1.8em; }
+				.chapter .desc { padding-left: 0; }
+				.chapter-top { flex-direction: column; gap: 0.3em; }
+			}
 		</style>
 	</head>
 	<body>
@@ -60,19 +79,20 @@ const novels = (await getCollection('novels')).sort(
 		<main>
 			<div class="page-header">
 				<h1>Novels</h1>
-				<p>AI 시대를 배경으로 한 소설 시리즈</p>
+				<span class="series-name">AI시대 인간 직장인 생존법</span>
 			</div>
-			<ul class="novel-list">
+
+			<div class="chapter-list">
 				{novels.map((novel) => (
-					<li class="novel-card">
-						<a href={`/profji-library/novels/${novel.id}/`}>
-							<span class="ep-badge">EP.{novel.data.episode}</span>
-							<h3>{novel.data.title}</h3>
-							<div class="desc">{novel.data.description}</div>
-						</a>
-					</li>
+					<a class="chapter" href={`/profji-library/novels/${novel.id}/`}>
+						<div class="chapter-top">
+							<span class="chapter-ep">EP.{novel.data.episode}</span>
+							<h2>{novel.data.title}</h2>
+						</div>
+						<div class="desc">{novel.data.description}</div>
+					</a>
 				))}
-			</ul>
+			</div>
 		</main>
 		<Footer />
 	</body>

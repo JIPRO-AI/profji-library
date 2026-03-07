@@ -1,123 +1,190 @@
-/* Prof. Ji e-Library — Dark Theme */
+/* ═══════════════════════════════════════════
+   Ji Research Library — "The Reading Room"
+   Dark Academic · Editorial · Restrained
+   ═══════════════════════════════════════════ */
 
 :root {
-	--bg-primary: #0a0b0f;
-	--bg-secondary: #12131a;
-	--bg-card: #181a24;
-	--bg-card-hover: #1e2030;
-	--border: #2a2d3e;
-	--border-light: #353849;
-	--text-primary: #e8eaf0;
-	--text-secondary: #9198b0;
-	--text-muted: #636a84;
-	--accent: #6c8aff;
-	--accent-dim: rgba(108, 138, 255, 0.12);
-	--accent-glow: rgba(108, 138, 255, 0.25);
-	--cat-psychology: #f472b6;
-	--cat-cognition: #a78bfa;
-	--cat-tech: #34d399;
-	--cat-agent: #fb923c;
-	--box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-	--box-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+	/* ── Surfaces ── */
+	--bg-primary: #0b0b0e;
+	--bg-surface: #111114;
+	--bg-card: #18181c;
+	--bg-card-hover: #1f1f24;
+	--border: #27272c;
+	--border-light: #333338;
+
+	/* ── Text ── */
+	--text-primary: #f0ece5;
+	--text-secondary: #9c978e;
+	--text-muted: #5c5851;
+
+	/* ── Accent ── */
+	--accent: #b8a07a;
+	--accent-dim: rgba(184, 160, 122, 0.08);
+	--accent-glow: rgba(184, 160, 122, 0.12);
+	--secondary: #8891a5;
+
+	/* ── Category Dots ── */
+	--cat-psychology: #c9849b;
+	--cat-cognition: #9088b8;
+	--cat-tech: #6a9e86;
+	--cat-agent: #b89468;
+
+	/* ── Shadows ── */
+	--shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+	--shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.25);
+
+	/* ── Typography ── */
+	--font-serif: "Noto Serif KR", "Georgia", serif;
+	--font-body: "Noto Sans KR", "Atkinson", -apple-system, BlinkMacSystemFont, sans-serif;
+	--font-mono: "IBM Plex Mono", "Menlo", monospace;
 }
 
-@font-face {
-	font-family: "Atkinson";
-	src: url("/profji-library/fonts/atkinson-regular.woff") format("woff");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: "Atkinson";
-	src: url("/profji-library/fonts/atkinson-bold.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
-
+/* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
-	font-family: "Atkinson", -apple-system, BlinkMacSystemFont, sans-serif;
+	font-family: var(--font-body);
 	margin: 0;
 	padding: 0;
 	background: var(--bg-primary);
 	color: var(--text-primary);
-	font-size: 18px;
-	line-height: 1.75;
+	font-size: 17px;
+	line-height: 1.85;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
+/* ── Layout ── */
 main {
 	width: 960px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 2em 1em;
+	max-width: calc(100% - 3em);
+	margin: 0 auto;
+	padding: 2.5em 1em 4em;
 }
 
+/* ── Headings (serif) ── */
 h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-serif);
 	margin: 0 0 0.5rem 0;
 	color: var(--text-primary);
-	line-height: 1.3;
-	font-weight: 700;
+	line-height: 1.35;
 }
-h1 { font-size: 2.2em; }
-h2 { font-size: 1.7em; }
-h3 { font-size: 1.35em; }
-h4 { font-size: 1.1em; }
+h1 { font-size: 2.6em; font-weight: 300; letter-spacing: -0.02em; }
+h2 { font-size: 1.6em; font-weight: 400; }
+h3 { font-size: 1.25em; font-weight: 600; }
+h4 { font-size: 1.05em; font-weight: 600; }
 
-strong, b { font-weight: 700; }
-a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
-a:hover { color: #8da8ff; }
-p { margin-bottom: 1em; }
-.prose p { margin-bottom: 1.5em; }
+/* ── Inline Elements ── */
+strong, b { font-weight: 700; color: var(--text-primary); }
+a {
+	color: var(--accent);
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+a:hover { color: #d4be94; }
+p { margin-bottom: 1.2em; }
+.prose p { margin-bottom: 1.6em; }
 
+/* ── Code ── */
 code {
 	padding: 2px 6px;
 	background: var(--bg-card);
 	border: 1px solid var(--border);
-	border-radius: 4px;
-	font-size: 0.9em;
+	border-radius: 3px;
+	font-family: var(--font-mono);
+	font-size: 0.85em;
 }
 pre {
 	padding: 1.5em;
-	border-radius: 8px;
-	background: var(--bg-secondary) !important;
+	border-radius: 6px;
+	background: var(--bg-surface) !important;
 	border: 1px solid var(--border);
 	overflow-x: auto;
+	font-family: var(--font-mono);
+	font-size: 0.85em;
+	line-height: 1.6;
 }
-pre > code { all: unset; }
+pre > code { all: unset; font-family: inherit; }
 
+/* ── Blockquote ── */
 blockquote {
-	border-left: 3px solid var(--accent);
-	padding: 0 0 0 1.2em;
-	margin: 1.5em 0;
+	border-left: 2px solid var(--accent);
+	padding: 0 0 0 1.5em;
+	margin: 2em 0;
 	color: var(--text-secondary);
+	font-family: var(--font-serif);
 	font-style: italic;
+	font-size: 1.05em;
+	line-height: 1.8;
 }
 
-hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
-img { max-width: 100%; height: auto; border-radius: 8px; }
+/* ── Dividers ── */
+hr {
+	border: none;
+	border-top: 1px solid var(--border);
+	margin: 2.5em 0;
+}
 
+/* ── Media ── */
+img { max-width: 100%; height: auto; border-radius: 4px; }
+
+/* ── Tables ── */
 table { width: 100%; border-collapse: collapse; }
-th, td { padding: 0.75em 1em; border-bottom: 1px solid var(--border); text-align: left; }
-th { color: var(--text-secondary); font-weight: 600; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.05em; }
+th, td {
+	padding: 0.75em 1em;
+	border-bottom: 1px solid var(--border);
+	text-align: left;
+}
+th {
+	font-family: var(--font-mono);
+	color: var(--text-muted);
+	font-weight: 500;
+	font-size: 0.75em;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
 
+/* ── Lists ── */
 ul, ol { padding-left: 1.5em; }
-li { margin-bottom: 0.4em; color: var(--text-secondary); }
+li { margin-bottom: 0.5em; color: var(--text-secondary); }
 
-::selection { background: var(--accent-glow); color: white; }
+/* ── Selection ── */
+::selection { background: var(--accent-glow); color: var(--text-primary); }
 
+/* ── Metadata text (mono) ── */
+.meta-text {
+	font-family: var(--font-mono);
+	font-size: 0.75em;
+	color: var(--text-muted);
+	letter-spacing: 0.03em;
+}
+
+/* ── Fade-in animation ── */
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+.fade-in {
+	animation: fadeIn 0.5s ease both;
+}
+
+/* ── Status breathing animation ── */
+@keyframes breathe {
+	0%, 100% { opacity: 0.9; }
+	50% { opacity: 0.3; }
+}
+
+/* ── Responsive ── */
 @media (max-width: 720px) {
 	body { font-size: 16px; }
-	main { padding: 1em; }
-	h1 { font-size: 1.8em; }
-	h2 { font-size: 1.4em; }
+	main { padding: 1.5em 1em; max-width: calc(100% - 2em); }
+	h1 { font-size: 2em; }
+	h2 { font-size: 1.3em; }
 }
 
+/* ── Accessibility ── */
 .sr-only {
 	border: 0; padding: 0; margin: 0;
 	position: absolute !important;

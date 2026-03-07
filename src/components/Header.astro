@@ -6,14 +6,18 @@ import HeaderLink from './HeaderLink.astro';
 <header>
 	<nav>
 		<a class="logo" href="/profji-library/">
-			<span class="logo-icon">Ji</span>
+			<span class="logo-mark">Ji</span>
 			<span class="logo-text">{SITE_TITLE}</span>
 		</a>
-		<div class="nav-links">
-			<HeaderLink href="/profji-library/">Home</HeaderLink>
-			<HeaderLink href="/profji-library/articles">Articles</HeaderLink>
-			<HeaderLink href="/profji-library/novels">Novels</HeaderLink>
-			<HeaderLink href="/profji-library/about">About</HeaderLink>
+		<div class="nav-right">
+			<div class="nav-links">
+				<HeaderLink href="/profji-library/articles">Articles</HeaderLink>
+				<HeaderLink href="/profji-library/novels">Novels</HeaderLink>
+				<HeaderLink href="/profji-library/about">About</HeaderLink>
+			</div>
+			<span class="status-indicator">
+				<span class="status-dot"></span>
+			</span>
 		</div>
 	</nav>
 </header>
@@ -22,9 +26,9 @@ import HeaderLink from './HeaderLink.astro';
 		position: sticky;
 		top: 0;
 		z-index: 100;
-		background: rgba(10, 11, 15, 0.85);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
+		background: rgba(11, 11, 14, 0.92);
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
 		border-bottom: 1px solid var(--border);
 	}
 	nav {
@@ -33,46 +37,71 @@ import HeaderLink from './HeaderLink.astro';
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0.8em 1em;
+		padding: 1em 1em;
 	}
 	.logo {
 		display: flex;
 		align-items: center;
-		gap: 0.6em;
+		gap: 0.7em;
 		text-decoration: none;
 		color: var(--text-primary);
 	}
 	.logo:hover { color: var(--text-primary); }
-	.logo-icon {
+	.logo-mark {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 32px;
-		height: 32px;
-		background: linear-gradient(135deg, var(--accent), #a78bfa);
-		border-radius: 8px;
-		font-size: 0.75em;
-		font-weight: 700;
-		color: white;
-	}
-	.logo-text { font-weight: 700; font-size: 0.95em; }
-	.nav-links { display: flex; gap: 0.3em; }
-	.nav-links :global(a) {
-		padding: 0.4em 0.8em;
-		color: var(--text-secondary);
-		text-decoration: none;
-		font-size: 0.85em;
+		width: 30px;
+		height: 30px;
+		background: var(--accent);
 		border-radius: 6px;
-		transition: all 0.2s;
+		font-family: var(--font-serif);
+		font-size: 0.7em;
+		font-weight: 700;
+		color: var(--bg-primary);
+		letter-spacing: 0;
 	}
-	.nav-links :global(a:hover),
-	.nav-links :global(a.active) {
+	.logo-text {
+		font-family: var(--font-serif);
+		font-weight: 400;
+		font-size: 0.9em;
+		letter-spacing: 0.04em;
+	}
+	.nav-right {
+		display: flex;
+		align-items: center;
+		gap: 1.2em;
+	}
+	.nav-links { display: flex; gap: 0.2em; }
+	.nav-links :global(a) {
+		padding: 0.35em 0.75em;
+		color: var(--text-muted);
+		text-decoration: none;
+		font-size: 0.8em;
+		font-weight: 400;
+		letter-spacing: 0.02em;
+		border-radius: 4px;
+		transition: color 0.3s ease;
+	}
+	.nav-links :global(a:hover) {
 		color: var(--text-primary);
-		background: var(--accent-dim);
+	}
+	.nav-links :global(a.active) {
+		color: var(--accent);
+	}
+	.status-indicator {
+		display: flex;
+		align-items: center;
+	}
+	.status-dot {
+		width: 6px;
+		height: 6px;
+		background: var(--accent);
+		border-radius: 50%;
+		animation: breathe 3s ease-in-out infinite;
 	}
 	@media (max-width: 720px) {
 		.logo-text { display: none; }
-		.nav-links { gap: 0; }
-		.nav-links :global(a) { padding: 0.4em 0.5em; font-size: 0.8em; }
+		.nav-links :global(a) { padding: 0.3em 0.5em; font-size: 0.78em; }
 	}
 </style>

@@ -4,24 +4,17 @@ const today = new Date();
 
 <footer>
 	<div class="footer-inner">
-		<div class="footer-brand">
-			<span class="footer-logo">Ji</span>
-			<span>Prof. Ji e-Library</span>
-		</div>
-		<div class="footer-meta">
-			<span>&copy; {today.getFullYear()} Professor Ji. Powered by AI + Human Curation.</span>
-		</div>
-		<div class="footer-links">
-			<a href="https://github.com/JIPRO589/profji-library" target="_blank">GitHub</a>
-		</div>
+		<span class="footer-left">&copy; {today.getFullYear()} Ji Research Library</span>
+		<span class="footer-right">
+			<a href="https://github.com/JIPRO-AI/profji-library" target="_blank" rel="noopener">GitHub</a>
+		</span>
 	</div>
 </footer>
 <style>
 	footer {
-		margin-top: 4em;
+		margin-top: 6em;
 		padding: 2em 1em;
 		border-top: 1px solid var(--border);
-		background: var(--bg-secondary);
 	}
 	.footer-inner {
 		max-width: 960px;
@@ -29,40 +22,22 @@ const today = new Date();
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		flex-wrap: wrap;
-		gap: 1em;
 	}
-	.footer-brand {
-		display: flex;
-		align-items: center;
-		gap: 0.5em;
-		color: var(--text-secondary);
-		font-size: 0.85em;
-		font-weight: 600;
-	}
-	.footer-logo {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 24px;
-		height: 24px;
-		background: linear-gradient(135deg, var(--accent), #a78bfa);
-		border-radius: 5px;
-		font-size: 0.65em;
-		font-weight: 700;
-		color: white;
-	}
-	.footer-meta {
+	.footer-left {
+		font-family: var(--font-mono);
+		font-size: 0.7em;
 		color: var(--text-muted);
-		font-size: 0.8em;
+		letter-spacing: 0.02em;
 	}
-	.footer-links a {
+	.footer-right a {
+		font-family: var(--font-mono);
+		font-size: 0.7em;
 		color: var(--text-muted);
-		font-size: 0.8em;
-		transition: color 0.2s;
+		text-decoration: none;
+		transition: color 0.3s ease;
 	}
-	.footer-links a:hover { color: var(--accent); }
+	.footer-right a:hover { color: var(--accent); }
 	@media (max-width: 720px) {
-		.footer-inner { flex-direction: column; text-align: center; }
+		.footer-inner { flex-direction: column; gap: 0.5em; text-align: center; }
 	}
 </style>
