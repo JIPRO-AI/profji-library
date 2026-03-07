@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+
+const novels = (await getCollection('novels')).sort(
+	(a, b) => a.data.episode - b.data.episode,
+);
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<BaseHead title={`Novels | ${SITE_TITLE}`} description="AI 시대 소설 시리즈" />
+		<style>
+			main { width: 960px; max-width: calc(100% - 2em); margin: auto; padding: 2em 0; }
+			h1 { font-size: 2em; margin-bottom: 0.5em; }
+			.novel-list { list-style: none; padding: 0; display: grid; gap: 1.5em; }
+			.novel-item { border: 1px solid rgba(var(--gray-light), 0.5); border-radius: 8px; padding: 1.5em; transition: box-shadow 0.2s; }
+			.novel-item:hover { box-shadow: var(--box-shadow); }
+			.novel-item a { text-decoration: none; color: rgb(var(--black)); }
+			.novel-item h3 { margin: 0 0 0.5em; font-size: 1.2em; }
+			.novel-item .desc { color: rgb(var(--gray)); font-size: 0.9em; }
+			.ep-badge { display: inline-block; background: rgb(var(--accent)); color: white; padding: 0.2em 0.6em; border-radius: 4px; font-size: 0.8em; margin-right: 0.5em; }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Novels</h1>
+			<p style="color: rgb(var(--gray));">AI 시대를 배경으로 한 소설 시리즈</p>
+			<ul class="novel-list">
+				{novels.map((novel) => (
+					<li class="novel-item">
+						<a href={`/profji-library/novels/${novel.id}/`}>
+							<h3><span class="ep-badge">EP.{novel.data.episode}</span>{novel.data.title}</h3>
+							<div class="desc">{novel.data.description}</div>
+						</a>
+					</li>
+				))}
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>

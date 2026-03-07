@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const articles = (await getCollection('articles')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const novels = (await getCollection('novels')).sort(
+	(a, b) => a.data.episode - b.data.episode,
+);
+const categories = [...new Set(articles.map(a => a.data.category))];
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main { width: 960px; max-width: calc(100% - 2em); margin: auto; padding: 2em 0; }
+			.hero { text-align: center; padding: 2em 0 1em; }
+			.hero h1 { font-size: 2em; margin-bottom: 0.5em; }
+			.hero p { color: rgb(var(--gray)); font-size: 1.1em; }
+			.section-title { font-size: 1.4em; margin: 2em 0 1em; padding-bottom: 0.3em; border-bottom: 2px solid rgb(var(--accent)); }
+			.category-tag { display: inline-block; padding: 0.2em 0.6em; background: rgba(var(--accent), 0.1); border-radius: 4px; font-size: 0.8em; margin-right: 0.5em; }
+			.article-list { list-style: none; padding: 0; }
+			.article-list li { padding: 1em 0; border-bottom: 1px solid rgba(var(--gray-light), 0.5); }
+			.article-list a { text-decoration: none; color: rgb(var(--black)); }
+			.article-list a:hover h3 { color: rgb(var(--accent)); }
+			.article-list h3 { margin: 0 0 0.3em; font-size: 1.1em; }
+			.article-list .meta { color: rgb(var(--gray)); font-size: 0.85em; }
+			.article-list .desc { color: rgb(var(--gray)); font-size: 0.9em; margin-top: 0.3em; }
+			.novel-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5em; padding: 0; list-style: none; }
+			.novel-card { border: 1px solid rgba(var(--gray-light), 0.5); border-radius: 8px; padding: 1.2em; transition: box-shadow 0.2s; }
+			.novel-card:hover { box-shadow: var(--box-shadow); }
+			.novel-card a { text-decoration: none; color: rgb(var(--black)); }
+			.novel-card h3 { margin: 0 0 0.5em; font-size: 1em; }
+			.novel-card .desc { color: rgb(var(--gray)); font-size: 0.85em; }
+			.stats { display: flex; gap: 2em; justify-content: center; padding: 1em 0; }
+			.stat { text-align: center; }
+			.stat-num { font-size: 2em; font-weight: bold; color: rgb(var(--accent)); }
+			.stat-label { color: rgb(var(--gray)); font-size: 0.85em; }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="hero">
+				<h1>Prof. Ji e-Library</h1>
+				<p>AI 시대의 인간 지능을 탐구하는 지교수의 연구 라이브러리</p>
+			</div>
+			<div class="stats">
+				<div class="stat"><div class="stat-num">{articles.length}</div><div class="stat-label">Articles</div></div>
+				<div class="stat"><div class="stat-num">{novels.length}</div><div class="stat-label">Novels</div></div>
+				<div class="stat"><div class="stat-num">{categories.length}</div><div class="stat-label">Categories</div></div>
+			</div>
+
+			<h2 class="section-title">Latest Articles</h2>
+			<ul class="article-list">
+				{articles.slice(0, 6).map((article) => (
+					<li>
+						<a href={`/profji-library/articles/${article.id}/`}>
+							<h3><span class="category-tag">{article.data.category}</span>{article.data.title}</h3>
+							<div class="meta"><FormattedDate date={article.data.pubDate} /></div>
+							<div class="desc">{article.data.description}</div>
+						</a>
+					</li>
+				))}
+			</ul>
+
+			<h2 class="section-title">AI시대 인간 직장인 생존법</h2>
+			<ul class="novel-cards">
+				{novels.map((novel) => (
+					<li class="novel-card">
+						<a href={`/profji-library/novels/${novel.id}/`}>
+							<h3>{novel.data.title}</h3>
+							<div class="desc">{novel.data.description}</div>
+						</a>
+					</li>
+				))}
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>
