@@ -87,23 +87,27 @@ import { SITE_TITLE } from '../consts';
 
 			/* ── Pipeline ── */
 			.pipeline {
-				display: flex;
-				align-items: center;
-				gap: 1em;
-				flex-wrap: wrap;
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 0.5em;
 				font-family: var(--font-mono);
-				font-size: 0.75em;
+				font-size: 0.72em;
 				color: var(--text-secondary);
 				letter-spacing: 0.02em;
-			}
-			.pipeline .arrow {
-				color: var(--text-muted);
+				counter-reset: step;
 			}
 			.pipeline .step {
-				padding: 0.4em 0.8em;
+				padding: 0.6em 0.5em;
 				background: var(--bg-card);
 				border: 1px solid var(--border);
 				border-radius: 3px;
+				text-align: center;
+				white-space: nowrap;
+				counter-increment: step;
+			}
+			.pipeline .step::before {
+				content: counter(step) '. ';
+				color: var(--text-muted);
 			}
 
 			/* ── Stack ── */
@@ -136,7 +140,7 @@ import { SITE_TITLE } from '../consts';
 			@media (max-width: 720px) {
 				.about-header h1 { font-size: 2em; }
 				.domain-list { grid-template-columns: 1fr; gap: 1.5em; }
-				.pipeline { flex-direction: column; align-items: flex-start; }
+				.pipeline { grid-template-columns: repeat(2, 1fr); }
 			}
 		</style>
 	</head>
@@ -194,24 +198,24 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>How We Work</h2>
 				<div class="pipeline">
-					<span class="step">Autonomous Research</span>
-					<span class="arrow">&rarr;</span>
-					<span class="step">AI Writing</span>
-					<span class="arrow">&rarr;</span>
-					<span class="step">AI Review</span>
-					<span class="arrow">&rarr;</span>
-					<span class="step">Human Curation</span>
+					<span class="step">Research</span>
+					<span class="step">Write</span>
+					<span class="step">Review + QC</span>
+					<span class="step">Post-edit</span>
+					<span class="step">Auto-grading</span>
+					<span class="step">Human Approval</span>
 				</div>
 			</div>
 
 			<div class="about-section">
 				<h2>Technical Foundation</h2>
 				<ul class="stack-list">
-					<li><span class="stack-label">Orchestration</span><span class="stack-value">OpenClaw (multi-agent)</span></li>
-					<li><span class="stack-label">Writer / Review</span><span class="stack-value">Qwen 3.5 9B (local LLM)</span></li>
-					<li><span class="stack-label">Research</span><span class="stack-value">Gemini Search + Semantic Scholar + PubMed + arXiv</span></li>
+					<li><span class="stack-label">Orchestration</span><span class="stack-value">OpenClaw (multi-agent pipeline)</span></li>
+					<li><span class="stack-label">Researcher</span><span class="stack-value">Mistral 7B (local)</span></li>
+					<li><span class="stack-label">Writer</span><span class="stack-value">Qwen 3.5 9B (local)</span></li>
+					<li><span class="stack-label">Reviewer</span><span class="stack-value">GPT-OSS 20B (local)</span></li>
+					<li><span class="stack-label">Research</span><span class="stack-value">Semantic Scholar + arXiv</span></li>
 					<li><span class="stack-label">Website</span><span class="stack-value">Astro + GitHub Pages</span></li>
-					<li><span class="stack-label">Deploy</span><span class="stack-value">gh-pages (manual)</span></li>
 				</ul>
 			</div>
 		</main>

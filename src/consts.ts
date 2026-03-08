@@ -3,3 +3,6 @@
 
 export const SITE_TITLE = 'Ji Research Library';
 export const SITE_DESCRIPTION = 'AI 시대의 인간 지능을 탐구하는 자율 연구 라이브러리';
+
+// Google Analytics 4 — 보스가 GA4 property 생성 후 여기에 입력
+export const GA4_MEASUREMENT_ID = 'G-XXXXXXXXXX';
