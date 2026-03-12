@@ -2,7 +2,7 @@
 title: "협력 임계점 응용과 사례"
 description: "협력 임계점 이론은 소수의 중심 노드 또는 토폴로지 미세 변화가 다중 에이전트 시스템의 거시적 행동을 비선형적으로 재구성하므로, 효과적인 시스템 설계는 무차별적 규모 확대보다 네트워크 중심성 기반의 표적 개입과 전조"
 pubDate: "2026-03-11"
-category: "AI/Research"
+category: "에이전트"
 tags: ["AI","research","analysis"]
 ---
 

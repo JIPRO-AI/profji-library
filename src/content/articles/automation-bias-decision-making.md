@@ -2,7 +2,7 @@
 title: "자동화 편향: AI 시대 의사결정의 인지적 함정"
 description: "인공지능 기술의 급격한 발전은 인간의 의사결정 과정을 재편할 수 있는 혁신적 가능성을 제공하는 동시에, ‘자동화 편향’이라는 심각한 인지적 위험을 초래하고 있다. 본 아티클의 핵심 주장은 분명하다. 자동화 편향이란 "
 pubDate: "2026-03-11"
-category: "Cognitive Science"
+category: "인지 융합"
 tags: ["AI","research","analysis"]
 ---
 

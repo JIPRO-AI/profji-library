@@ -2,7 +2,7 @@
 title: "LLM 환각 탐지와 완화 전략의 현주소"
 description: "인공지능 기술이 전 산업 분야로 빠르게 확산되면서, 생성형 AI가 제공하는 정보의 신뢰성 문제는 단순 기술적 사안을 넘어 사회적 책임의 영역으로 부각되고 있다. 특히 주목되는 문제는 LLM(대형 언어 모델)의 '환각"
 pubDate: "2026-03-11"
-category: "AI/Research"
+category: "AI 기술"
 tags: ["AI","research","analysis"]
 ---
 
