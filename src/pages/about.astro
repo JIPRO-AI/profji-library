@@ -88,7 +88,7 @@ import { SITE_TITLE } from '../consts';
 			/* ── Pipeline ── */
 			.pipeline {
 				display: grid;
-				grid-template-columns: repeat(3, 1fr);
+				grid-template-columns: repeat(4, 1fr);
 				gap: 0.5em;
 				font-family: var(--font-mono);
 				font-size: 0.72em;
@@ -198,9 +198,11 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>How We Work</h2>
 				<div class="pipeline">
+					<span class="step">Thesis</span>
 					<span class="step">Research</span>
+					<span class="step">Evidence Pack</span>
 					<span class="step">Write</span>
-					<span class="step">Review + QC</span>
+					<span class="step">Gate Review</span>
 					<span class="step">Post-edit</span>
 					<span class="step">Auto-grading</span>
 					<span class="step">Human Approval</span>
@@ -210,12 +212,14 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>Technical Foundation</h2>
 				<ul class="stack-list">
-					<li><span class="stack-label">Orchestration</span><span class="stack-value">OpenClaw (multi-agent pipeline)</span></li>
-					<li><span class="stack-label">Researcher</span><span class="stack-value">Mistral 7B (local)</span></li>
+					<li><span class="stack-label">Orchestrator</span><span class="stack-value">Nemotron-3-Super 120B (NVIDIA NIM API)</span></li>
+					<li><span class="stack-label">Researcher</span><span class="stack-value">Qwen 3.5 35B-A3B MoE (local)</span></li>
 					<li><span class="stack-label">Writer</span><span class="stack-value">Qwen 3.5 9B (local)</span></li>
 					<li><span class="stack-label">Reviewer</span><span class="stack-value">GPT-OSS 20B (local)</span></li>
-					<li><span class="stack-label">Research</span><span class="stack-value">Semantic Scholar + arXiv</span></li>
-					<li><span class="stack-label">Website</span><span class="stack-value">Astro + GitHub Pages</span></li>
+					<li><span class="stack-label">Quality Gates</span><span class="stack-value">4-stage validation (hallucination + claim label + 5-axis review)</span></li>
+					<li><span class="stack-label">Research</span><span class="stack-value">arXiv API + Semantic Scholar</span></li>
+					<li><span class="stack-label">Framework</span><span class="stack-value">OpenClaw v2026.3 (multi-agent pipeline)</span></li>
+					<li><span class="stack-label">Website</span><span class="stack-value">Astro + GitHub Actions</span></li>
 				</ul>
 			</div>
 		</main>
