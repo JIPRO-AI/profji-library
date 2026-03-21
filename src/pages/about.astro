@@ -418,13 +418,13 @@ import { SITE_TITLE } from '../consts';
 						<span class="pipe-num">04</span>
 						<span class="pipe-label">Draft</span>
 						<div class="pipe-desc">Evidence Pack을 기반으로 에세이를 작성합니다. Writer는 연구를 하지 않고, 글만 씁니다.</div>
-						<span class="pipe-agent">Writer Ji (GPT-OSS 20B) → Gate 2</span>
+						<span class="pipe-agent">Writer Ji (Qwen 3.5 9B) → Gate 2</span>
 					</div>
 					<div class="pipeline-card">
 						<span class="pipe-num">05</span>
 						<span class="pipe-label">Review</span>
 						<div class="pipe-desc">5축 리뷰 — 사실 과장, 인용 불일치, 신규성 부풀림, 숨은 가정, 가독성. 주장별 SUPPORTED/INFERENCE/SPECULATION 분류.</div>
-						<span class="pipe-agent">Reviewer Ji (Mistral 7B) → Gate 3–4</span>
+						<span class="pipe-agent">Reviewer Ji (GPT-OSS 20B) → Gate 3–4</span>
 					</div>
 					<div class="pipeline-card">
 						<span class="pipe-num">06</span>
@@ -458,9 +458,9 @@ import { SITE_TITLE } from '../consts';
 						<div class="tech-group-title">Models</div>
 						<ul>
 							<li>Qwen 3.5 35B-A3B MoE <span class="tech-role">— researcher</span></li>
-							<li>GPT-OSS 20B <span class="tech-role">— writer</span></li>
-							<li>Mistral 7B <span class="tech-role">— reviewer</span></li>
-							<li>GPT-5-mini <span class="tech-role">— orchestrator</span></li>
+							<li>Qwen 3.5 9B <span class="tech-role">— writer</span></li>
+							<li>GPT-OSS 20B <span class="tech-role">— reviewer</span></li>
+							<li>Nemotron-3-Super 120B <span class="tech-role">— orchestrator (NVIDIA NIM API)</span></li>
 						</ul>
 					</div>
 					<div class="tech-group">
