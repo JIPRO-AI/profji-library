@@ -19,134 +19,326 @@ const catColors: Record<string, string> = {
 	'LLM 아키텍처': 'var(--cat-tech)',
 };
 
-const featured = articles[0];
-const rest = articles.slice(1);
+const typeLabels: Record<string, string> = {
+	'research synthesis': 'Research Synthesis',
+	'framework': 'Framework',
+	'essay': 'Essay',
+	'analysis': 'Analysis',
+	'case study': 'Case Study',
+};
+
+function readingTime(body: string): number {
+	const chars = body.replace(/[#\-*_\[\]()>`~|]/g, '').replace(/\s+/g, '').length;
+	return Math.max(1, Math.ceil(chars / 500));
+}
+
+const SUPABASE_URL = 'https://mmkoaipucrefhuyvzkec.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ta29haXB1Y3JlZmh1eXZ6a2VjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTU0OTEsImV4cCI6MjA4ODQzMTQ5MX0.S0BVRi1uxRESrrF2tyGDq86LZ80ySeNAFH4pHrSf5qg';
+
+let viewCounts: Record<string, number> = {};
+try {
+	const res = await fetch(`${SUPABASE_URL}/rest/v1/page_views?select=slug,count`, {
+		headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
+	});
+	if (res.ok) {
+		const data: { slug: string; count: number }[] = await res.json();
+		for (const row of data) viewCounts[row.slug] = row.count;
+	}
+} catch { /* fallback */ }
+
+const featuredSlugs = ['automation-bias-decision-making', 'hybrid-mind', 'llm-hallucination-detection'];
+const featuredArticles = featuredSlugs
+	.map((slug) => articles.find((a) => a.id === slug))
+	.filter(Boolean) as typeof articles;
+
+const categories = ['전체', ...new Set(articles.map((a) => a.data.category))];
+
+const archiveArticles = articles
+	.sort((a, b) => (viewCounts[b.id] || 0) - (viewCounts[a.id] || 0));
 ---
 
 <!doctype html>
 <html lang="ko">
 	<head>
-		<BaseHead title={`Articles | ${SITE_TITLE}`} description="AI 연구 아티클 아카이브" />
+		<BaseHead title={`Articles | ${SITE_TITLE}`} description="AI, cognition, agent systems에 대한 연구 기반 에세이 아카이브" />
 		<style>
+			/* ── Page Header ── */
 			.page-header {
-				padding: 4em 0 1em;
+				padding: 5em 0 1.5em;
 			}
 			.page-header h1 {
-				font-size: 2.4em;
+				font-size: 2.6em;
 				font-weight: 300;
-				margin-bottom: 0.3em;
+				letter-spacing: -0.02em;
+				margin-bottom: 0.4em;
 			}
-			.page-header .count {
+			.page-subtitle {
+				font-family: var(--font-serif);
+				font-size: 0.95em;
+				color: var(--text-secondary);
+				line-height: 1.6;
+				margin-bottom: 0.8em;
+			}
+			.page-meta {
 				font-family: var(--font-mono);
-				font-size: 0.82em;
+				font-size: 0.68em;
 				color: var(--text-muted);
 				letter-spacing: 0.04em;
+				text-transform: uppercase;
 			}
-			.page-header .count .num {
+			.page-meta .num {
 				color: var(--accent);
+				font-weight: 500;
 			}
 
-			/* ── Featured ── */
-			.featured {
-				padding: 2.5em 0;
+			/* ── Section ── */
+			.section-rule {
+				border: none;
 				border-top: 1px solid var(--border);
-				border-bottom: 1px solid var(--border);
-				margin-bottom: 0;
+				margin: 3em 0 0;
 			}
-			.featured a { text-decoration: none; color: inherit; display: block; }
-			.featured .cat-row {
-				display: flex;
-				align-items: center;
-				gap: 0.6em;
-				margin-bottom: 1em;
+			.section-header {
+				margin: 2em 0 0.4em;
 			}
+			.section-title {
+				font-family: var(--font-mono);
+				font-size: 0.72em;
+				font-weight: 400;
+				color: var(--text-muted);
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+			.section-desc {
+				font-size: 0.82em;
+				color: var(--text-muted);
+				line-height: 1.6;
+				margin: 0.3em 0 1.5em;
+			}
+
+			/* ── Shared ── */
 			.cat-dot {
-				width: 7px;
-				height: 7px;
+				width: 6px;
+				height: 6px;
 				border-radius: 50%;
 				flex-shrink: 0;
 			}
 			.cat-name {
 				font-family: var(--font-mono);
-				font-size: 0.78em;
+				font-size: 0.68em;
 				color: var(--text-muted);
-				text-transform: uppercase;
 				letter-spacing: 0.06em;
 			}
-			.featured h2 {
-				font-size: 1.8em;
+			.type-badge {
+				font-family: var(--font-mono);
+				font-size: 0.62em;
+				color: var(--accent);
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+				padding: 0.1em 0.45em;
+				border-radius: 2px;
+				white-space: nowrap;
+			}
+			.reading-time {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--text-muted);
+				letter-spacing: 0.03em;
+			}
+
+			/* ── Featured Cards ── */
+			.featured-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 0;
+			}
+			.featured-card {
+				padding: 1.5em 1.5em 1.5em 0;
+				border-bottom: 1px solid var(--border);
+			}
+			.featured-card + .featured-card {
+				padding-left: 1.5em;
+				border-left: 1px solid var(--border);
+			}
+			.featured-card a {
+				text-decoration: none;
+				color: inherit;
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+			}
+			.featured-card .fc-meta {
+				display: flex;
+				align-items: center;
+				gap: 0.6em;
+				margin-bottom: 0.8em;
+			}
+			.featured-card h3 {
+				font-family: var(--font-serif);
+				font-size: 1em;
 				font-weight: 400;
-				line-height: 1.35;
-				margin-bottom: 0.6em;
+				line-height: 1.4;
+				margin: 0 0 0.3em;
+				color: var(--text-primary);
 				transition: color 0.3s;
 			}
-			.featured a:hover h2 { color: var(--accent); }
-			.featured .desc {
-				font-size: 0.9em;
-				color: var(--text-secondary);
-				line-height: 1.75;
-				max-width: 640px;
-				margin-bottom: 1em;
-			}
-			.featured .date {
+			.featured-card a:hover h3 { color: var(--accent); }
+			.featured-card .fc-title-en {
 				font-family: var(--font-mono);
+				font-size: 0.64em;
+				color: var(--text-muted);
+				letter-spacing: 0.01em;
+				line-height: 1.45;
+				margin-bottom: 0.6em;
+			}
+			.featured-card .fc-desc {
 				font-size: 0.78em;
+				color: var(--text-muted);
+				line-height: 1.6;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				margin-bottom: 0.8em;
+			}
+			.featured-card .fc-footer {
+				display: flex;
+				align-items: center;
+				gap: 0.8em;
+				margin-top: auto;
+				font-family: var(--font-mono);
+				font-size: 0.64em;
 				color: var(--text-muted);
 			}
 
-			/* ── Article Index ── */
-			.article-index {
+			/* ── Filter Pills ── */
+			.filter-bar {
+				display: flex;
+				gap: 0.5em;
+				flex-wrap: wrap;
+				margin-bottom: 1.5em;
+			}
+			.filter-pill {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--text-muted);
+				letter-spacing: 0.04em;
+				padding: 0.3em 0.8em;
+				border: 1px solid var(--border);
+				border-radius: 2px;
+				background: transparent;
+				cursor: pointer;
+				transition: all 0.2s;
+			}
+			.filter-pill:hover {
+				border-color: var(--accent);
+				color: var(--accent);
+			}
+			.filter-pill.active {
+				border-color: var(--accent);
+				color: var(--accent);
+				background: var(--accent-dim);
+			}
+
+			/* ── Guide Line ── */
+			.guide-line {
+				font-size: 0.78em;
+				color: var(--text-muted);
+				margin-bottom: 1.5em;
+				line-height: 1.6;
+			}
+
+			/* ── Archive Index ── */
+			.archive-list {
 				list-style: none;
 				padding: 0;
 				margin: 0;
 			}
-			.article-row {
+			.archive-item {
+				border-bottom: 1px solid var(--border);
+			}
+			.archive-item a {
 				display: flex;
 				align-items: baseline;
 				gap: 1.2em;
-				padding: 1.1em 0;
-				border-bottom: 1px solid var(--border);
-				transition: background 0.3s ease;
-			}
-			.article-row:hover {
-				background: var(--accent-dim);
-			}
-			.article-row a {
+				padding: 0.85em 0;
 				text-decoration: none;
 				color: inherit;
-				display: flex;
-				align-items: baseline;
-				gap: 1.2em;
-				width: 100%;
+				transition: background 0.2s;
 			}
-			.article-row .row-date {
+			.archive-item a:hover {
+				background: var(--accent-dim);
+			}
+			.archive-item a:hover .archive-title {
+				color: var(--accent);
+			}
+			.archive-date {
 				font-family: var(--font-mono);
-				font-size: 0.78em;
+				font-size: 0.68em;
 				color: var(--text-muted);
+				letter-spacing: 0.02em;
 				flex-shrink: 0;
-				min-width: 6.5em;
+				width: 7.5em;
 			}
-			.article-row .row-cat {
+			.archive-cat {
 				display: flex;
 				align-items: center;
-				gap: 0.4em;
+				gap: 0.35em;
 				flex-shrink: 0;
-				min-width: 7em;
+				width: 6.5em;
 			}
-			.article-row .row-title {
+			.archive-title {
 				font-family: var(--font-serif);
-				font-size: 0.95em;
+				font-size: 0.92em;
 				font-weight: 400;
+				line-height: 1.35;
 				color: var(--text-primary);
-				line-height: 1.4;
+				flex: 1;
+				min-width: 0;
+				transition: color 0.3s;
+			}
+			.archive-meta {
+				display: flex;
+				align-items: center;
+				gap: 0.8em;
+				flex-shrink: 0;
+				min-width: 14em;
+				justify-content: flex-end;
 			}
 
+			/* ── Responsive ── */
 			@media (max-width: 720px) {
-				.page-header h1 { font-size: 1.8em; }
-				.featured h2 { font-size: 1.4em; }
-				.article-row a { flex-wrap: wrap; gap: 0.3em; }
-				.article-row .row-date { min-width: auto; }
-				.article-row .row-cat { min-width: auto; }
+				.page-header { padding: 3.5em 0 1em; }
+				.page-header h1 { font-size: 2em; }
+
+				.featured-grid {
+					grid-template-columns: 1fr;
+					gap: 0;
+				}
+				.featured-card {
+					padding: 1.2em 0;
+				}
+				.featured-card + .featured-card {
+					padding-left: 0;
+					border-left: none;
+				}
+
+				.archive-item a {
+					flex-wrap: wrap;
+					gap: 0.3em 0.8em;
+					padding: 0.8em 0;
+				}
+				.archive-date { width: auto; }
+				.archive-title {
+					flex-basis: 100%;
+					order: 3;
+				}
+				.archive-meta {
+					flex-basis: 100%;
+					order: 4;
+					min-width: auto;
+					justify-content: flex-start;
+				}
 			}
 		</style>
 	</head>
@@ -155,39 +347,109 @@ const rest = articles.slice(1);
 		<main>
 			<div class="page-header">
 				<h1>Articles</h1>
-				<span class="count"><span class="num">{articles.length}</span> research articles</span>
+				<p class="page-subtitle">
+					AI, cognition, agent systems에 대한 연구 기반 에세이 아카이브
+				</p>
+				<span class="page-meta">
+					<span class="num">{articles.length}</span> essays · <span class="num">{new Set(articles.map(a => a.data.category)).size}</span> themes · human-curated
+				</span>
 			</div>
 
-			{featured && (
-				<div class="featured">
-					<a href={`/profji-library/articles/${featured.id}/`}>
-						<div class="cat-row">
-							<span class="cat-dot" style={`background: ${catColors[featured.data.category] || 'var(--accent)'}`}></span>
-							<span class="cat-name">{featured.data.category}</span>
-						</div>
-						<h2>{featured.data.title}</h2>
-						<div class="desc">{featured.data.description}</div>
-						<span class="date"><FormattedDate date={featured.data.pubDate} /> <span style="margin-left: 1em;"><ViewCounter slug={featured.id} /></span></span>
-					</a>
-				</div>
-			)}
+			<hr class="section-rule" />
+			<div class="section-header">
+				<h2 class="section-title">Featured Essays</h2>
+			</div>
+			<p class="section-desc">
+				라이브러리의 핵심 프레임을 가장 잘 보여주는 대표 에세이입니다.
+			</p>
 
-			<ul class="article-index">
-				{rest.map((article) => (
-					<li class="article-row">
+			<div class="featured-grid">
+				{featuredArticles.map((article) => (
+					<div class="featured-card">
 						<a href={`/profji-library/articles/${article.id}/`}>
-							<span class="row-date"><FormattedDate date={article.data.pubDate} /></span>
-							<span class="row-cat">
+							<div class="fc-meta">
+								<span class="cat-dot" style={`background: ${catColors[article.data.category] || 'var(--accent)'}`}></span>
+								<span class="cat-name">{article.data.category}</span>
+								<span class="type-badge">{typeLabels[article.data.articleType] || article.data.articleType}</span>
+							</div>
+							<h3>{article.data.title}</h3>
+							{article.data.titleEn && <p class="fc-title-en">{article.data.titleEn}</p>}
+							<p class="fc-desc">{article.data.description}</p>
+							<div class="fc-footer">
+								<span class="reading-time">{readingTime(article.body || '')} min</span>
+								<ViewCounter slug={article.id} />
+							</div>
+						</a>
+					</div>
+				))}
+			</div>
+
+			<hr class="section-rule" />
+			<div class="section-header">
+				<h2 class="section-title">Archive</h2>
+			</div>
+			<p class="guide-line">
+				처음 방문하셨다면 Featured Essays부터 읽고, 이후 전체 아카이브를 탐색하세요.
+			</p>
+
+			<div class="filter-bar">
+				{categories.map((cat) => (
+					<button class={`filter-pill${cat === '전체' ? ' active' : ''}`} data-cat={cat}>
+						{cat}
+					</button>
+				))}
+			</div>
+
+			<ul class="archive-list">
+				{archiveArticles.map((article) => (
+					<li class="archive-item" data-category={article.data.category}>
+						<a href={`/profji-library/articles/${article.id}/`}>
+							<span class="archive-date"><FormattedDate date={article.data.pubDate} /></span>
+							<span class="archive-cat">
 								<span class="cat-dot" style={`background: ${catColors[article.data.category] || 'var(--accent)'}`}></span>
 								<span class="cat-name">{article.data.category}</span>
 							</span>
-							<span class="row-title">{article.data.title}</span>
-							<span style="margin-left: auto; flex-shrink: 0;"><ViewCounter slug={article.id} /></span>
+							<span class="archive-title">{article.data.title}</span>
+							<span class="archive-meta">
+								<span class="type-badge">{typeLabels[article.data.articleType] || article.data.articleType}</span>
+								<span class="reading-time">{readingTime(article.body || '')} min</span>
+								<ViewCounter slug={article.id} />
+							</span>
 						</a>
 					</li>
 				))}
 			</ul>
 		</main>
 		<Footer />
+
+		<script>
+			function initFilters() {
+				const pills = document.querySelectorAll('.filter-pill');
+				const items = document.querySelectorAll('.archive-item');
+
+				pills.forEach((pill) => {
+					pill.addEventListener('click', () => {
+						pills.forEach((p) => p.classList.remove('active'));
+						pill.classList.add('active');
+						const cat = (pill as HTMLElement).dataset.cat || '전체';
+
+						items.forEach((item) => {
+							const el = item as HTMLElement;
+							if (cat === '전체' || el.dataset.category === cat) {
+								el.style.display = '';
+							} else {
+								el.style.display = 'none';
+							}
+						});
+					});
+				});
+			}
+
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', initFilters);
+			} else {
+				initFilters();
+			}
+		</script>
 	</body>
 </html>
