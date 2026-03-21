@@ -35,10 +35,26 @@ function readingTime(body: string): number {
 	return Math.max(1, Math.ceil(chars / 500));
 }
 
+const SUPABASE_URL = 'https://mmkoaipucrefhuyvzkec.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ta29haXB1Y3JlZmh1eXZ6a2VjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTU0OTEsImV4cCI6MjA4ODQzMTQ5MX0.S0BVRi1uxRESrrF2tyGDq86LZ80ySeNAFH4pHrSf5qg';
+
+let viewCounts: Record<string, number> = {};
+try {
+	const res = await fetch(`${SUPABASE_URL}/rest/v1/page_views?select=slug,count`, {
+		headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
+	});
+	if (res.ok) {
+		const data: { slug: string; count: number }[] = await res.json();
+		for (const row of data) viewCounts[row.slug] = row.count;
+	}
+} catch { /* fallback to date sort */ }
+
 const featuredArticles = articles.filter((a) => a.data.featured);
 const leadFeatured = featuredArticles[0];
 const restFeatured = featuredArticles.slice(1);
-const archiveArticles = articles.filter((a) => !a.data.featured);
+const archiveArticles = articles
+	.filter((a) => !a.data.featured)
+	.sort((a, b) => (viewCounts[b.id] || 0) - (viewCounts[a.id] || 0));
 ---
 
 <!doctype html>
@@ -327,14 +343,14 @@ const archiveArticles = articles.filter((a) => !a.data.featured);
 				color: var(--text-muted);
 				letter-spacing: 0.02em;
 				flex-shrink: 0;
-				min-width: 6em;
+				width: 7.5em;
 			}
 			.archive-cat {
 				display: flex;
 				align-items: center;
 				gap: 0.35em;
 				flex-shrink: 0;
-				min-width: 5.5em;
+				width: 6.5em;
 			}
 			.archive-title {
 				font-family: var(--font-serif);
@@ -351,6 +367,8 @@ const archiveArticles = articles.filter((a) => !a.data.featured);
 				align-items: center;
 				gap: 0.8em;
 				flex-shrink: 0;
+				min-width: 14em;
+				justify-content: flex-end;
 			}
 
 			/* ── Novel Rows ── */
