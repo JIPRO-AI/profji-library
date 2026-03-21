@@ -467,8 +467,40 @@ const rest = articles.slice(1);
 				.about-items { flex-direction: column; gap: 1.2em; }
 				.featured-grid { grid-template-columns: 1fr; gap: 1em; }
 				.latest-hero h3 { font-size: 1.3em; }
-				.article-row a { flex-wrap: wrap; gap: 0.5em; padding: 1.1em 0 1.1em 0.8em; }
-				.row-left { flex-direction: row; gap: 0.8em; min-width: auto; }
+
+				/* ── Mobile Article Rows: stacked card ── */
+				.article-row a {
+					flex-direction: column;
+					gap: 0.6em;
+					padding: 1em 0.8em;
+				}
+				.row-left {
+					flex-direction: row;
+					align-items: center;
+					gap: 0.8em;
+					min-width: auto;
+				}
+				.row-body h3 {
+					font-size: 0.95em;
+					line-height: 1.45;
+					margin-bottom: 0.25em;
+				}
+				.row-body .row-title-en {
+					font-size: 0.68em;
+					margin-bottom: 0.2em;
+				}
+				.row-body .row-desc {
+					font-size: 0.78em;
+					-webkit-line-clamp: 2;
+				}
+				.row-right {
+					flex-direction: row;
+					align-items: center;
+					align-self: flex-start;
+					gap: 0.8em;
+				}
+
+				/* ── Mobile Novel Rows ── */
 				.novel-row a { flex-wrap: wrap; gap: 0.5em; padding: 1.1em 0 1.1em 0.8em; }
 			}
 		</style>
