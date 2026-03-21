@@ -13,6 +13,8 @@ const articles = defineCollection({
 		score: z.number().optional(),
 		featured: z.boolean().default(false),
 		articleType: z.enum(['research synthesis', 'framework', 'essay', 'analysis', 'case study']).default('essay'),
+		titleEn: z.string().optional(),
+		descriptionEn: z.string().optional(),
 	}),
 });
 

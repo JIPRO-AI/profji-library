@@ -5,6 +5,8 @@ pubDate: "2026-03-07"
 category: "Cognitive Science"
 tags: ["AI","research","analysis"]
 articleType: "research synthesis"
+titleEn: "Hybrid Mind: The Cognitive Science of Human-AI Collaboration"
+descriptionEn: "Exploring the cognitive properties of human-AI collaborative systems as intellectual partners, not just tools."
 ---
 
 # 하이브리드 마인드: 인간-AI 협업의 인지과학

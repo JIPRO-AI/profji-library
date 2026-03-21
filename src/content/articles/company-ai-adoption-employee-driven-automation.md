@@ -5,6 +5,8 @@ pubDate: "2026-03-12"
 category: "AI 기술"
 tags: ["AI","research","analysis"]
 articleType: "framework"
+titleEn: "Enterprise AI Adoption: Employee-Driven Automation Design"
+descriptionEn: "Neither top-down automation nor unlimited decentralization works alone. The dual structure of central platforms and frontline micro-agent design."
 ---
 
 기업이 AI를 도입하는 방식은 크게 두 갈래로 나뉜다. 하나는 경영진이 선정한 단일 플랫폼을 전 조직에 배포하는 탑다운 방식이고, 다른 하나는 현업 직원이 자기 업무에 맞는 작은 에이전트를 직접 만들어 쓰는 바텀업 방식이다. 흥미로운 점은, 어느 한쪽만으로는 조직 AI 전략이 완성되지 않는다는 사실이다.

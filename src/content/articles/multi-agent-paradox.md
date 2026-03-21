@@ -5,6 +5,8 @@ pubDate: "2026-03-07"
 category: "AI/Research"
 tags: ["AI","research","analysis"]
 articleType: "research synthesis"
+titleEn: "The Multi-Agent Paradox"
+descriptionEn: "When individually rational agents converge on collectively suboptimal outcomes — the structural dilemma of distributed AI cooperation."
 ---
 
 # 멀티에이전트 패러독스: 분산 인공지능 협업 시스템의 구조적 딜레마

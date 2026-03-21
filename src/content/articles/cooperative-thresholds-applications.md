@@ -6,6 +6,8 @@ category: "에이전트"
 tags: ["AI","research","analysis"]
 featured: true
 articleType: "framework"
+titleEn: "Cooperative Thresholds: Multi-Agent Systems Transition at Structure, Not Scale"
+descriptionEn: "Macroscopic behavior in multi-agent systems shifts nonlinearly at structural tipping points. Targeted intervention, early warning, and structural leverage."
 ---
 
 ## 협력 임계점: 다중 에이전트 시스템은 규모가 아니라 구조에서 전환된다

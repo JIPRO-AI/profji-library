@@ -5,6 +5,8 @@ pubDate: "2026-03-07"
 category: "Technology"
 tags: ["AI","research","analysis"]
 articleType: "analysis"
+titleEn: "The AI Race Endgame"
+descriptionEn: "As generative AI converges, the real competition shifts from model performance to platform ecosystems, data access, and geopolitical control."
 ---
 
 ## AI 경쟁의 엔드게임: 기술적 수렴과 지형학의 경계

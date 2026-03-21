@@ -6,6 +6,8 @@ category: "인지 융합"
 tags: ["AI","research","analysis"]
 featured: true
 articleType: "research synthesis"
+titleEn: "Automation Bias: The Real Danger Is Not AI Error, but the Death of Doubt"
+descriptionEn: "Automation bias isn't about AI being wrong — it's the structural moment when humans stop questioning. Psychology, failure patterns, and operating principles."
 ---
 
 ## 자동화 편향: AI의 진짜 위험은 오류가 아니라 의심의 소멸이다

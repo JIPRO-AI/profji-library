@@ -220,6 +220,14 @@ const rest = articles.slice(1);
 				margin: 0 0 0.5em;
 				color: var(--text-primary);
 			}
+			.featured-card .card-title-en {
+				font-family: var(--font-mono);
+				font-size: 0.72em;
+				color: var(--text-muted);
+				letter-spacing: 0.01em;
+				margin: -0.2em 0 0.6em;
+				line-height: 1.5;
+			}
 			.featured-card .card-desc {
 				font-size: 0.78em;
 				color: var(--text-muted);
@@ -286,6 +294,14 @@ const rest = articles.slice(1);
 				transition: color 0.3s;
 			}
 			.latest-hero a:hover h3 { color: var(--accent); }
+			.latest-hero .title-en {
+				font-family: var(--font-mono);
+				font-size: 0.78em;
+				color: var(--text-muted);
+				letter-spacing: 0.01em;
+				margin: -0.3em 0 0.6em;
+				line-height: 1.5;
+			}
 			.latest-hero .desc {
 				font-size: 0.88em;
 				color: var(--text-secondary);
@@ -355,6 +371,14 @@ const rest = articles.slice(1);
 				line-height: 1.4;
 				margin: 0 0 0.35em;
 				color: var(--text-primary);
+			}
+			.row-body .row-title-en {
+				font-family: var(--font-mono);
+				font-size: 0.72em;
+				color: var(--text-muted);
+				letter-spacing: 0.01em;
+				margin: -0.1em 0 0.3em;
+				line-height: 1.4;
 			}
 			.row-body .row-desc {
 				font-size: 0.82em;
@@ -515,6 +539,7 @@ const rest = articles.slice(1);
 										<span class="type-badge">{typeLabels[article.data.articleType] || article.data.articleType}</span>
 									</div>
 									<h3>{article.data.title}</h3>
+									{article.data.titleEn && <p class="card-title-en">{article.data.titleEn}</p>}
 									<p class="card-desc">{article.data.description}</p>
 								</a>
 							</div>
@@ -538,6 +563,7 @@ const rest = articles.slice(1);
 							<span class="type-badge">{typeLabels[latest.data.articleType] || latest.data.articleType}</span>
 						</div>
 						<h3>{latest.data.title}</h3>
+						{latest.data.titleEn && <p class="title-en">{latest.data.titleEn}</p>}
 						<div class="desc">{latest.data.description}</div>
 						<div class="hero-meta">
 							<FormattedDate date={latest.data.pubDate} />
@@ -561,6 +587,7 @@ const rest = articles.slice(1);
 							</div>
 							<div class="row-body">
 								<h3>{article.data.title}</h3>
+								{article.data.titleEn && <p class="row-title-en">{article.data.titleEn}</p>}
 								<p class="row-desc">{article.data.description}</p>
 							</div>
 							<div class="row-right">
