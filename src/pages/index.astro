@@ -36,8 +36,9 @@ function readingTime(body: string): number {
 }
 
 const featuredArticles = articles.filter((a) => a.data.featured);
-const latest = articles[0];
-const rest = articles.slice(1);
+const leadFeatured = featuredArticles[0];
+const restFeatured = featuredArticles.slice(1);
+const archiveArticles = articles.filter((a) => !a.data.featured);
 ---
 
 <!doctype html>
@@ -47,18 +48,18 @@ const rest = articles.slice(1);
 		<style>
 			/* ── Hero ── */
 			.hero {
-				padding: 5em 0 2em;
+				padding: 6em 0 3em;
 			}
 			.hero-status {
 				display: inline-flex;
 				align-items: center;
 				gap: 0.5em;
 				font-family: var(--font-mono);
-				font-size: 0.8em;
+				font-size: 0.72em;
 				color: var(--text-muted);
-				letter-spacing: 0.05em;
+				letter-spacing: 0.06em;
 				text-transform: uppercase;
-				margin-bottom: 2em;
+				margin-bottom: 2.5em;
 				position: relative;
 				height: 1.4em;
 			}
@@ -91,54 +92,40 @@ const rest = articles.slice(1);
 				visibility: hidden;
 			}
 			.hero h1 {
-				font-size: 2.8em;
+				font-size: 3em;
 				font-weight: 300;
 				letter-spacing: -0.03em;
-				line-height: 1.15;
-				margin-bottom: 0.4em;
+				line-height: 1.1;
+				margin-bottom: 0.6em;
 			}
-			.hero .subtitle {
+			.hero-thesis {
+				font-family: var(--font-serif);
+				font-size: 1.15em;
+				font-weight: 400;
 				color: var(--text-secondary);
-				font-size: 1.05em;
-				line-height: 1.75;
-				max-width: 540px;
+				line-height: 1.6;
+				max-width: 480px;
+				margin-bottom: 0.6em;
 			}
-
-			/* ── About Block ── */
-			.about-block {
-				margin-top: 2em;
-				padding: 1.5em 0;
-				border-top: 1px solid var(--border);
-				border-bottom: 1px solid var(--border);
-			}
-			.about-items {
-				display: flex;
-				gap: 3em;
-				font-size: 0.82em;
-				color: var(--text-secondary);
-				line-height: 1.65;
-			}
-			.about-items dt {
+			.hero-sub {
 				font-family: var(--font-mono);
-				font-size: 0.85em;
+				font-size: 0.76em;
 				color: var(--text-muted);
-				text-transform: uppercase;
-				letter-spacing: 0.06em;
-				margin-bottom: 0.4em;
+				letter-spacing: 0.02em;
+				line-height: 1.7;
+				max-width: 520px;
 			}
-			.about-items dd {
-				margin: 0;
-			}
-
-			/* ── Meta Bar ── */
 			.hero .meta-bar {
-				margin-top: 1.5em;
+				margin-top: 2.5em;
+				padding-top: 1.5em;
+				border-top: 1px solid var(--border);
 				display: flex;
 				gap: 2.5em;
 				font-family: var(--font-mono);
-				font-size: 0.72em;
+				font-size: 0.68em;
 				color: var(--text-muted);
-				letter-spacing: 0.03em;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
 			}
 			.hero .meta-bar .num {
 				color: var(--accent);
@@ -149,250 +136,221 @@ const rest = articles.slice(1);
 			.section-rule {
 				border: none;
 				border-top: 1px solid var(--border);
-				margin: 3em 0 0;
+				margin: 4em 0 0;
 			}
 			.section-header {
 				display: flex;
 				align-items: baseline;
 				justify-content: space-between;
-				margin: 1.5em 0 1.2em;
+				margin: 2em 0 0.6em;
 			}
 			.section-title {
-				font-family: var(--font-serif);
-				font-size: 1em;
+				font-family: var(--font-mono);
+				font-size: 0.72em;
 				font-weight: 400;
-				color: var(--text-secondary);
-				letter-spacing: 0.02em;
-			}
-			.section-desc {
-				font-size: 0.82em;
 				color: var(--text-muted);
-				margin: -0.5em 0 1.5em;
-				line-height: 1.6;
-				max-width: 600px;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
 			}
 			.section-link {
 				font-family: var(--font-mono);
-				font-size: 0.8em;
+				font-size: 0.68em;
 				color: var(--text-muted);
 				text-decoration: none;
-				letter-spacing: 0.03em;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
 				transition: color 0.3s;
 			}
 			.section-link:hover { color: var(--accent); }
 
-			/* ── Featured Essays ── */
-			.featured-grid {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				gap: 1.5em;
-				margin-bottom: 0.5em;
-			}
-			.featured-card {
-				padding: 1.5em;
-				border: 1px solid var(--border);
-				border-radius: 4px;
-				transition: border-color 0.3s, background 0.3s;
-			}
-			.featured-card:hover {
-				border-color: var(--accent);
-				background: var(--accent-dim);
-			}
-			.featured-card a {
-				text-decoration: none;
-				color: inherit;
-				display: block;
-			}
-			.featured-card .card-meta {
-				display: flex;
-				align-items: center;
-				gap: 0.6em;
-				margin-bottom: 0.8em;
-			}
-			.featured-card h3 {
-				font-family: var(--font-serif);
-				font-size: 1.05em;
-				font-weight: 400;
-				line-height: 1.4;
-				margin: 0 0 0.5em;
-				color: var(--text-primary);
-			}
-			.featured-card .card-title-en {
-				font-family: var(--font-mono);
-				font-size: 0.72em;
-				color: var(--text-muted);
-				letter-spacing: 0.01em;
-				margin: -0.2em 0 0.6em;
-				line-height: 1.5;
-			}
-			.featured-card .card-desc {
-				font-size: 0.78em;
-				color: var(--text-muted);
-				line-height: 1.6;
-				display: -webkit-box;
-				-webkit-line-clamp: 3;
-				-webkit-box-orient: vertical;
-				overflow: hidden;
-			}
-
 			/* ── Type Badge ── */
 			.type-badge {
 				font-family: var(--font-mono);
-				font-size: 0.68em;
+				font-size: 0.62em;
 				color: var(--accent);
-				letter-spacing: 0.04em;
+				letter-spacing: 0.05em;
 				text-transform: uppercase;
-				border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-				padding: 0.15em 0.5em;
+				border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+				padding: 0.1em 0.45em;
 				border-radius: 2px;
+				white-space: nowrap;
 			}
 			.reading-time {
 				font-family: var(--font-mono);
-				font-size: 0.72em;
+				font-size: 0.68em;
 				color: var(--text-muted);
 				letter-spacing: 0.03em;
 			}
-
-			/* ── Latest Article (hero card) ── */
-			.latest-hero {
-				padding: 2em 0 2em;
-				border-bottom: 1px solid var(--border);
-			}
-			.latest-hero a {
-				text-decoration: none;
-				color: inherit;
-				display: block;
-			}
-			.latest-hero .cat-row {
-				display: flex;
-				align-items: center;
-				gap: 0.6em;
-				margin-bottom: 1em;
-			}
 			.cat-dot {
-				width: 7px;
-				height: 7px;
+				width: 6px;
+				height: 6px;
 				border-radius: 50%;
 				flex-shrink: 0;
 			}
 			.cat-name {
 				font-family: var(--font-mono);
-				font-size: 0.78em;
+				font-size: 0.68em;
 				color: var(--text-muted);
-				text-transform: uppercase;
 				letter-spacing: 0.06em;
 			}
-			.latest-hero h3 {
-				font-family: var(--font-serif);
-				font-size: 1.6em;
-				font-weight: 400;
-				line-height: 1.4;
-				margin-bottom: 0.6em;
-				transition: color 0.3s;
-			}
-			.latest-hero a:hover h3 { color: var(--accent); }
-			.latest-hero .title-en {
-				font-family: var(--font-mono);
-				font-size: 0.78em;
-				color: var(--text-muted);
-				letter-spacing: 0.01em;
-				margin: -0.3em 0 0.6em;
-				line-height: 1.5;
-			}
-			.latest-hero .desc {
-				font-size: 0.88em;
-				color: var(--text-secondary);
-				line-height: 1.75;
-				max-width: 640px;
-				margin-bottom: 1.2em;
-			}
-			.latest-hero .hero-meta {
-				display: flex;
-				align-items: center;
-				gap: 1.5em;
-				font-family: var(--font-mono);
-				font-size: 0.78em;
-				color: var(--text-muted);
-			}
 
-			/* ── Article Rows ── */
-			.article-list {
-				list-style: none;
-				padding: 0;
-				margin: 0;
-			}
-			.article-row {
+			/* ── Featured: Lead Card ── */
+			.featured-lead {
+				padding: 2em 0;
 				border-bottom: 1px solid var(--border);
 			}
-			.article-row a {
-				display: flex;
-				align-items: flex-start;
-				gap: 1.5em;
-				padding: 1.4em 0 1.4em 1em;
+			.featured-lead a {
 				text-decoration: none;
 				color: inherit;
-				border-left: 2px solid transparent;
-				transition: border-color 0.3s, background 0.3s;
+				display: block;
 			}
-			.article-row a:hover {
-				border-left-color: var(--accent);
-				background: var(--accent-dim);
-			}
-			.row-left {
-				flex-shrink: 0;
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-				gap: 0.4em;
-				min-width: 5.5em;
-				padding-top: 0.15em;
-			}
-			.row-date {
-				font-family: var(--font-mono);
-				font-size: 0.78em;
-				color: var(--text-muted);
-			}
-			.row-cat {
+			.featured-lead .lead-meta {
 				display: flex;
 				align-items: center;
-				gap: 0.4em;
+				gap: 0.8em;
+				margin-bottom: 1.2em;
 			}
-			.row-body {
-				flex: 1;
-				min-width: 0;
-			}
-			.row-body h3 {
+			.featured-lead h3 {
 				font-family: var(--font-serif);
-				font-size: 1.05em;
+				font-size: 1.5em;
 				font-weight: 400;
-				line-height: 1.4;
-				margin: 0 0 0.35em;
-				color: var(--text-primary);
+				line-height: 1.35;
+				margin-bottom: 0.4em;
+				transition: color 0.3s;
 			}
-			.row-body .row-title-en {
+			.featured-lead a:hover h3 { color: var(--accent); }
+			.featured-lead .lead-title-en {
 				font-family: var(--font-mono);
 				font-size: 0.72em;
 				color: var(--text-muted);
 				letter-spacing: 0.01em;
-				margin: -0.1em 0 0.3em;
-				line-height: 1.4;
+				margin-bottom: 0.8em;
+				line-height: 1.5;
 			}
-			.row-body .row-desc {
-				font-size: 0.82em;
-				color: var(--text-muted);
-				line-height: 1.65;
-				display: -webkit-box;
-				-webkit-line-clamp: 2;
-				-webkit-box-orient: vertical;
-				overflow: hidden;
+			.featured-lead .lead-desc {
+				font-size: 0.85em;
+				color: var(--text-secondary);
+				line-height: 1.7;
+				max-width: 600px;
+				margin-bottom: 1em;
 			}
-			.row-right {
-				flex-shrink: 0;
-				align-self: center;
+			.featured-lead .lead-footer {
 				display: flex;
-				flex-direction: column;
-				align-items: flex-end;
-				gap: 0.4em;
+				align-items: center;
+				gap: 1.2em;
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--text-muted);
+			}
+
+			/* ── Featured: Secondary Grid ── */
+			.featured-secondary {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 0;
+			}
+			.featured-sec-card {
+				padding: 1.5em 1.5em 1.5em 0;
+				border-bottom: 1px solid var(--border);
+			}
+			.featured-sec-card + .featured-sec-card {
+				padding-left: 1.5em;
+				border-left: 1px solid var(--border);
+			}
+			.featured-sec-card a {
+				text-decoration: none;
+				color: inherit;
+				display: block;
+				height: 100%;
+			}
+			.featured-sec-card .sec-meta {
+				display: flex;
+				align-items: center;
+				gap: 0.6em;
+				margin-bottom: 0.8em;
+			}
+			.featured-sec-card h4 {
+				font-family: var(--font-serif);
+				font-size: 0.95em;
+				font-weight: 400;
+				line-height: 1.4;
+				margin: 0 0 0.3em;
+				color: var(--text-primary);
+				transition: color 0.3s;
+			}
+			.featured-sec-card a:hover h4 { color: var(--accent); }
+			.featured-sec-card .sec-title-en {
+				font-family: var(--font-mono);
+				font-size: 0.64em;
+				color: var(--text-muted);
+				letter-spacing: 0.01em;
+				line-height: 1.45;
+				margin-bottom: 0.5em;
+			}
+			.featured-sec-card .sec-footer {
+				display: flex;
+				align-items: center;
+				gap: 0.8em;
+				margin-top: auto;
+				font-family: var(--font-mono);
+				font-size: 0.64em;
+				color: var(--text-muted);
+			}
+
+			/* ── Archive Index ── */
+			.archive-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.archive-item {
+				border-bottom: 1px solid var(--border);
+			}
+			.archive-item a {
+				display: flex;
+				align-items: baseline;
+				gap: 1.2em;
+				padding: 0.9em 0;
+				text-decoration: none;
+				color: inherit;
+				transition: background 0.2s;
+			}
+			.archive-item a:hover {
+				background: var(--accent-dim);
+			}
+			.archive-item a:hover .archive-title {
+				color: var(--accent);
+			}
+			.archive-date {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--text-muted);
+				letter-spacing: 0.02em;
+				flex-shrink: 0;
+				min-width: 6em;
+			}
+			.archive-cat {
+				display: flex;
+				align-items: center;
+				gap: 0.35em;
+				flex-shrink: 0;
+				min-width: 5.5em;
+			}
+			.archive-title {
+				font-family: var(--font-serif);
+				font-size: 0.92em;
+				font-weight: 400;
+				line-height: 1.35;
+				color: var(--text-primary);
+				flex: 1;
+				min-width: 0;
+				transition: color 0.3s;
+			}
+			.archive-meta {
+				display: flex;
+				align-items: center;
+				gap: 0.8em;
+				flex-shrink: 0;
 			}
 
 			/* ── Novel Rows ── */
@@ -406,102 +364,91 @@ const rest = articles.slice(1);
 			}
 			.novel-row a {
 				display: flex;
-				align-items: flex-start;
-				gap: 1.5em;
-				padding: 1.4em 0 1.4em 1em;
+				align-items: baseline;
+				gap: 1.2em;
+				padding: 0.9em 0;
 				text-decoration: none;
 				color: inherit;
-				border-left: 2px solid transparent;
-				transition: border-color 0.3s, background 0.3s;
+				transition: background 0.2s;
 			}
 			.novel-row a:hover {
-				border-left-color: var(--accent);
 				background: var(--accent-dim);
+			}
+			.novel-row a:hover .novel-title {
+				color: var(--accent);
 			}
 			.novel-ep {
 				flex-shrink: 0;
 				font-family: var(--font-mono);
-				font-size: 0.78em;
+				font-size: 0.68em;
 				color: var(--accent);
-				letter-spacing: 0.03em;
+				letter-spacing: 0.04em;
 				min-width: 3.5em;
-				padding-top: 0.2em;
 			}
-			.novel-body {
+			.novel-title {
+				font-family: var(--font-serif);
+				font-size: 0.92em;
+				font-weight: 400;
+				line-height: 1.35;
+				color: var(--text-primary);
 				flex: 1;
 				min-width: 0;
+				transition: color 0.3s;
 			}
-			.novel-body h3 {
-				font-family: var(--font-serif);
-				font-size: 1.05em;
-				font-weight: 400;
-				line-height: 1.4;
-				margin: 0 0 0.3em;
-				color: var(--text-primary);
-			}
-			.novel-body .novel-desc {
-				font-size: 0.82em;
-				color: var(--text-muted);
-				line-height: 1.65;
-				display: -webkit-box;
-				-webkit-line-clamp: 2;
-				-webkit-box-orient: vertical;
-				overflow: hidden;
-			}
-			.novel-views {
+			.novel-meta {
+				display: flex;
+				align-items: center;
+				gap: 0.8em;
 				flex-shrink: 0;
-				align-self: center;
 			}
 			.novel-date {
 				font-family: var(--font-mono);
-				font-size: 0.78em;
+				font-size: 0.68em;
 				color: var(--text-muted);
-				flex-shrink: 0;
-				align-self: center;
 			}
 
+			/* ── Responsive ── */
 			@media (max-width: 720px) {
-				.hero { padding: 3em 0 1.5em; }
-				.hero h1 { font-size: 2.2em; }
-				.hero .meta-bar { flex-wrap: wrap; gap: 1.5em; }
-				.about-items { flex-direction: column; gap: 1.2em; }
-				.featured-grid { grid-template-columns: 1fr; gap: 1em; }
-				.latest-hero h3 { font-size: 1.3em; }
+				.hero { padding: 4em 0 2em; }
+				.hero h1 { font-size: 2.4em; }
+				.hero-thesis { font-size: 1.05em; }
+				.hero .meta-bar { flex-wrap: wrap; gap: 1.2em 2em; }
 
-				/* ── Mobile Article Rows: stacked card ── */
-				.article-row a {
-					flex-direction: column;
-					gap: 0.6em;
-					padding: 1em 0.8em;
+				.featured-lead h3 { font-size: 1.25em; }
+
+				.featured-secondary {
+					grid-template-columns: 1fr;
+					gap: 0;
 				}
-				.row-left {
-					flex-direction: row;
-					align-items: center;
-					gap: 0.8em;
-					min-width: auto;
+				.featured-sec-card {
+					padding: 1.2em 0;
 				}
-				.row-body h3 {
-					font-size: 0.95em;
-					line-height: 1.45;
-					margin-bottom: 0.25em;
-				}
-				.row-body .row-title-en {
-					font-size: 0.68em;
-					margin-bottom: 0.2em;
-				}
-				.row-body .row-desc {
-					font-size: 0.78em;
-					-webkit-line-clamp: 2;
-				}
-				.row-right {
-					flex-direction: row;
-					align-items: center;
-					align-self: flex-start;
-					gap: 0.8em;
+				.featured-sec-card + .featured-sec-card {
+					padding-left: 0;
+					border-left: none;
 				}
 
-				/* ── Mobile Novel Rows ── */
-				.novel-row a { flex-wrap: wrap; gap: 0.5em; padding: 1.1em 0 1.1em 0.8em; }
+				.archive-item a {
+					flex-wrap: wrap;
+					gap: 0.3em 0.8em;
+					padding: 0.8em 0;
+				}
+				.archive-date { min-width: auto; }
+				.archive-title {
+					flex-basis: 100%;
+					order: 3;
+				}
+				.archive-meta {
+					flex-basis: 100%;
+					order: 4;
+				}
+
+				.novel-row a {
+					flex-wrap: wrap;
+					gap: 0.3em 0.8em;
+					padding: 0.8em 0;
+				}
+				.novel-title { flex-basis: 100%; }
 			}
 		</style>
 	</head>
@@ -520,32 +467,17 @@ const rest = articles.slice(1);
 					</span>
 				</div>
 				<h1>Ji Research<br/>Library</h1>
-				<p class="subtitle">
-					AI 시대, 인간의 사고는 어떻게 변화하는가?<br/>
-					자율 AI 에이전트가 연구하고, 인간이 큐레이션하는 지식 라이브러리.
+				<p class="hero-thesis">
+					AI 시대, 인간의 사고는 어떻게 변화하는가?
+				</p>
+				<p class="hero-sub">
+					AI, cognition, and agent systems — researched with machines, refined by human judgment.
 				</p>
 
-				<div class="about-block">
-					<dl class="about-items">
-						<div>
-							<dt>What</dt>
-							<dd>AI, 인지, 에이전트 시스템에 관한 가설 기반 에세이</dd>
-						</div>
-						<div>
-							<dt>How</dt>
-							<dd>AI 리서치 지원 &rarr; 다단계 검증 &rarr; 인간 편집 최종 승인</dd>
-						</div>
-						<div>
-							<dt>For</dt>
-							<dd>AI 시대를 설계하는 빌더, 운영자, 의사결정자</dd>
-						</div>
-					</dl>
-				</div>
-
 				<div class="meta-bar">
-					<span><span class="num">{articles.length}</span> essays published</span>
-					<span><span class="num">5</span> research themes</span>
-					<span>human-curated archive</span>
+					<span><span class="num">{articles.length}</span> essays</span>
+					<span><span class="num">5</span> research axes</span>
+					<span>human-curated</span>
 				</div>
 			</div>
 
@@ -555,75 +487,70 @@ const rest = articles.slice(1);
 					<div class="section-header">
 						<h2 class="section-title">Start Here</h2>
 					</div>
-					<p class="section-desc">
-						처음 방문하셨다면 이 네 편부터. 인지, 기술, 에이전트 축의 대표 에세이입니다.
-					</p>
-					<div class="featured-grid">
-						{featuredArticles.map((article) => (
-							<div class="featured-card">
-								<a href={`/profji-library/articles/${article.id}/`}>
-									<div class="card-meta">
-										<span class="cat-dot" style={`background: ${catColors[article.data.category] || 'var(--accent)'}`}></span>
-										<span class="cat-name">{article.data.category}</span>
-										<span class="type-badge">{typeLabels[article.data.articleType] || article.data.articleType}</span>
-									</div>
-									<h3>{article.data.title}</h3>
-									{article.data.titleEn && <p class="card-title-en">{article.data.titleEn}</p>}
-									<p class="card-desc">{article.data.description}</p>
-								</a>
-							</div>
-						))}
-					</div>
+
+					{leadFeatured && (
+						<div class="featured-lead">
+							<a href={`/profji-library/articles/${leadFeatured.id}/`}>
+								<div class="lead-meta">
+									<span class="cat-dot" style={`background: ${catColors[leadFeatured.data.category] || 'var(--accent)'}`}></span>
+									<span class="cat-name">{leadFeatured.data.category}</span>
+									<span class="type-badge">{typeLabels[leadFeatured.data.articleType] || leadFeatured.data.articleType}</span>
+								</div>
+								<h3>{leadFeatured.data.title}</h3>
+								{leadFeatured.data.titleEn && <p class="lead-title-en">{leadFeatured.data.titleEn}</p>}
+								<p class="lead-desc">{leadFeatured.data.description}</p>
+								<div class="lead-footer">
+									<span class="reading-time">{readingTime(leadFeatured.body || '')} min read</span>
+									<ViewCounter slug={leadFeatured.id} />
+								</div>
+							</a>
+						</div>
+					)}
+
+					{restFeatured.length > 0 && (
+						<div class="featured-secondary">
+							{restFeatured.map((article) => (
+								<div class="featured-sec-card">
+									<a href={`/profji-library/articles/${article.id}/`}>
+										<div class="sec-meta">
+											<span class="cat-dot" style={`background: ${catColors[article.data.category] || 'var(--accent)'}`}></span>
+											<span class="cat-name">{article.data.category}</span>
+										</div>
+										<h4>{article.data.title}</h4>
+										{article.data.titleEn && <p class="sec-title-en">{article.data.titleEn}</p>}
+										<div class="sec-footer">
+											<span class="type-badge">{typeLabels[article.data.articleType] || article.data.articleType}</span>
+											<span class="reading-time">{readingTime(article.body || '')} min</span>
+										</div>
+									</a>
+								</div>
+							))}
+						</div>
+					)}
 				</>
 			)}
 
 			<hr class="section-rule" />
 			<div class="section-header">
-				<h2 class="section-title">Latest Research</h2>
+				<h2 class="section-title">Archive</h2>
 				<a class="section-link" href="/profji-library/articles">View all &rarr;</a>
 			</div>
 
-			{latest && (
-				<div class="latest-hero">
-					<a href={`/profji-library/articles/${latest.id}/`}>
-						<div class="cat-row">
-							<span class="cat-dot" style={`background: ${catColors[latest.data.category] || 'var(--accent)'}`}></span>
-							<span class="cat-name">{latest.data.category}</span>
-							<span class="type-badge">{typeLabels[latest.data.articleType] || latest.data.articleType}</span>
-						</div>
-						<h3>{latest.data.title}</h3>
-						{latest.data.titleEn && <p class="title-en">{latest.data.titleEn}</p>}
-						<div class="desc">{latest.data.description}</div>
-						<div class="hero-meta">
-							<FormattedDate date={latest.data.pubDate} />
-							<span class="reading-time">{readingTime(latest.body || '')} min read</span>
-							<ViewCounter slug={latest.id} />
-						</div>
-					</a>
-				</div>
-			)}
-
-			<ul class="article-list">
-				{rest.map((article) => (
-					<li class="article-row">
+			<ul class="archive-list">
+				{archiveArticles.map((article) => (
+					<li class="archive-item">
 						<a href={`/profji-library/articles/${article.id}/`}>
-							<div class="row-left">
-								<span class="row-date"><FormattedDate date={article.data.pubDate} /></span>
-								<span class="row-cat">
-									<span class="cat-dot" style={`background: ${catColors[article.data.category] || 'var(--accent)'}`}></span>
-									<span class="cat-name">{article.data.category}</span>
-								</span>
-							</div>
-							<div class="row-body">
-								<h3>{article.data.title}</h3>
-								{article.data.titleEn && <p class="row-title-en">{article.data.titleEn}</p>}
-								<p class="row-desc">{article.data.description}</p>
-							</div>
-							<div class="row-right">
+							<span class="archive-date"><FormattedDate date={article.data.pubDate} /></span>
+							<span class="archive-cat">
+								<span class="cat-dot" style={`background: ${catColors[article.data.category] || 'var(--accent)'}`}></span>
+								<span class="cat-name">{article.data.category}</span>
+							</span>
+							<span class="archive-title">{article.data.title}</span>
+							<span class="archive-meta">
 								<span class="type-badge">{typeLabels[article.data.articleType] || article.data.articleType}</span>
 								<span class="reading-time">{readingTime(article.body || '')} min</span>
 								<ViewCounter slug={article.id} />
-							</div>
+							</span>
 						</a>
 					</li>
 				))}
@@ -631,24 +558,20 @@ const rest = articles.slice(1);
 
 			<hr class="section-rule" />
 			<div class="section-header">
-				<h2 class="section-title">Novel Series</h2>
+				<h2 class="section-title">Narrative Lab</h2>
 				<a class="section-link" href="/profji-library/novels">All episodes &rarr;</a>
 			</div>
-			<p class="section-desc">
-				같은 주제를 서사로 탐구합니다 &mdash; AI 시대의 직장, 인지, 공존에 대한 이야기.
-			</p>
 
 			<ul class="novel-list">
 				{novels.map((novel) => (
 					<li class="novel-row">
 						<a href={`/profji-library/novels/${novel.id}/`}>
 							<span class="novel-ep">EP.{novel.data.episode}</span>
-							<div class="novel-body">
-								<h3>{novel.data.title}</h3>
-								<p class="novel-desc">{novel.data.description}</p>
-							</div>
-							<span class="novel-date"><FormattedDate date={novel.data.pubDate} /></span>
-							<span class="novel-views"><ViewCounter slug={`novel-${novel.id}`} /></span>
+							<span class="novel-title">{novel.data.title}</span>
+							<span class="novel-meta">
+								<span class="novel-date"><FormattedDate date={novel.data.pubDate} /></span>
+								<ViewCounter slug={`novel-${novel.id}`} />
+							</span>
 						</a>
 					</li>
 				))}
