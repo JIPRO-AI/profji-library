@@ -3,74 +3,165 @@ import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
+import ViewCounter from '../../components/ViewCounter.astro';
 import { SITE_TITLE } from '../../consts';
 
 const novels = (await getCollection('novels')).sort(
 	(a, b) => a.data.episode - b.data.episode,
 );
+
+function readingTime(body: string): number {
+	const chars = body.replace(/[#\-*_\[\]()>`~|]/g, '').replace(/\s+/g, '').length;
+	return Math.max(1, Math.ceil(chars / 500));
+}
 ---
 
 <!doctype html>
 <html lang="ko">
 	<head>
-		<BaseHead title={`Novels | ${SITE_TITLE}`} description="AI 시대 소설 시리즈" />
+		<BaseHead title={`Novels | ${SITE_TITLE}`} description="AI 시대의 직장, 적응, 공존을 서사로 탐구하는 Narrative Lab" />
 		<style>
+			/* ── Page Header ── */
 			.page-header {
-				padding: 4em 0 1em;
+				padding: 5em 0 2em;
+			}
+			.page-label {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--text-muted);
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				margin-bottom: 1em;
+				display: block;
 			}
 			.page-header h1 {
-				font-size: 2.4em;
+				font-size: 2.6em;
 				font-weight: 300;
-				margin-bottom: 0.3em;
-			}
-			.page-header .series-name {
-				font-family: var(--font-serif);
-				font-size: 0.95em;
-				color: var(--text-secondary);
-				font-style: italic;
-			}
-			.chapter-list {
-				border-top: 1px solid var(--border);
-				margin-top: 2em;
-			}
-			.chapter {
-				display: block;
-				padding: 2em 0;
-				border-bottom: 1px solid var(--border);
-				text-decoration: none;
-				color: inherit;
-				transition: padding-left 0.3s ease;
-			}
-			.chapter:hover { padding-left: 0.8em; }
-			.chapter-top {
-				display: flex;
-				align-items: baseline;
-				gap: 1.2em;
+				letter-spacing: -0.02em;
 				margin-bottom: 0.6em;
 			}
-			.chapter-ep {
-				font-family: var(--font-mono);
-				font-size: 0.72em;
-				color: var(--accent);
-				letter-spacing: 0.03em;
-			}
-			.chapter h2 {
-				font-size: 1.3em;
-				font-weight: 400;
-				margin: 0;
-				line-height: 1.4;
-			}
-			.chapter .desc {
+			.page-intro {
 				font-size: 0.88em;
 				color: var(--text-secondary);
-				line-height: 1.7;
-				max-width: 560px;
-				padding-left: 4.5em;
+				line-height: 1.8;
+				max-width: 540px;
 			}
+
+			/* ── Series Block ── */
+			.series-block {
+				margin-top: 3em;
+				padding-top: 2em;
+				border-top: 1px solid var(--border);
+			}
+			.series-label {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--text-muted);
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				margin-bottom: 0.8em;
+				display: block;
+			}
+			.series-title {
+				font-family: var(--font-serif);
+				font-size: 1.3em;
+				font-weight: 400;
+				color: var(--text-primary);
+				margin-bottom: 0.4em;
+			}
+			.series-desc {
+				font-size: 0.82em;
+				color: var(--text-muted);
+				line-height: 1.7;
+				max-width: 520px;
+				margin-bottom: 2em;
+			}
+
+			/* ── Episode Cards ── */
+			.episode-list {
+				display: flex;
+				flex-direction: column;
+				gap: 0;
+			}
+			.episode-card {
+				display: block;
+				padding: 1.8em 0 1.8em 1.5em;
+				border-bottom: 1px solid var(--border);
+				border-left: 2px solid transparent;
+				text-decoration: none;
+				color: inherit;
+				transition: border-left-color 0.3s, background 0.3s;
+			}
+			.episode-card:first-child {
+				border-top: 1px solid var(--border);
+			}
+			.episode-card:hover {
+				border-left-color: var(--accent);
+				background: var(--accent-dim);
+			}
+			.episode-card:hover .ep-title {
+				color: var(--accent);
+			}
+			.ep-number {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--accent);
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				margin-bottom: 0.6em;
+				display: block;
+			}
+			.ep-title {
+				font-family: var(--font-serif);
+				font-size: 1.15em;
+				font-weight: 400;
+				line-height: 1.35;
+				color: var(--text-primary);
+				margin-bottom: 0.4em;
+				transition: color 0.3s;
+			}
+			.ep-hook {
+				font-size: 0.82em;
+				color: var(--text-muted);
+				line-height: 1.65;
+				max-width: 480px;
+				margin-bottom: 0.6em;
+			}
+			.ep-meta {
+				display: flex;
+				align-items: center;
+				gap: 1em;
+				font-family: var(--font-mono);
+				font-size: 0.64em;
+				color: var(--text-muted);
+			}
+
+			/* ── Bridge ── */
+			.bridge {
+				margin-top: 4em;
+				padding-top: 2em;
+				border-top: 1px solid var(--border);
+			}
+			.bridge-text {
+				font-size: 0.82em;
+				color: var(--text-muted);
+				line-height: 1.6;
+			}
+			.bridge-text a {
+				color: var(--accent);
+				text-decoration: none;
+				transition: color 0.3s;
+			}
+			.bridge-text a:hover {
+				color: #d4be94;
+			}
+
+			/* ── Responsive ── */
 			@media (max-width: 720px) {
-				.page-header h1 { font-size: 1.8em; }
-				.chapter .desc { padding-left: 0; }
-				.chapter-top { flex-direction: column; gap: 0.3em; }
+				.page-header { padding: 3.5em 0 1.5em; }
+				.page-header h1 { font-size: 2em; }
+				.episode-card { padding-left: 1em; }
+				.ep-title { font-size: 1.05em; }
 			}
 		</style>
 	</head>
@@ -78,20 +169,40 @@ const novels = (await getCollection('novels')).sort(
 		<Header />
 		<main>
 			<div class="page-header">
+				<span class="page-label">Narrative Lab</span>
 				<h1>Novels</h1>
-				<span class="series-name">AI시대 인간 직장인 생존법</span>
+				<p class="page-intro">
+					이 시리즈는 AI 시대의 직장, 적응, 공존이라는 같은 주제를 서사로 탐구하는 실험입니다.
+					연구 에세이가 개념을 분석한다면, 이 소설은 그 개념이 실제 인간의 삶과 감정 안에서 어떻게 작동하는지를 보여줍니다.
+				</p>
 			</div>
 
-			<div class="chapter-list">
-				{novels.map((novel) => (
-					<a class="chapter" href={`/profji-library/novels/${novel.id}/`}>
-						<div class="chapter-top">
-							<span class="chapter-ep">EP.{novel.data.episode}</span>
-							<h2>{novel.data.title}</h2>
-						</div>
-						<div class="desc">{novel.data.description}</div>
-					</a>
-				))}
+			<div class="series-block">
+				<span class="series-label">Series</span>
+				<h2 class="series-title">AI시대 인간 직장인 생존법</h2>
+				<p class="series-desc">
+					AI 에이전트 '아리'의 시선을 통해, 직장 내 AI 도입과 인간의 적응, 갈등, 공존을 다루는 연작 서사.
+				</p>
+
+				<div class="episode-list">
+					{novels.map((novel) => (
+						<a class="episode-card" href={`/profji-library/novels/${novel.id}/`}>
+							<span class="ep-number">EP.{novel.data.episode}</span>
+							<div class="ep-title">{novel.data.title}</div>
+							<p class="ep-hook">{novel.data.description}</p>
+							<div class="ep-meta">
+								<span>{readingTime(novel.body || '')} min read</span>
+								<ViewCounter slug={`novel-${novel.id}`} />
+							</div>
+						</a>
+					))}
+				</div>
+			</div>
+
+			<div class="bridge">
+				<p class="bridge-text">
+					같은 주제를 분석적으로 읽고 싶다면 &rarr; <a href="/profji-library/articles/">Featured Essays</a>
+				</p>
 			</div>
 		</main>
 		<Footer />
