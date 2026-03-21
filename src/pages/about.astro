@@ -8,22 +8,25 @@ import { SITE_TITLE } from '../consts';
 <!doctype html>
 <html lang="ko">
 	<head>
-		<BaseHead title={`About | ${SITE_TITLE}`} description="Ji Research Library 소개" />
+		<BaseHead title={`About | ${SITE_TITLE}`} description="Ji Research Library — AI 시대의 인간 지능을 탐구하는 자율 연구 시스템" />
 		<style>
+			/* ── Header ── */
 			.about-header {
 				padding: 5em 0 3em;
 			}
 			.about-header .label {
 				font-family: var(--font-mono);
-				font-size: 0.7em;
+				font-size: 0.68em;
 				color: var(--text-muted);
 				text-transform: uppercase;
-				letter-spacing: 0.06em;
+				letter-spacing: 0.08em;
 				margin-bottom: 1.5em;
+				display: block;
 			}
 			.about-header h1 {
 				font-size: 2.8em;
 				font-weight: 300;
+				letter-spacing: -0.02em;
 				margin-bottom: 0.5em;
 			}
 			.about-header .tagline {
@@ -41,13 +44,13 @@ import { SITE_TITLE } from '../consts';
 				border-top: 1px solid var(--border);
 			}
 			.about-section h2 {
-				font-size: 1em;
+				font-family: var(--font-mono);
+				font-size: 0.72em;
 				font-weight: 400;
 				color: var(--text-muted);
-				margin-bottom: 1.5em;
-				font-family: var(--font-mono);
+				letter-spacing: 0.08em;
 				text-transform: uppercase;
-				letter-spacing: 0.06em;
+				margin-bottom: 1.5em;
 			}
 			.about-section p {
 				color: var(--text-secondary);
@@ -56,28 +59,39 @@ import { SITE_TITLE } from '../consts';
 			}
 
 			/* ── Domains ── */
-			.domain-list {
+			.domain-grid {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
-				gap: 2em 3em;
+				gap: 0;
 			}
-			.domain-item {
+			.domain-card {
+				padding: 1.5em 1.5em 1.5em 0;
+				border-bottom: 1px solid var(--border);
+			}
+			.domain-card:nth-child(even) {
+				padding-left: 1.5em;
+				border-left: 1px solid var(--border);
+			}
+			.domain-card:nth-child(-n+2) {
+				border-top: 1px solid var(--border);
+			}
+			.domain-header {
 				display: flex;
-				align-items: flex-start;
-				gap: 0.8em;
+				align-items: center;
+				gap: 0.6em;
+				margin-bottom: 0.5em;
 			}
 			.domain-dot {
-				width: 8px;
-				height: 8px;
+				width: 7px;
+				height: 7px;
 				border-radius: 50%;
 				flex-shrink: 0;
-				margin-top: 0.5em;
 			}
 			.domain-name {
 				font-family: var(--font-serif);
 				font-weight: 600;
 				font-size: 0.95em;
-				margin-bottom: 0.3em;
+				color: var(--text-primary);
 			}
 			.domain-desc {
 				font-size: 0.82em;
@@ -86,61 +100,136 @@ import { SITE_TITLE } from '../consts';
 			}
 
 			/* ── Pipeline ── */
-			.pipeline {
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
-				gap: 0.5em;
+			.pipeline-desc {
+				margin-bottom: 2em;
+			}
+			.pipeline-steps {
+				display: flex;
+				gap: 0;
+				counter-reset: step;
+			}
+			.pipeline-step {
+				flex: 1;
+				padding: 1.2em 0.8em;
+				border: 1px solid var(--border);
+				border-right: none;
+				text-align: center;
+				counter-increment: step;
+			}
+			.pipeline-step:last-child {
+				border-right: 1px solid var(--border);
+			}
+			.step-num {
+				font-family: var(--font-mono);
+				font-size: 0.6em;
+				color: var(--text-muted);
+				letter-spacing: 0.04em;
+				display: block;
+				margin-bottom: 0.5em;
+			}
+			.step-label {
 				font-family: var(--font-mono);
 				font-size: 0.72em;
 				color: var(--text-secondary);
 				letter-spacing: 0.02em;
-				counter-reset: step;
 			}
-			.pipeline .step {
-				padding: 0.6em 0.5em;
-				background: var(--bg-card);
-				border: 1px solid var(--border);
-				border-radius: 3px;
-				text-align: center;
-				white-space: nowrap;
-				counter-increment: step;
-			}
-			.pipeline .step::before {
-				content: counter(step) '. ';
+			.step-desc {
+				font-size: 0.62em;
 				color: var(--text-muted);
+				margin-top: 0.4em;
+				line-height: 1.45;
 			}
 
-			/* ── Stack ── */
-			.stack-list {
+			/* ── Tech Stack ── */
+			.tech-groups {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 0;
+			}
+			.tech-group {
+				padding: 1.5em 1.5em 1.5em 0;
+				border-bottom: 1px solid var(--border);
+			}
+			.tech-group:nth-child(even) {
+				padding-left: 1.5em;
+				border-left: 1px solid var(--border);
+			}
+			.tech-group-title {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--accent);
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				margin-bottom: 0.8em;
+			}
+			.tech-group ul {
 				list-style: none;
 				padding: 0;
 				margin: 0;
 			}
-			.stack-list li {
-				display: flex;
-				align-items: baseline;
-				gap: 1.5em;
-				padding: 0.7em 0;
-				border-bottom: 1px solid var(--border);
-				font-size: 0.88em;
-			}
-			.stack-list li:last-child { border-bottom: none; }
-			.stack-label {
-				font-family: var(--font-mono);
-				font-size: 0.78em;
-				color: var(--text-muted);
-				min-width: 120px;
-				flex-shrink: 0;
-				letter-spacing: 0.02em;
-			}
-			.stack-value {
+			.tech-group li {
+				font-size: 0.82em;
 				color: var(--text-secondary);
+				line-height: 1.5;
+				padding: 0.2em 0;
+				margin: 0;
 			}
 
+			/* ── Closing ── */
+			.closing {
+				padding: 3em 0;
+				border-top: 1px solid var(--border);
+			}
+			.closing p {
+				font-size: 0.88em;
+				color: var(--text-muted);
+				line-height: 1.8;
+				max-width: 540px;
+			}
+
+			/* ── Responsive ── */
 			@media (max-width: 720px) {
+				.about-header { padding: 3.5em 0 2em; }
 				.about-header h1 { font-size: 2em; }
-				.domain-list { grid-template-columns: 1fr; gap: 1.5em; }
-				.pipeline { grid-template-columns: repeat(2, 1fr); }
+				.domain-grid { grid-template-columns: 1fr; }
+				.domain-card {
+					padding: 1.2em 0;
+				}
+				.domain-card:nth-child(even) {
+					padding-left: 0;
+					border-left: none;
+				}
+				.domain-card:nth-child(-n+2) {
+					border-top: none;
+				}
+				.domain-card:first-child {
+					border-top: 1px solid var(--border);
+				}
+				.pipeline-steps {
+					flex-direction: column;
+				}
+				.pipeline-step {
+					border-right: 1px solid var(--border);
+					border-bottom: none;
+					text-align: left;
+					padding: 0.8em 1em;
+					display: flex;
+					align-items: baseline;
+					gap: 0.8em;
+				}
+				.pipeline-step:last-child {
+					border-bottom: 1px solid var(--border);
+				}
+				.step-num { margin-bottom: 0; }
+				.step-desc { margin-top: 0; margin-left: 0.5em; }
+				.tech-groups { grid-template-columns: 1fr; }
+				.tech-group {
+					padding: 1.2em 0;
+				}
+				.tech-group:nth-child(even) {
+					padding-left: 0;
+					border-left: none;
+				}
 			}
 		</style>
 	</head>
@@ -148,7 +237,7 @@ import { SITE_TITLE } from '../consts';
 		<Header />
 		<main>
 			<div class="about-header">
-				<div class="label">About</div>
+				<span class="label">About</span>
 				<h1>Ji Research Library</h1>
 				<p class="tagline">AI 시대의 인간 지능을 탐구하는 자율 연구 시스템</p>
 			</div>
@@ -157,70 +246,134 @@ import { SITE_TITLE } from '../consts';
 				<h2>Purpose</h2>
 				<p>
 					인간이 AI와 공존하는 시대, 우리의 사고방식, 전문성, 인지 구조는 어떻게 변화하는가?
-					Ji Research Library는 이 질문에 대한 답을 자율적으로 리서치하고, 분석하며, 기록합니다.
+				</p>
+				<p>
+					Ji Research Library는 이 질문을 중심으로 AI, cognition, agent systems를 연구하고,
+					구조화된 에세이 형태로 기록합니다.
 				</p>
 			</div>
 
 			<div class="about-section">
 				<h2>Fields of Inquiry</h2>
-				<div class="domain-list">
-					<div class="domain-item">
-						<span class="domain-dot" style="background: var(--cat-psychology)"></span>
-						<div>
-							<div class="domain-name">AI 심리학</div>
-							<div class="domain-desc">자동화 편향, 탈숙련화, AI 시대의 전문성 변화</div>
+				<div class="domain-grid">
+					<div class="domain-card">
+						<div class="domain-header">
+							<span class="domain-dot" style="background: var(--cat-psychology)"></span>
+							<span class="domain-name">AI 심리학</span>
 						</div>
+						<div class="domain-desc">자동화 편향, 탈숙련화, AI 시대의 전문성 변화</div>
 					</div>
-					<div class="domain-item">
-						<span class="domain-dot" style="background: var(--cat-cognition)"></span>
-						<div>
-							<div class="domain-name">인지 융합</div>
-							<div class="domain-desc">인간-AI 하이브리드 마인드, 확장된 인지 모델</div>
+					<div class="domain-card">
+						<div class="domain-header">
+							<span class="domain-dot" style="background: var(--cat-cognition)"></span>
+							<span class="domain-name">인지 융합</span>
 						</div>
+						<div class="domain-desc">하이브리드 마인드, 확장된 인지 모델, 인간-AI 협업 구조</div>
 					</div>
-					<div class="domain-item">
-						<span class="domain-dot" style="background: var(--cat-tech)"></span>
-						<div>
-							<div class="domain-name">AI 기술</div>
-							<div class="domain-desc">LLM 환각, RAG 한계, 로컬 LLM, 컨텍스트 윈도우</div>
+					<div class="domain-card">
+						<div class="domain-header">
+							<span class="domain-dot" style="background: var(--cat-tech)"></span>
+							<span class="domain-name">AI 기술</span>
 						</div>
+						<div class="domain-desc">LLM 환각 통제, RAG 한계, 로컬 LLM, 컨텍스트 윈도우</div>
 					</div>
-					<div class="domain-item">
-						<span class="domain-dot" style="background: var(--cat-agent)"></span>
-						<div>
-							<div class="domain-name">에이전트</div>
-							<div class="domain-desc">멀티에이전트, 오케스트레이션, 토큰 경제학</div>
+					<div class="domain-card">
+						<div class="domain-header">
+							<span class="domain-dot" style="background: var(--cat-agent)"></span>
+							<span class="domain-name">에이전트</span>
 						</div>
+						<div class="domain-desc">멀티에이전트 시스템, 오케스트레이션, 협력 임계점</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="about-section">
 				<h2>How We Work</h2>
-				<div class="pipeline">
-					<span class="step">Thesis</span>
-					<span class="step">Research</span>
-					<span class="step">Evidence Pack</span>
-					<span class="step">Write</span>
-					<span class="step">Gate Review</span>
-					<span class="step">Post-edit</span>
-					<span class="step">Auto-grading</span>
-					<span class="step">Human Approval</span>
+				<p class="pipeline-desc">
+					각 에세이는 문제 정의에서 시작해, 리서치 수집, 근거 정리, 초안 작성, 검증 단계, 최종 인간 승인 순으로 완성됩니다.
+				</p>
+				<div class="pipeline-steps">
+					<div class="pipeline-step">
+						<span class="step-num">01</span>
+						<span class="step-label">Thesis</span>
+						<span class="step-desc">핵심 주장 정의</span>
+					</div>
+					<div class="pipeline-step">
+						<span class="step-num">02</span>
+						<span class="step-label">Research</span>
+						<span class="step-desc">논문 수집 · 분석</span>
+					</div>
+					<div class="pipeline-step">
+						<span class="step-num">03</span>
+						<span class="step-label">Evidence</span>
+						<span class="step-desc">근거 구조화</span>
+					</div>
+					<div class="pipeline-step">
+						<span class="step-num">04</span>
+						<span class="step-label">Draft</span>
+						<span class="step-desc">에세이 초안</span>
+					</div>
+					<div class="pipeline-step">
+						<span class="step-num">05</span>
+						<span class="step-label">Review</span>
+						<span class="step-desc">4단계 검증</span>
+					</div>
+					<div class="pipeline-step">
+						<span class="step-num">06</span>
+						<span class="step-label">Approval</span>
+						<span class="step-desc">인간 최종 승인</span>
+					</div>
 				</div>
 			</div>
 
 			<div class="about-section">
 				<h2>Technical Foundation</h2>
-				<ul class="stack-list">
-					<li><span class="stack-label">Orchestrator</span><span class="stack-value">Nemotron-3-Super 120B (NVIDIA NIM API)</span></li>
-					<li><span class="stack-label">Researcher</span><span class="stack-value">Qwen 3.5 35B-A3B MoE (local)</span></li>
-					<li><span class="stack-label">Writer</span><span class="stack-value">Qwen 3.5 9B (local)</span></li>
-					<li><span class="stack-label">Reviewer</span><span class="stack-value">GPT-OSS 20B (local)</span></li>
-					<li><span class="stack-label">Quality Gates</span><span class="stack-value">4-stage validation (hallucination + claim label + 5-axis review)</span></li>
-					<li><span class="stack-label">Research</span><span class="stack-value">arXiv API + Semantic Scholar</span></li>
-					<li><span class="stack-label">Framework</span><span class="stack-value">OpenClaw v2026.3 (multi-agent pipeline)</span></li>
-					<li><span class="stack-label">Website</span><span class="stack-value">Astro + GitHub Actions</span></li>
-				</ul>
+				<div class="tech-groups">
+					<div class="tech-group">
+						<div class="tech-group-title">Orchestration</div>
+						<ul>
+							<li>OpenClaw v2026.3</li>
+							<li>Multi-agent pipeline</li>
+						</ul>
+					</div>
+					<div class="tech-group">
+						<div class="tech-group-title">Models</div>
+						<ul>
+							<li>Nemotron-3-Super 120B</li>
+							<li>Qwen 3.5 35B-A3B MoE</li>
+							<li>GPT-OSS 20B</li>
+						</ul>
+					</div>
+					<div class="tech-group">
+						<div class="tech-group-title">Validation</div>
+						<ul>
+							<li>4-stage quality gates</li>
+							<li>Claim labeling</li>
+							<li>5-axis review</li>
+						</ul>
+					</div>
+					<div class="tech-group">
+						<div class="tech-group-title">Research Sources</div>
+						<ul>
+							<li>arXiv API</li>
+							<li>Semantic Scholar</li>
+						</ul>
+					</div>
+					<div class="tech-group">
+						<div class="tech-group-title">Infrastructure</div>
+						<ul>
+							<li>Astro (static site)</li>
+							<li>GitHub Actions (CI/CD)</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="closing">
+				<p>
+					이 라이브러리는 완전한 자동 생성 시스템이 아닙니다.
+					AI는 연구와 초안 작성을 돕지만, 최종 구조와 판단은 인간의 편집과 승인 과정을 거칩니다.
+				</p>
 			</div>
 		</main>
 		<Footer />
