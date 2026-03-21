@@ -333,10 +333,10 @@ import { SITE_TITLE } from '../consts';
 				<h1>Ji Research Library</h1>
 				<p class="tagline">AI 시대의 인간 지능을 탐구하는 자율 연구 시스템</p>
 				<p class="manifesto">
-					이 라이브러리는 AI가 쓰고 사람이 승인하는 자동 블로그가 아닙니다.
-					복수의 특화 에이전트가 리서치, 작성, 검증을 분담하고,
-					다단계 품질 게이트를 통과한 후, 인간이 최종 구조와 판단을 편집합니다.
-					모든 에세이는 이 시스템의 산출물이자, 시스템 자체에 대한 실험 기록입니다.
+					AI가 쓰고 사람이 승인만 누르는 블로그는 아닙니다.
+					역할이 다른 에이전트들이 리서치, 작성, 검증을 나눠 맡고,
+					여러 단계의 품질 게이트를 거친 뒤 인간이 구조와 판단을 직접 편집합니다.
+					여기 실린 글은 그 시스템의 결과물이면서, 시스템 자체를 시험하는 기록이기도 합니다.
 				</p>
 			</div>
 
@@ -344,12 +344,12 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>Purpose</h2>
 				<p class="purpose-lead">
-					AI가 모든 것을 대신할 수 있다는 낙관론도, 인간이 불필요해진다는 비관론도 반복하지 않습니다.
+					AI가 모든 걸 대신한다는 낙관도, 인간이 필요 없어진다는 비관도 여기선 다루지 않습니다.
 				</p>
 				<p class="purpose-body">
-					우리가 관찰하는 것은 더 구체적입니다 — AI와 협업할 때 인간의 판단 구조는 어떻게 변형되는가,
-					전문성의 정의는 어떻게 달라지는가, 그리고 그 변화는 어디서 이득이고 어디서 손실인가.
-					이 질문들을 학술 논문 기반의 구조화된 에세이로 기록하고, 하나의 프레임워크로 축적합니다.
+					관심은 더 좁고 구체적입니다 — AI와 함께 일할 때 사람의 판단 구조가 어떻게 바뀌는지,
+					전문성의 기준은 어떻게 달라지는지, 그 변화가 어디서 이득이고 어디서 손실인지.
+					이 질문들을 논문 기반의 에세이로 기록하고, 하나의 프레임워크로 쌓아가고 있습니다.
 				</p>
 			</div>
 
@@ -357,7 +357,7 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>Fields of Inquiry</h2>
 				<p class="field-intro">
-					네 개의 연구 축이 라이브러리의 관찰 범위를 정의합니다. 각 축은 독립된 주제가 아니라 하나의 질문 — "AI 시대에 인간 지능은 어떻게 작동하는가" — 을 서로 다른 렌즈로 분해한 것입니다.
+					네 개의 축이 라이브러리의 관찰 범위를 잡아줍니다. 각각 독립된 주제라기보다, 하나의 질문 — "AI 시대에 인간 지능은 어떻게 작동하는가" — 을 서로 다른 각도에서 들여다보는 렌즈입니다.
 				</p>
 				<div class="domain-grid">
 					<div class="domain-card">
@@ -391,15 +391,15 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>Production System</h2>
 				<p class="process-intro">
-					각 에세이는 6단계 파이프라인을 통과합니다.
-					단계마다 역할이 분리된 에이전트가 작업하고, 품질 게이트가 다음 단계 진입을 통제합니다.
-					2회 연속 게이트 실패 시 해당 아티클은 자동 중단되며, 인간의 개입 없이는 재시작되지 않습니다.
+					에세이 하나가 나오려면 6단계를 거칩니다.
+					단계마다 역할이 다른 에이전트가 작업하고, 품질 게이트가 다음 단계로 넘어갈지 결정합니다.
+					게이트를 2회 연속 통과하지 못하면 해당 글은 자동 중단되고, 사람이 직접 재시작해야 합니다.
 				</p>
 				<div class="pipeline-grid">
 					<div class="pipeline-card">
 						<span class="pipe-num">01</span>
 						<span class="pipe-label">Thesis</span>
-						<div class="pipe-desc">주제에서 구체적이고 논쟁 가능한 핵심 주장을 도출합니다. '~이 중요하다'는 thesis가 아닙니다.</div>
+						<div class="pipe-desc">주제에서 구체적이고 논쟁 가능한 핵심 주장을 뽑아냅니다. '~이 중요하다'는 thesis가 아닙니다.</div>
 						<span class="pipe-agent">Prof Ji (API)</span>
 					</div>
 					<div class="pipeline-card">
@@ -411,13 +411,13 @@ import { SITE_TITLE } from '../consts';
 					<div class="pipeline-card">
 						<span class="pipe-num">03</span>
 						<span class="pipe-label">Evidence Pack</span>
-						<div class="pipe-desc">수집된 논문을 SOURCE/CLAIM/DATA 형식으로 구조화하고, 각 근거를 섹션에 매핑합니다.</div>
+						<div class="pipe-desc">수집된 논문을 SOURCE/CLAIM/DATA 형식으로 정리하고, 각 근거를 어느 섹션에서 쓸지 매핑합니다.</div>
 						<span class="pipe-agent">Prof Ji (API) → Gate 1</span>
 					</div>
 					<div class="pipeline-card">
 						<span class="pipe-num">04</span>
 						<span class="pipe-label">Draft</span>
-						<div class="pipe-desc">Evidence Pack을 기반으로 에세이를 작성합니다. Writer는 연구를 하지 않고, 글만 씁니다.</div>
+						<div class="pipe-desc">Evidence Pack을 받아 에세이를 씁니다. Writer는 연구를 하지 않습니다 — 글만 씁니다.</div>
 						<span class="pipe-agent">Writer Ji (Qwen 3.5 9B) → Gate 2</span>
 					</div>
 					<div class="pipeline-card">
@@ -429,13 +429,13 @@ import { SITE_TITLE } from '../consts';
 					<div class="pipeline-card">
 						<span class="pipe-num">06</span>
 						<span class="pipe-label">Human Approval</span>
-						<div class="pipe-desc">자동 그레이딩(A/B/C) 후 인간이 최종 구조, 논조, 배포 여부를 결정합니다. C등급은 큐로 반환됩니다.</div>
+						<div class="pipe-desc">자동 그레이딩(A/B/C) 후 사람이 최종 구조, 논조, 배포 여부를 결정합니다. C등급은 큐로 돌아갑니다.</div>
 						<span class="pipe-agent">Auto-grading → Human Editor</span>
 					</div>
 				</div>
 				<p class="process-note">
-					이 시스템의 핵심은 분리입니다 — 연구하는 에이전트는 글을 쓰지 않고, 글을 쓰는 에이전트는 검증하지 않으며,
-					검증하는 에이전트는 작성자와 다른 모델 패밀리를 사용합니다. 교차 검증이 가능한 이유입니다.
+					핵심은 분리입니다 — 연구하는 에이전트는 글을 쓰지 않고, 쓰는 에이전트는 검증하지 않고,
+					검증하는 에이전트는 작성자와 다른 모델 계열을 씁니다. 교차 검증이 되는 이유입니다.
 				</p>
 			</div>
 
@@ -443,7 +443,7 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>Technical Foundation</h2>
 				<p class="tech-intro">
-					역할 기반으로 설계된 멀티에이전트 시스템입니다. 각 구성 요소는 하나의 책임만 갖습니다.
+					역할 기반의 멀티에이전트 시스템입니다. 각 구성 요소가 하나의 책임만 집니다.
 				</p>
 				<div class="tech-groups">
 					<div class="tech-group">
@@ -501,12 +501,12 @@ import { SITE_TITLE } from '../consts';
 			<!-- ── Closing ── -->
 			<div class="closing">
 				<p class="closing-lead">
-					이 라이브러리의 모든 에세이는 AI가 생성하고 인간이 편집한 결과물입니다.
+					여기 실린 모든 글은 AI가 만들고 인간이 편집한 결과물입니다.
 				</p>
 				<p>
-					AI는 논문을 수집하고, 근거를 구조화하고, 초안을 작성합니다.
-					그러나 어떤 질문을 던질지, 어떤 프레임으로 구성할지, 어떤 주장이 출판할 가치가 있는지는
-					인간이 결정합니다. 자동화의 범위를 명확히 하는 것이, 이 시스템이 신뢰를 확보하는 방식입니다.
+					논문 수집, 근거 구조화, 초안 작성은 AI가 합니다.
+					하지만 어떤 질문을 던질지, 어떤 프레임으로 엮을지, 어떤 주장이 출판할 만한지는
+					사람이 정합니다. 자동화가 어디까지인지 분명히 하는 것 — 이 시스템이 신뢰를 얻는 방식입니다.
 				</p>
 			</div>
 		</main>
