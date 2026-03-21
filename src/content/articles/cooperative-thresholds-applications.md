@@ -4,6 +4,8 @@ description: "다중 에이전트 시스템의 거시적 행동은 에이전트 
 pubDate: "2026-03-11"
 category: "에이전트"
 tags: ["AI","research","analysis"]
+featured: true
+articleType: "framework"
 ---
 
 ## 협력 임계점: 다중 에이전트 시스템은 규모가 아니라 구조에서 전환된다

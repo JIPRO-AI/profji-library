@@ -20,9 +20,26 @@ const catColors: Record<string, string> = {
 	'AI 기술': 'var(--cat-tech)',
 	'에이전트': 'var(--cat-agent)',
 	'LLM 아키텍처': 'var(--cat-tech)',
+	'Technology': 'var(--cat-tech)',
+	'Cognitive Science': 'var(--cat-cognition)',
+	'AI/Research': 'var(--cat-tech)',
 };
 
-const featured = articles[0];
+const typeLabels: Record<string, string> = {
+	'research synthesis': 'Research Synthesis',
+	'framework': 'Framework',
+	'essay': 'Essay',
+	'analysis': 'Analysis',
+	'case study': 'Case Study',
+};
+
+function readingTime(body: string): number {
+	const chars = body.replace(/[#\-*_\[\]()>`~|]/g, '').replace(/\s+/g, '').length;
+	return Math.max(1, Math.ceil(chars / 500));
+}
+
+const featuredArticles = articles.filter((a) => a.data.featured);
+const latest = articles[0];
 const rest = articles.slice(1);
 ---
 
@@ -33,7 +50,7 @@ const rest = articles.slice(1);
 		<style>
 			/* ── Hero ── */
 			.hero {
-				padding: 5em 0 3em;
+				padding: 5em 0 2em;
 			}
 			.hero-status {
 				display: inline-flex;
@@ -89,10 +106,36 @@ const rest = articles.slice(1);
 				line-height: 1.75;
 				max-width: 540px;
 			}
-			.hero .meta-bar {
-				margin-top: 2.5em;
-				padding-top: 1.5em;
+
+			/* ── About Block ── */
+			.about-block {
+				margin-top: 2em;
+				padding: 1.5em 0;
 				border-top: 1px solid var(--border);
+				border-bottom: 1px solid var(--border);
+			}
+			.about-items {
+				display: flex;
+				gap: 3em;
+				font-size: 0.82em;
+				color: var(--text-secondary);
+				line-height: 1.65;
+			}
+			.about-items dt {
+				font-family: var(--font-mono);
+				font-size: 0.85em;
+				color: var(--text-muted);
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				margin-bottom: 0.4em;
+			}
+			.about-items dd {
+				margin: 0;
+			}
+
+			/* ── Meta Bar ── */
+			.hero .meta-bar {
+				margin-top: 1.5em;
 				display: flex;
 				gap: 2.5em;
 				font-family: var(--font-mono);
@@ -109,13 +152,13 @@ const rest = articles.slice(1);
 			.section-rule {
 				border: none;
 				border-top: 1px solid var(--border);
-				margin: 4em 0 0;
+				margin: 3em 0 0;
 			}
 			.section-header {
 				display: flex;
 				align-items: baseline;
 				justify-content: space-between;
-				margin: 1.5em 0 1.8em;
+				margin: 1.5em 0 1.2em;
 			}
 			.section-title {
 				font-family: var(--font-serif);
@@ -123,6 +166,13 @@ const rest = articles.slice(1);
 				font-weight: 400;
 				color: var(--text-secondary);
 				letter-spacing: 0.02em;
+			}
+			.section-desc {
+				font-size: 0.82em;
+				color: var(--text-muted);
+				margin: -0.5em 0 1.5em;
+				line-height: 1.6;
+				max-width: 600px;
 			}
 			.section-link {
 				font-family: var(--font-mono);
@@ -134,17 +184,81 @@ const rest = articles.slice(1);
 			}
 			.section-link:hover { color: var(--accent); }
 
-			/* ── Featured Article ── */
-			.featured {
-				padding: 2em 0 2.5em;
-				border-bottom: 1px solid var(--border);
+			/* ── Featured Essays ── */
+			.featured-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 1.5em;
+				margin-bottom: 0.5em;
 			}
-			.featured a {
+			.featured-card {
+				padding: 1.5em;
+				border: 1px solid var(--border);
+				border-radius: 4px;
+				transition: border-color 0.3s, background 0.3s;
+			}
+			.featured-card:hover {
+				border-color: var(--accent);
+				background: var(--accent-dim);
+			}
+			.featured-card a {
 				text-decoration: none;
 				color: inherit;
 				display: block;
 			}
-			.featured .cat-row {
+			.featured-card .card-meta {
+				display: flex;
+				align-items: center;
+				gap: 0.6em;
+				margin-bottom: 0.8em;
+			}
+			.featured-card h3 {
+				font-family: var(--font-serif);
+				font-size: 1.05em;
+				font-weight: 400;
+				line-height: 1.4;
+				margin: 0 0 0.5em;
+				color: var(--text-primary);
+			}
+			.featured-card .card-desc {
+				font-size: 0.78em;
+				color: var(--text-muted);
+				line-height: 1.6;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			/* ── Type Badge ── */
+			.type-badge {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--accent);
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+				padding: 0.15em 0.5em;
+				border-radius: 2px;
+			}
+			.reading-time {
+				font-family: var(--font-mono);
+				font-size: 0.72em;
+				color: var(--text-muted);
+				letter-spacing: 0.03em;
+			}
+
+			/* ── Latest Article (hero card) ── */
+			.latest-hero {
+				padding: 2em 0 2em;
+				border-bottom: 1px solid var(--border);
+			}
+			.latest-hero a {
+				text-decoration: none;
+				color: inherit;
+				display: block;
+			}
+			.latest-hero .cat-row {
 				display: flex;
 				align-items: center;
 				gap: 0.6em;
@@ -163,7 +277,7 @@ const rest = articles.slice(1);
 				text-transform: uppercase;
 				letter-spacing: 0.06em;
 			}
-			.featured h3 {
+			.latest-hero h3 {
 				font-family: var(--font-serif);
 				font-size: 1.6em;
 				font-weight: 400;
@@ -171,15 +285,15 @@ const rest = articles.slice(1);
 				margin-bottom: 0.6em;
 				transition: color 0.3s;
 			}
-			.featured a:hover h3 { color: var(--accent); }
-			.featured .desc {
+			.latest-hero a:hover h3 { color: var(--accent); }
+			.latest-hero .desc {
 				font-size: 0.88em;
 				color: var(--text-secondary);
 				line-height: 1.75;
 				max-width: 640px;
 				margin-bottom: 1.2em;
 			}
-			.featured .featured-meta {
+			.latest-hero .hero-meta {
 				display: flex;
 				align-items: center;
 				gap: 1.5em;
@@ -251,9 +365,13 @@ const rest = articles.slice(1);
 				-webkit-box-orient: vertical;
 				overflow: hidden;
 			}
-			.row-views {
+			.row-right {
 				flex-shrink: 0;
 				align-self: center;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-end;
+				gap: 0.4em;
 			}
 
 			/* ── Novel Rows ── */
@@ -322,10 +440,12 @@ const rest = articles.slice(1);
 			}
 
 			@media (max-width: 720px) {
-				.hero { padding: 3em 0 2em; }
+				.hero { padding: 3em 0 1.5em; }
 				.hero h1 { font-size: 2.2em; }
 				.hero .meta-bar { flex-wrap: wrap; gap: 1.5em; }
-				.featured h3 { font-size: 1.3em; }
+				.about-items { flex-direction: column; gap: 1.2em; }
+				.featured-grid { grid-template-columns: 1fr; gap: 1em; }
+				.latest-hero h3 { font-size: 1.3em; }
 				.article-row a { flex-wrap: wrap; gap: 0.5em; padding: 1.1em 0 1.1em 0.8em; }
 				.row-left { flex-direction: row; gap: 0.8em; min-width: auto; }
 				.novel-row a { flex-wrap: wrap; gap: 0.5em; padding: 1.1em 0 1.1em 0.8em; }
@@ -351,12 +471,57 @@ const rest = articles.slice(1);
 					AI 시대, 인간의 사고는 어떻게 변화하는가?<br/>
 					자율 AI 에이전트가 연구하고, 인간이 큐레이션하는 지식 라이브러리.
 				</p>
+
+				<div class="about-block">
+					<dl class="about-items">
+						<div>
+							<dt>What</dt>
+							<dd>AI, 인지, 에이전트 시스템에 관한 가설 기반 에세이</dd>
+						</div>
+						<div>
+							<dt>How</dt>
+							<dd>AI 리서치 지원 &rarr; 다단계 검증 &rarr; 인간 편집 최종 승인</dd>
+						</div>
+						<div>
+							<dt>For</dt>
+							<dd>AI 시대를 설계하는 빌더, 운영자, 의사결정자</dd>
+						</div>
+					</dl>
+				</div>
+
 				<div class="meta-bar">
-					<span><span class="num">{articles.length}</span> articles</span>
-					<span><span class="num">{novels.length}</span> novels</span>
-					<span><span class="num">5</span> research domains</span>
+					<span><span class="num">{articles.length}</span> essays published</span>
+					<span><span class="num">5</span> research themes</span>
+					<span>human-curated archive</span>
 				</div>
 			</div>
+
+			{featuredArticles.length > 0 && (
+				<>
+					<hr class="section-rule" />
+					<div class="section-header">
+						<h2 class="section-title">Start Here</h2>
+					</div>
+					<p class="section-desc">
+						처음 방문하셨다면 이 세 편부터. 인지, 기술, 에이전트 축의 대표 에세이입니다.
+					</p>
+					<div class="featured-grid">
+						{featuredArticles.map((article) => (
+							<div class="featured-card">
+								<a href={`/profji-library/articles/${article.id}/`}>
+									<div class="card-meta">
+										<span class="cat-dot" style={`background: ${catColors[article.data.category] || 'var(--accent)'}`}></span>
+										<span class="cat-name">{article.data.category}</span>
+										<span class="type-badge">{typeLabels[article.data.articleType] || article.data.articleType}</span>
+									</div>
+									<h3>{article.data.title}</h3>
+									<p class="card-desc">{article.data.description}</p>
+								</a>
+							</div>
+						))}
+					</div>
+				</>
+			)}
 
 			<hr class="section-rule" />
 			<div class="section-header">
@@ -364,18 +529,20 @@ const rest = articles.slice(1);
 				<a class="section-link" href="/profji-library/articles">View all &rarr;</a>
 			</div>
 
-			{featured && (
-				<div class="featured">
-					<a href={`/profji-library/articles/${featured.id}/`}>
+			{latest && (
+				<div class="latest-hero">
+					<a href={`/profji-library/articles/${latest.id}/`}>
 						<div class="cat-row">
-							<span class="cat-dot" style={`background: ${catColors[featured.data.category] || 'var(--accent)'}`}></span>
-							<span class="cat-name">{featured.data.category}</span>
+							<span class="cat-dot" style={`background: ${catColors[latest.data.category] || 'var(--accent)'}`}></span>
+							<span class="cat-name">{latest.data.category}</span>
+							<span class="type-badge">{typeLabels[latest.data.articleType] || latest.data.articleType}</span>
 						</div>
-						<h3>{featured.data.title}</h3>
-						<div class="desc">{featured.data.description}</div>
-						<div class="featured-meta">
-							<FormattedDate date={featured.data.pubDate} />
-							<ViewCounter slug={featured.id} />
+						<h3>{latest.data.title}</h3>
+						<div class="desc">{latest.data.description}</div>
+						<div class="hero-meta">
+							<FormattedDate date={latest.data.pubDate} />
+							<span class="reading-time">{readingTime(latest.body || '')} min read</span>
+							<ViewCounter slug={latest.id} />
 						</div>
 					</a>
 				</div>
@@ -396,7 +563,11 @@ const rest = articles.slice(1);
 								<h3>{article.data.title}</h3>
 								<p class="row-desc">{article.data.description}</p>
 							</div>
-							<span class="row-views"><ViewCounter slug={article.id} /></span>
+							<div class="row-right">
+								<span class="type-badge">{typeLabels[article.data.articleType] || article.data.articleType}</span>
+								<span class="reading-time">{readingTime(article.body || '')} min</span>
+								<ViewCounter slug={article.id} />
+							</div>
 						</a>
 					</li>
 				))}
@@ -407,6 +578,9 @@ const rest = articles.slice(1);
 				<h2 class="section-title">Novel Series</h2>
 				<a class="section-link" href="/profji-library/novels">All episodes &rarr;</a>
 			</div>
+			<p class="section-desc">
+				같은 주제를 서사로 탐구합니다 &mdash; AI 시대의 직장, 인지, 공존에 대한 이야기.
+			</p>
 
 			<ul class="novel-list">
 				{novels.map((novel) => (

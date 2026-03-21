@@ -11,6 +11,8 @@ const articles = defineCollection({
 		updatedDate: z.coerce.date().optional(),
 		tags: z.array(z.string()).default([]),
 		score: z.number().optional(),
+		featured: z.boolean().default(false),
+		articleType: z.enum(['research synthesis', 'framework', 'essay', 'analysis', 'case study']).default('essay'),
 	}),
 });
 

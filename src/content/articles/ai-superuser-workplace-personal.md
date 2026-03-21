@@ -4,6 +4,7 @@ description: "AI 슈퍼유저는 프롬프트를 잘 치는 사람이 아니라,
 pubDate: "2026-03-14"
 category: "AI 기술"
 tags: ["AI","research","analysis"]
+articleType: "essay"
 ---
 
 AI를 잘 쓰는 사람과 AI에 끌려다니는 사람의 차이는 프롬프트 실력이 아니다. 차이는 판단 구조에 있다.
