@@ -2,8 +2,9 @@
 title: "하이브리드 마인드: 인간-AI 협업의 인지과학"
 description: "현대 인공지능 기술의 급속한 발전은 인간의 지적 활동에 새로운 패러다임을 제시하고 있다. 이 기고는 인간과 인공지능이 협력하는 시스템, 즉 '하이브리드 마인드(hybrid mind)'가 갖는 인지적 특성을 인지과학의"
 pubDate: "2026-03-07"
-category: "Cognitive Science"
+category: "인지 융합"
 tags: ["AI","research","analysis"]
+featured: true
 articleType: "research synthesis"
 titleEn: "Hybrid Mind: The Cognitive Science of Human-AI Collaboration"
 descriptionEn: "Exploring the cognitive properties of human-AI collaborative systems as intellectual partners, not just tools."

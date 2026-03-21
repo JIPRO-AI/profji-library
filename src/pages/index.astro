@@ -20,9 +20,6 @@ const catColors: Record<string, string> = {
 	'AI 기술': 'var(--cat-tech)',
 	'에이전트': 'var(--cat-agent)',
 	'LLM 아키텍처': 'var(--cat-tech)',
-	'Technology': 'var(--cat-tech)',
-	'Cognitive Science': 'var(--cat-cognition)',
-	'AI/Research': 'var(--cat-tech)',
 };
 
 const typeLabels: Record<string, string> = {
@@ -187,7 +184,7 @@ const rest = articles.slice(1);
 			/* ── Featured Essays ── */
 			.featured-grid {
 				display: grid;
-				grid-template-columns: repeat(3, 1fr);
+				grid-template-columns: repeat(2, 1fr);
 				gap: 1.5em;
 				margin-bottom: 0.5em;
 			}
@@ -527,7 +524,7 @@ const rest = articles.slice(1);
 						<h2 class="section-title">Start Here</h2>
 					</div>
 					<p class="section-desc">
-						처음 방문하셨다면 이 세 편부터. 인지, 기술, 에이전트 축의 대표 에세이입니다.
+						처음 방문하셨다면 이 네 편부터. 인지, 기술, 에이전트 축의 대표 에세이입니다.
 					</p>
 					<div class="featured-grid">
 						{featuredArticles.map((article) => (
