@@ -51,9 +51,9 @@ try {
 
 const featuredArticles = articles.filter((a) => a.data.featured);
 const leadFeatured = featuredArticles[0];
-const restFeatured = featuredArticles.slice(1);
-const archiveArticles = articles
-	.filter((a) => !a.data.featured)
+const restFeatured = featuredArticles.slice(1, 4); // max 3 for 3-column grid
+const overflowFeatured = featuredArticles.slice(4); // excess featured → archive
+const archiveArticles = [...overflowFeatured, ...articles.filter((a) => !a.data.featured)]
 	.sort((a, b) => (viewCounts[b.id] || 0) - (viewCounts[a.id] || 0));
 ---
 
