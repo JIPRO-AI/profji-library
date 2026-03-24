@@ -49,15 +49,15 @@ try {
 	}
 } catch { /* fallback to date sort */ }
 
-// Dynamic featured: top 4 by view count (lead + 3 secondary grid)
-const featuredArticles = [...articles]
+// Lead = newest article, secondary grid = top 3 by views (excluding lead)
+const leadFeatured = articles[0]; // articles already sorted by pubDate desc
+const restFeatured = [...articles]
+	.filter((a) => a.id !== leadFeatured?.id)
 	.sort((a, b) => (viewCounts[b.id] || 0) - (viewCounts[a.id] || 0))
-	.slice(0, 4);
-const featuredSet = new Set(featuredArticles.map((a) => a.id));
-const leadFeatured = featuredArticles[0];
-const restFeatured = featuredArticles.slice(1, 4);
+	.slice(0, 3);
+const heroSet = new Set([leadFeatured?.id, ...restFeatured.map((a) => a.id)]);
 const archiveArticles = articles
-	.filter((a) => !featuredSet.has(a.id))
+	.filter((a) => !heroSet.has(a.id))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 

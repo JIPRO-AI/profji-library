@@ -46,15 +46,15 @@ try {
 	}
 } catch { /* fallback */ }
 
-const featuredSlugs = ['automation-bias-decision-making', 'hybrid-mind', 'llm-hallucination-detection'];
-const featuredArticles = featuredSlugs
-	.map((slug) => articles.find((a) => a.id === slug))
-	.filter(Boolean) as typeof articles;
+// Featured = top 3 by view count (dynamic)
+const featuredArticles = [...articles]
+	.sort((a, b) => (viewCounts[b.id] || 0) - (viewCounts[a.id] || 0))
+	.slice(0, 3);
 
 const categories = ['전체', ...new Set(articles.map((a) => a.data.category))];
 
-const archiveArticles = articles
-	.sort((a, b) => (viewCounts[b.id] || 0) - (viewCounts[a.id] || 0));
+const archiveArticles = [...articles]
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>
