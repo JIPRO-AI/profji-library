@@ -49,12 +49,16 @@ try {
 	}
 } catch { /* fallback to date sort */ }
 
-const featuredArticles = articles.filter((a) => a.data.featured);
+// Dynamic featured: top 4 by view count (lead + 3 secondary grid)
+const featuredArticles = [...articles]
+	.sort((a, b) => (viewCounts[b.id] || 0) - (viewCounts[a.id] || 0))
+	.slice(0, 4);
+const featuredSet = new Set(featuredArticles.map((a) => a.id));
 const leadFeatured = featuredArticles[0];
-const restFeatured = featuredArticles.slice(1, 4); // max 3 for 3-column grid
-const overflowFeatured = featuredArticles.slice(4); // excess featured → archive
-const archiveArticles = [...overflowFeatured, ...articles.filter((a) => !a.data.featured)]
-	.sort((a, b) => (viewCounts[b.id] || 0) - (viewCounts[a.id] || 0));
+const restFeatured = featuredArticles.slice(1, 4);
+const archiveArticles = articles
+	.filter((a) => !featuredSet.has(a.id))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>
