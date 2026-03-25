@@ -146,22 +146,16 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage 
 				border: 1px solid var(--border);
 				border-radius: 6px;
 			}
-			.prose :global(thead) {
-				display: table;
-				width: 100%;
-				table-layout: fixed;
-			}
+			.prose :global(thead),
 			.prose :global(tbody) {
 				display: table;
 				width: 100%;
-				table-layout: fixed;
 			}
 			.prose :global(tr) {
 				display: table-row;
 			}
 			.prose :global(th) {
 				background: rgba(184, 160, 122, 0.06);
-				white-space: nowrap;
 				font-size: 0.7em;
 				padding: 0.8em 1em;
 				border-bottom: 1px solid var(--border);
