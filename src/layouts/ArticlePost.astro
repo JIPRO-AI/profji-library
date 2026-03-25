@@ -5,12 +5,12 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import ViewCounter from '../components/ViewCounter.astro';
 
-const { title, description, pubDate, updatedDate, category, tags, slug } = Astro.props;
+const { title, description, pubDate, updatedDate, category, tags, slug, ogImage } = Astro.props;
 ---
 
 <html lang="ko">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={ogImage} />
 		<style>
 			.article-header {
 				max-width: 660px;
@@ -136,9 +136,89 @@ const { title, description, pubDate, updatedDate, category, tags, slug } = Astro
 				line-height: 1.8;
 			}
 
+			/* ── Responsive Tables ── */
+			.prose :global(table) {
+				width: 100%;
+				display: block;
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				margin: 2em 0;
+				border: 1px solid var(--border);
+				border-radius: 6px;
+			}
+			.prose :global(thead) {
+				display: table;
+				width: 100%;
+				table-layout: fixed;
+			}
+			.prose :global(tbody) {
+				display: table;
+				width: 100%;
+				table-layout: fixed;
+			}
+			.prose :global(tr) {
+				display: table-row;
+			}
+			.prose :global(th) {
+				background: rgba(184, 160, 122, 0.06);
+				white-space: nowrap;
+				font-size: 0.7em;
+				padding: 0.8em 1em;
+				border-bottom: 1px solid var(--border);
+			}
+			.prose :global(td) {
+				padding: 0.7em 1em;
+				font-size: 0.92em;
+				line-height: 1.6;
+				vertical-align: top;
+				border-bottom: 1px solid rgba(39, 39, 44, 0.6);
+			}
+			.prose :global(tr:last-child td) {
+				border-bottom: none;
+			}
+			.prose :global(tbody tr:hover) {
+				background: rgba(184, 160, 122, 0.04);
+			}
+
+			/* ── Mobile: Table → Card Layout ── */
 			@media (max-width: 720px) {
 				.article-header h1 { font-size: 1.7em; }
 				.prose :global(blockquote) { margin-left: 0; }
+
+				.prose :global(table) {
+					border: none;
+					border-radius: 0;
+				}
+				.prose :global(thead) {
+					display: none;
+				}
+				.prose :global(tbody) {
+					display: block;
+				}
+				.prose :global(tr) {
+					display: block;
+					border: 1px solid var(--border);
+					border-radius: 6px;
+					margin-bottom: 1em;
+					padding: 0.8em 1em;
+					background: rgba(184, 160, 122, 0.03);
+				}
+				.prose :global(td) {
+					display: block;
+					padding: 0.3em 0;
+					border-bottom: none;
+					font-size: 0.88em;
+				}
+				.prose :global(td::before) {
+					content: attr(data-label);
+					display: block;
+					font-family: var(--font-mono);
+					font-size: 0.72em;
+					color: var(--text-muted);
+					text-transform: uppercase;
+					letter-spacing: 0.08em;
+					margin-bottom: 0.15em;
+				}
 			}
 		</style>
 	</head>
@@ -171,5 +251,17 @@ const { title, description, pubDate, updatedDate, category, tags, slug } = Astro
 			</article>
 		</main>
 		<Footer />
+		<script>
+			// Inject data-label attributes for mobile card layout
+			document.querySelectorAll('.prose table').forEach(table => {
+				const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+				if (headers.length === 0) return;
+				table.querySelectorAll('tbody tr').forEach(tr => {
+					tr.querySelectorAll('td').forEach((td, i) => {
+						if (headers[i]) td.setAttribute('data-label', headers[i]);
+					});
+				});
+			});
+		</script>
 	</body>
 </html>
