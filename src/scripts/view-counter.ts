@@ -1,5 +1,5 @@
-const SUPABASE_URL = 'https://mmkoaipucrefhuyvzkec.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ta29haXB1Y3JlZmh1eXZ6a2VjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTU0OTEsImV4cCI6MjA4ODQzMTQ5MX0.S0BVRi1uxRESrrF2tyGDq86LZ80ySeNAFH4pHrSf5qg';
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
 async function incrementView(slug: string): Promise<number | null> {
 	try {

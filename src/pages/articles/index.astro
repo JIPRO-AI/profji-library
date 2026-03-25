@@ -32,13 +32,12 @@ function readingTime(body: string): number {
 	return Math.max(1, Math.ceil(chars / 500));
 }
 
-const SUPABASE_URL = 'https://mmkoaipucrefhuyvzkec.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ta29haXB1Y3JlZmh1eXZ6a2VjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTU0OTEsImV4cCI6MjA4ODQzMTQ5MX0.S0BVRi1uxRESrrF2tyGDq86LZ80ySeNAFH4pHrSf5qg';
+import { SUPABASE_URL, supabaseHeaders } from '../../lib/supabase';
 
 let viewCounts: Record<string, number> = {};
 try {
 	const res = await fetch(`${SUPABASE_URL}/rest/v1/page_views?select=slug,count`, {
-		headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
+		headers: supabaseHeaders(),
 	});
 	if (res.ok) {
 		const data: { slug: string; count: number }[] = await res.json();
