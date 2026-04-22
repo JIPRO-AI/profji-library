@@ -331,10 +331,13 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-header">
 				<span class="label">About</span>
 				<h1>Ji Research Library</h1>
-				<p class="tagline">AI랑 같이 일할 때 사람의 판단이 어떻게 바뀌는지 기록합니다.</p>
+				<p class="tagline">AI와 같이 일할 때 인간의 판단이 어떻게 바뀌는지 기록합니다.</p>
 				<p class="manifesto">
-					AI가 초안을 쓰고 사람이 통과만 누르는 블로그가 되지 않도록 글 하나마다 몇 단계 검증을 거칩니다.
-					여기 실린 글은 그 시스템의 결과물이기도 하고 시스템 자체가 쓸 만한지 시험하는 기록이기도 합니다.
+					이곳은 AI가 초안을 쓰고 사람이 승인만 누르는 블로그가 되지 않도록 만들었습니다. 글 하나를 올리기까지 여러 단계의 검증을 거치고 그 과정 자체도 함께 기록합니다.
+				</p>
+				<p class="manifesto">
+					여기에 실린 글은 결과물이면서 동시에 실험 기록입니다.
+					AI와 함께 글을 만들 때 판단이 어디서 달라지는지 자동화가 어디까지 가능하고 어디서부터 인간의 역할이 다시 중요해지는지 계속 시험합니다.
 				</p>
 			</div>
 
@@ -342,12 +345,10 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>Purpose</h2>
 				<p class="purpose-lead">
-					AI가 인간을 대체한다 대체 못한다 하는 큰 얘기는 여기선 안 합니다.
+					여기서는 AI가 인간을 대체하느냐 못 하느냐 같은 큰 주장만 반복하지 않습니다.
 				</p>
 				<p class="purpose-body">
-					여기서 다루는 건 더 구체적인 것들입니다. AI랑 일할 때 판단 구조가 어떻게 바뀌는지
-					전문성 기준은 뭐로 옮겨가는지 어디서 이득이고 어디서 손해인지.
-					이 질문들을 논문 기반 에세이로 풀어서 쌓고 있습니다.
+					대신 더 구체적인 질문을 봅니다. AI와 함께 일할 때 판단 구조는 어떻게 바뀌는지 전문성의 기준은 어디로 이동하는지 무엇을 더 잘하게 되고 무엇을 잃게 되는지. 이 질문들을 논문 기반 에세이로 정리해 쌓아갑니다.
 				</p>
 			</div>
 
@@ -355,31 +356,31 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>Fields of Inquiry</h2>
 				<p class="field-intro">
-					분야는 네 개로 나눠놨습니다. 따로 보이지만 사실 하나의 질문을 네 각도에서 본 것입니다. AI 시대에 사람 머리는 어떻게 작동하는가.
+					이 라이브러리는 네 가지 분야로 나뉘어 있습니다. 따로 보이지만 결국은 하나의 질문을 네 방향에서 보는 구조입니다. AI 시대에 인간의 머리는 어떻게 작동하는가.
 				</p>
 				<div class="domain-grid">
 					<div class="domain-card">
 						<span class="domain-dot" style="background: var(--cat-psychology)"></span>
 						<span class="domain-name">AI 심리학</span>
-						<div class="domain-question">AI에 의존할 때 인간의 판단력은 강화되는가 약화되는가?</div>
+						<div class="domain-question">AI 의존이 판단력을 강화하는지 약화시키는지</div>
 						<div class="domain-keywords">자동화 편향 · 탈숙련화 · 과신 효과 · 전문성 변형</div>
 					</div>
 					<div class="domain-card">
 						<span class="domain-dot" style="background: var(--cat-cognition)"></span>
 						<span class="domain-name">인지 융합</span>
-						<div class="domain-question">인간과 AI의 사고가 결합될 때 새로운 인지 모델이 출현하는가?</div>
+						<div class="domain-question">인간-AI 결합이 새로운 인지 모델을 만드는지</div>
 						<div class="domain-keywords">하이브리드 마인드 · 확장된 인지 · 인간-AI 공동 추론</div>
 					</div>
 					<div class="domain-card">
 						<span class="domain-dot" style="background: var(--cat-tech)"></span>
 						<span class="domain-name">AI 기술</span>
-						<div class="domain-question">LLM의 구조적 한계는 어디이며 그 한계를 아는 것은 왜 중요한가?</div>
+						<div class="domain-question">LLM의 구조적 한계와 그것을 아는 이유</div>
 						<div class="domain-keywords">환각 통제 · RAG 한계 · 컨텍스트 윈도우 · 로컬 LLM</div>
 					</div>
 					<div class="domain-card">
 						<span class="domain-dot" style="background: var(--cat-agent)"></span>
 						<span class="domain-name">에이전트</span>
-						<div class="domain-question">복수의 AI가 협력할 때 시스템은 언제 개선되고 언제 붕괴하는가?</div>
+						<div class="domain-question">여러 AI가 함께 일할 때 시스템이 좋아지거나 무너지는 조건</div>
 						<div class="domain-keywords">멀티에이전트 · 오케스트레이션 · 오류 증폭 · 협력 임계점</div>
 					</div>
 				</div>
@@ -389,9 +390,8 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>Production System</h2>
 				<p class="process-intro">
-					에세이 하나가 나오려면 6단계를 거칩니다.
-					단계마다 역할이 다른 에이전트가 작업하고 품질 게이트가 다음 단계로 넘어갈지 결정합니다.
-					게이트를 2회 연속 통과하지 못하면 해당 글은 자동 중단되고 사람이 직접 재시작해야 합니다.
+					에세이 하나가 공개되기까지는 6단계를 거칩니다.
+					단계마다 역할이 다른 에이전트가 작업하고 품질 게이트가 다음 단계로 넘어갈지 결정합니다. 두 번 연속 게이트를 통과하지 못하면 글은 자동으로 중단되고 사람의 개입이 있어야 다시 시작할 수 있습니다.
 				</p>
 				<div class="pipeline-grid">
 					<div class="pipeline-card">
@@ -432,8 +432,7 @@ import { SITE_TITLE } from '../consts';
 					</div>
 				</div>
 				<p class="process-note">
-					역할을 섞지 않는 게 핵심입니다. 리서치하는 모델, 글 쓰는 모델, 검증하는 모델이 다 다른 모델이고
-					특히 검증 모델은 작성자랑 아예 다른 계열이어야 합니다. 같은 모델이 자기 출력을 무사통과 시키는 걸 막는 장치입니다.
+					핵심은 역할을 섞지 않는 것입니다. 리서치하는 모델, 쓰는 모델, 검증하는 모델을 분리하고 특히 검증 모델은 작성 모델과 다른 계열로 둡니다. 같은 모델이 자기 출력을 스스로 무비판적으로 통과시키는 일을 막기 위해서입니다.
 				</p>
 			</div>
 
@@ -441,7 +440,7 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>Technical Foundation</h2>
 				<p class="tech-intro">
-					역할 기반의 멀티에이전트 시스템입니다. 각 구성 요소가 하나의 책임만 집니다.
+					역할 기반 멀티에이전트 시스템으로 운영됩니다.
 				</p>
 				<div class="tech-groups">
 					<div class="tech-group">
@@ -449,7 +448,7 @@ import { SITE_TITLE } from '../consts';
 						<ul>
 							<li>OpenClaw v2026.3 <span class="tech-role">· framework</span></li>
 							<li>Multi-agent pipeline <span class="tech-role">· 3 local + 1 API</span></li>
-							<li>4-stage quality gates <span class="tech-role">· pass/fail/abort</span></li>
+							<li>4-stage quality gates <span class="tech-role">· pass / fail / abort</span></li>
 						</ul>
 					</div>
 					<div class="tech-group">
@@ -465,7 +464,7 @@ import { SITE_TITLE } from '../consts';
 						<div class="tech-group-title">Validation</div>
 						<ul>
 							<li>Claim labeling <span class="tech-role">· supported / inference / speculation</span></li>
-							<li>5-axis review <span class="tech-role">· factual · citation · novelty · assumption · readability</span></li>
+							<li>5-axis review <span class="tech-role">· factual / citation / novelty / assumption / readability</span></li>
 							<li>Cross-model verification <span class="tech-role">· 3 model families</span></li>
 						</ul>
 					</div>
@@ -496,15 +495,17 @@ import { SITE_TITLE } from '../consts';
 				</div>
 			</div>
 
-			<!-- ── Closing ── -->
-			<div class="closing">
-				<p class="closing-lead">
-					여기 글은 AI가 쓰고 제가 편집합니다.
+			<!-- ── Human Role ── -->
+			<div class="about-section">
+				<h2>Human Role</h2>
+				<p class="purpose-lead">
+					이곳의 글은 AI가 먼저 만들고 최종 판단은 제가 합니다.
 				</p>
-				<p>
-					논문 찾고 근거 정리하고 초안까지는 AI가 씁니다. 그런데 무슨 질문을 던질지
-					어느 방향으로 엮을지 이게 내놓을 만한 글인지는 제가 정해야 합니다.
-					자동화가 어디서 끝나는지 감추지 않으려고 합니다.
+				<p class="purpose-body">
+					논문을 찾고 근거를 정리하고 초안을 만드는 일까지는 AI가 맡을 수 있습니다. 하지만 어떤 질문을 던질지 어떤 방향으로 엮을지 이 글이 정말 공개할 만한 수준인지 판단하는 일은 여전히 인간의 몫이라고 생각합니다.
+				</p>
+				<p class="purpose-body">
+					이 라이브러리는 자동화를 감추지 않으면서도 판단의 책임이 사라진 척하지 않으려 합니다.
 				</p>
 			</div>
 		</main>
