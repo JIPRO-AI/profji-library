@@ -10,6 +10,15 @@ import { SITE_TITLE } from '../consts';
 	<head>
 		<BaseHead title={`About | ${SITE_TITLE}`} description="AI와 함께 일할 때 인간의 판단이 어떻게 바뀌는지 기록합니다." />
 		<style>
+			/* Korean word-break: keep-all wraps at word boundaries (공백 기준), not mid-word */
+			.about-header,
+			.about-section,
+			.closing {
+				word-break: keep-all;
+				line-break: strict;
+				overflow-wrap: break-word;
+			}
+
 			/* ── Header ── */
 			.about-header {
 				padding: 5em 0 3em;
@@ -35,8 +44,8 @@ import { SITE_TITLE } from '../consts';
 				color: var(--text-secondary);
 				font-style: italic;
 				line-height: 1.7;
-				max-width: 480px;
 				margin-bottom: 1.5em;
+				/* Desktop: single line. Mobile: natural wrap (Korean wraps at char boundary). */
 			}
 			.about-header .manifesto {
 				font-size: 0.88em;
