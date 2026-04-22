@@ -331,12 +331,10 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-header">
 				<span class="label">About</span>
 				<h1>Ji Research Library</h1>
-				<p class="tagline">AI 시대의 인간 지능을 탐구하는 자율 연구 시스템</p>
+				<p class="tagline">AI랑 같이 일할 때 사람의 판단이 어떻게 바뀌는지 기록합니다.</p>
 				<p class="manifesto">
-					AI가 쓰고 사람이 승인만 누르는 블로그는 아닙니다.
-					역할이 다른 에이전트들이 리서치, 작성, 검증을 나눠 맡고,
-					여러 단계의 품질 게이트를 거친 뒤 인간이 구조와 판단을 직접 편집합니다.
-					여기 실린 글은 그 시스템의 결과물이면서, 시스템 자체를 시험하는 기록이기도 합니다.
+					AI가 초안을 쓰고 사람이 통과만 누르는 블로그가 되지 않도록, 글 하나마다 몇 단계 검증을 거칩니다.
+					여기 실린 글은 그 시스템의 결과물이기도 하고, 시스템 자체가 쓸 만한지 시험하는 기록이기도 합니다.
 				</p>
 			</div>
 
@@ -344,12 +342,12 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>Purpose</h2>
 				<p class="purpose-lead">
-					AI가 모든 걸 대신한다는 낙관도, 인간이 필요 없어진다는 비관도 여기선 다루지 않습니다.
+					AI가 인간을 대체한다, 대체 못한다 — 이런 큰 얘기는 여기선 안 합니다.
 				</p>
 				<p class="purpose-body">
-					관심은 더 좁고 구체적입니다 — AI와 함께 일할 때 사람의 판단 구조가 어떻게 바뀌는지,
-					전문성의 기준은 어떻게 달라지는지, 그 변화가 어디서 이득이고 어디서 손실인지.
-					이 질문들을 논문 기반의 에세이로 기록하고, 하나의 프레임워크로 쌓아가고 있습니다.
+					여기서 다루는 건 더 구체적인 것들입니다. AI랑 일할 때 판단 구조가 어떻게 바뀌는지,
+					전문성 기준은 뭐로 옮겨가는지, 어디서 이득이고 어디서 손해인지.
+					이 질문들을 논문 기반 에세이로 풀어서 쌓고 있습니다.
 				</p>
 			</div>
 
@@ -357,7 +355,7 @@ import { SITE_TITLE } from '../consts';
 			<div class="about-section">
 				<h2>Fields of Inquiry</h2>
 				<p class="field-intro">
-					네 개의 축이 라이브러리의 관찰 범위를 잡아줍니다. 각각 독립된 주제라기보다, 하나의 질문 — "AI 시대에 인간 지능은 어떻게 작동하는가" — 을 서로 다른 각도에서 들여다보는 렌즈입니다.
+					분야는 네 개로 나눠놨습니다. 따로 보이지만 사실 하나의 질문을 네 각도에서 본 것입니다 — AI 시대에 사람 머리는 어떻게 작동하는가.
 				</p>
 				<div class="domain-grid">
 					<div class="domain-card">
@@ -406,7 +404,7 @@ import { SITE_TITLE } from '../consts';
 						<span class="pipe-num">02</span>
 						<span class="pipe-label">Research</span>
 						<div class="pipe-desc">arXiv, OpenAlex, CrossRef에서 관련 논문을 수집하고, 아웃라인을 설계합니다.</div>
-						<span class="pipe-agent">Researcher Ji (Qwen 35B MoE)</span>
+						<span class="pipe-agent">Researcher Ji (Qwen 3.6 35B MoE)</span>
 					</div>
 					<div class="pipeline-card">
 						<span class="pipe-num">03</span>
@@ -434,8 +432,8 @@ import { SITE_TITLE } from '../consts';
 					</div>
 				</div>
 				<p class="process-note">
-					핵심은 분리입니다 — 연구하는 에이전트는 글을 쓰지 않고, 쓰는 에이전트는 검증하지 않고,
-					검증하는 에이전트는 작성자와 다른 모델 계열을 씁니다. 교차 검증이 되는 이유입니다.
+					역할을 섞지 않는 게 핵심입니다. 리서치하는 모델, 글 쓰는 모델, 검증하는 모델이 다 다른 모델이고,
+					특히 검증 모델은 작성자랑 아예 다른 계열이어야 합니다. 같은 모델이 자기 출력을 무사통과 시키는 걸 막는 장치입니다.
 				</p>
 			</div>
 
@@ -457,8 +455,8 @@ import { SITE_TITLE } from '../consts';
 					<div class="tech-group">
 						<div class="tech-group-title">Models</div>
 						<ul>
-							<li>Qwen 3.5 35B-A3B MoE <span class="tech-role">— researcher</span></li>
-							<li>Nemotron-3-Super 120B <span class="tech-role">— writer (NVIDIA NIM API)</span></li>
+							<li>Qwen 3.6 35B-A3B MoE <span class="tech-role">— researcher</span></li>
+							<li>DeepSeek V3.2 685B MoE <span class="tech-role">— writer (NVIDIA NIM API)</span></li>
 							<li>Gemma 4 26B MoE <span class="tech-role">— reviewer</span></li>
 							<li>Nemotron-3-Super 120B <span class="tech-role">— orchestrator (NVIDIA NIM API)</span></li>
 						</ul>
@@ -501,12 +499,12 @@ import { SITE_TITLE } from '../consts';
 			<!-- ── Closing ── -->
 			<div class="closing">
 				<p class="closing-lead">
-					여기 실린 모든 글은 AI가 만들고 인간이 편집한 결과물입니다.
+					여기 글은 AI가 쓰고 제가 편집합니다.
 				</p>
 				<p>
-					논문 수집, 근거 구조화, 초안 작성은 AI가 합니다.
-					하지만 어떤 질문을 던질지, 어떤 프레임으로 엮을지, 어떤 주장이 출판할 만한지는
-					사람이 정합니다. 자동화가 어디까지인지 분명히 하는 것 — 이 시스템이 신뢰를 얻는 방식입니다.
+					논문 찾고 근거 정리하고 초안까지는 AI가 씁니다. 그런데 무슨 질문을 던질지,
+					어느 방향으로 엮을지, 이게 내놓을 만한 글인지는 제가 정해야 합니다.
+					자동화가 어디서 끝나는지 감추지 않으려고 합니다.
 				</p>
 			</div>
 		</main>
