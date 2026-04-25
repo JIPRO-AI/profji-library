@@ -138,23 +138,19 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage 
 				line-height: 1.8;
 			}
 
-			/* ── Responsive Tables ── */
-			.prose :global(table) {
-				width: 100%;
-				display: block;
+			/* ── Responsive Tables ──
+			   .table-scroll wrapper is injected by JS so thead/tbody
+			   stay as real table children — column widths stay in sync. ── */
+			.prose :global(.table-scroll) {
 				overflow-x: auto;
 				-webkit-overflow-scrolling: touch;
 				margin: 2em 0;
 				border: 1px solid var(--border);
 				border-radius: 6px;
 			}
-			.prose :global(thead),
-			.prose :global(tbody) {
-				display: table;
+			.prose :global(table) {
 				width: 100%;
-			}
-			.prose :global(tr) {
-				display: table-row;
+				border-collapse: collapse;
 			}
 			.prose :global(th) {
 				background: rgba(184, 160, 122, 0.06);
@@ -163,6 +159,7 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage 
 				border-bottom: 1px solid var(--border);
 				vertical-align: top;
 				text-align: left;
+				white-space: nowrap;
 			}
 			.prose :global(td) {
 				padding: 0.7em 1em;
@@ -183,9 +180,10 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage 
 				.article-header h1 { font-size: 1.7em; }
 				.prose :global(blockquote) { margin-left: 0; }
 
-				.prose :global(table) {
+				.prose :global(.table-scroll) {
 					border: none;
 					border-radius: 0;
+					margin: 1.5em 0;
 				}
 				.prose :global(thead) {
 					display: none;
@@ -250,8 +248,15 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage 
 		</main>
 		<Footer />
 		<script>
-			// Inject data-label attributes for mobile card layout
+			// Wrap each table in a .table-scroll div so thead/tbody remain
+			// part of one real table — column widths stay perfectly in sync.
+			// Also inject data-label attributes for the mobile card layout.
 			document.querySelectorAll('.prose table').forEach(table => {
+				const wrapper = document.createElement('div');
+				wrapper.className = 'table-scroll';
+				table.parentNode.insertBefore(wrapper, table);
+				wrapper.appendChild(table);
+
 				const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
 				if (headers.length === 0) return;
 				table.querySelectorAll('tbody tr').forEach(tr => {
