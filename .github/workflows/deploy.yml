@@ -17,6 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,6 +29,9 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Generate OG images
+        run: node scripts/generate-og.mjs
+        continue-on-error: true
       - name: Build
         run: npm run build
         env:
