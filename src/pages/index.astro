@@ -471,6 +471,54 @@ const archiveArticles = articles
 				}
 				.novel-title { flex-basis: 100%; }
 			}
+
+			/* ── Card Tilt ── */
+			.featured-sec-card {
+				will-change: transform;
+				transition: transform 0.18s ease, border-color 0.3s ease;
+			}
+
+			/* ── Archive accent bar ── */
+			.archive-item a {
+				position: relative;
+				padding-left: 0.75em;
+			}
+			.archive-item a::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%) scaleY(0);
+				width: 2px;
+				height: 55%;
+				background: var(--accent);
+				border-radius: 1px;
+				transition: transform 0.2s ease;
+			}
+			.archive-item a:hover::before {
+				transform: translateY(-50%) scaleY(1);
+			}
+
+			/* ── Novel accent bar ── */
+			.novel-row a {
+				position: relative;
+				padding-left: 0.75em;
+			}
+			.novel-row a::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%) scaleY(0);
+				width: 2px;
+				height: 55%;
+				background: var(--accent);
+				border-radius: 1px;
+				transition: transform 0.2s ease;
+			}
+			.novel-row a:hover::before {
+				transform: translateY(-50%) scaleY(1);
+			}
 		</style>
 	</head>
 	<body>
@@ -599,5 +647,19 @@ const archiveArticles = articles
 			</ul>
 		</main>
 		<Footer />
+		<script>
+			// 3D tilt on secondary featured cards
+			document.querySelectorAll('.featured-sec-card').forEach(function(card) {
+				card.addEventListener('mousemove', function(e) {
+					var rect = card.getBoundingClientRect();
+					var x = (e.clientX - rect.left) / rect.width - 0.5;
+					var y = (e.clientY - rect.top) / rect.height - 0.5;
+					card.style.transform = 'perspective(700px) rotateX(' + (-y * 7) + 'deg) rotateY(' + (x * 7) + 'deg)';
+				});
+				card.addEventListener('mouseleave', function() {
+					card.style.transform = '';
+				});
+			});
+		</script>
 	</body>
 </html>

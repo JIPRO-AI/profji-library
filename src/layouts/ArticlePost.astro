@@ -221,6 +221,7 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage 
 		</style>
 	</head>
 	<body>
+		<div id="reading-progress"></div>
 		<Header />
 		<main>
 			<article>
@@ -250,6 +251,15 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage 
 		</main>
 		<Footer />
 		<script>
+			// Reading progress bar
+			const _bar = document.getElementById('reading-progress');
+			if (_bar) {
+				window.addEventListener('scroll', () => {
+					const h = document.documentElement.scrollHeight - window.innerHeight;
+					if (h > 0) _bar.style.width = (window.scrollY / h * 100) + '%';
+				}, { passive: true });
+			}
+
 			// Wrap each table in a .table-scroll div so thead/tbody remain
 			// part of one real table — column widths stay perfectly in sync.
 			// Also inject data-label attributes for the mobile card layout.

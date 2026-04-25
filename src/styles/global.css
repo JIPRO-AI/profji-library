@@ -223,3 +223,16 @@ li { margin-bottom: 0.5em; color: var(--text-secondary); }
 	clip-path: inset(50%);
 	white-space: nowrap;
 }
+
+/* ── Reading Progress Bar ── */
+#reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--accent);
+    z-index: 999;
+    transition: width 0.08s linear;
+    pointer-events: none;
+}
