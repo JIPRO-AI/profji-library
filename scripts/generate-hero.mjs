@@ -10,7 +10,7 @@
  */
 
 import sharp from 'sharp';
-import { mkdirSync, existsSync } from 'fs';
+import { mkdirSync, existsSync, readdirSync, readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -52,30 +52,35 @@ function rgba(c, a) {
   return `rgba(${c.r},${c.g},${c.b},${a.toFixed(3)})`;
 }
 
-// ── Article manifest ────────────────────────────────────────────
-const articles = [
-  { slug: 'ai-accountability-decomposition',        category: 'AI 기술'  },
-  { slug: 'ai-augments-human-creativity',           category: 'AI 기술'  },
-  { slug: 'ai-burnout-organizational-failure',      category: '인지 융합' },
-  { slug: 'ai-hype-expectation-execution-gap',      category: 'AI 기술'  },
-  { slug: 'ai-impact-measurement-trap',             category: 'AI 기술'  },
-  { slug: 'ai-llm-beginner-manual',                 category: 'AI 기술'  },
-  { slug: 'ai-organization-hierarchy-power-shift',  category: 'AI 기술'  },
-  { slug: 'ai-race-endgame',                        category: 'AI 기술'  },
-  { slug: 'ai-superuser-workplace-personal',        category: 'AI 기술'  },
-  { slug: 'automation-bias-decision-making',        category: '인지 융합' },
-  { slug: 'bible-and-ai-connection',                category: '인지 융합' },
-  { slug: 'company-ai-adoption-employee-driven-automation', category: 'AI 기술' },
-  { slug: 'cooperative-thresholds-applications',    category: '에이전트' },
-  { slug: 'expertise-reproduction-crisis',          category: '인지 융합' },
-  { slug: 'hybrid-mind',                            category: '인지 융합' },
-  { slug: 'job-redesign-ai-impact',                 category: 'AI 기술'  },
-  { slug: 'llm-hallucination-detection',            category: 'AI 기술'  },
-  { slug: 'metacognition-llm-prompting',            category: 'AI 기술'  },
-  { slug: 'multi-agent-paradox',                    category: '에이전트' },
-  { slug: 'reward-design-for-agent-systems-new',    category: 'AI 기술'  },
-  { slug: 'us-china-ai-development-differences',    category: 'AI 기술'  },
-];
+// ── Article discovery (auto-reads content dir) ──────────────────
+const CONTENT_DIR = join(ROOT, 'src', 'content', 'articles');
+
+function readCategory(mdPath) {
+  try {
+    const text = readFileSync(mdPath, 'utf8');
+    const m = text.match(/^category:\s*"?([^"\n]+)"?/m);
+    return m ? m[1].trim() : 'AI 기술';
+  } catch { return 'AI 기술'; }
+}
+
+function discoverArticles(onlySlug = null) {
+  const files = readdirSync(CONTENT_DIR).filter(f => f.endsWith('.md'));
+  return files.map(f => {
+    const slug = f.replace(/\.md$/, '');
+    const category = readCategory(join(CONTENT_DIR, f));
+    return { slug, category };
+  }).filter(a => !onlySlug || a.slug === onlySlug);
+}
+
+// ── CLI args ─────────────────────────────────────────────────────
+// Usage: node generate-hero.mjs [--slug <slug>] [--force]
+//   --slug  : generate only for this article
+//   --force : regenerate even if output exists
+const args = process.argv.slice(2);
+const slugArg  = args.includes('--slug') ? args[args.indexOf('--slug') + 1] : null;
+const force    = args.includes('--force');
+
+const articles = discoverArticles(slugArg);
 
 // ── Shared: subtle grid + bottom gradient ──────────────────────
 function makeGrid() {
@@ -373,15 +378,17 @@ ${body}
 }
 
 // ── Run ─────────────────────────────────────────────────────────
-let done = 0;
+let done = 0, skipped = 0;
 for (const { slug, category } of articles) {
-  const svg = buildSVG(slug, category);
   const out = join(OUT_DIR, `${slug}.png`);
+  if (!force && existsSync(out)) { skipped++; continue; }
+  const svg = buildSVG(slug, category);
   await sharp(Buffer.from(svg))
     .png({ compressionLevel: 8 })
     .toFile(out);
   done++;
-  console.log(`[${done}/${articles.length}] ${slug}  (${category})`);
+  console.log(`[+] ${slug}  (${category})`);
 }
 
-console.log(`\nDone — ${done} images → public/images/articles/`);
+if (skipped > 0) console.log(`Skipped ${skipped} existing (use --force to regenerate)`);
+console.log(`Done — ${done} new images → public/images/articles/`);
