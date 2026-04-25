@@ -14,9 +14,10 @@ type Props = CollectionEntry<'articles'>;
 const article = Astro.props;
 const { Content } = await render(article);
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-const ogImage = new URL(`${base}og/${article.id}.png`, Astro.site).href;
+const ogImage    = new URL(`${base}og/${article.id}.png`,                  Astro.site).href;
+const heroImage  = new URL(`${base}images/articles/${article.id}.png`,     Astro.site).href;
 ---
 
-<ArticlePost {...article.data} slug={article.id} ogImage={ogImage}>
+<ArticlePost {...article.data} slug={article.id} ogImage={ogImage} heroImage={heroImage}>
 	<Content />
 </ArticlePost>

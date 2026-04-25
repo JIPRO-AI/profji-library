@@ -5,7 +5,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import ViewCounter from '../components/ViewCounter.astro';
 
-const { title, description, pubDate, updatedDate, category, tags, slug, ogImage } = Astro.props;
+const { title, description, pubDate, updatedDate, category, tags, slug, ogImage, heroImage } = Astro.props;
 ---
 
 <html lang="ko">
@@ -62,6 +62,43 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage 
 				border: 1px solid var(--border);
 				border-radius: 3px;
 				letter-spacing: 0.02em;
+			}
+
+			/* ── Hero banner ── */
+			.hero-banner {
+				position: relative;
+				width: 100%;
+				height: 300px;
+				overflow: hidden;
+				margin-top: 0;
+			}
+			.hero-banner img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center 35%;
+				display: block;
+				user-select: none;
+				pointer-events: none;
+			}
+			.hero-banner::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(
+					to bottom,
+					rgba(11,11,14,0.15) 0%,
+					rgba(11,11,14,0)    35%,
+					rgba(11,11,14,0.6)  75%,
+					rgba(11,11,14,1)    100%
+				);
+				pointer-events: none;
+			}
+			.article-header-with-hero {
+				padding-top: 2em;
+			}
+			@media (max-width: 720px) {
+				.hero-banner { height: 210px; }
 			}
 
 			/* ── Prose ── */
@@ -225,7 +262,12 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage 
 		<Header />
 		<main>
 			<article>
-				<div class="article-header">
+				{heroImage && (
+					<div class="hero-banner">
+						<img src={heroImage} alt="" width="1200" height="630" loading="eager" decoding="async" />
+					</div>
+				)}
+				<div class={`article-header${heroImage ? ' article-header-with-hero' : ''}`}>
 					{category && (
 						<div class="cat-row">
 							<span class="cat-dot"></span>

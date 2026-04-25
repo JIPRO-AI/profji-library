@@ -146,6 +146,28 @@ const archiveArticles = [...articles]
 			}
 
 			/* ── Featured Cards ── */
+			.fc-thumb {
+				width: 100%;
+				height: 120px;
+				overflow: hidden;
+				border-radius: 3px;
+				margin-bottom: 1em;
+			}
+			.fc-thumb img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center 30%;
+				display: block;
+				opacity: 0.72;
+				transition: opacity 0.35s ease, transform 0.45s ease;
+				user-select: none;
+				pointer-events: none;
+			}
+			.featured-card a:hover .fc-thumb img {
+				opacity: 0.9;
+				transform: scale(1.04);
+			}
 			.featured-grid {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
@@ -366,6 +388,9 @@ const archiveArticles = [...articles]
 				{featuredArticles.map((article) => (
 					<div class="featured-card">
 						<a href={`/profji-library/articles/${article.id}/`}>
+							<div class="fc-thumb">
+								<img src={`/profji-library/images/articles/${article.id}.png`} alt="" width="1200" height="630" loading="lazy" />
+							</div>
 							<div class="fc-meta">
 								<span class="cat-dot" style={`background: ${catColors[article.data.category] || 'var(--accent)'}`}></span>
 								<span class="cat-name">{article.data.category}</span>
