@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "elibrary",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd C:/Users/jkc30/profji-library && npx astro dev"],
       "port": 4321
     }
   ]
