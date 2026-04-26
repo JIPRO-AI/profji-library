@@ -227,8 +227,9 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage,
 				font-size: 0.92em;
 				line-height: 1.6;
 				vertical-align: top;
-				white-space: nowrap;
+				white-space: normal;
 				border-bottom: 1px solid rgba(39, 39, 44, 0.6);
+				min-width: 6em;
 			}
 			.prose :global(tr:last-child td) {
 				border-bottom: none;
@@ -336,23 +337,25 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage,
 				}, { passive: true });
 			}
 
-			// Wrap each table in a .table-scroll div so thead/tbody remain
-			// part of one real table — column widths stay perfectly in sync.
-			// Also inject data-label attributes for the mobile card layout.
-			document.querySelectorAll('.prose table').forEach(table => {
-				const wrapper = document.createElement('div');
-				wrapper.className = 'table-scroll';
-				table.parentNode.insertBefore(wrapper, table);
-				wrapper.appendChild(table);
+			// Wrap each table in a .table-scroll div — runs on initial load AND ViewTransition navigation
+			function initTables() {
+				document.querySelectorAll('.prose table').forEach(table => {
+					if (table.parentElement?.classList.contains('table-scroll')) return; // already wrapped
+					const wrapper = document.createElement('div');
+					wrapper.className = 'table-scroll';
+					table.parentNode.insertBefore(wrapper, table);
+					wrapper.appendChild(table);
 
-				const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
-				if (headers.length === 0) return;
-				table.querySelectorAll('tbody tr').forEach(tr => {
-					tr.querySelectorAll('td').forEach((td, i) => {
-						if (headers[i]) td.setAttribute('data-label', headers[i]);
+					const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+					if (headers.length === 0) return;
+					table.querySelectorAll('tbody tr').forEach(tr => {
+						tr.querySelectorAll('td').forEach((td, i) => {
+							if (headers[i]) td.setAttribute('data-label', headers[i]);
+						});
 					});
 				});
-			});
+			}
+			document.addEventListener('astro:page-load', initTables);
 		</script>
 	</body>
 </html>
