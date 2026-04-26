@@ -30,4 +30,18 @@ const novels = defineCollection({
 	}),
 });
 
-export const collections = { articles, novels };
+const articlesEn = defineCollection({
+	loader: glob({ base: './src/content/articles-en', pattern: '**/*.{md,mdx}' }),
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		category: z.string(),
+		pubDate: z.coerce.date(),
+		updatedDate: z.coerce.date().optional(),
+		tags: z.array(z.string()).default([]),
+		articleType: z.enum(['research synthesis', 'framework', 'essay', 'analysis', 'case study']).default('essay'),
+		originalSlug: z.string(),   // Korean original slug
+	}),
+});
+
+export const collections = { articles, novels, articlesEn };

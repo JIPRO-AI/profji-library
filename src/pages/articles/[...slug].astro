@@ -3,21 +3,40 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import ArticlePost from '../../layouts/ArticlePost.astro';
 
 export async function getStaticPaths() {
-	const articles = await getCollection('articles');
+	const articles    = await getCollection('articles');
+	const articlesEn  = await getCollection('articlesEn');
+	const enSlugs     = new Set(articlesEn.map(a => a.data.originalSlug));
+
 	return articles.map((article) => ({
 		params: { slug: article.id },
-		props: article,
+		props: {
+			article,
+			hasEnglish: enSlugs.has(article.id),
+		},
 	}));
 }
-type Props = CollectionEntry<'articles'>;
 
-const article = Astro.props;
+interface Props {
+	article: CollectionEntry<'articles'>;
+	hasEnglish: boolean;
+}
+
+const { article, hasEnglish } = Astro.props;
 const { Content } = await render(article);
-const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-const ogImage    = new URL(`${base}og/${article.id}.png`,                  Astro.site).href;
-const heroImage  = new URL(`${base}images/articles/${article.id}.png`,     Astro.site).href;
+
+const base      = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const ogImage   = new URL(`${base}og/${article.id}.png`,              Astro.site).href;
+const heroImage = new URL(`${base}images/articles/${article.id}.png`, Astro.site).href;
+const enUrl     = hasEnglish ? `/profji-library/en/articles/${article.id}/` : undefined;
 ---
 
-<ArticlePost {...article.data} slug={article.id} ogImage={ogImage} heroImage={heroImage}>
+<ArticlePost
+	{...article.data}
+	slug={article.id}
+	ogImage={ogImage}
+	heroImage={heroImage}
+	lang="ko"
+	enUrl={enUrl}
+>
 	<Content />
 </ArticlePost>

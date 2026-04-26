@@ -5,7 +5,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import ViewCounter from '../components/ViewCounter.astro';
 
-const { title, description, pubDate, updatedDate, category, tags, slug, ogImage, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, category, tags, slug, ogImage, heroImage, lang, koUrl, enUrl } = Astro.props;
 ---
 
 <html lang="ko">
@@ -99,6 +99,30 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage,
 			}
 			@media (max-width: 720px) {
 				.hero-banner { height: 210px; }
+			}
+
+			/* ── Language toggle ── */
+			.lang-toggle {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5em;
+				font-family: var(--font-mono);
+				font-size: 0.65em;
+				color: var(--text-muted);
+				text-decoration: none;
+				border: 1px solid var(--border);
+				padding: 0.25em 0.65em;
+				border-radius: 3px;
+				margin-bottom: 1.2em;
+				letter-spacing: 0.04em;
+				transition: color 0.2s, border-color 0.2s;
+			}
+			.lang-toggle:hover {
+				color: var(--accent);
+				border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+			}
+			.lang-toggle .lt-flag {
+				font-size: 1.1em;
 			}
 
 			/* ── Prose ── */
@@ -268,6 +292,16 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage,
 					</div>
 				)}
 				<div class={`article-header${heroImage ? ' article-header-with-hero' : ''}`}>
+					{lang === 'en' && koUrl && (
+						<a class="lang-toggle" href={koUrl}>
+							<span class="lt-flag">🇰🇷</span> 한국어로 읽기
+						</a>
+					)}
+					{lang !== 'en' && enUrl && (
+						<a class="lang-toggle" href={enUrl}>
+							<span class="lt-flag">🇺🇸</span> Read in English
+						</a>
+					)}
 					{category && (
 						<div class="cat-row">
 							<span class="cat-dot"></span>

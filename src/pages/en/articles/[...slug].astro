@@ -1,0 +1,33 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import ArticlePost from '../../../layouts/ArticlePost.astro';
+
+export async function getStaticPaths() {
+	const articles = await getCollection('articlesEn');
+	return articles.map((article) => ({
+		params: { slug: article.id },
+		props: article,
+	}));
+}
+type Props = CollectionEntry<'articlesEn'>;
+
+const article = Astro.props;
+const { Content } = await render(article);
+
+const heroImage = `/profji-library/images/articles/${article.data.originalSlug}.png`;
+const koUrl     = `/profji-library/articles/${article.data.originalSlug}/`;
+---
+
+<ArticlePost
+	title={article.data.title}
+	description={article.data.description}
+	pubDate={article.data.pubDate}
+	category={article.data.category}
+	tags={article.data.tags}
+	slug={`en-${article.id}`}
+	heroImage={heroImage}
+	lang="en"
+	koUrl={koUrl}
+>
+	<Content />
+</ArticlePost>

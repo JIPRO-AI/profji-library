@@ -1,0 +1,407 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../../components/BaseHead.astro';
+import Footer from '../../../components/Footer.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import Header from '../../../components/Header.astro';
+import ViewCounter from '../../../components/ViewCounter.astro';
+
+const articles = (await getCollection('articlesEn')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const catColors: Record<string, string> = {
+	'AI Psychology':      'var(--cat-psychology)',
+	'Cognitive Synthesis':'var(--cat-cognition)',
+	'AI Technology':      'var(--cat-tech)',
+	'Agent Systems':      'var(--cat-agent)',
+	'LLM Architecture':   'var(--cat-tech)',
+};
+
+const typeLabels: Record<string, string> = {
+	'research synthesis': 'Research Synthesis',
+	'framework':          'Framework',
+	'essay':              'Essay',
+	'analysis':           'Analysis',
+	'case study':         'Case Study',
+};
+
+function readingTime(body: string): number {
+	const words = body.replace(/[#\-*_\[\]()>`~|]/g, ' ').split(/\s+/).filter(Boolean).length;
+	return Math.max(1, Math.ceil(words / 220));
+}
+
+const categories = ['All', ...new Set(articles.map(a => a.data.category))];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="Ji Research Library — English"
+			description="Research essays on AI cognition, agent systems, and human-AI collaboration. By Prof Ji."
+		/>
+		<style>
+			/* ── Page Header ── */
+			.page-header {
+				padding: 5em 0 1.5em;
+			}
+			.lang-back {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.4em;
+				font-family: var(--font-mono);
+				font-size: 0.65em;
+				color: var(--text-muted);
+				text-decoration: none;
+				letter-spacing: 0.04em;
+				margin-bottom: 1.5em;
+				transition: color 0.2s;
+			}
+			.lang-back:hover { color: var(--accent); }
+			.page-header h1 {
+				font-size: 2.6em;
+				font-weight: 300;
+				letter-spacing: -0.02em;
+				margin-bottom: 0.35em;
+			}
+			.page-subtitle {
+				font-family: var(--font-serif);
+				font-size: 0.95em;
+				color: var(--text-secondary);
+				line-height: 1.65;
+				margin-bottom: 0.8em;
+				max-width: 560px;
+			}
+			.page-meta {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--text-muted);
+				letter-spacing: 0.04em;
+			}
+			.page-meta .num { color: var(--accent); font-weight: 500; }
+
+			/* ── Section ── */
+			.section-rule {
+				border: none;
+				border-top: 1px solid var(--border);
+				margin: 3em 0 0;
+			}
+			.section-header { margin: 2em 0 0.4em; }
+			.section-title {
+				font-family: var(--font-mono);
+				font-size: 0.72em;
+				font-weight: 400;
+				color: var(--text-muted);
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			/* ── Shared ── */
+			.cat-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+			.cat-name { font-family: var(--font-mono); font-size: 0.68em; color: var(--text-muted); letter-spacing: 0.06em; }
+			.type-badge {
+				font-family: var(--font-mono);
+				font-size: 0.62em;
+				color: var(--accent);
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+				padding: 0.1em 0.45em;
+				border-radius: 2px;
+				white-space: nowrap;
+			}
+			.reading-time { font-family: var(--font-mono); font-size: 0.68em; color: var(--text-muted); }
+
+			/* ── Featured Cards ── */
+			.featured-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 0;
+			}
+			.featured-card {
+				padding: 1.5em 1.5em 1.5em 0;
+				border-bottom: 1px solid var(--border);
+			}
+			.featured-card + .featured-card {
+				padding-left: 1.5em;
+				border-left: 1px solid var(--border);
+			}
+			.fc-thumb {
+				width: 100%;
+				height: 110px;
+				overflow: hidden;
+				border-radius: 3px;
+				margin-bottom: 1em;
+				background: #0a0a0e;
+			}
+			.fc-thumb img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center 30%;
+				display: block;
+				opacity: 0.68;
+				transition: opacity 0.35s, transform 0.45s;
+				user-select: none;
+				pointer-events: none;
+			}
+			.featured-card a:hover .fc-thumb img { opacity: 0.88; transform: scale(1.04); }
+			.featured-card a {
+				text-decoration: none;
+				color: inherit;
+				display: flex;
+				flex-direction: column;
+				height: 100%;
+			}
+			.featured-card .fc-meta {
+				display: flex;
+				align-items: center;
+				gap: 0.6em;
+				margin-bottom: 0.8em;
+			}
+			.featured-card h3 {
+				font-family: var(--font-serif);
+				font-size: 0.97em;
+				font-weight: 400;
+				line-height: 1.4;
+				margin: 0 0 0.35em;
+				color: var(--text-primary);
+				transition: color 0.3s;
+			}
+			.featured-card a:hover h3 { color: var(--accent); }
+			.featured-card .fc-desc {
+				font-size: 0.78em;
+				color: var(--text-muted);
+				line-height: 1.6;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				margin-bottom: 0.8em;
+			}
+			.featured-card .fc-footer {
+				display: flex;
+				align-items: center;
+				gap: 0.8em;
+				margin-top: auto;
+				font-family: var(--font-mono);
+				font-size: 0.64em;
+				color: var(--text-muted);
+			}
+
+			/* ── Filter Pills ── */
+			.filter-bar { display: flex; gap: 0.5em; flex-wrap: wrap; margin-bottom: 1.5em; }
+			.filter-pill {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--text-muted);
+				letter-spacing: 0.04em;
+				padding: 0.3em 0.8em;
+				border: 1px solid var(--border);
+				border-radius: 2px;
+				background: transparent;
+				cursor: pointer;
+				transition: all 0.2s;
+			}
+			.filter-pill:hover { border-color: var(--accent); color: var(--accent); }
+			.filter-pill.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+			/* ── Archive ── */
+			.archive-list { list-style: none; padding: 0; margin: 0; }
+			.archive-item { border-bottom: 1px solid var(--border); }
+			.archive-item a {
+				display: flex;
+				align-items: baseline;
+				gap: 1.2em;
+				padding: 0.85em 0;
+				text-decoration: none;
+				color: inherit;
+				transition: background 0.2s;
+			}
+			.archive-item a:hover { background: var(--accent-dim); }
+			.archive-item a:hover .archive-title { color: var(--accent); }
+			.archive-date { font-family: var(--font-mono); font-size: 0.68em; color: var(--text-muted); flex-shrink: 0; width: 7.5em; }
+			.archive-cat { display: flex; align-items: center; gap: 0.35em; flex-shrink: 0; width: 8em; }
+			.archive-title {
+				font-family: var(--font-serif);
+				font-size: 0.92em;
+				font-weight: 400;
+				line-height: 1.35;
+				color: var(--text-primary);
+				flex: 1;
+				min-width: 0;
+				transition: color 0.3s;
+			}
+			.archive-meta {
+				display: flex;
+				align-items: center;
+				gap: 0.8em;
+				flex-shrink: 0;
+				min-width: 14em;
+				justify-content: flex-end;
+			}
+
+			/* ── Korean toggle banner ── */
+			.ko-banner {
+				margin-top: 3em;
+				padding: 0.9em 1.2em;
+				border: 1px solid var(--border);
+				border-radius: 4px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				gap: 0.6em;
+				background: rgba(184,160,122,0.03);
+			}
+			.ko-banner p {
+				font-size: 0.8em;
+				color: var(--text-muted);
+				margin: 0;
+			}
+			.ko-banner a {
+				font-family: var(--font-mono);
+				font-size: 0.72em;
+				color: var(--accent);
+				text-decoration: none;
+				letter-spacing: 0.02em;
+				white-space: nowrap;
+			}
+			.ko-banner a:hover { text-decoration: underline; }
+
+			/* ── Responsive ── */
+			@media (max-width: 720px) {
+				.page-header { padding: 3.5em 0 1em; }
+				.page-header h1 { font-size: 2em; }
+				.featured-grid { grid-template-columns: 1fr; }
+				.featured-card { padding: 1.2em 0; }
+				.featured-card + .featured-card { padding-left: 0; border-left: none; }
+				.archive-item a { flex-wrap: wrap; gap: 0.3em 0.8em; padding: 0.8em 0; }
+				.archive-date { width: auto; }
+				.archive-title { flex-basis: 100%; order: 3; }
+				.archive-meta { flex-basis: 100%; order: 4; min-width: auto; justify-content: flex-start; }
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="page-header">
+				<a class="lang-back" href="/profji-library/articles">← 한국어</a>
+				<h1>Ji Research Library</h1>
+				<p class="page-subtitle">
+					Research essays on AI cognition, agent systems, and human-AI collaboration —
+					translated and adapted from the Korean edition.
+				</p>
+				<span class="page-meta">
+					<span class="num">{articles.length}</span> essays · English edition · by Prof Ji
+				</span>
+			</div>
+
+			{articles.length > 0 && (
+				<>
+					<hr class="section-rule" />
+					<div class="section-header">
+						<h2 class="section-title">Featured</h2>
+					</div>
+					<div class="featured-grid">
+						{articles.slice(0, 3).map((article) => (
+							<div class="featured-card">
+								<a href={`/profji-library/en/articles/${article.id}/`}>
+									<div class="fc-thumb">
+										<img
+											src={`/profji-library/images/articles/${article.data.originalSlug}.png`}
+											alt=""
+											width="1200"
+											height="630"
+											loading="lazy"
+										/>
+									</div>
+									<div class="fc-meta">
+										<span class="cat-dot" style={`background: ${catColors[article.data.category] || 'var(--accent)'}`}></span>
+										<span class="cat-name">{article.data.category}</span>
+										<span class="type-badge">{typeLabels[article.data.articleType] || article.data.articleType}</span>
+									</div>
+									<h3>{article.data.title}</h3>
+									<p class="fc-desc">{article.data.description}</p>
+									<div class="fc-footer">
+										<span class="reading-time">{readingTime(article.body || '')} min</span>
+										<ViewCounter slug={article.id} />
+									</div>
+								</a>
+							</div>
+						))}
+					</div>
+
+					<hr class="section-rule" />
+					<div class="section-header" style="margin-bottom: 1.5em;">
+						<h2 class="section-title">Archive</h2>
+					</div>
+
+					<div class="filter-bar">
+						{categories.map((cat) => (
+							<button class={`filter-pill${cat === 'All' ? ' active' : ''}`} data-cat={cat}>
+								{cat}
+							</button>
+						))}
+					</div>
+
+					<ul class="archive-list">
+						{articles.map((article) => (
+							<li class="archive-item" data-category={article.data.category}>
+								<a href={`/profji-library/en/articles/${article.id}/`}>
+									<span class="archive-date"><FormattedDate date={article.data.pubDate} /></span>
+									<span class="archive-cat">
+										<span class="cat-dot" style={`background: ${catColors[article.data.category] || 'var(--accent)'}`}></span>
+										<span class="cat-name">{article.data.category}</span>
+									</span>
+									<span class="archive-title">{article.data.title}</span>
+									<span class="archive-meta">
+										<span class="type-badge">{typeLabels[article.data.articleType] || article.data.articleType}</span>
+										<span class="reading-time">{readingTime(article.body || '')} min</span>
+										<ViewCounter slug={article.id} />
+									</span>
+								</a>
+							</li>
+						))}
+					</ul>
+				</>
+			)}
+
+			{articles.length === 0 && (
+				<div style="padding: 4em 0; text-align: center;">
+					<p style="font-family: var(--font-mono); font-size: 0.78em; color: var(--text-muted); letter-spacing: 0.04em;">
+						English translations in progress — check back soon.
+					</p>
+				</div>
+			)}
+
+			<div class="ko-banner">
+				<p>These essays are translated from the Korean edition. Some nuance may differ from the original.</p>
+				<a href="/profji-library/articles">한국어 원문 읽기 →</a>
+			</div>
+		</main>
+		<Footer />
+
+		<script>
+			function initFilters() {
+				const pills = document.querySelectorAll('.filter-pill');
+				const items = document.querySelectorAll('.archive-item');
+				pills.forEach(pill => {
+					pill.addEventListener('click', () => {
+						pills.forEach(p => p.classList.remove('active'));
+						pill.classList.add('active');
+						const cat = (pill as HTMLElement).dataset.cat || 'All';
+						items.forEach(item => {
+							const el = item as HTMLElement;
+							el.style.display = (cat === 'All' || el.dataset.category === cat) ? '' : 'none';
+						});
+					});
+				});
+			}
+			if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initFilters);
+			else initFilters();
+		</script>
+	</body>
+</html>
