@@ -386,7 +386,7 @@ const catCount    = new Set(articlesAll.map(a => a.data.category)).size;
 		<main>
 			<div class="about-header">
 				<span class="label">Ji Research Library · About</span>
-				<h1>Research at the edge<br />of human and machine cognition.</h1>
+				<h1>Research at the edge<br />of human and AI cognition.</h1>
 				<p class="tagline">
 					What changes when AI is inside the thinking process, not just outside it?
 				</p>
@@ -565,11 +565,15 @@ const catCount    = new Set(articlesAll.map(a => a.data.category)).size;
 		<Footer />
 
 		<script>
-			const obs = new IntersectionObserver(
-				entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
-				{ threshold: 0.08 }
-			);
-			document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+			function initReveal() {
+				const obs = new IntersectionObserver(
+					entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
+					{ threshold: 0.08 }
+				);
+				document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+			}
+			// Runs on initial load AND after every View Transition navigation
+			document.addEventListener('astro:page-load', initReveal);
 		</script>
 	</body>
 </html>

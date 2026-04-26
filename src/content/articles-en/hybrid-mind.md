@@ -15,7 +15,7 @@ In 2026, with Copilots writing code, AI agents executing workflows, and LLMs dra
 
 This article frames this change as **Hybrid Mind**. Hybrid Mind is not a state where humans and AI simply exchange information. It is a collaborative state where they divide different cognitive functions, modify thinking structures through mutual feedback, and jointly form a final judgment architecture. Here, AI's value is not in replacing humans. It is in enabling humans to see and reconstruct their own biases, thinking habits, and judgment structures from the outside.
 
-However, not all human-AI collaboration means cognitive expansion. Well-designed collaboration strengthens human metacognition and judgment. Poorly designed collaboration leads to judgment delegation and cognitive atrophy. The core question is not whether to use AI, but **which cognitive functions humans will divide with AI and what they will keep for themselves**. The essence of Hybrid Mind lies in the reorganization of cognitive architecture, not increased convenience.
+But not all human-AI collaboration means cognitive expansion. Well-designed collaboration strengthens human metacognition and judgment. Poorly designed collaboration leads to judgment delegation and cognitive atrophy. The core question isn't whether to use AI, but **which cognitive functions humans will share with AI — and which they'll keep for themselves**. The essence of Hybrid Mind lies in the reorganization of cognitive architecture, not in convenience.
 
 ## What Hybrid Mind Is: Distinguishing Tool Use, Distributed Cognition, and Extended Mind
 
@@ -35,11 +35,11 @@ A framework proposed by Hutchins through his analysis of navigator team collabor
 
 ### Hybrid Mind
 
-Hybrid Mind encompasses the above three concepts but differs at a crucial point.
+Hybrid Mind encompasses all three concepts — but breaks from them at a key point.
 
-> **Hybrid Mind is a collaborative state where humans and AI divide different cognitive functions, modify thinking structures through mutual feedback, and jointly form a final judgment architecture.**
+> **Hybrid Mind is a collaborative state where humans and AI divide different cognitive functions, reshape thinking through mutual feedback, and jointly form a final judgment architecture.**
 
-It is neither simple external memory nor simple distributed cognition. The core is not external storage or auxiliary functions themselves, but that the interaction between human and AI changes the way thinking unfolds, the verification loop, and even the metacognitive structure. **If tool use is the outsourcing of functions, Hybrid Mind is the reconstruction of the thinking process.**
+It's neither simple external memory nor distributed cognition. What's central isn't storage or auxiliary functions but the fact that the interaction itself changes how thinking unfolds — the verification loop, the metacognitive structure. **If tool use is the outsourcing of functions, Hybrid Mind is the restructuring of the thinking process.**
 
 | Concept | Core | Change in Human Thinking |
 |------|------|--------------|
@@ -68,7 +68,7 @@ Human intuition is based on experience and context. AI's pattern recognition is 
 
 The most powerful benefit of Hybrid Mind is the enhancement of metacognition—thinking about "how I think." Conversing with AI, humans observe their own thinking patterns, judgment criteria, and priorities from the outside. Questions like "Why did I reach this conclusion?" and "What premise did I omit?" naturally arise during interaction with AI.
 
-Good human-AI collaboration increases convenience, but more importantly, it enhances metacognition. **AI's most important value is not in providing correct answers, but in enabling humans to externalize and reflexively examine their own thinking structures.**
+Good human-AI collaboration raises convenience, but that's the secondary benefit. The primary one is metacognitive: **AI's most important value isn't providing correct answers — it's enabling humans to externalize and examine their own thinking structures from the outside.**
 
 ## Hybrid Mind Failure: Why Good Collaboration Easily Crumbles into Dependence
 
@@ -92,7 +92,7 @@ When AI repeatedly outputs specific formats, structures, and logical patterns, h
 
 Memory, structuring, independent judgment, counter-argument ability. The longer one depends on AI, the more these abilities weaken. It's like a driver relying on a navigation app losing their sense of direction. The difference is scale. As the range of cognitive functions AI supports expands beyond search and memory to analysis, judgment, and structuring, the range of atrophying skills also widens.
 
-**Good Hybrid Mind expands human thinking, but bad Hybrid Mind reduces humans to the level of AI output managers.** The problem is not whether to use AI, but which cognitive functions to hand over to whom.
+**Good Hybrid Mind expands human thinking; bad Hybrid Mind turns humans into AI output managers.** The question isn't whether to use AI — it's which cognitive functions to hand over, and which to protect.
 
 ## Design Principles for Good Hybrid Mind
 
@@ -134,7 +134,7 @@ Specifically, Brain OS manages the following:
 
 **Multi-axis Evaluation of Cognitive Quality.** It evaluates not only the quality of the output but also the quality of the judgment process. It checks the quality of thinking across multiple axes: Technical Accuracy, Strategic Alignment, Communication Fit, Risk Management, Stakeholder Impact, Efficiency.
 
-**Hybrid Mind is the concept; Brain OS is the execution structure that makes that concept sustainable.** This is why cognitive architecture design is needed, not prompt engineering.
+**Hybrid Mind is the concept; Brain OS is what makes that concept sustainable in practice.** This is why cognitive architecture design matters more than prompt engineering.
 
 ## Conclusion: Better Cognitive Design Over Better Models
 
