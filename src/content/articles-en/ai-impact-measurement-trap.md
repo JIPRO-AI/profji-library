@@ -1,6 +1,6 @@
 ---
-title: "ai impact measurement trap"
-description: "처리 건수가 올라갈수록 더 위험해지는 것이 있다"
+title: "The AI KPI Trap: Higher Productivity, Deeper Burnout"
+description: "As throughput goes up, something more dangerous goes up with it — and standard KPIs won't show you where."
 pubDate: "2026-04-19"
 category: "AI Technology"
 articleType: "essay"
