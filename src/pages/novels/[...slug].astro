@@ -13,8 +13,18 @@ type Props = CollectionEntry<'novels'>;
 
 const novel = Astro.props;
 const { Content } = await render(novel);
+
+const heroImage = `/profji-library/images/novels/${novel.id}.png`;
 ---
 
-<ArticlePost title={novel.data.title} description={novel.data.description} pubDate={novel.data.pubDate} category={novel.data.series} tags={[]} slug={`novel-${novel.id}`}>
+<ArticlePost
+	title={novel.data.title}
+	description={novel.data.description}
+	pubDate={novel.data.pubDate}
+	category={novel.data.series}
+	tags={[]}
+	slug={`novel-${novel.id}`}
+	heroImage={heroImage}
+>
 	<Content />
 </ArticlePost>

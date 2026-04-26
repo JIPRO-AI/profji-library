@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 import ViewCounter from '../../components/ViewCounter.astro';
 import { SITE_TITLE } from '../../consts';
@@ -23,124 +24,269 @@ function readingTime(body: string): number {
 		<style>
 			/* ── Page Header ── */
 			.page-header {
-				padding: 5em 0 2em;
+				padding: 5em 0 2.5em;
+				position: relative;
 			}
 			.page-label {
 				font-family: var(--font-mono);
 				font-size: 0.68em;
-				color: var(--text-muted);
-				letter-spacing: 0.08em;
+				color: var(--accent);
+				letter-spacing: 0.14em;
 				text-transform: uppercase;
-				margin-bottom: 1em;
+				margin-bottom: 0.8em;
 				display: block;
+				opacity: 0.7;
 			}
 			.page-header h1 {
-				font-size: 2.6em;
-				font-weight: 300;
-				letter-spacing: -0.02em;
-				margin-bottom: 0.6em;
+				font-family: var(--font-serif);
+				font-size: 2.5em;
+				font-weight: 400;
+				letter-spacing: -0.025em;
+				line-height: 1.25;
+				margin-bottom: 0.7em;
 			}
 			.page-intro {
 				font-size: 0.88em;
 				color: var(--text-secondary);
-				line-height: 1.8;
-				max-width: 540px;
+				line-height: 1.85;
+				max-width: 520px;
+				margin-bottom: 1.6em;
+			}
+			.series-meta {
+				display: flex;
+				align-items: center;
+				gap: 1.2em;
+				flex-wrap: wrap;
+			}
+			.series-badge {
+				font-family: var(--font-mono);
+				font-size: 0.62em;
+				color: var(--accent);
+				border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+				padding: 0.2em 0.6em;
+				border-radius: 2px;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+			}
+			.series-stat {
+				font-family: var(--font-mono);
+				font-size: 0.62em;
+				color: var(--text-muted);
+				letter-spacing: 0.04em;
+			}
+			.series-stat .n {
+				color: var(--text-secondary);
 			}
 
-			/* ── Series Block ── */
-			.series-block {
-				margin-top: 3em;
-				padding-top: 2em;
+			/* ── Section rule ── */
+			.section-rule {
+				border: none;
 				border-top: 1px solid var(--border);
-			}
-			.series-label {
-				font-family: var(--font-mono);
-				font-size: 0.68em;
-				color: var(--text-muted);
-				letter-spacing: 0.08em;
-				text-transform: uppercase;
-				margin-bottom: 0.8em;
-				display: block;
-			}
-			.series-title {
-				font-family: var(--font-serif);
-				font-size: 1.3em;
-				font-weight: 400;
-				color: var(--text-primary);
-				margin-bottom: 0.4em;
-			}
-			.series-desc {
-				font-size: 0.82em;
-				color: var(--text-muted);
-				line-height: 1.7;
-				max-width: 520px;
-				margin-bottom: 2em;
+				margin: 0 0 0;
 			}
 
 			/* ── Episode Cards ── */
 			.episode-list {
 				display: flex;
 				flex-direction: column;
-				gap: 0;
 			}
 			.episode-card {
-				display: block;
-				padding: 1.8em 0 1.8em 1.5em;
+				display: grid;
+				grid-template-columns: 280px 1fr;
+				gap: 0;
 				border-bottom: 1px solid var(--border);
-				border-left: 2px solid transparent;
 				text-decoration: none;
 				color: inherit;
-				transition: border-left-color 0.3s, background 0.3s;
+				transition: background 0.3s;
+				position: relative;
+				overflow: hidden;
 			}
 			.episode-card:first-child {
 				border-top: 1px solid var(--border);
 			}
+			.episode-card::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				width: 2px;
+				background: var(--accent);
+				transform: scaleX(0);
+				transform-origin: left;
+				transition: transform 0.3s ease;
+			}
+			.episode-card:hover::before {
+				transform: scaleX(1);
+			}
 			.episode-card:hover {
-				border-left-color: var(--accent);
-				background: var(--accent-dim);
+				background: rgba(184, 160, 122, 0.03);
+			}
+			.episode-card:hover .ep-thumb img {
+				opacity: 0.75;
+				transform: scale(1.04);
 			}
 			.episode-card:hover .ep-title {
 				color: var(--accent);
 			}
+
+			/* ── Thumbnail ── */
+			.ep-thumb {
+				height: 180px;
+				overflow: hidden;
+				position: relative;
+				background: #0a0a0e;
+			}
+			.ep-thumb img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center 40%;
+				display: block;
+				opacity: 0.58;
+				transition: opacity 0.4s ease, transform 0.5s ease;
+				user-select: none;
+				pointer-events: none;
+			}
+			.ep-thumb::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(
+					to right,
+					rgba(11, 11, 14, 0) 60%,
+					rgba(11, 11, 14, 0.85) 100%
+				);
+				pointer-events: none;
+			}
+
+			/* ── Episode Content ── */
+			.ep-content {
+				padding: 2em 2em 2em 2.2em;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				position: relative;
+				overflow: hidden;
+			}
+			.ep-bg-num {
+				position: absolute;
+				top: -0.15em;
+				right: -0.05em;
+				font-family: var(--font-mono);
+				font-size: 7em;
+				font-weight: 700;
+				color: rgba(184, 160, 122, 0.04);
+				line-height: 1;
+				user-select: none;
+				pointer-events: none;
+			}
 			.ep-number {
 				font-family: var(--font-mono);
-				font-size: 0.68em;
+				font-size: 0.65em;
 				color: var(--accent);
-				letter-spacing: 0.06em;
+				letter-spacing: 0.08em;
 				text-transform: uppercase;
-				margin-bottom: 0.6em;
+				margin-bottom: 0.7em;
 				display: block;
+				opacity: 0.8;
 			}
 			.ep-title {
 				font-family: var(--font-serif);
-				font-size: 1.15em;
+				font-size: 1.25em;
 				font-weight: 400;
 				line-height: 1.35;
 				color: var(--text-primary);
-				margin-bottom: 0.4em;
+				margin-bottom: 0.5em;
 				transition: color 0.3s;
 			}
 			.ep-hook {
 				font-size: 0.82em;
 				color: var(--text-muted);
-				line-height: 1.65;
-				max-width: 480px;
-				margin-bottom: 0.6em;
+				line-height: 1.7;
+				max-width: 440px;
+				margin-bottom: 1em;
 			}
 			.ep-meta {
 				display: flex;
 				align-items: center;
-				gap: 1em;
+				gap: 1.2em;
 				font-family: var(--font-mono);
-				font-size: 0.64em;
+				font-size: 0.62em;
 				color: var(--text-muted);
+				letter-spacing: 0.02em;
+			}
+			.ep-meta .dot {
+				color: var(--border);
+			}
+
+			/* ── Coming Soon ── */
+			.coming-soon {
+				display: grid;
+				grid-template-columns: 280px 1fr;
+				border-bottom: 1px solid var(--border);
+				opacity: 0.35;
+				cursor: default;
+			}
+			.coming-soon-thumb {
+				height: 180px;
+				background: repeating-linear-gradient(
+					45deg,
+					rgba(184, 160, 122, 0.02),
+					rgba(184, 160, 122, 0.02) 10px,
+					transparent 10px,
+					transparent 20px
+				);
+				border-right: 1px solid var(--border);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.coming-soon-thumb-label {
+				font-family: var(--font-mono);
+				font-size: 0.65em;
+				color: var(--text-muted);
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+			}
+			.coming-soon-content {
+				padding: 2em 2em 2em 2.2em;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			.coming-soon-ep {
+				font-family: var(--font-mono);
+				font-size: 0.65em;
+				color: var(--text-muted);
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				margin-bottom: 0.7em;
+			}
+			.coming-soon-title {
+				font-family: var(--font-serif);
+				font-size: 1.1em;
+				font-weight: 400;
+				color: var(--text-muted);
+				margin-bottom: 0.4em;
+			}
+			.coming-soon-note {
+				font-family: var(--font-mono);
+				font-size: 0.62em;
+				color: var(--text-muted);
+				letter-spacing: 0.04em;
 			}
 
 			/* ── Bridge ── */
 			.bridge {
 				margin-top: 4em;
-				padding-top: 2em;
+				padding: 1.8em 0;
 				border-top: 1px solid var(--border);
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				gap: 0.8em;
 			}
 			.bridge-text {
 				font-size: 0.82em;
@@ -155,13 +301,38 @@ function readingTime(body: string): number {
 			.bridge-text a:hover {
 				color: #d4be94;
 			}
+			.bridge-note {
+				font-family: var(--font-mono);
+				font-size: 0.62em;
+				color: var(--text-muted);
+				letter-spacing: 0.04em;
+			}
 
 			/* ── Responsive ── */
 			@media (max-width: 720px) {
-				.page-header { padding: 3.5em 0 1.5em; }
-				.page-header h1 { font-size: 2em; }
-				.episode-card { padding-left: 1em; }
-				.ep-title { font-size: 1.05em; }
+				.page-header { padding: 3.5em 0 1.8em; }
+				.page-header h1 { font-size: 1.9em; }
+				.episode-card,
+				.coming-soon {
+					grid-template-columns: 1fr;
+				}
+				.ep-thumb,
+				.coming-soon-thumb {
+					height: 160px;
+				}
+				.ep-thumb::after {
+					background: linear-gradient(
+						to bottom,
+						rgba(11, 11, 14, 0) 50%,
+						rgba(11, 11, 14, 0.85) 100%
+					);
+				}
+				.ep-content,
+				.coming-soon-content {
+					padding: 1.4em 0;
+				}
+				.ep-bg-num { font-size: 5em; }
+				.bridge { flex-direction: column; gap: 0.5em; }
 			}
 		</style>
 	</head>
@@ -170,32 +341,58 @@ function readingTime(body: string): number {
 		<main>
 			<div class="page-header">
 				<span class="page-label">Narrative Lab</span>
-				<h1>Novels</h1>
+				<h1>AI시대 인간 직장인 생존법</h1>
 				<p class="page-intro">
-					이 시리즈는 AI 시대의 직장, 적응, 공존이라는 같은 주제를 서사로 탐구하는 실험입니다.
-					연구 에세이가 개념을 분석한다면, 이 소설은 그 개념이 실제 인간의 삶과 감정 안에서 어떻게 작동하는지를 보여줍니다.
+					AI 에이전트 '아리'의 시선으로 보는 직장 내 AI 도입과 인간의 적응, 갈등, 공존.
+					연구 에세이가 개념을 분석한다면, 이 소설은 그 개념이 실제 인간의 삶과 감정 안에서 어떻게 작동하는지 보여줍니다.
 				</p>
+				<div class="series-meta">
+					<span class="series-badge">Series · In Progress</span>
+					<span class="series-stat"><span class="n">{novels.length}</span> episodes published</span>
+					<span class="series-stat">AI 에이전트 · 직장 · 공존</span>
+				</div>
 			</div>
 
-			<div class="series-block">
-				<span class="series-label">Series</span>
-				<h2 class="series-title">AI시대 인간 직장인 생존법</h2>
-				<p class="series-desc">
-					AI 에이전트 '아리'의 시선을 통해, 직장 내 AI 도입과 인간의 적응, 갈등, 공존을 다루는 연작 서사.
-				</p>
+			<hr class="section-rule" />
 
-				<div class="episode-list">
-					{novels.map((novel) => (
-						<a class="episode-card" href={`/profji-library/novels/${novel.id}/`}>
-							<span class="ep-number">EP.{novel.data.episode}</span>
+			<div class="episode-list">
+				{novels.map((novel) => (
+					<a class="episode-card" href={`/profji-library/novels/${novel.id}/`}>
+						<div class="ep-thumb">
+							<img
+								src={`/profji-library/images/novels/${novel.id}.png`}
+								alt=""
+								width="560"
+								height="180"
+								loading="lazy"
+							/>
+						</div>
+						<div class="ep-content">
+							<span class="ep-bg-num">{String(novel.data.episode).padStart(2, '0')}</span>
+							<span class="ep-number">EP.{String(novel.data.episode).padStart(2, '0')}</span>
 							<div class="ep-title">{novel.data.title}</div>
 							<p class="ep-hook">{novel.data.description}</p>
 							<div class="ep-meta">
+								<span><FormattedDate date={novel.data.pubDate} /></span>
+								<span class="dot">·</span>
 								<span>{readingTime(novel.body || '')} min read</span>
+								<span class="dot">·</span>
 								<ViewCounter slug={`novel-${novel.id}`} />
 							</div>
-						</a>
-					))}
+						</div>
+					</a>
+				))}
+
+				<!-- Coming soon placeholder -->
+				<div class="coming-soon">
+					<div class="coming-soon-thumb">
+						<span class="coming-soon-thumb-label">Soon</span>
+					</div>
+					<div class="coming-soon-content">
+						<span class="coming-soon-ep">EP.04</span>
+						<div class="coming-soon-title">다음 화 준비 중</div>
+						<span class="coming-soon-note">연재 중 — 새 에피소드가 추가될 예정입니다</span>
+					</div>
 				</div>
 			</div>
 
@@ -203,6 +400,7 @@ function readingTime(body: string): number {
 				<p class="bridge-text">
 					같은 주제를 분석적으로 읽고 싶다면 &rarr; <a href="/profji-library/articles/">Featured Essays</a>
 				</p>
+				<span class="bridge-note">Fiction × Research</span>
 			</div>
 		</main>
 		<Footer />
