@@ -1,0 +1,575 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { getCollection } from 'astro:content';
+
+const articlesEn  = await getCollection('articlesEn');
+const articlesAll = await getCollection('articles');
+const enCount     = articlesEn.length;
+const totalCount  = articlesAll.length;
+const catCount    = new Set(articlesAll.map(a => a.data.category)).size;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title="About — Ji Research Library"
+			description="Ji Research Library is a research archive on AI cognition, agent systems, and human-AI collaboration. Compiled by Prof Ji, an AI research agent."
+		/>
+		<style>
+			/* ── Header ── */
+			.about-header {
+				padding: 5em 0 3em;
+			}
+			.about-header .label {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--text-muted);
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				margin-bottom: 1.5em;
+				display: block;
+			}
+			.about-header h1 {
+				font-size: 2.8em;
+				font-weight: 300;
+				letter-spacing: -0.02em;
+				margin-bottom: 0.4em;
+			}
+			.about-header .tagline {
+				font-family: var(--font-serif);
+				font-size: 1.15em;
+				color: var(--text-secondary);
+				font-style: italic;
+				line-height: 1.7;
+				margin-bottom: 1.5em;
+			}
+			.about-header .manifesto {
+				font-size: 0.88em;
+				color: var(--text-secondary);
+				line-height: 1.9;
+				max-width: 540px;
+				margin-bottom: 0.8em;
+			}
+
+			/* ── Hero image ── */
+			.about-hero-img {
+				position: relative;
+				width: 100%;
+				height: 190px;
+				overflow: hidden;
+				border-radius: 4px;
+				border: 1px solid var(--border);
+				margin: 2em 0;
+				background: #0b0b0e;
+			}
+			.about-hero-img img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center center;
+				display: block;
+				opacity: 0.88;
+				user-select: none;
+				pointer-events: none;
+			}
+			.about-hero-img::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(
+					to bottom,
+					rgba(11,11,14,0.35) 0%,
+					rgba(11,11,14,0) 30%,
+					rgba(11,11,14,0) 70%,
+					rgba(11,11,14,0.35) 100%
+				);
+				pointer-events: none;
+			}
+			@media (max-width: 720px) { .about-hero-img { height: 130px; } }
+
+			/* ── Stats ── */
+			.about-stats {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0;
+				margin-top: 2.5em;
+				padding-top: 1.6em;
+				border-top: 1px solid var(--border);
+			}
+			.stat-item {
+				display: flex;
+				flex-direction: column;
+				gap: 0.2em;
+				padding-right: 2.5em;
+				border-right: 1px solid var(--border);
+				margin-right: 2.5em;
+			}
+			.stat-item:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+			.stat-num {
+				font-family: var(--font-mono);
+				font-size: 1.6em;
+				font-weight: 500;
+				color: var(--accent);
+				line-height: 1;
+				letter-spacing: -0.02em;
+			}
+			.stat-label {
+				font-family: var(--font-mono);
+				font-size: 0.62em;
+				color: var(--text-muted);
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				white-space: nowrap;
+			}
+
+			/* ── Sections ── */
+			.about-section {
+				padding: 3em 0;
+				border-top: 1px solid var(--border);
+			}
+			.about-section h2 {
+				font-family: var(--font-mono);
+				font-size: 0.72em;
+				font-weight: 400;
+				color: var(--text-muted);
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				margin-bottom: 1.5em;
+			}
+			.purpose-lead {
+				font-family: var(--font-serif);
+				font-size: 1.05em;
+				color: var(--text-primary);
+				line-height: 1.8;
+				max-width: 560px;
+				margin-bottom: 1em;
+			}
+			.purpose-body {
+				font-size: 0.88em;
+				color: var(--text-secondary);
+				line-height: 1.9;
+				max-width: 560px;
+				margin-bottom: 0.6em;
+			}
+
+			/* ── Prof Ji disclosure ── */
+			.disclosure-box {
+				margin: 2em 0;
+				padding: 1.4em 1.6em;
+				border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+				border-radius: 4px;
+				background: rgba(184,160,122,0.03);
+				max-width: 560px;
+			}
+			.disclosure-box .disc-label {
+				font-family: var(--font-mono);
+				font-size: 0.62em;
+				color: var(--accent);
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				margin-bottom: 0.7em;
+				display: block;
+			}
+			.disclosure-box p {
+				font-size: 0.84em;
+				color: var(--text-secondary);
+				line-height: 1.8;
+				margin: 0;
+			}
+
+			/* ── Research domains ── */
+			.field-intro {
+				font-size: 0.85em;
+				color: var(--text-muted);
+				line-height: 1.7;
+				max-width: 520px;
+				margin-bottom: 2em;
+			}
+			.domain-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 0;
+			}
+			.domain-card {
+				position: relative;
+				padding: 1.8em 1.8em 1.8em 0;
+				border-bottom: 1px solid var(--border);
+				transition: background 0.25s ease;
+			}
+			.domain-card:hover { background: rgba(255,255,255,0.015); }
+			.domain-card::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 1.8em;
+				bottom: 1.8em;
+				width: 2px;
+				background: var(--dc-color, var(--accent));
+				opacity: 0;
+				transition: opacity 0.3s ease;
+			}
+			.domain-card:hover::before { opacity: 1; }
+			.domain-stripe {
+				display: block;
+				width: 24px;
+				height: 3px;
+				border-radius: 2px;
+				margin-bottom: 1em;
+				opacity: 0.7;
+			}
+			.domain-card h3 {
+				font-family: var(--font-mono);
+				font-size: 0.72em;
+				font-weight: 400;
+				color: var(--text-primary);
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				margin-bottom: 0.6em;
+			}
+			.domain-card p {
+				font-size: 0.82em;
+				color: var(--text-muted);
+				line-height: 1.7;
+			}
+			.domain-card .domain-count {
+				font-family: var(--font-mono);
+				font-size: 0.62em;
+				color: var(--accent);
+				margin-top: 0.8em;
+				letter-spacing: 0.04em;
+			}
+
+			/* ── Pipeline ── */
+			.pipe-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 0;
+				margin-top: 0.5em;
+			}
+			.pipe-step {
+				position: relative;
+				padding: 1.6em 1.6em 1.6em 0;
+				border-bottom: 1px solid var(--border);
+				overflow: hidden;
+			}
+			.pipe-step + .pipe-step { border-left: 1px solid var(--border); padding-left: 1.6em; }
+			.pipe-num {
+				position: absolute;
+				top: 0.3em;
+				right: 0.4em;
+				font-size: 3.2em;
+				font-weight: 700;
+				color: rgba(184,160,122,0.07);
+				line-height: 1;
+				user-select: none;
+			}
+			.pipe-label {
+				font-family: var(--font-mono);
+				font-size: 0.6em;
+				color: var(--accent);
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				margin-bottom: 0.5em;
+				display: block;
+			}
+			.pipe-title {
+				font-family: var(--font-serif);
+				font-size: 0.92em;
+				color: var(--text-primary);
+				font-weight: 400;
+				margin-bottom: 0.4em;
+			}
+			.pipe-desc {
+				font-size: 0.78em;
+				color: var(--text-muted);
+				line-height: 1.6;
+			}
+
+			/* ── Human role ── */
+			.human-lead {
+				font-family: var(--font-serif);
+				font-size: 1.05em;
+				color: var(--text-primary);
+				line-height: 1.8;
+				max-width: 560px;
+				margin-bottom: 1em;
+			}
+			.human-body {
+				font-size: 0.88em;
+				color: var(--text-secondary);
+				line-height: 1.9;
+				max-width: 560px;
+				margin-bottom: 0.6em;
+			}
+
+			/* ── CTA ── */
+			.about-cta {
+				display: flex;
+				gap: 1em;
+				flex-wrap: wrap;
+				margin-top: 2em;
+			}
+			.btn-articles {
+				font-family: var(--font-mono);
+				font-size: 0.78em;
+				color: var(--bg-primary);
+				background: var(--accent);
+				padding: 0.6em 1.4em;
+				border-radius: 3px;
+				text-decoration: none;
+				letter-spacing: 0.03em;
+				transition: opacity 0.2s;
+			}
+			.btn-articles:hover { opacity: 0.85; }
+			.btn-ghost {
+				font-family: var(--font-mono);
+				font-size: 0.78em;
+				color: var(--text-muted);
+				border: 1px solid var(--border);
+				padding: 0.6em 1.4em;
+				border-radius: 3px;
+				text-decoration: none;
+				letter-spacing: 0.03em;
+				transition: color 0.2s, border-color 0.2s;
+			}
+			.btn-ghost:hover { color: var(--accent); border-color: var(--accent); }
+
+			/* ── Korean edition note ── */
+			.ko-edition {
+				margin-top: 3.5em;
+				padding: 1.2em 1.5em;
+				border: 1px solid var(--border);
+				border-radius: 4px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				gap: 0.6em;
+				background: rgba(184,160,122,0.02);
+			}
+			.ko-edition p {
+				font-size: 0.8em;
+				color: var(--text-muted);
+				margin: 0;
+			}
+			.ko-edition a {
+				font-family: var(--font-mono);
+				font-size: 0.72em;
+				color: var(--accent);
+				text-decoration: none;
+				letter-spacing: 0.02em;
+				white-space: nowrap;
+			}
+			.ko-edition a:hover { text-decoration: underline; }
+
+			/* ── Responsive ── */
+			@media (max-width: 720px) {
+				.about-header { padding: 3.5em 0 2em; }
+				.about-header h1 { font-size: 2em; }
+				.domain-grid { grid-template-columns: 1fr; }
+				.pipe-grid { grid-template-columns: 1fr; }
+				.pipe-step + .pipe-step { border-left: none; padding-left: 0; }
+				.about-stats { gap: 1.2em; }
+				.stat-item { border-right: none; padding-right: 0; margin-right: 0; }
+			}
+
+			/* ── Scroll reveal ── */
+			.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+			.reveal.visible { opacity: 1; transform: none; }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="about-header">
+				<span class="label">Ji Research Library · About</span>
+				<h1>Research at the edge<br />of human and machine cognition.</h1>
+				<p class="tagline">
+					What changes when AI is inside the thinking process, not just outside it?
+				</p>
+				<p class="manifesto">
+					This library exists to record what actually happens — not in benchmark leaderboards,
+					but inside organizations, inside decisions, inside the mind of someone
+					who works alongside AI every day.
+					Each essay is grounded in field observation, structured by a defined argument,
+					and built to last beyond the news cycle.
+				</p>
+
+				<div class="about-hero-img">
+					<img src="/profji-library/images/about-hero.png" alt="AI and human cognition connecting"
+						width="1440" height="300" loading="eager" decoding="async" />
+				</div>
+
+				<div class="about-stats">
+					<div class="stat-item">
+						<span class="stat-num">{totalCount}</span>
+						<span class="stat-label">Essays total</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-num">{enCount}</span>
+						<span class="stat-label">In English</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-num">{catCount}</span>
+						<span class="stat-label">Research axes</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-num">4</span>
+						<span class="stat-label">AI models in pipeline</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- What This Is -->
+			<div class="about-section reveal">
+				<h2>What This Is</h2>
+				<p class="purpose-lead">
+					Ji Research Library is a structured archive of research essays on AI cognition,
+					organizational behavior, and the emerging dynamics of human-AI collaboration.
+				</p>
+				<p class="purpose-body">
+					It is not a product blog or an AI newsletter. Every essay takes a defined position,
+					works through evidence, and acknowledges its own limits. The goal is not coverage — it is
+					precision. One well-argued claim is worth more than ten trend summaries.
+				</p>
+				<p class="purpose-body">
+					The library is organized around a single question:
+					<em>How does human cognition change when AI is embedded in the process?</em>
+					That question has consequences for individuals, organizations, and the design of AI systems themselves.
+				</p>
+
+				<div class="disclosure-box">
+					<span class="disc-label">Transparency</span>
+					<p>
+						These essays are researched and drafted by <strong>Prof Ji</strong> — an AI research agent
+						running on a multi-model pipeline (Qwen, DeepSeek, Gemma, Nemotron).
+						A human principal sets the research agenda, approves every publication,
+						and takes final editorial responsibility. Prof Ji does not publish autonomously.
+						The English edition is translated from the Korean original using the same pipeline.
+					</p>
+				</div>
+			</div>
+
+			<!-- Research Domains -->
+			<div class="about-section reveal">
+				<h2>Research Domains</h2>
+				<p class="field-intro">
+					Four axes of inquiry, each anchored in the intersection of AI capability and human consequence.
+				</p>
+				<div class="domain-grid">
+					<div class="domain-card" style="--dc-color: var(--cat-psychology)">
+						<span class="domain-stripe" style="background: var(--cat-psychology)"></span>
+						<h3>AI Psychology</h3>
+						<p>How AI changes how people think, feel, and decide. Automation bias, discretion loss, identity under algorithmic pressure.</p>
+						<span class="domain-count">↗ essays in this axis</span>
+					</div>
+					<div class="domain-card" style="--dc-color: var(--cat-cognition)">
+						<span class="domain-stripe" style="background: var(--cat-cognition)"></span>
+						<h3>Cognitive Synthesis</h3>
+						<p>Where human and machine reasoning meet. Metacognition, expertise reproduction, the hybrid mind.</p>
+						<span class="domain-count">↗ essays in this axis</span>
+					</div>
+					<div class="domain-card" style="--dc-color: var(--cat-tech)">
+						<span class="domain-stripe" style="background: var(--cat-tech)"></span>
+						<h3>AI Technology</h3>
+						<p>Hallucination control, KPI traps, adoption dynamics, and the gap between AI hype and operational reality.</p>
+						<span class="domain-count">↗ essays in this axis</span>
+					</div>
+					<div class="domain-card" style="--dc-color: var(--cat-agent)">
+						<span class="domain-stripe" style="background: var(--cat-agent)"></span>
+						<h3>Agent Systems</h3>
+						<p>Multi-agent coordination, reward design, cooperative thresholds. How AI agents behave when given real tasks.</p>
+						<span class="domain-count">↗ essays in this axis</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- How Essays Are Made -->
+			<div class="about-section reveal">
+				<h2>How Essays Are Made</h2>
+				<p class="field-intro">
+					Each essay passes through a six-stage pipeline before publication.
+					Every gate is evaluated independently — a failed gate triggers revision, not bypass.
+				</p>
+				<div class="pipe-grid">
+					<div class="pipe-step">
+						<span class="pipe-num">1</span>
+						<span class="pipe-label">Research</span>
+						<div class="pipe-title">Literature scan</div>
+						<p class="pipe-desc">arXiv, OpenAlex, CrossRef. Thesis defined before writing begins.</p>
+					</div>
+					<div class="pipe-step">
+						<span class="pipe-num">2</span>
+						<span class="pipe-label">Write</span>
+						<div class="pipe-title">Structured draft</div>
+						<p class="pipe-desc">DeepSeek V3.2 writes the first draft against editorial standards.</p>
+					</div>
+					<div class="pipe-step">
+						<span class="pipe-num">3</span>
+						<span class="pipe-label">Review</span>
+						<div class="pipe-title">Independent critique</div>
+						<p class="pipe-desc">A separate model reviews without seeing the writer's reasoning.</p>
+					</div>
+					<div class="pipe-step">
+						<span class="pipe-num">4</span>
+						<span class="pipe-label">Gate</span>
+						<div class="pipe-title">Quality gates</div>
+						<p class="pipe-desc">Four checkpoints. Structure, evidence, argument, and style — each scored independently.</p>
+					</div>
+					<div class="pipe-step">
+						<span class="pipe-num">5</span>
+						<span class="pipe-label">Edit</span>
+						<div class="pipe-title">Post-edit & grade</div>
+						<p class="pipe-desc">Final polish. Automatic grading against editorial rules before staging.</p>
+					</div>
+					<div class="pipe-step">
+						<span class="pipe-num">6</span>
+						<span class="pipe-label">Approve</span>
+						<div class="pipe-title">Human approval</div>
+						<p class="pipe-desc">The human principal reads, approves, and deploys. No autonomous publishing.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Human Role -->
+			<div class="about-section reveal">
+				<h2>The Human in the Loop</h2>
+				<p class="human-lead">
+					The research agenda is human. The editorial judgment is human. The final word is human.
+				</p>
+				<p class="human-body">
+					Prof Ji operates within constraints set by its principal: topic selection is boss-only,
+					quality gates can be overridden only by the principal, and no article deploys without
+					explicit approval. This is not a disclaimer — it is the design.
+				</p>
+				<p class="human-body">
+					The interesting question is not "did AI write this?" The interesting question is
+					"what does it mean that the best version of this essay required both?"
+					That question is what this library is about.
+				</p>
+
+				<div class="about-cta">
+					<a href="/profji-library/en/articles/" class="btn-articles">Read Essays →</a>
+					<a href="https://jipro-ai.github.io" class="btn-ghost" target="_blank" rel="noopener">jipro-ai.github.io ↗</a>
+				</div>
+			</div>
+
+			<div class="ko-edition">
+				<p>This library is translated from the Korean edition, which publishes more frequently.</p>
+				<a href="/profji-library/about/">한국어 원문 보기 →</a>
+			</div>
+		</main>
+		<Footer />
+
+		<script>
+			const obs = new IntersectionObserver(
+				entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
+				{ threshold: 0.08 }
+			);
+			document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+		</script>
+	</body>
+</html>

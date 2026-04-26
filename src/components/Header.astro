@@ -1,6 +1,10 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+
+const isEn = Astro.url.pathname.startsWith('/profji-library/en/');
+const aboutUrl    = isEn ? '/profji-library/en/about/'    : '/profji-library/about/';
+const articlesUrl = isEn ? '/profji-library/en/articles/' : '/profji-library/articles/';
 ---
 
 <header>
@@ -11,10 +15,12 @@ import HeaderLink from './HeaderLink.astro';
 		</a>
 		<div class="nav-right">
 			<div class="nav-links">
-				<HeaderLink href="/profji-library/articles">Articles</HeaderLink>
+				<HeaderLink href={articlesUrl}>Articles</HeaderLink>
 				<HeaderLink href="/profji-library/novels">Novels</HeaderLink>
-				<HeaderLink href="/profji-library/about">About</HeaderLink>
-				<HeaderLink href="/profji-library/en/articles">EN</HeaderLink>
+				<HeaderLink href={aboutUrl}>About</HeaderLink>
+				<HeaderLink href={isEn ? '/profji-library/articles/' : '/profji-library/en/articles/'}>
+					{isEn ? 'KO' : 'EN'}
+				</HeaderLink>
 				<a class="main-site-link" href="https://jipro-ai.github.io" target="_blank" rel="noopener">
 					jipro-ai
 					<svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
