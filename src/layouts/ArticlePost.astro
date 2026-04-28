@@ -6,6 +6,24 @@ import Header from '../components/Header.astro';
 import ViewCounter from '../components/ViewCounter.astro';
 
 const { title, description, pubDate, updatedDate, category, tags, slug, ogImage, heroImage, lang, koUrl, enUrl } = Astro.props;
+
+// Category colors — must match src/pages/articles/index.astro and src/pages/en/articles/index.astro
+const catColors: Record<string, string> = {
+	// Korean
+	'AI 심리학':       'var(--cat-psychology)',
+	'인지 융합':       'var(--cat-cognition)',
+	'AI 기술':         'var(--cat-tech)',
+	'에이전트':        'var(--cat-agent)',
+	'에이전트 시스템': 'var(--cat-agent)',
+	'LLM 아키텍처':   'var(--cat-tech)',
+	// English
+	'AI Psychology':       'var(--cat-psychology)',
+	'Cognitive Synthesis': 'var(--cat-cognition)',
+	'AI Technology':       'var(--cat-tech)',
+	'Agent Systems':       'var(--cat-agent)',
+	'LLM Architecture':    'var(--cat-tech)',
+};
+const catColor = catColors[category] || 'var(--accent)';
 ---
 
 <html lang="ko">
@@ -27,7 +45,7 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage,
 				width: 7px;
 				height: 7px;
 				border-radius: 50%;
-				background: var(--accent);
+				/* color set inline from category */
 			}
 			.article-header .cat-name {
 				font-family: var(--font-mono);
@@ -81,6 +99,17 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage,
 				user-select: none;
 				pointer-events: none;
 			}
+			/* Category color tint — overlays the hero with the article's category color */
+			.hero-banner::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: var(--hero-tint, var(--accent));
+				mix-blend-mode: color;
+				opacity: 0.85;
+				pointer-events: none;
+				z-index: 1;
+			}
 			.hero-banner::after {
 				content: '';
 				position: absolute;
@@ -93,6 +122,7 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage,
 					rgba(11,11,14,1)    100%
 				);
 				pointer-events: none;
+				z-index: 2;
 			}
 			.article-header-with-hero {
 				padding-top: 2em;
@@ -288,7 +318,7 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage,
 		<main>
 			<article>
 				{heroImage && (
-					<div class="hero-banner">
+					<div class="hero-banner" style={`--hero-tint: ${catColor}`}>
 						<img src={heroImage} alt="" width="1200" height="630" loading="eager" decoding="async" />
 					</div>
 				)}
@@ -305,7 +335,7 @@ const { title, description, pubDate, updatedDate, category, tags, slug, ogImage,
 					)}
 					{category && (
 						<div class="cat-row">
-							<span class="cat-dot"></span>
+							<span class="cat-dot" style={`background: ${catColor}`}></span>
 							<span class="cat-name">{category}</span>
 						</div>
 					)}
