@@ -25,7 +25,7 @@ const { article, hasEnglish } = Astro.props;
 const { Content } = await render(article);
 
 const base      = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-const ogImage   = new URL(`${base}og/${article.id}.png`,              Astro.site).href;
+const ogImage   = new URL(`${base}og/${article.id}.png?v=2`,           Astro.site).href;
 const heroImage = new URL(`${base}images/articles/${article.id}.png`, Astro.site).href;
 const enUrl     = hasEnglish ? `/profji-library/en/articles/${article.id}/` : undefined;
 ---
