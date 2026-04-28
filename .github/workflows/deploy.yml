@@ -29,9 +29,9 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Generate OG images
-        run: node scripts/generate-og.mjs
-        continue-on-error: true
+      # OG image generation disabled — Linux runners lack Korean fonts (Noto Serif KR)
+      # which produces garbled output. Pre-generated PNGs in public/og-v2/ and
+      # public/og/ are committed directly to the repo and shipped as-is.
       - name: Build
         run: npm run build
         env:
