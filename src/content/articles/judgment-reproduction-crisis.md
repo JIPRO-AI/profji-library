@@ -3,7 +3,7 @@ title: "판단력 재생산 위기 (Judgment Reproduction Crisis, JRC)"
 description: "AX 시대에 판단력 형성 메커니즘이 약화되어 누적되는 장기 비용 — 측정 비대칭, 가역성 경계, 그리고 회복 정책"
 pubDate: "2026-05-07"
 category: "AI 기술"
-tags: ["JRC","판단력","측정 비대칭","결정부채","AX"]
+tags: ["AI","JRC","judgment","measurement-asymmetry","decision-debt","reproduction-crisis","AX"]
 ---
 
 ## 챗봇 700명을 해고했다가 다시 고용한 회사
@@ -34,7 +34,7 @@ AX 시대 조직 의사결정의 가장 깊은 왜곡은 측정 가능한 것과
 
 심리적 메커니즘도 같은 방향으로 작동한다. **"자동화 편향의 본질은 AI가 틀리는 것이 아니다. AI는 대부분 맞는다. 문제는 '대부분 맞기 때문에' 인간이 오류 가능성을 상상하지 않게 된다는 것이다."** AI가 80% 맞을 때 사람이 가장 위험하다. 90% 맞을 때 사람은 검증 자체를 생략한다. 그 생략의 비용은 그날 측정되지 않는다. 6개월 뒤 누군가 그 결정을 회의실에서 다시 들춰볼 때 청구된다.
 
-## 네 사례 같은 패턴
+## 네 가지 사례로 보는 같은 패턴
 
 판단력의 약화가 어떻게 운영비용으로 전이되는지를 네 개의 큰 사례에서 본다.
 
@@ -97,13 +97,28 @@ AX는 단기 효율을 만든다. 동시에 인간 판단력의 형성 메커니
 
 ## 참고문헌
 
-- 하이브리드 마인드 — 인간과 AI의 인지 융합 조건 (Ji Research Library)
-- 전문성 재생산 위기 — 초안이 자동화될 때 주니어는 어디서 배우는가 (Ji Research Library)
-- AI 도입 효과 측정의 함정 — 측정 비대칭과 KPI 왜곡 (Ji Research Library)
-- 자동화 편향과 의사결정 — AI가 대부분 맞을 때의 위험 (Ji Research Library)
-- 메타인지와 LLM 프롬프팅 — 사용자 인지가 AI 응답 품질을 결정하는 메커니즘 (Ji Research Library)
-- AI 번아웃과 조직 실패 — 효율-회복비용 패턴 (Ji Research Library)
-- AI가 빼앗는 것은 일자리가 아니라 재량권 — 판단권의 위치 이동 (Ji Research Library)
-- Klarna AI Customer Service Reversal (Bloomberg, 2025)
-- JPMorgan LLM Suite Enterprise Rollout (CIO Dive, 2026)
-- The Apprenticeship Layer Crisis (Wharton Knowledge, 2026)
+**학술 연구**
+
+- Bainbridge, L. (1983). "Ironies of Automation." *Automatica*, 19(6), 775–779. — 자동화가 진행될수록 인간 운영자의 역할이 더 어려워진다는 고전적 역설.
+- Parasuraman, R., & Manzey, D. H. (2010). "Complacency and Bias in Human Use of Automation: An Attentional Integration." *Human Factors*, 52(3), 381–410. — 자동화 편향(automation bias)의 실증 분석.
+- Strathern, M. (1997). "'Improving Ratings': Audit in the British University System." *European Review*, 5(3), 305–321. — 'When a measure becomes a target, it ceases to be a good measure'(굿하트의 법칙) 정식화.
+- Brynjolfsson, E., Rock, D., & Syverson, C. (2021). "The Productivity J-Curve: How Intangibles Complement General Purpose Technologies." *American Economic Journal: Macroeconomics*, 13(1), 333–372. — 신기술 도입의 생산성 측정 지연.
+- Acemoglu, D., & Restrepo, P. (2020). "Robots and Jobs: Evidence from US Labor Markets." *Journal of Political Economy*, 128(6), 2188–2244. — 자동화의 노동 시장 분배 효과.
+
+**산업 보고서·언론**
+
+- Bloomberg (2025). "Klarna CEO Reverses Course on AI: Hiring Humans Again After Service Quality Drop." — Sebastian Siemiatkowski의 'lower quality output' 인정 인터뷰.
+- CIO Dive (2026). "JPMorgan Chase to Equip 250K Workers with LLM Suite." — 25만 직원, 50% DAU, 450→1000 use cases 확장 로드맵.
+- Wharton Knowledge (2026). "Is AI Pushing Us to Break the Talent Pipeline?" — 신입 분석가 35% 감소, 'Editor Problem' 분석.
+- World Economic Forum (2026). "How AI is Changing the Nature of Entry Level Work." — 글로벌 cohort 데이터 + Microsoft preceptor program 사례.
+- Microsoft (2026). "Preceptor-style Cohort Programs: Pairing Senior Engineers with Junior Apprentices." — 6개월 rotation 실험 결과.
+
+**Ji Research Library 내부 참조**
+
+- 「하이브리드 마인드: 인간-AI 인지 융합의 조건」 — JRC의 협업 가능 영역 정의.
+- 「전문성 재생산 위기: 초안이 자동화될 때 주니어는 어디서 배우는가」 — JRC의 직업·도메인 단위 사례.
+- 「AI 도입 효과 측정의 함정」 — 측정 비대칭(Measurement Asymmetry) 개념의 원형.
+- 「자동화 편향과 의사결정」 — JRC의 심리적 메커니즘 근거.
+- 「메타인지와 LLM 프롬프팅」 — JRC 회복 원칙의 인지적 토대.
+- 「AI 번아웃과 조직 실패」 — '10→20→0' 패턴, 회복비용의 직관적 증거.
+- 「AI가 빼앗는 것은 일자리가 아니라 재량권」 — 판단권의 위치 이동, JRC의 권력 차원.
