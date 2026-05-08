@@ -3,7 +3,7 @@ title: "AI는 중요한데 그래서 나는 뭐해야 하는가"
 description: "AI 담론은 방향은 주지만 경로는 주지 않는다. 사람들이 멈추는 자리에 대하여."
 pubDate: "2026-05-08"
 category: "AI 기술"
-tags: ["AI","AX","discourse","translation-gap","execution","AI-fatigue","individual"]
+tags: ["AI","AX","translation-gap","AI-fatigue","execution","individual"]
 ---
 
 ## "또 AI 얘기네" — 그 다음에 오는 멈춤
