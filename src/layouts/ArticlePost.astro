@@ -241,7 +241,13 @@ const catColor = catColors[category] || 'var(--accent)';
 			}
 			.prose :global(table) {
 				width: 100%;
+				min-width: 100%;
+				display: table;
+				table-layout: auto;
 				border-collapse: collapse;
+			}
+			.prose :global(.table-scroll) > :global(table) {
+				width: 100%;
 			}
 			.prose :global(th) {
 				background: rgba(184, 160, 122, 0.06);
