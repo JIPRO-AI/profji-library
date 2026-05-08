@@ -245,12 +245,17 @@ const catColor = catColors[category] || 'var(--accent)';
 			}
 			.prose :global(th) {
 				background: rgba(184, 160, 122, 0.06);
-				font-size: 0.7em;
+				font-family: var(--font-body);
+				font-size: 0.85em;
+				font-weight: 600;
 				padding: 0.8em 1em;
 				border-bottom: 1px solid var(--border);
 				vertical-align: top;
 				text-align: left;
 				white-space: nowrap;
+				color: var(--text-primary);
+				text-transform: none;
+				letter-spacing: normal;
 			}
 			.prose :global(td) {
 				padding: 0.7em 1em;
