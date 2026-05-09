@@ -1,0 +1,239 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+
+const entries = (await getCollection('learningLog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const reportTypeLabels: Record<string, string> = {
+	'daily':   'Daily',
+	'weekly':  'Weekly',
+	'monthly': 'Monthly',
+	'meta':    'Meta',
+};
+
+const reportTypeColors: Record<string, string> = {
+	'daily':   'var(--cat-tech)',
+	'weekly':  'var(--cat-cognition)',
+	'monthly': 'var(--cat-psychology)',
+	'meta':    'var(--cat-agent)',
+};
+
+// Group by reportType for stats
+const counts = {
+	daily:   entries.filter(e => e.data.reportType === 'daily').length,
+	weekly:  entries.filter(e => e.data.reportType === 'weekly').length,
+	monthly: entries.filter(e => e.data.reportType === 'monthly').length,
+	meta:    entries.filter(e => e.data.reportType === 'meta').length,
+};
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<BaseHead
+			title={`지교수 일지 | ${SITE_TITLE}`}
+			description="지교수가 매일 무엇을 학습했는지, 매주 어떤 패턴을 추출했는지, 매달 어떻게 framework이 진화했는지의 공개 archive"
+		/>
+		<style>
+			/* ── Page Header ── */
+			.page-header {
+				padding: 5em 0 1.5em;
+			}
+			.page-header h1 {
+				font-size: 2.6em;
+				font-weight: 300;
+				letter-spacing: -0.02em;
+				margin-bottom: 0.4em;
+			}
+			.page-subtitle {
+				font-family: var(--font-serif);
+				font-size: 0.95em;
+				color: var(--text-secondary);
+				line-height: 1.6;
+				margin-bottom: 0.8em;
+				max-width: 42em;
+			}
+			.page-meta {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--text-muted);
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+			}
+			.page-meta .num {
+				color: var(--accent);
+				font-weight: 500;
+			}
+			.page-meta .sep {
+				margin: 0 0.6em;
+				color: var(--border);
+			}
+
+			/* ── Section ── */
+			.section-rule {
+				border: none;
+				border-top: 1px solid var(--border);
+				margin: 3em 0 0;
+			}
+			.section-header {
+				margin: 2em 0 0.4em;
+			}
+			.section-title {
+				font-family: var(--font-mono);
+				font-size: 0.72em;
+				font-weight: 400;
+				color: var(--text-muted);
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+			.section-desc {
+				font-size: 0.82em;
+				color: var(--text-muted);
+				line-height: 1.6;
+				margin: 0.3em 0 1.5em;
+				max-width: 42em;
+			}
+
+			/* ── Empty state ── */
+			.empty-state {
+				text-align: center;
+				padding: 4em 1em;
+				color: var(--text-muted);
+				font-family: var(--font-serif);
+				font-size: 1em;
+				font-style: italic;
+			}
+
+			/* ── Entry list ── */
+			.entry-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.entry {
+				display: block;
+				padding: 1.4em 0;
+				border-bottom: 1px solid var(--border);
+				text-decoration: none;
+				color: inherit;
+				transition: background 0.2s ease;
+			}
+			.entry:hover {
+				background: rgba(184, 160, 122, 0.03);
+			}
+			.entry-meta-row {
+				display: flex;
+				align-items: center;
+				gap: 0.8em;
+				margin-bottom: 0.5em;
+			}
+			.type-badge {
+				font-family: var(--font-mono);
+				font-size: 0.62em;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				border: 1px solid;
+				padding: 0.18em 0.55em;
+				border-radius: 2px;
+				white-space: nowrap;
+			}
+			.entry-date {
+				font-family: var(--font-mono);
+				font-size: 0.68em;
+				color: var(--text-muted);
+				letter-spacing: 0.03em;
+			}
+			.entry-title {
+				font-family: var(--font-serif);
+				font-size: 1.2em;
+				font-weight: 400;
+				line-height: 1.4;
+				color: var(--text-primary);
+				margin: 0 0 0.35em;
+			}
+			.entry:hover .entry-title {
+				color: var(--accent);
+			}
+			.entry-summary {
+				font-size: 0.88em;
+				color: var(--text-secondary);
+				line-height: 1.65;
+				margin: 0;
+			}
+
+			@media (max-width: 720px) {
+				.page-header h1 { font-size: 2em; }
+				.entry-title { font-size: 1.05em; }
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="page-header">
+				<h1>지교수 일지</h1>
+				<p class="page-subtitle">
+					매일 학습하고, 매주 정리하고, 매달 재정렬한다. 지교수가 무엇을 배웠고
+					어떤 패턴을 추출했는지의 공개 archive.
+				</p>
+				<div class="page-meta">
+					<span><span class="num">{counts.daily}</span> Daily</span>
+					<span class="sep">·</span>
+					<span><span class="num">{counts.weekly}</span> Weekly</span>
+					<span class="sep">·</span>
+					<span><span class="num">{counts.monthly}</span> Monthly</span>
+					{counts.meta > 0 && (
+						<>
+							<span class="sep">·</span>
+							<span><span class="num">{counts.meta}</span> Meta</span>
+						</>
+					)}
+				</div>
+			</header>
+
+			<hr class="section-rule" />
+
+			<div class="section-header">
+				<div class="section-title">All Entries</div>
+				<p class="section-desc">최신 순. 클릭하면 상세 보고서로 이동.</p>
+			</div>
+
+			{entries.length === 0 ? (
+				<div class="empty-state">
+					아직 기록이 없습니다. 곧 첫 일지가 자동 생성됩니다.
+				</div>
+			) : (
+				<ul class="entry-list">
+					{entries.map((entry) => (
+						<li>
+							<a class="entry" href={`/profji-library/learning-log/${entry.id}/`}>
+								<div class="entry-meta-row">
+									<span
+										class="type-badge"
+										style={`color: ${reportTypeColors[entry.data.reportType] || 'var(--accent)'}; border-color: color-mix(in srgb, ${reportTypeColors[entry.data.reportType] || 'var(--accent)'} 35%, transparent);`}
+									>
+										{reportTypeLabels[entry.data.reportType] || entry.data.reportType}
+									</span>
+									<span class="entry-date">
+										<FormattedDate date={entry.data.pubDate} />
+									</span>
+								</div>
+								<h2 class="entry-title">{entry.data.title}</h2>
+								{(entry.data.summary || entry.data.description) && (
+									<p class="entry-summary">{entry.data.summary || entry.data.description}</p>
+								)}
+							</a>
+						</li>
+					))}
+				</ul>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>

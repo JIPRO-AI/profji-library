@@ -5,6 +5,7 @@ import HeaderLink from './HeaderLink.astro';
 const isEn = Astro.url.pathname.startsWith('/profji-library/en/');
 const aboutUrl    = isEn ? '/profji-library/en/about/'    : '/profji-library/about/';
 const articlesUrl = isEn ? '/profji-library/en/articles/' : '/profji-library/articles/';
+const journalUrl  = '/profji-library/learning-log/';
 ---
 
 <header>
@@ -16,6 +17,7 @@ const articlesUrl = isEn ? '/profji-library/en/articles/' : '/profji-library/art
 		<div class="nav-right">
 			<div class="nav-links">
 				<HeaderLink href={articlesUrl}>Articles</HeaderLink>
+				<HeaderLink href={journalUrl}>Journal</HeaderLink>
 				<HeaderLink href="/profji-library/novels">Novels</HeaderLink>
 				<HeaderLink href={aboutUrl}>About</HeaderLink>
 				<HeaderLink href={isEn ? '/profji-library/articles/' : '/profji-library/en/articles/'}>

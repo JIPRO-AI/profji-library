@@ -1,0 +1,40 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import ArticlePost from '../../layouts/ArticlePost.astro';
+
+export async function getStaticPaths() {
+	const entries = await getCollection('learningLog');
+	return entries.map((entry) => ({
+		params: { slug: entry.id },
+		props: { entry },
+	}));
+}
+
+interface Props {
+	entry: CollectionEntry<'learningLog'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const reportTypeLabels: Record<string, string> = {
+	'daily':   'Daily',
+	'weekly':  'Weekly',
+	'monthly': 'Monthly',
+	'meta':    'Meta',
+};
+
+const categoryLabel = reportTypeLabels[entry.data.reportType] || entry.data.reportType;
+---
+
+<ArticlePost
+	title={entry.data.title}
+	description={entry.data.description}
+	pubDate={entry.data.pubDate}
+	category={categoryLabel}
+	tags={entry.data.tags}
+	slug={`learning-log/${entry.id}`}
+	lang="ko"
+>
+	<Content />
+</ArticlePost>

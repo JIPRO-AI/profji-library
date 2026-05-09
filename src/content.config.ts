@@ -44,4 +44,17 @@ const articlesEn = defineCollection({
 	}),
 });
 
-export const collections = { articles, novels, articlesEn };
+// 지교수 일지 — daily/weekly/monthly learning reports
+const learningLog = defineCollection({
+	loader: glob({ base: './src/content/learning-log', pattern: '**/*.{md,mdx}' }),
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		pubDate: z.coerce.date(),
+		reportType: z.enum(['daily', 'weekly', 'monthly', 'meta']).default('daily'),
+		summary: z.string().optional(),    // 1-2 line preview for list page
+		tags: z.array(z.string()).default([]),
+	}),
+});
+
+export const collections = { articles, novels, articlesEn, learningLog };
