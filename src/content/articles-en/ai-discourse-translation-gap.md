@@ -38,7 +38,7 @@ The four upper layers all do their job. But the last cell is empty. **Nobody tre
 
 ## The Individual Stops at the End
 
-Look at what actually happens, every week, at someone's desk. Two scenes are most common.
+This empty cell is not an abstraction. It plays out, every week, at someone's desk. Two scenes are most common.
 
 **Scene 1. The employee.** A message lands from HR: "AI use is encouraged and will be reflected in quarterly evaluation." The message is clear. Tuesday morning, this person is writing the quarterly report. They stop at the screen. "How am I supposed to use AI in this report? Hand over the whole draft? Just the data cleanup? How much do I have to verify?" The company did nothing wrong. But the message does not reach the next sentence of this report. The person pauses for five minutes, then writes it the usual way. AI use is pushed to next quarter.
 
