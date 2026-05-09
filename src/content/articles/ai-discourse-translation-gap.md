@@ -14,7 +14,7 @@ tags: ["AI","AX","translation-gap","AI-fatigue","execution","individual"]
 
 이 질문이 머리에 떠오르는 순간 글에 대한 흥미는 멈춘다. 새 정보가 부족해서가 아니다. 정보는 충분하다. 그 정보가 내 자리에서 다음에 무엇을 하라는 것까지 내려오지 않아서 멈춘다.
 
-이 글의 핵심은 단순하다. **사람들은 AI를 못 알아듣는 것이 아니다. 이해한 뒤에도 무엇을 바꿔야 하는지 몰라서 멈춘다.** 이 멈춤이 반복될 때 우리가 흔히 AI 피로라 부르는 상태가 만들어진다. AI 피로의 핵심은 정보 부족이 아니라 *실행 번역의 부재*다.
+이 글의 핵심은 단순하다. **사람들은 AI를 못 알아듣는 것이 아니다. 이해한 뒤에도 무엇을 바꿔야 하는지 몰라서 멈춘다.** 이 멈춤이 반복될 때 우리가 흔히 AI 피로라 부르는 상태가 만들어진다. AI 피로의 핵심은 정보 부족이 아니라 **실행 번역의 부재**다.
 
 이 글은 왜 그 멈춤이 정상 반응인지부터 짚고, 거기서 출발할 수 있는 가장 작은 입구까지를 다룬다. 거기까지다.
 
@@ -126,6 +126,6 @@ AI 담론은 풍부하다. 그러나 풍부함이 곧 실행으로 이어지지 
 
 **관련 외부 참고**
 
-- Strathern, M. (1997). "'Improving Ratings': Audit in the British University System." *European Review*, 5(3), 305–321. — 측정이 목표가 되면 측정 자체의 의미가 무너진다는 굿하트의 법칙. 담론과 행동의 간극에도 적용 가능.
-- Bainbridge, L. (1983). "Ironies of Automation." *Automatica*, 19(6), 775–779. — 자동화가 진행될수록 인간 운영자의 역할이 어려워진다는 고전적 역설. 번역 능력 약화 메커니즘의 토대.
-- Brynjolfsson, E., Rock, D., & Syverson, C. (2021). "The Productivity J-Curve." *American Economic Journal: Macroeconomics*, 13(1), 333–372. — 신기술의 효과가 측정 가능해지기까지의 지연. 담론과 실제 변화의 시간 차이를 설명.
+- Strathern, M. (1997). "'Improving Ratings': Audit in the British University System." **European Review**, 5(3), 305–321. — 측정이 목표가 되면 측정 자체의 의미가 무너진다는 굿하트의 법칙. 담론과 행동의 간극에도 적용 가능.
+- Bainbridge, L. (1983). "Ironies of Automation." **Automatica**, 19(6), 775–779. — 자동화가 진행될수록 인간 운영자의 역할이 어려워진다는 고전적 역설. 번역 능력 약화 메커니즘의 토대.
+- Brynjolfsson, E., Rock, D., & Syverson, C. (2021). "The Productivity J-Curve." **American Economic Journal: Macroeconomics**, 13(1), 333–372. — 신기술의 효과가 측정 가능해지기까지의 지연. 담론과 실제 변화의 시간 차이를 설명.
