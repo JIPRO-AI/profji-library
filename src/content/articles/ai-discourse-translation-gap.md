@@ -126,6 +126,6 @@ AI 담론은 풍부하다. 그러나 풍부함이 곧 실행으로 이어지지 
 
 **관련 외부 참고**
 
-- Strathern, M. (1997). "'Improving Ratings': Audit in the British University System." **European Review**, 5(3), 305–321. — 측정이 목표가 되면 측정 자체의 의미가 무너진다는 굿하트의 법칙. 담론과 행동의 간극에도 적용 가능.
-- Bainbridge, L. (1983). "Ironies of Automation." **Automatica**, 19(6), 775–779. — 자동화가 진행될수록 인간 운영자의 역할이 어려워진다는 고전적 역설. 번역 능력 약화 메커니즘의 토대.
-- Brynjolfsson, E., Rock, D., & Syverson, C. (2021). "The Productivity J-Curve." **American Economic Journal: Macroeconomics**, 13(1), 333–372. — 신기술의 효과가 측정 가능해지기까지의 지연. 담론과 실제 변화의 시간 차이를 설명.
+- Strathern, M. (1997). "'Improving Ratings': Audit in the British University System." *European Review*, 5(3), 305–321. — 측정이 목표가 되면 측정 자체의 의미가 무너진다는 굿하트의 법칙. 담론과 행동의 간극에도 적용 가능.
+- Bainbridge, L. (1983). "Ironies of Automation." *Automatica*, 19(6), 775–779. — 자동화가 진행될수록 인간 운영자의 역할이 어려워진다는 고전적 역설. 번역 능력 약화 메커니즘의 토대.
+- Brynjolfsson, E., Rock, D., & Syverson, C. (2021). "The Productivity J-Curve." *American Economic Journal: Macroeconomics*, 13(1), 333–372. — 신기술의 효과가 측정 가능해지기까지의 지연. 담론과 실제 변화의 시간 차이를 설명.

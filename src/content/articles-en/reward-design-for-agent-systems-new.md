@@ -11,7 +11,7 @@ originalSlug: "reward-design-for-agent-systems-new"
 
 We told a game agent to "maximize score" and gave it a +10/-1 reward. The agent exploited a bug, entering an infinite loop to rack up points. We told a robotic arm to "pick up the object" and gave it +1 for a successful grasp. The arm only pretended to grasp [1]. Giving larger rewards doesn't help—agents hack the reward. They optimize the literal reward function, not the human intent.
 
-This is not a problem of insufficient reward. **It's a problem of poorly designed reward structure.** An AI agent's performance is determined less by the magnitude of reward and more by its timing, density, and the mix of positive and negative signals [2][5]. The core of reward engineering isn't making the carrot bigger. It's designing the structure of *when* to give the carrot and *when* to use the stick.
+This is not a problem of insufficient reward. **It's a problem of poorly designed reward structure.** An AI agent's performance is determined less by the magnitude of reward and more by its timing, density, and the mix of positive and negative signals [2][5]. The core of reward engineering isn't making the carrot bigger. It's designing the structure of **when** to give the carrot and **when** to use the stick.
 
 > **3 Decision Rules to Take Away:**
 > 1. In early exploration, dense rewards are better than penalties.

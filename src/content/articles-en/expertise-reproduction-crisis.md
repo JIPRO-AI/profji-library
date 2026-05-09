@@ -13,13 +13,13 @@ As the level of automation increases, so does the required intervention capabili
 
 But this time, it's not merely a problem of skill degradation. Something more fundamental is being dismantled. The structure that forms experts—the very human mechanism by which expertise is formed, transmitted, and renewed—is quietly collapsing alongside the proliferation of AI-assisted environments.
 
-This article makes one core argument: AI does not automate the *output* of experts; it erodes the *structure* that forms, maintains, and transmits expertise. The result is a crisis of expertise reproduction. And this crisis shares the exact same structure as Bainbridge's irony: it becomes more severe the more accurate the AI becomes.
+This article makes one core argument: AI does not automate the **output** of experts; it erodes the **structure** that forms, maintains, and transmits expertise. The result is a crisis of expertise reproduction. And this crisis shares the exact same structure as Bainbridge's irony: it becomes more severe the more accurate the AI becomes.
 
 ## What Is Expertise Reproduction? First Defining by What It Is Not
 
 To properly discuss expertise reproduction, we must first clear away commonly confused concepts.
 
-Expertise reproduction is not AI storing or replicating expert knowledge. AI generating a doctor's diagnostic report, drafting a lawyer's contract, or summarizing an analyst's report does not constitute expertise reproduction. This is merely replicating the *output* of expertise. Output and capability are different.
+Expertise reproduction is not AI storing or replicating expert knowledge. AI generating a doctor's diagnostic report, drafting a lawyer's contract, or summarizing an analyst's report does not constitute expertise reproduction. This is merely replicating the **output** of expertise. Output and capability are different.
 
 Expertise reproduction is also not the maintenance of certification or licensing systems. Institutional certification is an exit gate for expertise, not the process of its formation itself. The existence of a license does not mean the path to acquiring it is functionally operational.
 
@@ -43,7 +43,7 @@ These are not three parallel problems. One begets the next in a causal chain.
 
 AI systems learn patterns from vast case studies but do not internalize the causal structure of those patterns. The problem is this doesn't apply only to AI. Once humans start relying on the patterns provided by AI, they too begin to converge on superficial processing.
 
-The research by Sparrow, Liu, and Wegner (2011) empirically demonstrated this mechanism at the cognitive level [5]. The mere fact that information can be obtained anytime via search engines lowers the motivation to memorize that information. Humans adjust their cognitive strategy to remember only *where* knowledge is, rather than internalizing the knowledge itself. The same mechanism operates in AI-assisted environments. Experts distribute cognitive load by referencing AI output rather than engaging in deep reasoning.
+The research by Sparrow, Liu, and Wegner (2011) empirically demonstrated this mechanism at the cognitive level [5]. The mere fact that information can be obtained anytime via search engines lowers the motivation to memorize that information. Humans adjust their cognitive strategy to remember only **where** knowledge is, rather than internalizing the knowledge itself. The same mechanism operates in AI-assisted environments. Experts distribute cognitive load by referencing AI output rather than engaging in deep reasoning.
 
 As Bainbridge pointed out [1], this distribution is not harmless. While automation operates, deep expert human capability goes unused, and unused capability degrades. Output may appear to be produced as before, but the capacity to critically review that output gradually becomes shallower.
 
@@ -101,7 +101,7 @@ First, the structural differences between traditional expertise formation enviro
 
 **1. Design workflows so AI cannot replace the draft in the apprenticeship cycle**
 
-Design workflows so AI does not intercept the draft-feedback-judgment apprenticeship cycle. For experts in training, AI should be a tool for cross-checking *after* forming a judgment, not a tool that presents answers *before* judgment. This distinction is the method to preserve the core link of the apprenticeship structure.
+Design workflows so AI does not intercept the draft-feedback-judgment apprenticeship cycle. For experts in training, AI should be a tool for cross-checking **after** forming a judgment, not a tool that presents answers **before** judgment. This distinction is the method to preserve the core link of the apprenticeship structure.
 
 - Application condition: Particularly strictly applied to experts in training stages (residents, trainee lawyers, junior analysts, etc.)
 - Limitation: Realistic application is limited in high time-pressure environments (emergency medicine, real-time trading, etc.)
@@ -142,7 +142,7 @@ The solution to the expertise reproduction crisis is not in limiting AI's capabi
 
 What we must design is not a system where AI assists experts. It is a system that intentionally maintains the environment where experts are formed, even in the AI era. The cycle of directly writing drafts, experiencing failure, receiving feedback to internalize judgment criteria, and bearing that responsibility under one's own name—without this cycle, experts are not made.
 
-AI suggests it can efficiently shorten this process. But this process must not be shortened. Because this process *is* expertise.
+AI suggests it can efficiently shorten this process. But this process must not be shortened. Because this process **is** expertise.
 
 The paradox lies here: The humans who can utilize AI best are those who can judge without AI. If we don't make those humans first, AI will be left to judge alone, with no one even itself able to verify it. And there will be no human to confirm it either.
 

@@ -16,11 +16,11 @@ The early KPIs moved well. Response time got faster. Throughput rose. The cost l
 
 But in the spring of 2025, CEO Sebastian Siemiatkowski delivered the opposite message in a Bloomberg interview. The AI's output was "lower quality output." The chatbot could not handle empathy or nuanced problem-solving. The company began hiring people again.
 
-The problem does not end with degraded customer service. The deeper loss is that during that one year, the *early judgment experience* people would have gained by doing the work themselves was completely missing. The organization did not just lose results. It lost the *process by which the next person is trained*. The cost of recovering from 0 back to 10 is greater than the cost of building the original 10.
+The problem does not end with degraded customer service. The deeper loss is that during that one year, the **early judgment experience** people would have gained by doing the work themselves was completely missing. The organization did not just lose results. It lost the **process by which the next person is trained**. The cost of recovering from 0 back to 10 is greater than the cost of building the original 10.
 
-The core argument of this essay is simple. **AI can speed up the work. But it can simultaneously weaken the structure through which the next generation learns to judge.** This problem we call the *Judgment Reproduction Crisis (JRC)*. Put plainly, the path through which the next generation learns to judge is being cut.
+The core argument of this essay is simple. **AI can speed up the work. But it can simultaneously weaken the structure through which the next generation learns to judge.** This problem we call the **Judgment Reproduction Crisis (JRC)**. Put plainly, the path through which the next generation learns to judge is being cut.
 
-Judgment is not a single event. Organizations accumulate experience across generations and cohorts, and they have *reproduced* that experience into the next generation through education, feedback, and habit. When that reproduction apparatus cracks, the loss accumulates quietly.
+Judgment is not a single event. Organizations accumulate experience across generations and cohorts, and they have **reproduced** that experience into the next generation through education, feedback, and habit. When that reproduction apparatus cracks, the loss accumulates quietly.
 
 **We are the first generation to measure efficiency while paying its cost in installments over the next decade.**
 
@@ -28,7 +28,7 @@ Judgment is not a single event. Organizations accumulate experience across gener
 
 The question narrows here. Why doesn't this cost show up in KPIs?
 
-The answer lies in *Measurement Asymmetry*. The library has already formalized it.
+The answer lies in **Measurement Asymmetry**. The library has already formalized it.
 
 > **Measurement Asymmetry is the structural gap between the speed at which AI increases output and the speed at which the cognitive cost of human processing (verification, correction, judgment) of that output increases.**
 
@@ -38,11 +38,11 @@ The result is simple. One side of the metric appears in the quarterly report imm
 
 Once this asymmetry enters the incentive structure, a self-reinforcing loop forms. The more often automated recommendations are correct, the fewer chances people get to handle exceptions directly. Review routines and mentoring conversations diminish. Field experience does not accumulate. The next cohort leans more on the average and knows less about exceptions.
 
-What matters here is the *learning structure*, not technical accuracy itself. The problem is not whether AI makes mistakes. The problem is that *humans stop learning*.
+What matters here is the **learning structure**, not technical accuracy itself. The problem is not whether AI makes mistakes. The problem is that **humans stop learning**.
 
 The psychology runs in the same direction.
 
-> **The essence of automation bias is not that AI gets things wrong. AI is right most of the time. The problem is that *because it is right most of the time*, humans stop imagining the possibility of error.**
+> **The essence of automation bias is not that AI gets things wrong. AI is right most of the time. The problem is that **because it is right most of the time**, humans stop imagining the possibility of error.**
 
 Humans are most at risk when AI is 80% correct. When AI is 90% correct, humans skip verification altogether. The cost of skipping is not measured that day. It is billed six months later, when someone pulls the decision back into a meeting room.
 
@@ -58,27 +58,27 @@ The numbers are impressive. But the library has already pointed at a deeper cost
 
 > **AI does not automate the output of experts; it erodes the very structure by which expertise is formed, maintained, and transmitted.**
 
-The path from junior analyst to senior was simple. Draft yourself. A senior reviews. In the review, *implicit judgment criteria* are transmitted. This repetition is what made seniors.
+The path from junior analyst to senior was simple. Draft yourself. A senior reviews. In the review, **implicit judgment criteria** are transmitted. This repetition is what made seniors.
 
-When an LLM takes over the draft, senior review frequency drops. The *traces of struggle* once embedded in the draft also disappear. The senior's own sense of what to teach becomes blurred.
+When an LLM takes over the draft, senior review frequency drops. The **traces of struggle** once embedded in the draft also disappear. The senior's own sense of what to teach becomes blurred.
 
 In the US, entry-level positions have already declined by 35%. 54% of engineering leaders say they will hire fewer juniors because seniors can handle more work with copilots. Who, then, makes the next senior?
 
 ### Klarna Revisited — The Asymmetry of Recovery Cost
 
-Back to Klarna. What Siemiatkowski admitted was not only the chatbot's limit. It was the *asymmetry of recovery cost*. The library compressed it into one sentence.
+Back to Klarna. What Siemiatkowski admitted was not only the chatbot's limit. It was the **asymmetry of recovery cost**. The library compressed it into one sentence.
 
 > **Efficiency was 10. Thanks to AI it became 20. Then that person left, and it became 0. 10→20→0.**
 
-The doubled short-term efficiency became 0 with the loss of core staff. The cost of recovering 10 from 0 is greater than the cost of building the original 10. Hiring with credentials is possible. But once gone, *field judgment* does not come back the same way.
+The doubled short-term efficiency became 0 with the loss of core staff. The cost of recovering 10 from 0 is greater than the cost of building the original 10. Hiring with credentials is possible. But once gone, **field judgment** does not come back the same way.
 
-This does not mean the same outcome will appear in every organization right away. Still, at the mechanism level, similar warning signs are visible. Walmart's Ask Sam processes three million queries per week and gradually shifts the autonomous judgment of store managers onto system recommendations. SK Group's "One AI Per Person" policy is nominally egalitarian, yet in practice it creates a new power asymmetry between the *prompt design layer* and the *receiving layer*. The degree varies by case, but the common pattern is clear. Automation removes the *opportunity to form judgment* itself.
+This does not mean the same outcome will appear in every organization right away. Still, at the mechanism level, similar warning signs are visible. Walmart's Ask Sam processes three million queries per week and gradually shifts the autonomous judgment of store managers onto system recommendations. SK Group's "One AI Per Person" policy is nominally egalitarian, yet in practice it creates a new power asymmetry between the **prompt design layer** and the **receiving layer**. The degree varies by case, but the common pattern is clear. Automation removes the **opportunity to form judgment** itself.
 
 ## Reversibility Boundary — How Far Recovery Is Possible
 
 A natural question follows. Are all organizations equally at risk? They are not.
 
-Not all damage sits on the same level. Individual-level weakening can be recovered with a relatively short retraining cycle. But once the training pipeline itself collapses, the problem rises to the organizational and industrial scale. We call this difference the *Reversibility Boundary*. Some damage repairs with retraining. Other damage occurs after the structure that creates the next generation has already broken, and at that point reversal becomes much harder.
+Not all damage sits on the same level. Individual-level weakening can be recovered with a relatively short retraining cycle. But once the training pipeline itself collapses, the problem rises to the organizational and industrial scale. We call this difference the **Reversibility Boundary**. Some damage repairs with retraining. Other damage occurs after the structure that creates the next generation has already broken, and at that point reversal becomes much harder.
 
 | Layer | Threshold Signal | Analogy | Priority Response |
 |---|---|---|---|
@@ -87,7 +87,7 @@ Not all damage sits on the same level. Individual-level weakening can be recover
 | **Sector (2–10 years)** | Formal training displacement ≥40%, external dependency ≥30% | Industry-wide talent pool drying up | Industry-level certification redesign |
 | **Generational / Societal (10+ years)** | Recovery cost > 25% of annual training budget, recovery time > 10 years | A whole generation lost | Effectively irreversible |
 
-For irreversibility to set in, five *decisive conditions* must operate together. Erasure of learning signals. Measurement asymmetry. Institutional lock-in. Collapse of the training pipeline. Cumulative standardization of low-quality practice. When all five are met at once, the market cannot self-correct.
+For irreversibility to set in, five **decisive conditions** must operate together. Erasure of learning signals. Measurement asymmetry. Institutional lock-in. Collapse of the training pipeline. Cumulative standardization of low-quality practice. When all five are met at once, the market cannot self-correct.
 
 ## A Quick Diagnostic Checklist
 
@@ -99,7 +99,7 @@ Treated only as theory, the problem feels too distant. Here are five signals an 
 - Is the rate of decisions made without recorded provenance above 30%?
 - Has formal training been displaced by automation, with enrollment declining for three consecutive years?
 
-Three or more out of five means the organization has entered *the danger zone*. It is time to redesign the metrics.
+Three or more out of five means the organization has entered **the danger zone**. It is time to redesign the metrics.
 
 ## Four Design Principles for Recovery
 
@@ -107,15 +107,15 @@ JRC does not repair itself. The expectation that the market will self-correct is
 
 **Principle 1. Balanced Measurement** — Capture verification and recovery cost alongside output. Modification rate next to acceptance rate of automated recommendations. Rework time next to throughput. The moment a single side of the metric is reported alone, measurement asymmetry becomes the organization's decision algorithm.
 
-**Principle 2. Feedback Preservation** — Embed verification loops by force. Random sampling audits. Periodic case reviews. A mandatory senior review ratio. The moment verification becomes *optional*, it is the first thing to go.
+**Principle 2. Feedback Preservation** — Embed verification loops by force. Random sampling audits. Periodic case reviews. A mandatory senior review ratio. The moment verification becomes **optional**, it is the first thing to go.
 
-**Principle 3. Training First** — Automation should be a tool *integrated into* training, not one that *replaces* it. If AI handles the draft, juniors should be repositioned to the role of *critiquing and correcting AI's output*.
+**Principle 3. Training First** — Automation should be a tool **integrated into** training, not one that **replaces** it. If AI handles the draft, juniors should be repositioned to the role of **critiquing and correcting AI's output**.
 
 > **Those who write good prompts are not those who are good at handling AI; they are those who are good at handling their own thinking.**
 
-Metacognitive training is not tool education. It is the *primary shield of judgment reproduction*.
+Metacognitive training is not tool education. It is the **primary shield of judgment reproduction**.
 
-**Principle 4. Decision Visibility** — Force the basis of core decisions into metadata. Who saw what data, what the model output was, how the human responded — preserved. This record is not for after-the-fact audit. It is *for the next generation to read and learn from*.
+**Principle 4. Decision Visibility** — Force the basis of core decisions into metadata. Who saw what data, what the model output was, how the human responded — preserved. This record is not for after-the-fact audit. It is **for the next generation to read and learn from**.
 
 ## The Locus of Power Shifts
 
@@ -123,7 +123,7 @@ The last layer is power.
 
 > **AI does not flatten organizations. It changes where judgment lives.**
 
-When automation enters, decision rights do not disappear. They migrate to the *algorithm design layer*. Put plainly, the fine-grained judgment that used to happen on the floor moves to system designers and model operators.
+When automation enters, decision rights do not disappear. They migrate to the **algorithm design layer**. Put plainly, the fine-grained judgment that used to happen on the floor moves to system designers and model operators.
 
 If this migration is not designed deliberately, the responsibility for judgment reproduction floats unattached to anyone. Tying responsibility to where no one is currently responsible is the core of governance.
 
@@ -131,7 +131,7 @@ If this migration is not designed deliberately, the responsibility for judgment 
 
 The thresholds and time horizons proposed here are advisory. Industries do not all trace the same curve. For quantitative validation, longitudinal comparison of junior-to-senior conversion rates between AX-adopting and non-adopting organizations is required.
 
-As the *recovery* cases of Klarna and Duolingo show, some weakening is corrected by market signals. The cost of correction, however, differs by orders of magnitude. The boundary between layers where correction is and is not possible becomes visible only after the fact, *because the measurement infrastructure is missing*. That is the essential risk.
+As the **recovery** cases of Klarna and Duolingo show, some weakening is corrected by market signals. The cost of correction, however, differs by orders of magnitude. The boundary between layers where correction is and is not possible becomes visible only after the fact, **because the measurement infrastructure is missing**. That is the essential risk.
 
 ## Conclusion, Restated
 
@@ -139,7 +139,7 @@ In the simplest restatement of what has already been said.
 
 AX produces short-term efficiency. At the same time, it can erode the path through which human judgment is formed. The trouble is that this loss does not register in KPIs. So the organization buys efficiency cheap and pays the loss of judgment expensive.
 
-*Until the infrastructure for measuring judgment reproduction is built, every AX decision is being made at the wrong price.* We are the first generation to measure efficiency on the day, and to be billed for its cost in installments over the next decade.
+**Until the infrastructure for measuring judgment reproduction is built, every AX decision is being made at the wrong price.** We are the first generation to measure efficiency on the day, and to be billed for its cost in installments over the next decade.
 
 ## References
 

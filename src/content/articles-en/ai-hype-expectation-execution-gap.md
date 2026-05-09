@@ -15,7 +15,7 @@ A month later, Manager Kim from the marketing team asks his team lead, "What exa
 
 Three months later, an executive report includes "AI Utilization Status." Marketing Team: "Building AI-based content generation process." Reality: Manager Kim occasionally asks ChatGPT for a first draft. AI is absent from the organization's official processes.
 
-This is the reality of AI hype — overheated expectations and trends around technology. **Leadership says "automate," while the frontline asks, "How, and with what?"** The problem isn't AI's performance. The problem is the massive gap between the strategic directive to "automate" and the specificity of *what* to automate.
+This is the reality of AI hype — overheated expectations and trends around technology. **Leadership says "automate," while the frontline asks, "How, and with what?"** The problem isn't AI's performance. The problem is the massive gap between the strategic directive to "automate" and the specificity of **what** to automate.
 
 This article's core proposition is this: **Expectations about AI aren't inherently bad. Overheated expectations are a natural stage in a new technology's diffusion. The danger isn't the expectation, but injecting that expectation into an organization without an execution plan.** If the expectation-execution gap isn't managed, the organization falls into a cycle of investing in AI, becoming disappointed, and concluding, "AI is overrated" [1].
 
@@ -23,7 +23,7 @@ This article's core proposition is this: **Expectations about AI aren't inherent
 
 Before criticizing the overheated expectations around AI, we must first distinguish what they are **not**.
 
-This expectation is not a lie. Cases exist where AI genuinely cuts costs and improves efficiency. This expectation is also not born from ignorance. Leadership pushes for adoption not because they don't understand AI, but because they *do* see its potential. It's not anyone's specific fault — media, vendors, and executives each act rationally according to their incentives, and the structural outcome is hype.
+This expectation is not a lie. Cases exist where AI genuinely cuts costs and improves efficiency. This expectation is also not born from ignorance. Leadership pushes for adoption not because they don't understand AI, but because they **do** see its potential. It's not anyone's specific fault — media, vendors, and executives each act rationally according to their incentives, and the structural outcome is hype.
 
 | Participant | Their Incentive | Message They Create | What's Omitted |
 |--------|------------|-----------|---------|
@@ -44,7 +44,7 @@ The gap occurs simultaneously across three organizational layers. In large corpo
 Competitors are adopting AI and reporting real results. Staying still means falling behind. The directive to "just start" is valid as a first step in change management [3]. The problem is there's no sentence that follows "Do AI." It ends with "Use AI across all departments," not "Achieve this result in 6 months using this data in these three processes."
 
 **Middle Management — They're not passing the buck; they genuinely don't know.**
-When a team lead says, "Try using AI," it's not irresponsible; it's because they themselves have no experience applying AI to their work. They might have used ChatGPT to plan a trip, but they've never integrated AI into a quarterly sales forecasting process. It's not a lack of AI literacy, but a lack of **AI application experience** [4]. These are different — knowing what AI is and knowing how to use it for *my* work are separate competencies.
+When a team lead says, "Try using AI," it's not irresponsible; it's because they themselves have no experience applying AI to their work. They might have used ChatGPT to plan a trip, but they've never integrated AI into a quarterly sales forecasting process. It's not a lack of AI literacy, but a lack of **AI application experience** [4]. These are different — knowing what AI is and knowing how to use it for **my** work are separate competencies.
 
 **Frontline — "How, and with what?" is a legitimate question.**
 Frontline workers are experts in their own tasks. But AI is a general-purpose technology. Excel has a clear purpose — organizing numbers. ERP has a clear purpose — processing tasks. AI is "capable of anything," which paradoxically makes the starting point unclear. Training is mostly "How to use ChatGPT," not "How to apply AI to my work" [5].

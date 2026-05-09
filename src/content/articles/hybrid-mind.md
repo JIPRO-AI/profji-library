@@ -158,11 +158,11 @@ AI는 답을 생성하는 기계이기 전에, 인간이 자신의 사고 습관
 
 ## 참고한 주요 문헌
 
-- Clark, A., & Chalmers, D. (1998). The Extended Mind. *Analysis*, 58(1), 7-19.
-- Hutchins, E. (1995). *Cognition in the Wild*. MIT Press.
-- Kahneman, D. (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.
-- Parasuraman, R., & Riley, V. (1997). Humans and Automation: Use, Misuse, Disuse, Abuse. *Human Factors*, 39(2), 230-253.
-- Norman, D. A. (1988). *The Design of Everyday Things*. Basic Books.
-- Topol, E. J. (2019). *Deep Medicine: How Artificial Intelligence Can Make Healthcare Human Again*. Basic Books.
-- Floridi, L., & Cowls, J. (2019). A Unified Framework of Five Principles for AI in Society. *Harvard Data Science Review*, 1(1).
-- Amershi, S., et al. (2019). Guidelines for Human-AI Interaction. *Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems*.
+- Clark, A., & Chalmers, D. (1998). The Extended Mind. **Analysis**, 58(1), 7-19.
+- Hutchins, E. (1995). **Cognition in the Wild**. MIT Press.
+- Kahneman, D. (2011). **Thinking, Fast and Slow**. Farrar, Straus and Giroux.
+- Parasuraman, R., & Riley, V. (1997). Humans and Automation: Use, Misuse, Disuse, Abuse. **Human Factors**, 39(2), 230-253.
+- Norman, D. A. (1988). **The Design of Everyday Things**. Basic Books.
+- Topol, E. J. (2019). **Deep Medicine: How Artificial Intelligence Can Make Healthcare Human Again**. Basic Books.
+- Floridi, L., & Cowls, J. (2019). A Unified Framework of Five Principles for AI in Society. **Harvard Data Science Review**, 1(1).
+- Amershi, S., et al. (2019). Guidelines for Human-AI Interaction. **Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems**.

@@ -11,7 +11,7 @@ originalSlug: "automation-bias-decision-making"
 
 In 2026, AI is no longer just an assistant. Copilot writes code, agents execute workflows, and diagnostic AI presents recommendations to doctors. AI accuracy is rapidly improving. Yet, as accuracy rises, one thing becomes more dangerous: **the human capacity for doubt.**
 
-The essence of automation bias is not AI being wrong. AI is mostly right. The problem is that *because* it's mostly right, humans stop imagining the possibility of error. As the frequency of errors decreases, so does the ability to detect them. This is the core paradox of automation bias.
+The essence of automation bias is not AI being wrong. AI is mostly right. The problem is that **because** it's mostly right, humans stop imagining the possibility of error. As the frequency of errors decreases, so does the ability to detect them. This is the core paradox of automation bias.
 
 This article views automation bias not as an individual psychological weakness, but as a **failure of governance architecture**. When adopting AI, we design for accuracy and efficiency, but we do not design structures that preserve the human capacity for distrust. As a result, entire organizations are exposed to Invisible Risk — a state where AI reduces errors while simultaneously weakening error detection ability, so that no one recognizes a problem until it explodes.
 
