@@ -8,10 +8,14 @@ const { date } = Astro.props;
 
 <time datetime={date.toISOString()}>
 	{
+		// pubDate는 YYYY-MM-DD로 정해진 *날짜 단위*다. 브라우저 로컬 TZ에서 시간 변환하면
+		// UTC 자정이 전날 저녁이 돼서 하루 어긋난다 (예: 2026-05-10 → May 9).
+		// UTC 기준으로 표시해서 입력한 날짜와 출력한 날짜가 일치하게 한다.
 		date.toLocaleDateString('en-us', {
 			year: 'numeric',
 			month: 'short',
 			day: 'numeric',
+			timeZone: 'UTC',
 		})
 	}
 </time>
