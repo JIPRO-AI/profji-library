@@ -51,7 +51,7 @@ const learningLog = defineCollection({
 		title: z.string(),
 		description: z.string(),
 		pubDate: z.coerce.date(),
-		reportType: z.enum(['daily', 'weekly', 'monthly', 'meta']).default('daily'),
+		reportType: z.enum(['daily', 'weekly', 'monthly', 'meta', 'notebook']).default('daily'),
 		summary: z.string().optional(),    // 1-2 line preview for list page
 		tags: z.array(z.string()).default([]),
 	}),
