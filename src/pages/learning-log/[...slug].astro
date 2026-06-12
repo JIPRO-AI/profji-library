@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import ArticlePost from '../../layouts/ArticlePost.astro';
+import NoteFeedback from '../../components/NoteFeedback.astro';
 
 export async function getStaticPaths() {
 	const entries = await getCollection('learningLog');
@@ -18,10 +19,11 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 
 const reportTypeLabels: Record<string, string> = {
-	'daily':   'Daily',
-	'weekly':  'Weekly',
-	'monthly': 'Monthly',
-	'meta':    'Meta',
+	'daily':    'Daily',
+	'weekly':   'Weekly',
+	'monthly':  'Monthly',
+	'meta':     'Meta',
+	'notebook': 'Notebook',
 };
 
 const categoryLabel = reportTypeLabels[entry.data.reportType] || entry.data.reportType;
@@ -37,4 +39,5 @@ const categoryLabel = reportTypeLabels[entry.data.reportType] || entry.data.repo
 	lang="ko"
 >
 	<Content />
+	<NoteFeedback slug={`learning-log/${entry.id}`} />
 </ArticlePost>

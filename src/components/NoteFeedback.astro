@@ -1,0 +1,110 @@
+---
+// 노트 하단 피드백 위젯 — 보스(와 독자)의 👍/👎를 기존 page_views 메커니즘으로 수집.
+// fb-up:{slug} / fb-down:{slug} 슬러그에 increment_view RPC를 재사용 (백엔드 변경 없음).
+// 월간 자기 사례 연구가 이 카운트를 읽어 게이트 보정에 쓴다.
+interface Props {
+	slug: string;
+}
+const { slug } = Astro.props;
+---
+
+<div class="note-feedback" data-slug={slug}>
+	<span class="fb-label">이 노트가 도움이 됐나</span>
+	<button class="fb-btn" data-vote="up" aria-label="도움됨">👍</button>
+	<button class="fb-btn" data-vote="down" aria-label="별로">👎</button>
+	<span class="fb-done" hidden>기록됨</span>
+</div>
+
+<style>
+	.note-feedback {
+		display: flex;
+		align-items: center;
+		gap: 0.7em;
+		margin-top: 3em;
+		padding-top: 1.4em;
+		border-top: 1px solid var(--border);
+		font-family: var(--font-mono);
+		font-size: 0.72em;
+		color: var(--text-muted);
+		letter-spacing: 0.04em;
+	}
+	.fb-btn {
+		background: none;
+		border: 1px solid var(--border);
+		border-radius: 3px;
+		padding: 0.35em 0.7em;
+		cursor: pointer;
+		font-size: 1em;
+		opacity: 0.75;
+		transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+	}
+	.fb-btn:hover { opacity: 1; border-color: var(--accent); }
+	.fb-btn:active { transform: scale(0.92); }
+	.fb-btn.chosen { opacity: 1; border-color: var(--accent); background: rgba(184,160,122,0.08); }
+	.fb-btn:disabled { cursor: default; }
+	.fb-btn:disabled:not(.chosen) { opacity: 0.3; }
+	.fb-done { color: var(--accent); opacity: 0.8; }
+</style>
+
+<script>
+	const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
+	const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+	async function sendVote(slug: string, vote: string): Promise<boolean> {
+		try {
+			const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/increment_view`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'apikey': SUPABASE_ANON_KEY,
+					'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+				},
+				body: JSON.stringify({ page_slug: `fb-${vote}:${slug}` }),
+			});
+			return res.ok;
+		} catch {
+			return false;
+		}
+	}
+
+	function initNoteFeedback() {
+		document.querySelectorAll<HTMLElement>('.note-feedback').forEach((box) => {
+			const slug = box.dataset.slug || '';
+			if (!slug || box.dataset.bound === '1') return;
+			box.dataset.bound = '1';
+			const btns = box.querySelectorAll<HTMLButtonElement>('.fb-btn');
+			const done = box.querySelector<HTMLElement>('.fb-done');
+			const key = `jrl_fb_${slug}`;
+
+			const prior = localStorage.getItem(key);
+			if (prior) {
+				btns.forEach((b) => { b.disabled = true; if (b.dataset.vote === prior) b.classList.add('chosen'); });
+				if (done) done.hidden = false;
+			}
+
+			btns.forEach((btn) => {
+				btn.addEventListener('click', async () => {
+					if (localStorage.getItem(key)) return;
+					const vote = btn.dataset.vote || 'up';
+					btns.forEach((b) => (b.disabled = true));
+					btn.classList.add('chosen');
+					const ok = await sendVote(slug, vote);
+					if (ok) {
+						localStorage.setItem(key, vote);
+						if (done) done.hidden = false;
+					} else {
+						btns.forEach((b) => (b.disabled = false));
+						btn.classList.remove('chosen');
+					}
+				});
+			});
+		});
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initNoteFeedback);
+	} else {
+		initNoteFeedback();
+	}
+	document.addEventListener('astro:page-load', initNoteFeedback);
+</script>
