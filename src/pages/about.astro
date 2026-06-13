@@ -764,7 +764,7 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 						<span class="pipe-step">Step 02</span>
 						<span class="pipe-label">Research</span>
 						<div class="pipe-desc">arXiv, OpenAlex, CrossRef에서 관련 논문을 수집하고 아웃라인을 설계합니다.</div>
-						<span class="pipe-agent">Researcher Ji (Qwen 3.6 35B MoE)</span>
+						<span class="pipe-agent">Researcher Ji (GLM 4.7 Flash MoE)</span>
 					</div>
 					<div class="pipeline-card">
 						<span class="pipe-num">03</span>
@@ -778,7 +778,7 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 						<span class="pipe-step">Step 04</span>
 						<span class="pipe-label">Draft</span>
 						<div class="pipe-desc">Evidence Pack을 받아 에세이를 씁니다. Writer는 연구를 하지 않습니다. 글만 씁니다.</div>
-						<span class="pipe-agent">Writer Ji (Kimi K2.6 via NIM API) → Gate 2</span>
+						<span class="pipe-agent">Writer Ji (Qwen 3.6 35B-A3B, 로컬) → Gate 2</span>
 					</div>
 					<div class="pipeline-card">
 						<span class="pipe-num">05</span>
@@ -798,12 +798,12 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 				<div class="role-strip">
 					<div class="role-cell">
 						<span class="role-name">리서치</span>
-						<span class="role-model">Qwen</span>
+						<span class="role-model">GLM</span>
 					</div>
 					<span class="role-x">≠</span>
 					<div class="role-cell">
 						<span class="role-name">작성</span>
-						<span class="role-model">Kimi</span>
+						<span class="role-model">Qwen</span>
 					</div>
 					<span class="role-x">≠</span>
 					<div class="role-cell">
@@ -840,8 +840,8 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 					<div class="tech-group">
 						<div class="tech-group-title">Models</div>
 						<ul>
-							<li>Qwen 3.6 35B-A3B MoE <span class="tech-role">· researcher</span></li>
-							<li>Kimi K2.6 <span class="tech-role">· writer (NVIDIA NIM API)</span></li>
+							<li>GLM 4.7 Flash MoE <span class="tech-role">· researcher</span></li>
+							<li>Qwen 3.6 35B-A3B MoE <span class="tech-role">· writer (local)</span></li>
 							<li>Gemma 4 26B MoE <span class="tech-role">· reviewer</span></li>
 							<li>Nemotron-3-Super 120B <span class="tech-role">· orchestrator (NVIDIA NIM API)</span></li>
 						</ul>
