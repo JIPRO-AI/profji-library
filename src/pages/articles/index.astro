@@ -59,7 +59,7 @@ const archiveArticles = [...articles]
 <!doctype html>
 <html lang="ko">
 	<head>
-		<BaseHead title={`Articles | ${SITE_TITLE}`} description="AI, cognition, agent systems에 대한 연구 기반 에세이 아카이브" />
+		<BaseHead title={`Articles | ${SITE_TITLE}`} description="완성된 글이 아니라 판단의 기록이다. 각 글은 역할을 나눈 모델들과 사람의 승인을 거쳤다." />
 		<style>
 			/* ── Page Header ── */
 			.page-header {
@@ -369,7 +369,7 @@ const archiveArticles = [...articles]
 			<div class="page-header">
 				<h1>Articles</h1>
 				<p class="page-subtitle">
-					AI, cognition, agent systems에 대한 연구 기반 에세이 아카이브
+					완성된 글이 아니라 판단의 기록이다. 각 글은 역할을 나눈 모델들과 사람의 승인을 거쳤다.
 				</p>
 				<span class="page-meta">
 					<span class="num">{articles.length}</span> essays · <span class="num">{new Set(articles.map(a => a.data.category)).size}</span> themes · human-curated

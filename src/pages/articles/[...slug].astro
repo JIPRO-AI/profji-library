@@ -39,4 +39,39 @@ const enUrl     = hasEnglish ? `/profji-library/en/articles/${article.id}/` : un
 	enUrl={enUrl}
 >
 	<Content />
+	<div class="colophon">
+		<span class="colophon-label">이 글이 만들어진 방식</span>
+		조사·작성·검증을 서로 다른 모델이 나눠 맡고, 게이트를 거쳐, 사람이 마지막으로 판단했다.
+		<a href="/profji-library/about/">과정 전체 보기 →</a>
+	</div>
 </ArticlePost>
+
+<style>
+	.colophon {
+		margin-top: 3.5em;
+		padding-top: 1.4em;
+		border-top: 1px solid var(--border);
+		font-size: 0.78em;
+		color: var(--text-muted);
+		line-height: 1.8;
+		word-break: keep-all;
+	}
+	.colophon-label {
+		display: block;
+		font-family: var(--font-mono);
+		font-size: 0.82em;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--accent);
+		opacity: 0.85;
+		margin-bottom: 0.4em;
+	}
+	.colophon a {
+		color: var(--text-muted);
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+	.colophon a:hover {
+		color: var(--accent);
+	}
+</style>

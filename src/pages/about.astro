@@ -13,7 +13,7 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 <!doctype html>
 <html lang="ko">
 	<head>
-		<BaseHead title={`About | ${SITE_TITLE}`} description="AI와 함께 일할 때 인간의 인지가 어떻게 변하는지 기록합니다." />
+		<BaseHead title={`About | ${SITE_TITLE}`} description="AI를 쓰는 과정에서 사람의 판단이 어떻게 달라지는지 기록한다. 결과물이 아니라 판단의 기록." />
 		<style>
 			.about-header,
 			.about-section,
@@ -554,6 +554,52 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 				margin-top: 1.4em;
 			}
 
+			/* ── Hero reversal (2-beat) ── */
+			.rev-line {
+				font-family: var(--font-serif);
+				line-height: 1.6;
+				margin: 0;
+			}
+			.rev-line.dim {
+				font-size: 1.05em;
+				color: var(--text-muted);
+				margin-bottom: 0.3em;
+			}
+			.rev-line.hit {
+				font-size: 1.35em;
+				color: var(--text-primary);
+				border-left: 2px solid var(--accent);
+				padding-left: 0.6em;
+				margin-bottom: 1.6em;
+			}
+
+			/* ── Question closing line ── */
+			.q-closing {
+				font-size: 0.85em;
+				color: var(--text-muted);
+				margin-top: 1.4em;
+				line-height: 1.7;
+			}
+
+			/* ── Claim taxonomy chips ── */
+			.claim-strip {
+				display: flex;
+				gap: 0.6em;
+				margin: 1.8em 0 1em;
+				flex-wrap: wrap;
+			}
+			.claim-chip {
+				font-family: var(--font-mono);
+				font-size: 0.62em;
+				letter-spacing: 0.08em;
+				padding: 0.45em 0.9em;
+				border-radius: 3px;
+				border: 1px solid var(--border);
+			}
+			.claim-chip.c-sup  { color: var(--cat-agent, #7ab8b0); border-color: rgba(122,184,176,0.45); }
+			.claim-chip.c-inf  { color: var(--accent); border-color: rgba(184,160,122,0.45); }
+			.claim-chip.c-spec { color: var(--cat-cognition, #9088b8); border-color: rgba(144,136,184,0.45); }
+
 			/* ── Scroll reveal ── */
 			.reveal {
 				opacity: 0;
@@ -595,6 +641,7 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 				.tech-group:first-child { border-top: 1px solid var(--border); }
 
 				.big-question { font-size: 1.45em; }
+				.rev-line.hit { font-size: 1.15em; }
 				.gate-badge { margin-left: 0; margin-top: 0.6em; display: inline-block; }
 				.role-strip { gap: 0.6em; }
 				.role-cell { padding: 0.7em 1em; flex: 1; }
@@ -610,7 +657,8 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 			<div class="about-header">
 				<span class="label">About</span>
 				<h1>Ji Research Library</h1>
-				<p class="tagline">AI와 함께 일할 때 인간의 인지가 어떻게 변하는지 기록합니다.</p>
+				<p class="rev-line dim">AI를 쓰면 글을 더 빨리 쓸 수 있다.</p>
+				<p class="rev-line hit">하지만 내가 보고 싶은 건 속도가 아니다.</p>
 
 				<!-- AI–Human neural connection visual -->
 				<div class="about-hero-img">
@@ -618,8 +666,15 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 				</div>
 
 				<p class="manifesto">
-					여기 실린 글은 결과물이자 실험 기록입니다.
-					AI와 함께 만들고, 검증 과정을 숨기지 않습니다.
+					AI를 쓰는 과정에서 사람의 판단이 어떻게 달라지는지 보고 싶었다.
+					어디서 더 명확해지고 어디서 더 쉽게 기대게 되는지.
+					전문성은 약해지는지, 아니면 다른 형태로 바뀌는지.
+					Ji Research Library는 그 과정을 기록하는 곳이다.
+				</p>
+				<p class="manifesto">
+					여기 올라오는 글은 단순한 결과물이 아니다.
+					AI와 함께 만들고 다시 검증하고 사람이 마지막으로 판단한 기록이다.
+					완성된 글만 보여주기보다 그 글이 어떻게 만들어졌는지도 함께 남긴다.
 				</p>
 
 				<!-- Stats bar -->
@@ -643,46 +698,47 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 				</div>
 			</div>
 
-			<!-- ── 2. The Question ── -->
+			<!-- ── 2. 내가 보는 질문 ── -->
 			<div class="about-section reveal">
-				<h2>The Question</h2>
-				<p class="big-question">AI가 사고 과정 <em>안에</em> 들어오면<br />무엇이 달라지는가</p>
+				<h2>내가 보는 질문</h2>
+				<p class="big-question">AI가 사고 과정 <em>안으로</em> 들어오면<br />무엇이 달라지는가</p>
 				<div class="q-chips">
-					<span class="q-chip">판단 구조는 어떻게 바뀌나</span>
-					<span class="q-chip">전문성의 기준은 어디로 가나</span>
-					<span class="q-chip">무엇을 얻고 무엇을 잃나</span>
+					<span class="q-chip">판단은 좋아지는가, 흐려지는가</span>
+					<span class="q-chip">전문성의 기준은 어디로 이동하는가</span>
+					<span class="q-chip">무엇을 얻고 무엇을 잃는가</span>
 				</div>
+				<p class="q-closing">하나의 정답을 내기보다 그 변화를 계속 관찰하고 정리한다.</p>
 			</div>
 
 			<!-- ── 3. Fields of Inquiry ── -->
 			<div class="about-section reveal">
-				<h2>Fields of Inquiry</h2>
+				<h2>네 가지 주제</h2>
 				<p class="field-intro">
-					하나의 질문을 네 방향에서 봅니다.
+					하나의 질문을 네 방향에서 본다.
 				</p>
 				<div class="domain-grid">
 					<div class="domain-card" style="--dc-color: var(--cat-psychology)">
 						<span class="domain-stripe" style="background: var(--cat-psychology)"></span>
 						<span class="domain-name">AI 심리학</span>
-						<div class="domain-question">AI 의존이 판단력을 강화하는지 약화시키는지</div>
+						<div class="domain-question">AI 의존이 판단력을 강화하는지, 아니면 약화시키는지 본다.</div>
 						<div class="domain-keywords">자동화 편향 · 탈숙련화 · 과신 효과 · 전문성 변형</div>
 					</div>
 					<div class="domain-card" style="--dc-color: var(--cat-cognition)">
 						<span class="domain-stripe" style="background: var(--cat-cognition)"></span>
 						<span class="domain-name">인지 융합</span>
-						<div class="domain-question">인간-AI 결합이 새로운 인지 모델을 만드는지</div>
+						<div class="domain-question">사람과 AI가 함께 생각할 때 어떤 사고 방식이 만들어지는지 본다.</div>
 						<div class="domain-keywords">하이브리드 마인드 · 확장된 인지 · 인간-AI 공동 추론</div>
 					</div>
 					<div class="domain-card" style="--dc-color: var(--cat-tech)">
 						<span class="domain-stripe" style="background: var(--cat-tech)"></span>
 						<span class="domain-name">AI 기술</span>
-						<div class="domain-question">LLM은 어디서 막히고, 그 한계를 왜 알아야 하는가</div>
+						<div class="domain-question">LLM이 어디서 잘하고, 어디서 막히는지 본다.</div>
 						<div class="domain-keywords">환각 통제 · RAG 한계 · 컨텍스트 윈도우 · 로컬 LLM</div>
 					</div>
 					<div class="domain-card" style="--dc-color: var(--cat-agent)">
 						<span class="domain-stripe" style="background: var(--cat-agent)"></span>
 						<span class="domain-name">에이전트</span>
-						<div class="domain-question">여러 AI가 함께 일할 때 시스템이 좋아지거나 무너지는 조건</div>
+						<div class="domain-question">여러 AI가 함께 일할 때 좋아지는 조건과 무너지는 조건을 본다.</div>
 						<div class="domain-keywords">멀티에이전트 · 오케스트레이션 · 오류 증폭 · 협력 임계점</div>
 					</div>
 				</div>
@@ -690,10 +746,10 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 
 			<!-- ── 4. Production System ── -->
 			<div class="about-section reveal">
-				<h2>Production System</h2>
+				<h2>글이 만들어지는 방식</h2>
 				<p class="process-intro">
-					에세이 하나가 공개되기까지 6단계. 단계 사이마다 품질 게이트가 있습니다.
-					<span class="gate-badge">게이트 2연속 실패 → 자동 중단</span>
+					에세이 하나는 바로 공개하지 않는다. 여섯 단계를 거치고 단계 사이마다 게이트가 있다.
+					<span class="gate-badge">게이트 연속 실패 → 중단 또는 다시 큐로</span>
 				</p>
 				<div class="pipeline-grid">
 					<div class="pipeline-card">
@@ -722,7 +778,7 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 						<span class="pipe-step">Step 04</span>
 						<span class="pipe-label">Draft</span>
 						<div class="pipe-desc">Evidence Pack을 받아 에세이를 씁니다. Writer는 연구를 하지 않습니다. 글만 씁니다.</div>
-						<span class="pipe-agent">Writer Ji (DeepSeek V3.2 685B MoE via NIM API) → Gate 2</span>
+						<span class="pipe-agent">Writer Ji (Kimi K2.6 via NIM API) → Gate 2</span>
 					</div>
 					<div class="pipeline-card">
 						<span class="pipe-num">05</span>
@@ -747,7 +803,7 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 					<span class="role-x">≠</span>
 					<div class="role-cell">
 						<span class="role-name">작성</span>
-						<span class="role-model">DeepSeek</span>
+						<span class="role-model">Kimi</span>
 					</div>
 					<span class="role-x">≠</span>
 					<div class="role-cell">
@@ -756,14 +812,22 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 					</div>
 				</div>
 				<p class="process-note">
-					세 역할은 서로 다른 계열의 모델로 분리합니다. 같은 모델이 자기 출력을 무비판적으로 통과시키는 일을 막기 위해서입니다.
+					조사하는 모델, 쓰는 모델, 검증하는 모델을 나눈다. 같은 모델이 자기 출력을 그대로 통과시키는 일을 줄이기 위해서다.
+				</p>
+				<div class="claim-strip">
+					<span class="claim-chip c-sup">SUPPORTED</span>
+					<span class="claim-chip c-inf">INFERENCE</span>
+					<span class="claim-chip c-spec">SPECULATION</span>
+				</div>
+				<p class="process-note">
+					주장은 근거 수준에 따라 셋으로 나눈다. 그 위에 사실 과장, 인용 불일치, 신규성 부풀림, 숨은 가정, 가독성을 다시 확인한다.
 				</p>
 			</div>
 
 			<!-- ── 5. Technical Foundation ── -->
 			<div class="about-section reveal">
-				<h2>Technical Foundation</h2>
-				<p class="tech-intro">이 라이브러리는 역할 기반 멀티에이전트 시스템으로 운영됩니다.</p>
+				<h2>시스템 구성</h2>
+				<p class="tech-intro">역할을 나눈 멀티에이전트 시스템으로 돌아간다.</p>
 				<div class="tech-groups">
 					<div class="tech-group">
 						<div class="tech-group-title">Orchestration</div>
@@ -777,7 +841,7 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 						<div class="tech-group-title">Models</div>
 						<ul>
 							<li>Qwen 3.6 35B-A3B MoE <span class="tech-role">· researcher</span></li>
-							<li>DeepSeek V3.2 685B MoE <span class="tech-role">· writer (NVIDIA NIM API)</span></li>
+							<li>Kimi K2.6 <span class="tech-role">· writer (NVIDIA NIM API)</span></li>
 							<li>Gemma 4 26B MoE <span class="tech-role">· reviewer</span></li>
 							<li>Nemotron-3-Super 120B <span class="tech-role">· orchestrator (NVIDIA NIM API)</span></li>
 						</ul>
@@ -819,7 +883,7 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 
 			<!-- ── 6. Human Role + CTA ── -->
 			<div class="about-section reveal">
-				<h2>Human Role</h2>
+				<h2>사람의 역할</h2>
 				<div class="hr-split">
 					<div class="hr-col">
 						<div class="hr-head">AI의 몫</div>
@@ -841,7 +905,7 @@ const catCount = new Set(articles.map(a => a.data.category)).size;
 					</div>
 				</div>
 				<p class="purpose-body">
-					자동화는 드러내고 책임은 사람에게 남깁니다.
+					자동화는 드러내되, 책임은 사람에게 남긴다.
 				</p>
 
 				<div class="about-cta">
