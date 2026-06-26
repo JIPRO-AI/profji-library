@@ -2,7 +2,7 @@
 title: "AI 번아웃: 효율성이 올라갈수록 사람이 먼저 무너지는 이유"
 description: "AI가 일을 줄여줬는데 왜 더 지쳤을까. 개인의 인지적 과부하와 조직의 구조적 실패가 겹칠 때, AI 도입은 효율성 향상이 아니라 핵심 인재 유출로 귀결된다. 10→20→0 패턴의 구조와 해법을 분석한다."
 pubDate: "2026-04-01"
-category: "인지 융합"
+category: "AI 심리학"
 tags: ["AI","burnout","organization","cognitive-load"]
 articleType: "framework"
 titleEn: "AI Burnout: Why Higher Efficiency Makes People Break First"

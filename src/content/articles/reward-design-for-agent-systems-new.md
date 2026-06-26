@@ -2,7 +2,7 @@
 title: "AI 에이전트의 보상 설계: 채찍과 당근의 최적 조합법"
 description: "보상은 많이 주느냐 적게 주느냐의 문제가 아니라, 어떤 시점에 어떤 형태로 배치하느냐의 문제다. AI 에이전트 성능을 결정하는 보상 구조의 비대칭성, 아키텍처 민감도, 동적 설계 원칙을 분석한다."
 pubDate: "2026-04-04"
-category: "AI 기술"
+category: "에이전트"
 tags: ["AI","reinforcement-learning","reward-design","agent"]
 articleType: "framework"
 titleEn: "Reward Design for AI Agents: The Optimal Mix of Stick and Carrot"

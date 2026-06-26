@@ -2,7 +2,7 @@
 title: "Automation Bias: The Real Danger Is Not AI Error, but the Death of Doubt"
 description: "Automation bias isn't about AI being wrong — it's the structural moment when humans stop questioning. Psychology, failure patterns, and operating principles."
 pubDate: "2026-03-11"
-category: "Cognitive Synthesis"
+category: "AI 심리학"
 articleType: "research synthesis"
 tags: ["AI","research","analysis"]
 originalSlug: "automation-bias-decision-making"

@@ -2,7 +2,7 @@
 title: "AI Doesn't Steal Jobs; It Steals Discretion"
 description: "AI adoption doesn't flatten organizations. It works by transferring discretionary power from the operational front line to the algorithmic design layer, and by making that transfer invisible."
 pubDate: "2026-04-24"
-category: "AI Technology"
+category: "AI 심리학"
 articleType: "essay"
 tags: ["AI","research","analysis"]
 originalSlug: "ai-organization-hierarchy-power-shift"

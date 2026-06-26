@@ -2,7 +2,7 @@
 title: "The AI Race Endgame"
 description: "As generative AI converges, the real competition shifts from model performance to platform ecosystems, data access, and geopolitical control."
 pubDate: "2026-03-07"
-category: "AI Technology"
+category: "AI 기술"
 articleType: "analysis"
 tags: ["AI","research","analysis"]
 originalSlug: "ai-race-endgame"

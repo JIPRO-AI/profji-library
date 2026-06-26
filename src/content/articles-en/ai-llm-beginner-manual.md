@@ -2,7 +2,7 @@
 title: "LLM Beginner Guide: Common Misconceptions in Free AI and Cognitive Task Routing"
 description: "Most beginner frustration with AI comes from how they use it, not the model's capability. Five usage errors and a task-based operating manual for effective AI interaction."
 pubDate: "2026-03-25"
-category: "AI Technology"
+category: "AI 기술"
 articleType: "framework"
 tags: ["AI","guide","beginner"]
 originalSlug: "ai-llm-beginner-manual"

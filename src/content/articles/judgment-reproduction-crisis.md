@@ -2,7 +2,7 @@
 title: "판단력 재생산 위기 (Judgment Reproduction Crisis, JRC)"
 description: "AI는 일을 빨리하게 만든다. 하지만 다음 세대가 판단을 배우는 구조는 약화시킨다."
 pubDate: "2026-05-07"
-category: "AI 기술"
+category: "AI 심리학"
 tags: ["AI","JRC","judgment","measurement-asymmetry","decision-debt","reproduction-crisis","AX"]
 connections:
   - slug: automation-bias-decision-making

@@ -2,7 +2,7 @@
 title: "Metacognition and LLM Prompting: How User Cognition Determines AI Response Quality"
 description: "The same prompt template yields different results not because of the model, but because of the user's thinking structure. Prompt engineering reframed as a cognitive skill, not a language skill."
 pubDate: "2026-03-24"
-category: "AI Technology"
+category: "인지 융합"
 articleType: "essay"
 tags: ["AI","research","analysis"]
 originalSlug: "metacognition-llm-prompting"

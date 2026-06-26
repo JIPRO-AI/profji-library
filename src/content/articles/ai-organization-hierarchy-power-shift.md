@@ -2,7 +2,7 @@
 title: "AI가 빼앗는 것은 일자리가 아니라 재량권이다"
 description: "AI 도입은 조직을 평평하게 만들지 않는다. 현장의 판단권을 알고리즘 설계층으로 이전하고, 그 이동을 보이지 않게 만드는 방식으로 작동한다."
 pubDate: "2026-04-24"
-category: "AI 기술"
+category: "AI 심리학"
 tags: ["AI","research","analysis"]
 connections:
   - slug: ai-accountability-decomposition

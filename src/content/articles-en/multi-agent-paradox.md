@@ -2,7 +2,7 @@
 title: "The Multi-Agent Paradox"
 description: "When individually rational agents converge on collectively suboptimal outcomes — the structural dilemma of distributed AI cooperation."
 pubDate: "2026-03-07"
-category: "Agent Systems"
+category: "에이전트"
 articleType: "research synthesis"
 tags: ["AI","research","analysis"]
 originalSlug: "multi-agent-paradox"

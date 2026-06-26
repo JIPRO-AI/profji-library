@@ -2,7 +2,7 @@
 title: "AI는 중요한데 그래서 나는 뭐해야 하는가"
 description: "AI 담론은 방향은 주지만 경로는 주지 않는다. 사람들이 멈추는 자리에 대하여."
 pubDate: "2026-05-08"
-category: "AI 기술"
+category: "인지 융합"
 tags: ["AI","AX","translation-gap","AI-fatigue","execution","individual"]
 articleType: "essay"
 titleEn: "AI Is Important. But What Am I Supposed to Do?"

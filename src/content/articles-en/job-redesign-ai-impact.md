@@ -2,7 +2,7 @@
 title: "AI and Job Redesign: How Automation Transforms Task Content and Worker Role Identity"
 description: "Automation doesn't eliminate work — it eliminates the meaning of work. Rebuilding that meaning is not a technology problem but an organizational design problem."
 pubDate: "2026-04-02"
-category: "AI Technology"
+category: "AI 심리학"
 articleType: "research synthesis"
 tags: ["AI","work-design","identity","organization"]
 originalSlug: "job-redesign-ai-impact"

@@ -2,7 +2,7 @@
 title: "From Babel to Algorithms: How the Bible Interprets Technological Civilization"
 description: "The Bible doesn't mention AI directly, but it already contains the framework to interpret human attitudes and limits in the AI age."
 pubDate: "2026-03-28"
-category: "Cognitive Synthesis"
+category: "AI 기술"
 articleType: "essay"
 tags: ["AI","theology","ethics","civilization"]
 originalSlug: "bible-and-ai-connection"

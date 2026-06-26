@@ -2,7 +2,7 @@
 title: "AI와 창의성: 더 많은 생성이 아니라 더 좋은 선택 구조의 설계"
 description: "AI가 창의성을 높이는 핵심은 출력량이 아니라 인간이 설계하는 선택 구조에 있다. 인지 증폭과 인지 위임의 경계, 충격효과의 메커니즘, 그리고 실전 워크플로우까지."
 pubDate: "2026-03-20"
-category: "AI 기술"
+category: "인지 융합"
 tags: ["AI","research","analysis"]
 articleType: "framework"
 titleEn: "AI and Creativity: Designing Better Selection Structures, Not More Generation"

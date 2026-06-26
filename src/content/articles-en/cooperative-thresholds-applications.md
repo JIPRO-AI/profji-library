@@ -2,7 +2,7 @@
 title: "Cooperative Thresholds: Multi-Agent Systems Transition at Structure, Not Scale"
 description: "Macroscopic behavior in multi-agent systems shifts nonlinearly at structural tipping points. Targeted intervention, early warning, and structural leverage."
 pubDate: "2026-03-11"
-category: "Agent Systems"
+category: "에이전트"
 articleType: "framework"
 tags: ["AI","research","analysis"]
 originalSlug: "cooperative-thresholds-applications"

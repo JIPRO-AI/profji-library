@@ -2,7 +2,7 @@
 title: "Judgment Reproduction Crisis (JRC): AI Speeds Up the Work, but Erodes the Structure That Teaches the Next Generation to Judge"
 description: "AI speeds up the work. But it weakens the structure through which the next generation learns to judge."
 pubDate: "2026-05-07"
-category: "AI Technology"
+category: "AI 심리학"
 articleType: "framework"
 tags: ["AI","JRC","judgment","measurement-asymmetry","decision-debt","reproduction-crisis","AX"]
 originalSlug: "judgment-reproduction-crisis"

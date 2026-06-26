@@ -2,7 +2,7 @@
 title: "Reward Design for AI Agents: The Optimal Mix of Stick and Carrot"
 description: "Reward isn't about how much — it's about when and how. Asymmetric reward signals, architecture sensitivity, and dynamic design principles for agent performance."
 pubDate: "2026-04-04"
-category: "AI Technology"
+category: "에이전트"
 articleType: "framework"
 tags: ["AI","reinforcement-learning","reward-design","agent"]
 originalSlug: "reward-design-for-agent-systems-new"

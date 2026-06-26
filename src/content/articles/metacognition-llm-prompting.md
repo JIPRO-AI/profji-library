@@ -2,7 +2,7 @@
 title: "메타인지와 LLM 프롬프팅: 사용자 인지가 AI 응답 품질을 결정하는 메커니즘"
 description: "같은 프롬프트 템플릿을 써도 결과가 다른 이유는 모델이 아니라 사용자의 사고 방식에 있다. 프롬프트 엔지니어링을 언어 기술이 아닌 인지 기술로 재정의하고, 메타인지 기반 설계 원칙과 실전 프로토콜을 제시한다."
 pubDate: "2026-03-24"
-category: "AI 기술"
+category: "인지 융합"
 tags: ["AI","research","analysis"]
 connections:
   - slug: automation-bias-decision-making

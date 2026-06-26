@@ -2,7 +2,7 @@
 title: "The AI Superuser: It's Judgment, Not Generation"
 description: "AI superusers don't write better prompts — they build verification loops, maintain expertise, and take final responsibility."
 pubDate: "2026-03-14"
-category: "AI Technology"
+category: "인지 융합"
 articleType: "essay"
 tags: ["AI","research","analysis"]
 originalSlug: "ai-superuser-workplace-personal"

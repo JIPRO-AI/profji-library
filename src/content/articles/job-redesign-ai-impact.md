@@ -2,7 +2,7 @@
 title: "AI와 직무 재설계: 자동화가 작업 내용을 어떻게 바꾸고 직원 역할 정체성에 미치는 영향"
 description: "자동화는 업무를 없애는 것이 아니라 업무의 의미를 없앤다. 그 의미를 다시 만드는 것은 기술이 아니라 조직 설계다. 직무 내용 변화, 정체성 위기, 부정적 시나리오, 그리고 설계 원칙을 분석한다."
 pubDate: "2026-04-02"
-category: "AI 기술"
+category: "AI 심리학"
 tags: ["AI","work-design","identity","organization"]
 articleType: "research synthesis"
 titleEn: "AI and Job Redesign: How Automation Transforms Task Content and Worker Role Identity"

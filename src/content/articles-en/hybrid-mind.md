@@ -2,7 +2,7 @@
 title: "Hybrid Mind: Beyond Tools — The Conditions for Human-AI Cognitive Fusion"
 description: "Hybrid Mind is not tool use — it's the collaborative restructuring of cognition between human and AI. Definition, failure modes, design principles, and the path to Brain OS."
 pubDate: "2026-03-07"
-category: "Cognitive Synthesis"
+category: "인지 융합"
 articleType: "framework"
 tags: ["AI","cognition","hybrid-mind","brain-os"]
 originalSlug: "hybrid-mind"

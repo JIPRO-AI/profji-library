@@ -2,7 +2,7 @@
 title: "The Structure of AI Hype: Why Everyone Plans to Adopt but Nobody Knows How to Use It"
 description: "AI adoption failure isn't about technology capability. It's about the gap between 'automate everything' directives and the absence of specific execution plans."
 pubDate: "2026-04-11"
-category: "AI Technology"
+category: "AI 기술"
 articleType: "framework"
 tags: ["AI","organization","hype","adoption"]
 originalSlug: "ai-hype-expectation-execution-gap"

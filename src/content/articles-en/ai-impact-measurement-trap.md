@@ -2,7 +2,7 @@
 title: "The AI KPI Trap: Higher Productivity, Deeper Burnout"
 description: "As throughput goes up, something more dangerous goes up with it — and standard KPIs won't show you where."
 pubDate: "2026-04-19"
-category: "AI Technology"
+category: "AI 심리학"
 articleType: "essay"
 tags: ["AI","measurement","burnout","cognitive-load","productivity"]
 originalSlug: "ai-impact-measurement-trap"

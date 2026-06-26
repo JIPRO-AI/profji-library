@@ -2,7 +2,7 @@
 title: "US-China AI Race: Neither Purely Open Nor Purely Closed"
 description: "Both nations blend strategic control with selective openness. The real paradox: a politically closed system weaponizing open-weight distribution."
 pubDate: "2026-03-16"
-category: "AI Technology"
+category: "AI 기술"
 articleType: "analysis"
 tags: ["AI","research","analysis"]
 originalSlug: "us-china-ai-development-differences"

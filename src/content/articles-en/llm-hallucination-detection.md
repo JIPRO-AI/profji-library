@@ -2,7 +2,7 @@
 title: "LLM Hallucination Control: Reliability Is Decided at Verification Routing"
 description: "Hallucination is not a model bug but a systemic failure of verification routing. Taxonomy, claim-level pipeline, and measurement framework."
 pubDate: "2026-03-11"
-category: "AI Technology"
+category: "AI 기술"
 articleType: "framework"
 tags: ["AI","research","analysis"]
 originalSlug: "llm-hallucination-detection"

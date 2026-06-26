@@ -2,7 +2,7 @@
 title: "The Crisis of Expertise Reproduction: Automation Doesn't Replace Experts, It Collapses the Structure That Creates Them"
 description: "This analysis breaks down the mechanism by which AI automation erodes the very structure that forms, maintains, and transmits expertise into a three-stage causal chain. It then proposes workflow design principles to restore expertise reproduction."
 pubDate: "2026-04-20"
-category: "Cognitive Synthesis"
+category: "AI 심리학"
 articleType: "essay"
 tags: ["AI", "전문성", "자동화", "기술 퇴화", "인지 오프로딩", "신뢰 보정"]
 originalSlug: "expertise-reproduction-crisis"

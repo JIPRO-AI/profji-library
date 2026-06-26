@@ -2,7 +2,7 @@
 title: "Enterprise AI Adoption: Employee-Driven Automation Design"
 description: "Neither top-down automation nor unlimited decentralization works alone. The dual structure of central platforms and frontline micro-agent design."
 pubDate: "2026-03-12"
-category: "AI Technology"
+category: "AI 기술"
 articleType: "framework"
 tags: ["AI","research","analysis"]
 originalSlug: "company-ai-adoption-employee-driven-automation"

@@ -2,7 +2,7 @@
 title: "AI and Creativity: Designing Better Selection Structures, Not More Generation"
 description: "The key to AI-augmented creativity is not output volume but the selection architecture humans design. Cognitive amplification vs. delegation."
 pubDate: "2026-03-20"
-category: "AI Technology"
+category: "인지 융합"
 articleType: "framework"
 tags: ["AI","research","analysis"]
 originalSlug: "ai-augments-human-creativity"

@@ -2,7 +2,7 @@
 title: "Physical AI는 95퍼센트의 위험을 보지 못한다"
 description: "로봇은 측정되는 성과를 올리는 동안 측정되지 않는 위험을 쌓는다. Physical AI 시대의 측정 비대칭과, 그것을 보정할 인간 판단의 자리에 대하여."
 pubDate: "2026-05-30"
-category: "AI 기술"
+category: "AI 심리학"
 tags: ["Physical AI","측정 비대칭","거버넌스","자동화 편향","전문성 재생산"]
 articleType: "analysis"
 titleEn: "Physical AI Cannot See 95% of the Risk"

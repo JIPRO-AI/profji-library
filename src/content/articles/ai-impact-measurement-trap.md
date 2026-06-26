@@ -2,7 +2,7 @@
 title: "AI KPI의 함정 — 생산성이 오를수록 번아웃은 깊어진다"
 description: "처리 건수가 올라갈수록 더 위험해지는 것이 있다"
 pubDate: "2026-04-19"
-category: "AI 기술"
+category: "AI 심리학"
 tags: ["AI","measurement","burnout","cognitive-load","productivity"]
 connections:
   - slug: automation-bias-decision-making

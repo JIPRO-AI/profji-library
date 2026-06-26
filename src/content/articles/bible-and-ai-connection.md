@@ -2,7 +2,7 @@
 title: "바벨탑에서 알고리즘까지: 성경이 해석하는 기술 문명"
 description: "성경은 AI를 직접 말하지 않지만, AI를 다루는 인간의 태도와 한계를 해석할 프레임은 이미 갖고 있다. 창조, 지혜, 우상화, 책임, 정체성 — 다섯 가지 축으로 성경적 인간관이 AI 시대를 읽는 렌즈를 제시한다."
 pubDate: "2026-03-28"
-category: "인지 융합"
+category: "AI 기술"
 tags: ["AI","theology","ethics","civilization"]
 articleType: "essay"
 titleEn: "From Babel to Algorithms: How the Bible Interprets Technological Civilization"

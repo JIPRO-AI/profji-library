@@ -2,7 +2,7 @@
 title: "AI Is Important. But What Am I Supposed to Do?"
 description: "AI discourse gives direction but not a path. On the place where people stop."
 pubDate: "2026-05-08"
-category: "AI Technology"
+category: "인지 융합"
 articleType: "essay"
 tags: ["AI","AX","translation-gap","AI-fatigue","execution","individual"]
 originalSlug: "ai-discourse-translation-gap"

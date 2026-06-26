@@ -593,7 +593,7 @@ const archiveArticles = articles
 
 				<div class="meta-bar">
 					<span><span class="num">{articles.length}</span> essays</span>
-					<span><span class="num">5</span> research axes</span>
+					<span><span class="num">{new Set(articles.map(a => a.data.category)).size}</span> research axes</span>
 					<span>human-curated</span>
 				</div>
 			</div>

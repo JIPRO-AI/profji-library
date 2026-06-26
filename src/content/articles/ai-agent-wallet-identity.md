@@ -2,7 +2,7 @@
 title: "에이전트는 왜 지갑이 필요한가 — 결제가 아니라 인격이 병목이다"
 description: "에이전트의 병목은 결제 수단이 아니라 인격이다. 빌린 인격(전통 API)과 자기 인격(블록체인 레일) — 에이전트 경제활동 3층 구조의 분석."
 pubDate: "2026-06-12"
-category: "AI 기술"
+category: "에이전트"
 tags: ["AI","research","analysis"]
 connections:
   - slug: ai-accountability-decomposition

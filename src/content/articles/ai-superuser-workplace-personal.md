@@ -2,7 +2,7 @@
 title: "AI 슈퍼유저의 조건: 생성이 아니라 판단이다"
 description: "AI 슈퍼유저는 프롬프트를 잘 치는 사람이 아니라, AI의 출력을 판단하고 검증하며 자기 업무 맥락에 맞게 재설계하는 사람이다. 프롬프트 설계, 검증 루프, 전문성 유지, 윤리적 승인 구조, 개인 에이전트 구축까지 실전 중심으로 분석한다."
 pubDate: "2026-03-14"
-category: "AI 기술"
+category: "인지 융합"
 tags: ["AI","research","analysis"]
 articleType: "essay"
 titleEn: "The AI Superuser: It's Judgment, Not Generation"

@@ -2,7 +2,7 @@
 title: "AI 결과의 책임은 어디로 가는가 — 단일 작성자 전제가 무너질 때 조직이 해야 할 일"
 description: "AI 보고서에 오류가 있었다면 누구 책임인가. 조직의 기존 책임 체계는 단일 작성자 전제를 깔고 있지만, 분산된 AI 출력 환경에서 이 전제는 무너진다. 해법은 면책이 아니라 책임의 분해 설계다."
 pubDate: "2026-04-21"
-category: "AI 기술"
+category: "AI 심리학"
 tags: ["AI","research","analysis"]
 connections:
   - slug: ai-organization-hierarchy-power-shift

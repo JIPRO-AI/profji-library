@@ -2,7 +2,7 @@
 title: "AI Burnout: Why Higher Efficiency Makes People Break First"
 description: "AI reduced the workload but increased exhaustion. When individual cognitive overload meets organizational structural failure, AI adoption leads to talent drain, not efficiency gains."
 pubDate: "2026-04-01"
-category: "Cognitive Synthesis"
+category: "AI 심리학"
 articleType: "framework"
 tags: ["AI","burnout","organization","cognitive-load"]
 originalSlug: "ai-burnout-organizational-failure"

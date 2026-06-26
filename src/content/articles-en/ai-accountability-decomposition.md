@@ -2,7 +2,7 @@
 title: "Where Does Accountability for AI Outputs Go? — What Organizations Must Do When the Single-Author Premise Collapses"
 description: "When an AI-generated report contains an error, who is responsible? Traditional organizational accountability systems assume a single author, but this premise collapses in distributed AI output environments. The solution is not exemption, but a design for decomposing accountability."
 pubDate: "2026-04-21"
-category: "AI Technology"
+category: "AI 심리학"
 articleType: "essay"
 tags: ["AI","research","analysis"]
 originalSlug: "ai-accountability-decomposition"
