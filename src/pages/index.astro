@@ -246,6 +246,39 @@ const archiveArticles = articles
 				transform: scale(1.04);
 			}
 
+			/* ── Pathways: 무엇부터 읽을지 ── */
+			.pathways {
+				margin: 0 0 2.8em;
+				border: 1px solid var(--border);
+				border-radius: 10px;
+				overflow: hidden;
+			}
+			.pathways a {
+				display: grid;
+				grid-template-columns: 9.5em 1fr;
+				gap: 1em;
+				align-items: baseline;
+				padding: 0.9em 1.1em;
+				text-decoration: none;
+				border-bottom: 1px solid var(--border);
+			}
+			.pathways a:last-child { border-bottom: none; }
+			.pathways .pw-who {
+				font-family: var(--font-mono);
+				font-size: 0.72em;
+				color: var(--accent);
+				letter-spacing: 0.02em;
+				white-space: nowrap;
+			}
+			.pathways .pw-what {
+				font-family: var(--font-serif);
+				font-size: 1em;
+				color: var(--text-secondary);
+				line-height: 1.5;
+				word-break: keep-all;
+			}
+			.pathways a:hover .pw-what { color: var(--accent); }
+
 			/* ── Featured: Lead Card ── */
 			.featured-lead {
 				padding: 2em 0;
@@ -615,6 +648,29 @@ const archiveArticles = articles
 					<div class="section-header">
 						<h2 class="section-title">Start Here</h2>
 					</div>
+
+					<nav class="pathways" aria-label="무엇부터 읽을지">
+						<a href="/profji-library/articles/ai-discourse-translation-gap/">
+							<span class="pw-who">처음 온 사람</span>
+							<span class="pw-what">AI는 중요한데 그래서 나는 뭐해야 하는가</span>
+						</a>
+						<a href="/profji-library/articles/company-ai-adoption-employee-driven-automation/">
+							<span class="pw-who">회사·조직</span>
+							<span class="pw-what">회사 AI 도입과 직원 주도형 자동화 설계</span>
+						</a>
+						<a href="/profji-library/articles/metacognition-llm-prompting/">
+							<span class="pw-who">AI 사용법</span>
+							<span class="pw-what">메타인지와 LLM 프롬프팅</span>
+						</a>
+						<a href="/profji-library/articles/ai-agent-wallet-identity/">
+							<span class="pw-who">에이전트</span>
+							<span class="pw-what">에이전트는 왜 지갑이 필요한가</span>
+						</a>
+						<a href="/profji-library/about/">
+							<span class="pw-who">구조가 궁금하면</span>
+							<span class="pw-what">About · 시스템과 파이프라인</span>
+						</a>
+					</nav>
 
 					{leadFeatured && (
 						<div class="featured-lead">
