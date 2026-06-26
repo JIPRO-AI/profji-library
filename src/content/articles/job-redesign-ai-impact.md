@@ -7,6 +7,10 @@ tags: ["AI","work-design","identity","organization"]
 articleType: "research synthesis"
 titleEn: "AI and Job Redesign: How Automation Transforms Task Content and Worker Role Identity"
 descriptionEn: "Automation doesn't eliminate work — it eliminates the meaning of work. Rebuilding that meaning is not a technology problem but an organizational design problem."
+connections:
+  - slug: ai-organization-hierarchy-power-shift
+    relation: confirms
+    note: "AI가 들어오면 인간 역할이 비워진다. 여긴 의미가 저긴 판단권이 빠진다."
 ---
 
 ## 자동화가 업무를 고차원화한다는 믿음이 위험한 이유

@@ -4,6 +4,16 @@ description: "AI 보고서에 오류가 있었다면 누구 책임인가. 조직
 pubDate: "2026-04-21"
 category: "AI 기술"
 tags: ["AI","research","analysis"]
+connections:
+  - slug: ai-organization-hierarchy-power-shift
+    relation: extends
+    note: "이 책임 공백이 왜 생기는지를 권력 이동으로 짚은 글이다."
+  - slug: automation-bias-decision-making
+    relation: confirms
+    note: "사람이 AI 출력을 형식적으로 승인하는 그 순간이 곧 자동화 편향이다."
+  - slug: ai-agent-wallet-identity
+    relation: extends
+    note: "조직 보고서의 책임 공백을 자율 에이전트 경제로 끌고 간 글이다."
 ---
 
 AI가 초안 보고서를 쓰고 팀장이 읽고 승인하고 결정이 실행된다. 그 결정이 잘못됐다면 누가 책임지는가. "팀장이 승인했으니 팀장 책임"이라고 말하기는 쉽다. 하지만 팀장은 AI의 판단 경로를 볼 수 없었고 데이터의 가정도 모르며 실질적으로는 AI 출력을 거의 그대로 통과시켰을 뿐이다. 이 경우 책임은 팀장에게 있는가, 모델 공급자에게 있는가, 시스템 설계자에게 있는가, 이 구조를 허용한 조직에 있는가.

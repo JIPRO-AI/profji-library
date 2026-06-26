@@ -7,6 +7,10 @@ tags: ["AI","research","analysis"]
 articleType: "analysis"
 titleEn: "The AI Race Endgame"
 descriptionEn: "As generative AI converges, the real competition shifts from model performance to platform ecosystems, data access, and geopolitical control."
+connections:
+  - slug: us-china-ai-development-differences
+    relation: confirms
+    note: "시장이 한 점으로 수렴하는 흐름을 미중 전략 구도에서 본 글이다."
 ---
 
 ## AI 경쟁의 엔드게임: 기술적 수렴과 지형학의 경계

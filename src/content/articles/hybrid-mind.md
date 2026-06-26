@@ -8,6 +8,16 @@ featured: true
 articleType: "framework"
 titleEn: "Hybrid Mind: Beyond Tools — The Conditions for Human-AI Cognitive Fusion"
 descriptionEn: "Hybrid Mind is not tool use — it's the collaborative restructuring of cognition between human and AI. Definition, failure modes, design principles, and the path to Brain OS."
+connections:
+  - slug: ai-superuser-workplace-personal
+    relation: confirms
+    note: "슈퍼유저의 판단을 인간-AI 인지 분업으로 일반화한 글이다."
+  - slug: judgment-reproduction-crisis
+    relation: confirms
+    note: "이 협업 구조가 세대 단위로 약해지는 과정을 본다."
+  - slug: ai-discourse-translation-gap
+    relation: confirms
+    note: "방향만 있고 경로가 없을 때 이 인지 분업이 경로가 된다."
 ---
 
 ## AI는 왜 도구를 넘어 인지 구조 문제가 되었는가

@@ -7,6 +7,22 @@ tags: ["AI","research","analysis"]
 articleType: "essay"
 titleEn: "The AI Superuser: It's Judgment, Not Generation"
 descriptionEn: "AI superusers don't write better prompts — they build verification loops, maintain expertise, and take final responsibility."
+connections:
+  - slug: metacognition-llm-prompting
+    relation: confirms
+    note: "차이는 프롬프트 솜씨가 아니라 자기 사고를 점검하는 힘이라는 같은 결론."
+  - slug: hybrid-mind
+    relation: confirms
+    note: "이 하이브리드 구조를 업무에서 몸으로 굴리는 사람이 슈퍼유저다."
+  - slug: ai-augments-human-creativity
+    relation: confirms
+    note: "더 많은 생성이 아니라 더 나은 선택이 핵심이라는 같은 이야기를 창의성 쪽에서 한다."
+  - slug: ai-llm-beginner-manual
+    relation: extends
+    note: "입문자가 다음으로 올라설 자리다. 사용법을 넘어 판단 구조를 쥔다."
+  - slug: ai-discourse-translation-gap
+    relation: extends
+    note: "사람들이 멈추는 그 자리에서 슈퍼유저가 갈라진다."
 ---
 
 AI를 잘 쓰는 사람과 AI에 끌려다니는 사람의 차이는 프롬프트 실력이 아니다. 차이는 판단 구조에 있다.

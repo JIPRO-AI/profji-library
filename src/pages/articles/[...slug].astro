@@ -24,6 +24,12 @@ interface Props {
 const { article, hasEnglish } = Astro.props;
 const { Content } = await render(article);
 
+// 연결된 글: frontmatter connections → 제목 조회 + 관계 라벨
+const allArticles = await getCollection('articles');
+const titleMap = new Map(allArticles.map(a => [a.id, a.data.title]));
+const relLabel: Record<string, string> = { extends: '확장', confirms: '보강', challenges: '반론', applies: '적용' };
+const connections = (article.data.connections ?? []).filter(c => titleMap.has(c.slug));
+
 const base      = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const ogImage   = new URL(`${base}og-v3/${article.id}.png`,            Astro.site).href;
 const heroImage = new URL(`${base}images/articles/${article.id}.png`, Astro.site).href;
@@ -39,6 +45,20 @@ const enUrl     = hasEnglish ? `/profji-library/en/articles/${article.id}/` : un
 	enUrl={enUrl}
 >
 	<Content />
+	{connections.length > 0 && (
+		<nav class="connections" aria-label="이 글과 맞물리는 글">
+			<span class="connections-label">이 글과 맞물리는 글</span>
+			<ul>
+				{connections.map((c) => (
+					<li>
+						<span class={`rel rel-${c.relation}`}>{relLabel[c.relation]}</span>
+						<a href={`/profji-library/articles/${c.slug}/`}>{titleMap.get(c.slug)}</a>
+						<p class="conn-note">{c.note}</p>
+					</li>
+				))}
+			</ul>
+		</nav>
+	)}
 	<div class="colophon">
 		<span class="colophon-label">이 글이 만들어진 방식</span>
 		조사·작성·검증을 서로 다른 모델이 나눠 맡고, 게이트를 거쳐, 사람이 마지막으로 판단했다.
@@ -47,6 +67,62 @@ const enUrl     = hasEnglish ? `/profji-library/en/articles/${article.id}/` : un
 </ArticlePost>
 
 <style>
+	.connections {
+		margin-top: 3.5em;
+		padding-top: 1.4em;
+		border-top: 1px solid var(--border);
+		word-break: keep-all;
+	}
+	.connections-label {
+		display: block;
+		font-family: var(--font-mono);
+		font-size: 0.72em;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--accent);
+		opacity: 0.85;
+		margin-bottom: 1em;
+	}
+	.connections ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.1em;
+	}
+	.connections li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.5em 0.7em;
+		align-items: baseline;
+	}
+	.connections .rel {
+		font-family: var(--font-mono);
+		font-size: 0.66em;
+		padding: 0.15em 0.55em;
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		color: var(--text-muted);
+		white-space: nowrap;
+		letter-spacing: 0.04em;
+	}
+	.connections .rel-challenges { color: var(--accent); border-color: var(--accent); opacity: 0.9; }
+	.connections a {
+		font-size: 0.95em;
+		font-weight: 600;
+		color: var(--text);
+		text-decoration: none;
+		border-bottom: 1px solid var(--border);
+	}
+	.connections a:hover { color: var(--accent); border-color: var(--accent); }
+	.connections .conn-note {
+		grid-column: 2;
+		margin: 0.2em 0 0;
+		font-size: 0.82em;
+		line-height: 1.7;
+		color: var(--text-muted);
+	}
 	.colophon {
 		margin-top: 3.5em;
 		padding-top: 1.4em;

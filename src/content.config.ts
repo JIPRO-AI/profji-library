@@ -15,6 +15,11 @@ const articles = defineCollection({
 		articleType: z.enum(['research synthesis', 'framework', 'essay', 'analysis', 'case study']).default('essay'),
 		titleEn: z.string().optional(),
 		descriptionEn: z.string().optional(),
+		connections: z.array(z.object({
+			slug: z.string(),
+			relation: z.enum(['confirms', 'challenges', 'extends', 'applies']),
+			note: z.string(),
+		})).default([]),
 	}),
 });
 

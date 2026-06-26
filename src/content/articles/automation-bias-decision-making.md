@@ -9,6 +9,28 @@ featured: true
 articleType: "research synthesis"
 titleEn: "Automation Bias: The Real Danger Is Not AI Error, but the Death of Doubt"
 descriptionEn: "Automation bias isn't about AI being wrong — it's the structural moment when humans stop questioning. Psychology, failure patterns, and operating principles."
+connections:
+  - slug: judgment-reproduction-crisis
+    relation: extends
+    note: "이 편향을 세대 단위로 늘린 글이다. 다음 세대가 판단을 배울 자리가 사라진다."
+  - slug: expertise-reproduction-crisis
+    relation: confirms
+    note: "같은 역설을 전문성 쪽에서 본다. 정확도가 오를수록 개입할 힘이 빠진다."
+  - slug: metacognition-llm-prompting
+    relation: challenges
+    note: "이 편향을 개인이 버티는 법이다. 자기 질문을 점검하는 습관이 의심을 살린다."
+  - slug: ai-impact-measurement-trap
+    relation: confirms
+    note: "여기 말한 '보이지 않는 위험'을 KPI 쪽에서 본다. 생산성 숫자가 판단 부담을 가린다."
+  - slug: ai-accountability-decomposition
+    relation: confirms
+    note: "의심을 멈춘 형식적 승인이 책임 구조를 어떻게 무너뜨리는지 본다."
+  - slug: physical-ai-measurement-asymmetry-and-governance
+    relation: confirms
+    note: "이 편향이 물리적 로봇에서 어떻게 사고로 이어지는지 본다."
+  - slug: llm-hallucination-detection
+    relation: confirms
+    note: "'정확도가 오를수록 탐지가 어렵다'는 역설을 환각 검증 쪽에서 본다."
 ---
 
 ## 자동화 편향: AI의 진짜 위험은 오류가 아니라 의심의 소멸이다

@@ -4,6 +4,16 @@ description: "처리 건수가 올라갈수록 더 위험해지는 것이 있다
 pubDate: "2026-04-19"
 category: "AI 기술"
 tags: ["AI","measurement","burnout","cognitive-load","productivity"]
+connections:
+  - slug: automation-bias-decision-making
+    relation: confirms
+    note: "처리량이 오를수록 가려지는 위험이다. 자동화 편향의 '보이지 않는 위험'과 같은 자리다."
+  - slug: physical-ai-measurement-asymmetry-and-governance
+    relation: confirms
+    note: "같은 측정 비대칭을 물리적 로봇에서 본다. 안 보이는 위험이 몸으로 터진다."
+  - slug: judgment-reproduction-crisis
+    relation: confirms
+    note: "이 측정 비대칭이 사람 단위로 쌓이면 판단력 재생산이 막힌다."
 ---
 
 한 팀이 AI로 주간 리포트 초안 100건을 생성한다. KPI상 작성 시간은 70% 줄었고 처리량은 두 배가 됐다. 그런데 담당자는 매주 그 100건의 숫자를 확인하고 문장을 점검하고 결과에 서명까지 해야 한다. 조직은 "리포트 생산성 향상"을 보고하는데 담당자는 이전보다 더 많은 판단 부담을 진다. **이 둘이 같은 보고서 안에 들어 있지 않다는 것이 문제다.**

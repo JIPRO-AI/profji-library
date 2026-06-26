@@ -7,6 +7,10 @@ tags: ["AI","research","analysis"]
 articleType: "analysis"
 titleEn: "US-China AI Race: Neither Purely Open Nor Purely Closed"
 descriptionEn: "Both nations blend strategic control with selective openness. The real paradox: a politically closed system weaponizing open-weight distribution."
+connections:
+  - slug: ai-race-endgame
+    relation: confirms
+    note: "미중 경쟁의 끝을 산업 동질화라는 큰 그림에서 본 글이다."
 ---
 
 미중 AI 경쟁을 이렇게 요약하는 글이 많다. "중국은 국가 주도, 폐쇄적, 검열 중심. 미국은 시장 기반, 개방적, 오픈소스 중심. 따라서 미국이 장기적으로 유리하다." 이 프레임은 깔끔하다. 그리고 현실을 절반만 반영한다.

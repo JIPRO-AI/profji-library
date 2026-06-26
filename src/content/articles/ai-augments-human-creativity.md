@@ -7,6 +7,10 @@ tags: ["AI","research","analysis"]
 articleType: "framework"
 titleEn: "AI and Creativity: Designing Better Selection Structures, Not More Generation"
 descriptionEn: "The key to AI-augmented creativity is not output volume but the selection architecture humans design. Cognitive amplification vs. delegation."
+connections:
+  - slug: ai-superuser-workplace-personal
+    relation: confirms
+    note: "선택 구조를 설계하는 사람이 곧 출력을 판단하고 검증하는 슈퍼유저다."
 ---
 
 ## AI와 창의성: 더 많은 생성이 아니라 더 좋은 선택 구조의 설계

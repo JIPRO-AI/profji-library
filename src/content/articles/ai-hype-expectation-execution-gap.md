@@ -7,6 +7,13 @@ tags: ["AI","organization","hype","adoption"]
 articleType: "framework"
 titleEn: "The Structure of AI Hype: Why Everyone Plans to Adopt but Nobody Knows How to Use It"
 descriptionEn: "AI adoption failure isn't about technology capability. It's about the gap between 'automate everything' directives and the absence of specific execution plans."
+connections:
+  - slug: ai-discourse-translation-gap
+    relation: extends
+    note: "조직의 기대-실행 간극을 개인이 멈추는 자리에서 본 글이다."
+  - slug: company-ai-adoption-employee-driven-automation
+    relation: extends
+    note: "막연한 '자동화하라'가 막히는 자리다. 그걸 풀 도입 구조를 저 글이 제안한다."
 ---
 
 ## "AI 도입하기로 했습니다" — 그리고 아무 일도 일어나지 않았다

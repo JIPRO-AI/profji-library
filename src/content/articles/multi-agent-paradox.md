@@ -7,6 +7,13 @@ tags: ["AI","research","analysis"]
 articleType: "research synthesis"
 titleEn: "The Multi-Agent Paradox"
 descriptionEn: "When individually rational agents converge on collectively suboptimal outcomes — the structural dilemma of distributed AI cooperation."
+connections:
+  - slug: cooperative-thresholds-applications
+    relation: confirms
+    note: "각자 합리적인데 전체가 무너진다. 그 붕괴가 언제 터지는지를 임계점으로 짚은 글이다."
+  - slug: reward-design-for-agent-systems-new
+    relation: confirms
+    note: "같은 '국소 최적화 → 전역 실패'를 보상 설계 쪽에서 본 글이다."
 ---
 
 # 멀티에이전트 패러독스: 분산 인공지능 협업 시스템의 구조적 딜레마

@@ -4,6 +4,10 @@ description: "에이전트의 병목은 결제 수단이 아니라 인격이다.
 pubDate: "2026-06-12"
 category: "AI 기술"
 tags: ["AI","research","analysis"]
+connections:
+  - slug: ai-accountability-decomposition
+    relation: extends
+    note: "에이전트 인격 문제를 조직 책임 쪽에서 먼저 짚은 글이다."
 ---
 
 2026년 5월, 한 투자자가 로빈후드(Robinhood)의 에이전트 트레이딩(Agentic Trading)에 자산 배분을 맡겼다. AI 에이전트는 실시간으로 시장 데이터를 읽고 주문을 냈다. 그러나 손실이 났을 때 투자자는 한 가지 질문에 답할 수 없었다. "이 결정은 누가 내렸는가?" API 호출 로그에 타임스탬프와 파라미터는 찍혀 있지만 에이전트가 왜 그렇게 판단했는지는 들여다볼 수 없는 블랙박스였다.

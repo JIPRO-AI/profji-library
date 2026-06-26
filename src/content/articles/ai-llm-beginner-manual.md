@@ -7,6 +7,13 @@ tags: ["AI","guide","beginner"]
 articleType: "framework"
 titleEn: "LLM Beginner Guide: Common Misconceptions in Free AI and Cognitive Task Routing"
 descriptionEn: "Most beginner frustration with AI comes from how they use it, not the model's capability. Five usage errors and a task-based operating manual for effective AI interaction."
+connections:
+  - slug: metacognition-llm-prompting
+    relation: extends
+    note: "이 사용법의 뿌리다. 결국 메타인지가 결과를 가른다."
+  - slug: ai-superuser-workplace-personal
+    relation: extends
+    note: "슈퍼유저로 가는 첫 계단이다. 검색하듯 쓰면 검색 수준 답만 나온다."
 ---
 
 ## 대부분의 초보자가 겪는 AI 불만족의 핵심은 성능보다 사용 방식이다

@@ -4,6 +4,19 @@ description: "AI 도입은 조직을 평평하게 만들지 않는다. 현장의
 pubDate: "2026-04-24"
 category: "AI 기술"
 tags: ["AI","research","analysis"]
+connections:
+  - slug: ai-accountability-decomposition
+    relation: extends
+    note: "판단권이 알고리즘층으로 옮겨가면 곧바로 '그럼 누가 책임지나'가 따라온다."
+  - slug: job-redesign-ai-impact
+    relation: confirms
+    note: "판단권이 빠진 자리에 무엇이 남는가. 가장 힘든 일만 남는다."
+  - slug: physical-ai-measurement-asymmetry-and-governance
+    relation: extends
+    note: "추론이 운영층에서 설계층으로 몰리는 같은 권한 이동을 물리 세계에서 본다."
+  - slug: judgment-reproduction-crisis
+    relation: extends
+    note: "판단권이 옮겨간 뒤 다음 세대가 판단을 못 배우는 자리를 본다."
 ---
 
 AI는 조직을 평평하게 만들지 않는다. 오히려 판단권의 위치를 바꾼다. 과거에는 현장 직원이 맥락을 보고 결정했다. 이제는 중앙 시스템이 점수를 만들고 현장 직원은 그 점수를 실행한다. 권한은 사라지지 않았다. 현장에서 모델 안으로 이동했을 뿐이다.

@@ -7,6 +7,10 @@ tags: ["AI","reinforcement-learning","reward-design","agent"]
 articleType: "framework"
 titleEn: "Reward Design for AI Agents: The Optimal Mix of Stick and Carrot"
 descriptionEn: "Reward isn't about how much — it's about when and how. Asymmetric reward signals, architecture sensitivity, and dynamic design principles for agent performance."
+connections:
+  - slug: multi-agent-paradox
+    relation: confirms
+    note: "국소 최적화가 전역 실패를 부른다. 단일 에이전트의 보상 해킹을 다중 에이전트로 늘린 글이다."
 ---
 
 ## 보상은 크기가 아니라 배치의 문제다

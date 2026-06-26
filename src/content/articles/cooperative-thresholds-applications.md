@@ -8,6 +8,10 @@ featured: true
 articleType: "framework"
 titleEn: "Cooperative Thresholds: Multi-Agent Systems Transition at Structure, Not Scale"
 descriptionEn: "Macroscopic behavior in multi-agent systems shifts nonlinearly at structural tipping points. Targeted intervention, early warning, and structural leverage."
+connections:
+  - slug: multi-agent-paradox
+    relation: confirms
+    note: "임계점을 넘으면 협력이 깨진다. 그 붕괴의 본질을 죄수의 딜레마로 푼 글이다."
 ---
 
 ## 협력 임계점: 다중 에이전트 시스템은 규모가 아니라 구조에서 전환된다

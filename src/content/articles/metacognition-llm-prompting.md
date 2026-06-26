@@ -4,6 +4,19 @@ description: "같은 프롬프트 템플릿을 써도 결과가 다른 이유는
 pubDate: "2026-03-24"
 category: "AI 기술"
 tags: ["AI","research","analysis"]
+connections:
+  - slug: automation-bias-decision-making
+    relation: challenges
+    note: "자동화 편향의 해독제다. 좋은 사용자는 계속 자문하며 의심을 놓지 않는다."
+  - slug: ai-superuser-workplace-personal
+    relation: confirms
+    note: "이 인지 기술을 업무에서 체화한 사람이 슈퍼유저다."
+  - slug: judgment-reproduction-crisis
+    relation: confirms
+    note: "이 메타인지가 세대 단위로 안 길러지면 무슨 일이 생기는가."
+  - slug: ai-llm-beginner-manual
+    relation: extends
+    note: "입문자의 사용법을 인지 기술로 끌어올린 글이다."
 ---
 
 ## 같은 템플릿을 써도 결과가 다른 이유
