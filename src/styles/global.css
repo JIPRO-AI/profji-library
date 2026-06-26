@@ -36,7 +36,7 @@
 
 	/* ── Typography ── */
 	--font-serif: "Noto Serif KR", "Georgia", serif;
-	--font-body: "Noto Sans KR", "Atkinson", -apple-system, BlinkMacSystemFont, sans-serif;
+	--font-body: "Pretendard Variable", "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif;
 	--font-mono: "IBM Plex Mono", "Menlo", monospace;
 }
 
