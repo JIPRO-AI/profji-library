@@ -1,6 +1,8 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import ArticlePost from '../../layouts/ArticlePost.astro';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 export async function getStaticPaths() {
 	const articles    = await getCollection('articles');
@@ -31,7 +33,11 @@ const relLabel: Record<string, string> = { extends: '확장', confirms: '보강'
 const connections = (article.data.connections ?? []).filter(c => titleMap.has(c.slug));
 
 const base      = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-const ogImage   = new URL(`${base}og-v3/${article.id}.png`,            Astro.site).href;
+// OG PNG는 수동 커밋이라 누락될 수 있음 — 빌드 타임에 존재 확인, 없으면 기본 이미지로 (404 방지)
+const ogPngPath = fileURLToPath(new URL(`../../../public/og-v3/${article.id}.png`, import.meta.url));
+const ogImage   = existsSync(ogPngPath)
+	? new URL(`${base}og-v3/${article.id}.png`, Astro.site).href
+	: new URL(`${base}og-default.png`, Astro.site).href;
 const heroImage = new URL(`${base}images/articles/${article.id}.png`, Astro.site).href;
 const enUrl     = hasEnglish ? `/profji-library/en/articles/${article.id}/` : undefined;
 ---
