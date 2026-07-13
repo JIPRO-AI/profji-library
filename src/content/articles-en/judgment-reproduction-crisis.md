@@ -10,11 +10,11 @@ originalSlug: "judgment-reproduction-crisis"
 
 ## A Company That Fired 700 Chatbots and Hired Humans Back
 
-In 2023, the fintech Klarna replaced about 700 customer support staff with chatbots. Headcount fell from 5,500 to 3,400. Hiring stayed frozen for over a year.
+In early 2024, the fintech Klarna announced that its AI assistant was handling the workload of 700 customer service agents. It did not fire 700 people. Hiring had been frozen since 2023 and vacancies went unfilled, so headcount fell from 5,500 to 3,400.
 
 The early KPIs moved well. Response time got faster. Throughput rose. The cost line looked better.
 
-But in the spring of 2025, CEO Sebastian Siemiatkowski delivered the opposite message in a Bloomberg interview. The AI's output was "lower quality output." The chatbot could not handle empathy or nuanced problem-solving. The company began hiring people again.
+But in the spring of 2025, CEO Sebastian Siemiatkowski delivered the opposite message in a Bloomberg interview[1]. The AI's output was "lower quality output." The chatbot could not handle empathy or nuanced problem-solving. The company began hiring people again.
 
 The problem does not end with degraded customer service. The deeper loss is that during that one year, the **early judgment experience** people would have gained by doing the work themselves was completely missing. The organization did not just lose results. It lost the **process by which the next person is trained**. The cost of recovering from 0 back to 10 is greater than the cost of building the original 10.
 
@@ -34,9 +34,9 @@ The answer lies in **Measurement Asymmetry**. The library has already formalized
 
 In plain terms, the volume AI produces grows, but human time and capacity to review it does not grow at the same rate. Parts production speeds up on the factory floor while the inspection bench stays the same.
 
-The result is simple. One side of the metric appears in the quarterly report immediately. The other lags, or fails to register at all. Organizations reward efficiency. The cost of judgment erosion accumulates where no one measures.
+The result is simple. One side of the metric appears in the quarterly report immediately. The other lags, or fails to register at all[2]. Organizations reward efficiency. The cost of judgment erosion accumulates where no one measures[3].
 
-Once this asymmetry enters the incentive structure, a self-reinforcing loop forms. The more often automated recommendations are correct, the fewer chances people get to handle exceptions directly. Review routines and mentoring conversations diminish. Field experience does not accumulate. The next cohort leans more on the average and knows less about exceptions.
+Once this asymmetry enters the incentive structure, a self-reinforcing loop forms. The more often automated recommendations are correct, the fewer chances people get to handle exceptions directly[4]. Review routines and mentoring conversations diminish. Field experience does not accumulate. The next cohort leans more on the average and knows less about exceptions.
 
 What matters here is the **learning structure**, not technical accuracy itself. The problem is not whether AI makes mistakes. The problem is that **humans stop learning**.
 
@@ -44,7 +44,7 @@ The psychology runs in the same direction.
 
 > **The essence of automation bias is not that AI gets things wrong. AI is right most of the time. The problem is that **because it is right most of the time**, humans stop imagining the possibility of error.**
 
-Humans are most at risk when AI is 80% correct. When AI is 90% correct, humans skip verification altogether. The cost of skipping is not measured that day. It is billed six months later, when someone pulls the decision back into a meeting room.
+Humans are most at risk when AI is 80% correct. When AI is 90% correct, humans skip verification altogether[5]. The cost of skipping is not measured that day. It is billed six months later, when someone pulls the decision back into a meeting room.
 
 ## Two Cases, One Mechanism
 
@@ -52,7 +52,7 @@ Now we look at how the same mechanism appears across organizations. Two cases st
 
 ### JPMorgan — The Vanishing Training Pathway for Junior Analysts
 
-JPMorgan's LLM Suite has been deployed to 250,000 employees. Half of them use it daily. Each saves three to six hours per week.
+JPMorgan's LLM Suite has been deployed to 250,000 employees. Half of them use it daily. Each saves three to six hours per week[6].
 
 The numbers are impressive. But the library has already pointed at a deeper cost.
 
@@ -62,7 +62,7 @@ The path from junior analyst to senior was simple. Draft yourself. A senior revi
 
 When an LLM takes over the draft, senior review frequency drops. The **traces of struggle** once embedded in the draft also disappear. The senior's own sense of what to teach becomes blurred.
 
-In the US, entry-level positions have already declined by 35%. 54% of engineering leaders say they will hire fewer juniors because seniors can handle more work with copilots. Who, then, makes the next senior?
+In the US, entry-level positions have already declined by 35%[7]. No small number of engineering leaders say they will hire fewer juniors because seniors can handle more work with copilots[8]. Who, then, makes the next senior?
 
 ### Klarna Revisited — The Asymmetry of Recovery Cost
 
@@ -72,7 +72,7 @@ Back to Klarna. What Siemiatkowski admitted was not only the chatbot's limit. It
 
 The doubled short-term efficiency became 0 with the loss of core staff. The cost of recovering 10 from 0 is greater than the cost of building the original 10. Hiring with credentials is possible. But once gone, **field judgment** does not come back the same way.
 
-This does not mean the same outcome will appear in every organization right away. Still, at the mechanism level, similar warning signs are visible. Walmart's Ask Sam processes three million queries per week and gradually shifts the autonomous judgment of store managers onto system recommendations. SK Group's "One AI Per Person" policy is nominally egalitarian, yet in practice it creates a new power asymmetry between the **prompt design layer** and the **receiving layer**. The degree varies by case, but the common pattern is clear. Automation removes the **opportunity to form judgment** itself.
+This does not mean the same outcome will appear in every organization right away. Still, at the mechanism level, similar warning signs are visible. Walmart's Ask Sam absorbs store managers' queries at scale and gradually shifts their autonomous judgment onto system recommendations. SK Group's "One AI Per Person" policy is nominally egalitarian, yet in practice it creates a new power asymmetry between the **prompt design layer** and the **receiving layer**. The degree varies by case, but the common pattern is clear. Automation removes the **opportunity to form judgment** itself[9].
 
 ## Reversibility Boundary — How Far Recovery Is Possible
 
@@ -143,23 +143,25 @@ AX produces short-term efficiency. At the same time, it can erode the path throu
 
 ## References
 
-**Academic**
+[1] Bloomberg (2025). "Klarna CEO Reverses Course on AI: Hiring Humans Again After Service Quality Drop." — Sebastian Siemiatkowski's "lower quality" admission.
 
-- Bainbridge, L. (1983). "Ironies of Automation." *Automatica*, 19(6), 775–779. — The classic paradox: the more automation advances, the harder the human operator's role becomes.
-- Parasuraman, R., & Manzey, D. H. (2010). "Complacency and Bias in Human Use of Automation: An Attentional Integration." *Human Factors*, 52(3), 381–410. — Empirical analysis of automation bias.
-- Strathern, M. (1997). "'Improving Ratings': Audit in the British University System." *European Review*, 5(3), 305–321. — Formalization of Goodhart's law: when a measure becomes a target, it ceases to be a good measure.
-- Brynjolfsson, E., Rock, D., & Syverson, C. (2021). "The Productivity J-Curve: How Intangibles Complement General Purpose Technologies." *American Economic Journal: Macroeconomics*, 13(1), 333–372. — Lag in measuring the productivity of new technologies.
-- Acemoglu, D., & Restrepo, P. (2020). "Robots and Jobs: Evidence from US Labor Markets." *Journal of Political Economy*, 128(6), 2188–2244. — Labor market distribution effects of automation.
+[2] Brynjolfsson, E., Rock, D., & Syverson, C. (2021). "The Productivity J-Curve: How Intangibles Complement General Purpose Technologies." *American Economic Journal: Macroeconomics*, 13(1), 333–372. — Lag in measuring the productivity of new technologies.
 
-**Industry & Press**
+[3] Strathern, M. (1997). "'Improving Ratings': Audit in the British University System." *European Review*, 5(3), 305–321. — Formalization of Goodhart's law: when a measure becomes a target, it ceases to be a good measure.
 
-- Bloomberg (2025). "Klarna CEO Reverses Course on AI: Hiring Humans Again After Service Quality Drop." — Sebastian Siemiatkowski's "lower quality output" admission.
-- CIO Dive (2026). "JPMorgan Chase to Equip 250K Workers with LLM Suite." — 250K employees, 50% DAU, scaling roadmap from 450 to 1,000 use cases.
-- Wharton Knowledge (2026). "Is AI Pushing Us to Break the Talent Pipeline?" — 35% decline in entry-level analyst positions and the "Editor Problem."
-- World Economic Forum (2026). "How AI is Changing the Nature of Entry Level Work." — Global cohort data and the Microsoft preceptor program.
-- Microsoft (2026). "Preceptor-style Cohort Programs: Pairing Senior Engineers with Junior Apprentices." — Six-month rotation experiment.
+[4] Bainbridge, L. (1983). "Ironies of Automation." *Automatica*, 19(6), 775–779. — The classic paradox: the more automation advances, the harder the human operator's role becomes.
 
-**Ji Research Library — Internal Cross-Reference**
+[5] Parasuraman, R., & Manzey, D. H. (2010). "Complacency and Bias in Human Use of Automation: An Attentional Integration." *Human Factors*, 52(3), 381–410. — Empirical analysis of automation bias.
+
+[6] CIO Dive (2026). "JPMorgan Chase to Equip 250K Workers with LLM Suite." — 250K employees, 50% DAU, scaling roadmap from 450 to 1,000 use cases.
+
+[7] Wharton Knowledge (2026). "Is AI Pushing Us to Break the Talent Pipeline?" — 35% decline in entry-level analyst positions and the "Editor Problem."
+
+[8] Russinovich, M., & Hanselman, S. (2026). "Redefining the Software Engineering Profession for AI." *Communications of the ACM*. — Senior "AI boost" vs junior "AI drag" diagnosis; preceptor cohort proposal, piloted internally at Microsoft.
+
+[9] World Economic Forum (2026). "How AI is Changing the Nature of Entry Level Work." — Global cohort data on the transformation of entry-level work.
+
+## Related in the Library
 
 - "Hybrid Mind: The Conditions for Human–AI Cognitive Fusion" — Defines the collaborative space JRC depends on.
 - "The Crisis of Expertise Reproduction" — A domain-level case of JRC.
