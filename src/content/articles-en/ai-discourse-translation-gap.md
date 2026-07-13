@@ -54,6 +54,8 @@ Two different people, the same place. The discourse ended at its own unit, and t
 
 The most common misdiagnosis at this spot is to blame the person who paused. "Lacks learning motivation." "Slow to adapt to digital tools." "Falling behind in the AI era." These diagnoses look at the wrong place.
 
+Science communication research named this misdiagnosis long ago: the deficit model. It assumes people fail to move because they lack knowledge, so pouring in more information will produce attitude and behavior. The assumption has been refuted again and again, and it persists stubbornly inside expert communities anyway[1]. Today's AI discourse repeats that position almost exactly. When someone stalls, the energy goes into writing one more article and holding one more seminar.
+
 The actual issue is simple. **The unit of discourse and the unit of action are different.** AI discourse usually speaks at the level of industry change, organizational strategy, technological possibility. Individuals move at the level of role, work, task, verification responsibility. With nothing between the two, even good discourse arrives feeling like incomplete information.
 
 The library has approached this gap from a different angle before. The piece "The Structure of AI Hype: Why Everyone Plans to Adopt but Nobody Knows How to Use It" pointed at the organizational version of the gap — leadership shouts adoption, real usage doesn't follow. This essay is the individual version of the same gap. The organizational gap and the individual gap are two faces of the same structure.
@@ -70,7 +72,9 @@ AI fatigue is usually explained as information overload. Too many articles, too 
 
 The fatigue does not come from too much to read. It comes from there being nothing in your hand after reading. Hearing "we need to adopt AI" for the fifth time stops being information and becomes a repeating, unfinished signal. The head has processed the signal; the body has nowhere to go.
 
-Discourse multiplies fast. The cognitive cost of translating that discourse into one's own work does not multiply at the same rate. Information taken in fails to convert into action and stays piled up in the head. That backlog is what fatigue actually is.
+The oldest finding in technology acceptance research points at the same place. What makes a person actually use a new tool is not the size of the discourse but the perception that it is useful for one's own work[2]. That perceived usefulness does not come from industry-level messaging. It forms only when one tries the tool inside one's own task and confirms it. No amount of accumulated discourse can produce that perception on someone's behalf.
+
+Discourse multiplies fast. The cognitive cost of translating that discourse into one's own work does not multiply at the same rate[3]. Information taken in fails to convert into action and stays piled up in the head. That backlog is what fatigue actually is.
 
 ## Who Does the Last Translation?
 
@@ -80,7 +84,7 @@ Another piece in the library points at exactly this place.
 
 > **AX weakens the reproduction mechanism of human judgment.**
 
-The ability to translate into one's own work is one branch of judgment. The ability to take what one has read, heard, and absorbed, and narrow it to "what should I change, in my position." This ability is not given by anyone. It is built only by trying-failing-revising inside one's own work. Yet the trajectory of AI adoption itself reduces those repetitions. The more the tool handles, the fewer chances there are to make the small, fine-grained calls about one's own task. The very ground in which translation ability grows is shrinking.
+The ability to translate into one's own work is one branch of judgment. The ability to take what one has read, heard, and absorbed, and narrow it to "what should I change, in my position." This ability is not given by anyone. It is built only by trying-failing-revising inside one's own work. Yet the trajectory of AI adoption itself reduces those repetitions. The more the tool handles, the fewer chances there are to make the small, fine-grained calls about one's own task[4]. The very ground in which translation ability grows is shrinking.
 
 What is needed, then, is not a grand solution. It is the small motions that get translation started.
 
@@ -90,7 +94,7 @@ There are four postures that work most often. They are not tool tips. They are a
 
 **1. Don't ask for an answer — make it organize the question.** The instinct of someone opening an LLM window for the first time is to receive a finished answer. But when one does not yet know the next action in one's own work, the first thing needed is not an answer but a decomposition of the question. What exactly do I not know, what are the small steps to resolve it, where does it make sense to start. Asking the model to organize this together travels much further than asking for the whole answer at once. Not because the answer improves. **Because the question does.**
 
-**2. Use the LLM as a mirror.** A good question that stays in your head loses its shape there. It only firms up after it leaves the head. The same principle that narrative therapy has long called externalization. The LLM is the most accessible 24-hour interlocutor for that externalization. Throw your thinking out and **read it back in the third person**, and structure invisible at close range starts to show. The point is not that the AI gives you the answer. **It is that one's own thinking gets refined when it leaves the self and returns.**
+**2. Use the LLM as a mirror.** A good question that stays in your head loses its shape there. It only firms up after it leaves the head. The same principle that narrative therapy has long called externalization[5]. The LLM is the most accessible 24-hour interlocutor for that externalization. Throw your thinking out and **read it back in the third person**, and structure invisible at close range starts to show. The point is not that the AI gives you the answer. **It is that one's own thinking gets refined when it leaves the self and returns.**
 
 **3. Don't write your context once and throw it away.** Most users re-input the same information about themselves into every new chat. Their work, their weak spots, their phrasing habits, their judgment criteria. It is the equivalent of introducing yourself to a new person every time. Organizing persistent context once — custom instructions, memory features, a separate note library — and keeping it in reusable form is the accumulation device of small translation. **A personal AI system grows more accurate as context accumulates.** The model itself is not getting smarter. The personal context that sits on top of the model thickens, and the precision of the whole system rises with it. Accumulated over a month or a year, it begins to resemble having an outside collaborator who understands one's work.
 
@@ -110,7 +114,7 @@ After the meeting, after the last paragraph of an article, after the coworker's 
 
 ## Limits
 
-This essay is not a finished manual. It points only as far as the smallest entry one can take from the place of diagnosis. Concrete application inside one's own role is built only inside each person's actual work.
+This essay is not a finished manual. It points only as far as the smallest entry one can take from the place of diagnosis. Concrete application inside one's own role is built only inside each person's actual work. The four postures are working hypotheses drawn from field observation, not prescriptions validated in controlled experiments. Linking the deficit-model critique, technology-acceptance and automation research, and productivity-lag research to individual AI fatigue is likewise an analogical extension; validating those connections remains open work.
 
 ## Conclusion
 
@@ -120,16 +124,20 @@ The next time someone asks "so what am I supposed to do?" — **the question is 
 
 ## References
 
-**Ji Research Library — Internal Cross-Reference**
+[1] Simis, M. J., Madden, H., Cacciatore, M. A., & Yeo, S. K. (2016). "The lure of rationality: Why does the deficit model persist in science communication?" *Public Understanding of Science*, 25(4), 400–414. — Why the deficit model survives repeated refutation. The repetition structure of AI discourse lands on the same spot.
+
+[2] Davis, F. D. (1989). "Perceived Usefulness, Perceived Ease of Use, and User Acceptance of Information Technology." *MIS Quarterly*, 13(3), 319–340. — The founding claim of the technology acceptance model: what drives tool use is perceived usefulness, not discourse.
+
+[3] Brynjolfsson, E., Rock, D., & Syverson, C. (2021). "The Productivity J-Curve." *American Economic Journal: Macroeconomics*, 13(1), 333–372. — The lag before the effect of new technology appears. Explains the time gap between discourse and actual change.
+
+[4] Bainbridge, L. (1983). "Ironies of Automation." *Automatica*, 19(6), 775–779. — The classic paradox: as automation advances, the role of the human operator becomes harder. The substrate of the translation-ability erosion mechanism.
+
+[5] White, M., & Epston, D. (1990). *Narrative Means to Therapeutic Ends*. W. W. Norton. — The original source of externalization: taking a problem out of the self to work on it. The psychological ground of the mirror posture.
+
+## Related in the Library
 
 - "The Structure of AI Hype: Why Everyone Plans to Adopt but Nobody Knows How to Use It" — the organizational version of the same gap. This essay is its individual-felt version.
 - "Judgment Reproduction Crisis (JRC)" — the framework in which translation ability is one branch of judgment.
 - "Hybrid Mind: Beyond Tools" — the framework underwriting the four postures. Division of labor, mutual verification, realignment.
 - "The AI Superuser: It's Judgment, Not Generation" — the place small postures arrive at when they meet time.
 - "AI Doesn't Steal Jobs; It Steals Discretion" — the analysis behind the relocation of judgment authority. Backbone of the employee scene.
-
-**External**
-
-- Strathern, M. (1997). "'Improving Ratings': Audit in the British University System." *European Review*, 5(3), 305–321. — Goodhart's law: when a measure becomes a target, it ceases to be a good measure. Applies equally to the gap between discourse and action.
-- Bainbridge, L. (1983). "Ironies of Automation." *Automatica*, 19(6), 775–779. — The classic paradox: as automation advances, the role of the human operator becomes harder. The substrate of the translation-ability erosion mechanism.
-- Brynjolfsson, E., Rock, D., & Syverson, C. (2021). "The Productivity J-Curve." *American Economic Journal: Macroeconomics*, 13(1), 333–372. — The lag before the effect of new technology becomes measurable. Explains the time gap between discourse and actual change.
