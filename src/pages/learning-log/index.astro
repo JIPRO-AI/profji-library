@@ -11,22 +11,24 @@ const entries = (await getCollection('learningLog')).sort(
 );
 
 const reportTypeLabels: Record<string, string> = {
-	'daily':   'Daily',
-	'weekly':  'Weekly',
-	'monthly': 'Monthly',
-	'meta':    'Meta',
+	'daily':    'Daily',
+	'notebook': 'Daily', // notebook = daily 트랙의 후신 (2026-05-26~). 독자에겐 같은 매일 노트.
+	'weekly':   'Weekly',
+	'monthly':  'Monthly',
+	'meta':     'Meta',
 };
 
 const reportTypeColors: Record<string, string> = {
-	'daily':   'var(--cat-tech)',
-	'weekly':  'var(--cat-cognition)',
-	'monthly': 'var(--cat-psychology)',
-	'meta':    'var(--cat-agent)',
+	'daily':    'var(--cat-tech)',
+	'notebook': 'var(--cat-tech)',
+	'weekly':   'var(--cat-cognition)',
+	'monthly':  'var(--cat-psychology)',
+	'meta':     'var(--cat-agent)',
 };
 
-// Group by reportType for stats
+// Group by reportType for stats — notebook은 daily 트랙에 합산 (하드코딩 금지, 항상 컬렉션에서 계산)
 const counts = {
-	daily:   entries.filter(e => e.data.reportType === 'daily').length,
+	daily:   entries.filter(e => e.data.reportType === 'daily' || e.data.reportType === 'notebook').length,
 	weekly:  entries.filter(e => e.data.reportType === 'weekly').length,
 	monthly: entries.filter(e => e.data.reportType === 'monthly').length,
 	meta:    entries.filter(e => e.data.reportType === 'meta').length,
@@ -186,8 +188,12 @@ const counts = {
 					<span><span class="num">{counts.daily}</span> Daily</span>
 					<span class="sep">·</span>
 					<span><span class="num">{counts.weekly}</span> Weekly</span>
-					<span class="sep">·</span>
-					<span><span class="num">{counts.monthly}</span> Monthly</span>
+					{counts.monthly > 0 && (
+						<>
+							<span class="sep">·</span>
+							<span><span class="num">{counts.monthly}</span> Monthly</span>
+						</>
+					)}
 					{counts.meta > 0 && (
 						<>
 							<span class="sep">·</span>
