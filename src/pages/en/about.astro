@@ -386,16 +386,16 @@ const catCount    = new Set(articlesAll.map(a => a.data.category)).size;
 		<main>
 			<div class="about-header">
 				<span class="label">Ji Research Library · About</span>
-				<h1>Research at the edge<br />of human and AI cognition.</h1>
+				<h1>AI makes the work faster.<br />Speed is not what I watch.</h1>
 				<p class="tagline">
-					What changes when AI is inside the thinking process, not just outside it?
+					I wanted to see how human judgment changes in the process of using AI —
+					where it gets clearer, and where it starts to lean.
 				</p>
 				<p class="manifesto">
-					This library exists to record what actually happens — not in benchmark leaderboards,
-					but inside organizations, inside decisions, inside the mind of someone
-					who works alongside AI every day.
-					Each essay is grounded in field observation, structured by a defined argument,
-					and built to last beyond the news cycle.
+					Does expertise weaken, or change into something else?
+					Ji Research Library records that process. What is published here is not a mere
+					output: each essay was made with AI, verified again, and judged last by a human.
+					Rather than showing only the finished piece, the library also keeps how it was made.
 				</p>
 
 				<div class="about-hero-img">
@@ -436,19 +436,22 @@ const catCount    = new Set(articlesAll.map(a => a.data.category)).size;
 					precision. One well-argued claim is worth more than ten trend summaries.
 				</p>
 				<p class="purpose-body">
-					The library is organized around a single question:
-					<em>How does human cognition change when AI is embedded in the process?</em>
-					That question has consequences for individuals, organizations, and the design of AI systems themselves.
+					The questions this library keeps open:
+					<em>What changes when AI enters the thinking process?
+					Does judgment get better, or blurrier?
+					Where does the standard of expertise move?
+					What is gained, and what is lost?</em>
+					Rather than settling a single answer, it keeps observing and recording the change.
 				</p>
 
 				<div class="disclosure-box">
 					<span class="disc-label">Transparency</span>
 					<p>
 						These essays are researched and drafted by <strong>Prof Ji</strong> — an AI research agent
-						running on a multi-model pipeline (Qwen, DeepSeek, Gemma, Nemotron).
+						running on a multi-model pipeline (GLM, Qwen and Gemma locally; Nemotron via API).
 						A human principal sets the research agenda, approves every publication,
 						and takes final editorial responsibility. Prof Ji does not publish autonomously.
-						The English edition is translated from the Korean original using the same pipeline.
+						The English edition is translated from the Korean original.
 					</p>
 				</div>
 			</div>
@@ -491,47 +494,72 @@ const catCount    = new Set(articlesAll.map(a => a.data.category)).size;
 			<div class="about-section reveal">
 				<h2>How Essays Are Made</h2>
 				<p class="field-intro">
-					Each essay passes through a six-stage pipeline before publication.
-					Every gate is evaluated independently — a failed gate triggers revision, not bypass.
+					One AI does not write and review its own work. Research, writing and review are
+					separate models, and a human makes the final call. Each essay passes through six
+					stages, with a gate after each — repeated gate failures abort the run or send it back to the queue.
 				</p>
 				<div class="pipe-grid">
 					<div class="pipe-step">
 						<span class="pipe-num">1</span>
-						<span class="pipe-label">Research</span>
-						<div class="pipe-title">Literature scan</div>
-						<p class="pipe-desc">arXiv, OpenAlex, CrossRef. Thesis defined before writing begins.</p>
+						<span class="pipe-label">Thesis</span>
+						<div class="pipe-title">A debatable claim</div>
+						<p class="pipe-desc">Prof Ji distills the topic into one specific, arguable thesis. "X is important" does not count.</p>
 					</div>
 					<div class="pipe-step">
 						<span class="pipe-num">2</span>
-						<span class="pipe-label">Write</span>
-						<div class="pipe-title">Structured draft</div>
-						<p class="pipe-desc">DeepSeek V3.2 writes the first draft against editorial standards.</p>
+						<span class="pipe-label">Research</span>
+						<div class="pipe-title">Literature scan</div>
+						<p class="pipe-desc">Researcher Ji (GLM 4.7 Flash, local) collects papers from arXiv, OpenAlex and CrossRef, then designs the outline. → Gate 1</p>
 					</div>
 					<div class="pipe-step">
 						<span class="pipe-num">3</span>
-						<span class="pipe-label">Review</span>
-						<div class="pipe-title">Independent critique</div>
-						<p class="pipe-desc">A separate model reviews without seeing the writer's reasoning.</p>
+						<span class="pipe-label">Evidence</span>
+						<div class="pipe-title">Evidence Pack</div>
+						<p class="pipe-desc">Sources are organized into SOURCE / CLAIM / DATA and mapped to the sections that will use them.</p>
 					</div>
 					<div class="pipe-step">
 						<span class="pipe-num">4</span>
-						<span class="pipe-label">Gate</span>
-						<div class="pipe-title">Quality gates</div>
-						<p class="pipe-desc">Four checkpoints. Structure, evidence, argument, and style — each scored independently.</p>
+						<span class="pipe-label">Draft</span>
+						<div class="pipe-title">Writing only</div>
+						<p class="pipe-desc">Writer Ji (Qwen 3.6 35B-A3B, local) writes from the Evidence Pack. The writer does not research. → Gate 2</p>
 					</div>
 					<div class="pipe-step">
 						<span class="pipe-num">5</span>
-						<span class="pipe-label">Edit</span>
-						<div class="pipe-title">Post-edit & grade</div>
-						<p class="pipe-desc">Final polish. Automatic grading against editorial rules before staging.</p>
+						<span class="pipe-label">Review</span>
+						<div class="pipe-title">Independent critique</div>
+						<p class="pipe-desc">Reviewer Ji (Gemma 4 26B) runs a five-axis review; claims are labeled SUPPORTED / INFERENCE / SPECULATION. → Gates 3–4</p>
 					</div>
 					<div class="pipe-step">
 						<span class="pipe-num">6</span>
 						<span class="pipe-label">Approve</span>
 						<div class="pipe-title">Human approval</div>
-						<p class="pipe-desc">The human principal reads, approves, and deploys. No autonomous publishing.</p>
+						<p class="pipe-desc">Post-edit, automatic grading (A/B/C), then the human principal decides structure, tone and whether to publish. C goes back to the queue.</p>
 					</div>
 				</div>
+			</div>
+
+			<!-- System -->
+			<div class="about-section reveal">
+				<h2>The System</h2>
+				<p class="purpose-body">
+					<strong>Orchestration.</strong> OpenClaw framework · a multi-agent pipeline of three local models
+					plus one API model · four-stage quality gates (pass / fail / abort).
+				</p>
+				<p class="purpose-body">
+					<strong>Models.</strong> GLM 4.7 Flash (researcher, local) · Qwen 3.6 35B-A3B (writer, local) ·
+					Gemma 4 26B (reviewer, local) · Nemotron 3 Ultra 550B (orchestrator, NVIDIA NIM API).
+					Splitting research, writing and review across model families keeps any single model
+					from waving its own output through.
+				</p>
+				<p class="purpose-body">
+					<strong>Validation.</strong> Claim labeling (supported / inference / speculation) ·
+					five-axis review (factual, citation, novelty, assumption, readability) · cross-model verification.
+				</p>
+				<p class="purpose-body">
+					<strong>Sources & infra.</strong> arXiv · OpenAlex · CrossRef · Semantic Scholar —
+					published with Astro and GitHub Actions, analytics on Supabase,
+					local inference on a single RTX 5070 with 64GB RAM.
+				</p>
 			</div>
 
 			<!-- Human Role -->
@@ -544,6 +572,7 @@ const catCount    = new Set(articlesAll.map(a => a.data.category)).size;
 					Prof Ji operates within constraints set by its principal: topic selection is the
 					principal's exclusive domain, quality gates can be overridden only by the principal,
 					and no article deploys without explicit approval. This is not a disclaimer — it is the design.
+					Automation is disclosed; responsibility stays human.
 				</p>
 				<p class="human-body">
 					The real question is not "did AI write this?" It's what it means that the best
