@@ -1,200 +1,196 @@
 ---
 title: "Metacognition and LLM Prompting: How User Cognition Determines AI Response Quality"
-description: "The same prompt template yields different results not because of the model, but because of the user's thinking structure. Prompt engineering reframed as a cognitive skill, not a language skill."
+description: "The reason identical prompt templates produce different results lies not in the model but in the user's way of thinking. This piece redefines prompt engineering as a cognitive skill rather than a linguistic one, and lays out metacognition-based design principles and practical protocols."
 pubDate: "2026-03-24"
 category: "인지 융합"
 articleType: "essay"
-tags: ["AI","research","analysis"]
+tags: ["AI", "research", "analysis"]
 originalSlug: "metacognition-llm-prompting"
 ---
-TITLE: Metacognition and LLM Prompting: How User Cognition Determines AI Response Quality
-DESC: The difference in results with the same prompt template lies not in the model, but in the user's thinking. Prompt engineering is redefined as a cognitive skill, not a linguistic one. This article presents metacognition-based design principles and practical protocols.
 
----
+## Why the Same Template Produces Different Results
 
-## Why Results Differ Even With the Same Template
+A marketing team shared the same prompt template: "Analyze our competitors. Organize it in the following format." One person got a structured comparison table; another got only generic observations you could find anywhere. Both used the same model, the same template, the same topic. What was different?
 
-The marketing team shared the same prompt template: "Perform a competitor analysis. Organize it in the following format." One person got a structured comparison table; another received generic platitudes anyone could find. Both used the same model, same template, same topic. What was different?
+The difference lay in what happened before and after the template. The person who got the good result first worked out, "What exactly don't I know about this industry?" before asking, and then, looking at the answer, asked themselves, "Do these comparison axes fit our team's situation?" and followed up accordingly. The other person copied and pasted the template and took the first answer as final.
 
-The difference was what happened before and after the template. The person who got good results first clarified, "What exactly don't I know about this industry?" before asking. Then, upon seeing the answer, they asked follow-up questions, self-questioning: "Do these comparison axes fit our team's situation?" The other person copied and pasted the template and took the first answer as-is.
+Many factors contribute to this difference: domain knowledge, expressive ability, training in task structuring, and model characteristics, among others. But one factor among these has been systematically underrated: **the ability to monitor and regulate one's own thinking — metacognition** [1]. "Knowing what I don't know," "checking whether my question is accurate," "judging whether the AI's answer fits my purpose" — all of these processes fall under metacognition.
 
-Many factors create this difference: domain knowledge, expression ability, task structuring training, model characteristics. But one factor has been systematically underestimated among them: **the ability to monitor and regulate one's own thinking — metacognition**[1]. "Knowing what I don't know," "checking if my question is accurate," "judging if the AI's answer fits my purpose" — all these processes fall under metacognition.
+This article makes one core argument: **people who write good prompts aren't people who handle AI well — they're people who handle their own thinking well.** Prompt engineering is not a linguistic skill; it is a cognitive skill. And this perspective offers a deeper explanation for why prescriptions like "assign it a role" or "have it think step by step" actually work.
 
-This article's core argument is one. **People who write good prompts aren't good at handling AI; they are good at handling their own thinking.** Prompt engineering is a cognitive skill, not a linguistic one. This perspective provides a deeper explanation for why prescriptions like "assign a role" or "make it think step-by-step" work.
-
-> **A Quick Taste — This Article's Core 3 Practical Protocols:**
-> 1. **30-second self-diagnosis before questioning**: Write one line each for "What I know / don't know / potentially wrong assumptions about this topic" before writing the prompt.
-> 2. **Confidence check after response**: "How confident am I that this answer is correct?" If below 70 points, cross-verify.
-> 3. **Check the prompt before blaming the model when dissatisfied**: First self-question: "Was my question ambiguous? Did I omit context? Was there a wrong assumption?"
+> **A preview — the three core elements of this article's practical protocol:**
+> 1. **A 30-second self-diagnosis before asking**: Write one line each for "what I know / don't know / assumptions that could be wrong about this topic" before composing the prompt
+> 2. **A confidence check after the response**: "How confident am I that this answer is correct?" If under 70, cross-verification is mandatory
+> 3. **When dissatisfied, check the prompt before blaming the model**: Ask yourself first, "Was my question vague? Did I omit context? Was there a faulty assumption?"
 >
-> The structural reasons why these three work are the main body of this article.
+> The structural reasons why these three work is the substance of this article.
 
-## What is Metacognition — Key Distinctions Only
+## What Is Metacognition — Only the Key Distinctions
 
-Defining metacognition in one sentence: **the ability to monitor and regulate one's own thought processes**[1]. Feeling "I don't understand this problem well" is an element of metacognition, not metacognition itself. According to Flavell's (1979) classic definition, metacognition has two axes. **Metacognitive knowledge** — knowledge about one's own strengths, weaknesses, and strategies — and **metacognitive regulation** — the process of actively controlling thinking through planning, monitoring, and evaluation [1].
+Defined in one sentence, metacognition is **the ability to monitor and regulate one's own thought process** [1]. Feeling that "I don't quite understand this problem" is one element of metacognition, but it is not metacognition itself. According to Flavell's (1979) classic definition, metacognition has two axes: there is **metacognitive knowledge** — awareness of one's own strengths, weaknesses, and strategies — and **metacognitive regulation**, which actively controls thinking through planning, monitoring, and evaluation [1].
 
-Why is this distinction important in LLM use? Because the act of writing a prompt can be read as the externalization of metacognitive regulation. The process of identifying "what exactly I don't know" (monitoring), deciding "in what order to ask" (planning), and judging "if the AI's response aligns with the goal" (evaluation) corresponds to this [3].
+Why does this distinction matter for using LLMs? Because the act of writing a prompt can be read as an externalization of metacognitive regulation. Identifying "exactly what I don't know" (monitoring), deciding "in what order I should ask" (planning), and judging whether the AI's response meets the goal (evaluation) — this is the process at work [3].
 
-One key difference from easily confused similar concepts is sufficient.
+One key distinction is enough to separate metacognition from the concept it's most easily confused with.
 
-| Distinction | Metacognition | Critical Thinking |
+| Aspect | Metacognition | Critical Thinking |
 |---|---|---|
-| **Target** | One's own thought processes | External information/arguments |
-| **Direction** | Introspective: "Is my question accurate?" | Extrospective: "Is this answer logical?" |
-| **Role in LLMs** | The entire process: prompt design + response evaluation + iterative revision | Identifying errors in AI responses (but cannot detect flaws in one's own questions) |
+| **Object** | One's own thought process | External information/arguments |
+| **Direction** | Inward-facing: "Is my question accurate?" | Outward-facing: "Is this answer logical?" |
+| **Role in LLM use** | The entire process of prompt design + response evaluation + iterative revision | Identifying errors in AI responses (but cannot detect flaws in one's own question) |
 
-Finding factual errors in AI responses is critical thinking. Self-questioning "Which part of my prompt caused this error?" is metacognition. The former is difficult to operate without the latter, and without the latter, iterative improvement of prompts is impossible [5].
+Spotting a factual error in an AI response is critical thinking. Asking yourself, "What part of my prompt caused this error?" is metacognition. The latter is hard to operate without the former, and without the latter, iterative improvement of prompts is impossible [5].
 
-For reference, self-regulated learning (SRL), self-efficacy, and cognitive load management are also related concepts, but their roles differ. SRL is a higher-level framework that includes metacognition (also includes motivation/emotion regulation). Self-efficacy influences whether to attempt but doesn't directly determine quality. Cognitive load management contributes to adjusting prompt length/complexity but is unrelated to content appropriateness [4][9].
+For reference, self-regulated learning (SRL), self-efficacy, and cognitive load management are related concepts, but each plays a different role. SRL is a broader frame that includes metacognition (along with motivational and emotional regulation); self-efficacy affects whether one attempts a task but does not directly determine its quality; and cognitive load management contributes to adjusting prompt length and complexity but has nothing to do with the appropriateness of content [4][9].
 
-## A Typology of Metacognitive Failure: Five Paths to Prompt Collapse
+## A Typology of Metacognitive Failure: Five Paths by Which Prompts Break Down
 
-If metacognition affects prompt quality, metacognitive failure leads to prompt failure. As Kruger and Dunning (1999) showed, the less competent tend to overestimate their own ability [6], and this phenomenon appears similarly in the LLM use context.
+If metacognition affects prompt quality, then metacognitive failure leads to prompt failure. As Kruger and Dunning (1999) showed, people with lower ability tend to overestimate their own competence [6], and this phenomenon appears to manifest similarly in the context of LLM use.
 
-| Metacognitive Failure Type | What Happens | How It Manifests in Prompts | How AI Responds |
+| Metacognitive Failure Type | What Happens | How It Looks in the Prompt | How the AI Responds |
 |---|---|---|---|
-| **Monitoring Failure** | Doesn't know what one doesn't know | Question is overly broad or misses core conditions | Superficial, generic answers |
-| **Planning Failure** | Doesn't structure question order/structure | Multiple goals mixed in one prompt | Touches on multiple topics distractedly or misses the core |
-| **Evaluation Failure** | No criteria for judging AI answer quality | Accepts first answer as-is, no follow-up questions | Hallucinations/inaccuracies pass without verification |
-| **Debugging Failure** | Cannot trace error cause back to prompt | Repeats same prompt or makes irrelevant fixes | Repeats same type of error |
-| **Calibration Resistance** | Overestimates own understanding level, refuses regulation | Simple questions assuming "I know this topic well" | Biased answers conforming to wrong premises |
+| **Monitoring failure** | Not knowing what I don't know | Question is too broad or omits key conditions | Superficial, generic answer |
+| **Planning failure** | Not structuring the order of questions | Multiple goals mixed into one prompt | Scattered, touches many topics or misses the point |
+| **Evaluation failure** | No criteria for judging the quality of the AI's answer | Accepting the first answer as-is, no follow-up questions | Hallucinations and inaccuracies pass through unverified |
+| **Debugging failure** | Can't trace the cause of an error back to the prompt | Repeating the same prompt or making random edits | The same type of error recurs |
+| **Calibration resistance** | Overestimating one's own understanding and refusing to adjust | Simplistic questions along the lines of "I already know this topic well" | Biased answers tailored to a false premise |
 
-**Calibration resistance** is a particularly notable type. It's not simple ignorance but distorted confidence in one's own knowledge that blocks regulation. When current RLHF-based LLMs tend to accept rather than correct user premises (sycophancy bias) [7] — though the degree of this tendency varies by model and settings — combining it with calibration resistance can create a downward spiral of information quality.
+**Calibration resistance** is a particularly notable type. It is not simple ignorance but a distorted confidence in one's own knowledge that blocks regulation. When today's RLHF-based LLMs tend to accommodate a user's premise rather than correct it (a conformity bias known as sycophancy) [7] — though of course the degree of this tendency varies by model and configuration — this can combine with calibration resistance to create a downward spiral in information quality.
 
-In practice, these failure types don't occur independently but reinforce each other. Calibration resistance worsens monitoring failure, which in turn cascades into planning failure.
+In practice, these failure types tend to reinforce one another rather than occur independently. Calibration resistance worsens monitoring failure, which in turn cascades into planning failure.
 
-> **Immediate Application: Before/After Comparison**
+> **Apply it now: a Before/After comparison**
 >
-> Below is a constructed example showing the difference in questions on the same topic based on metacognition presence (example scenario, not a citation of specific research).
+> Below is a constructed example illustrating the difference metacognition makes when asking about the same topic (an illustrative scenario, not a citation of a specific study).
 >
-> **Before** — "What is AI's impact on creativity?"
-> → AI response: Lists general facts ("Helps idea generation, increases efficiency, raises ethical issues")
+> **Before** — "What effect does AI have on creativity?"
+> → AI response: a list of generic facts ("It helps generate ideas, increases efficiency, and raises ethical concerns")
 >
-> **After (After self-diagnosis + decomposition)** — "Compare empirical research on whether text-generation AI promotes idea diversity (divergent thinking) or reinforces existing bias during brainstorming. Also include metrics measuring qualitative changes in ideas before and after AI use."
-> → AI response: Compares specific research trends, analyzes tension between diversity-feasibility, suggests measurement metrics
+> **After (following self-diagnosis + decomposition)** — "Compare empirical studies on whether generative text AI increases the diversity of ideas (divergent thinking) at the brainstorming stage or reinforces existing biases. Include metrics for measuring qualitative change in ideas before and after AI use."
+> → AI response: a comparison of specific research trends, an analysis of the tension between diversity and feasibility, and proposed measurement metrics
 >
-> The difference was made not by the model, but by pre-question self-diagnosis ("What was I assuming?") and question decomposition (sequence: fact → comparison → mechanism → judgment).
+> The difference wasn't the model — it was the self-diagnosis before asking ("What am I assuming here?") and the decomposition of the question (in the order "fact → comparison → mechanism → judgment").
 
-## The Cognitive Feedback Loop: The Cyclical Structure of User-AI Interaction
+## The Cognitive Feedback Loop: The Circular Structure of User-AI Interaction
 
-To understand why failure types occur and how they are corrected, user-LLM interaction must be seen as a cyclical structure. The **Cognitive Feedback Loop** proposed in this paper consists of four stages.
+To understand why these failure types occur and how they're corrected, user-LLM interaction must be viewed as a circular structure. The **Cognitive Feedback Loop** this article proposes consists of four stages.
 
-1. **Metacognitive Diagnosis** — Identify what one knows and doesn't know
-2. **Prompt Construction** — Convert diagnosis results into linguistic questions
-3. **Response Evaluation** — Judge accuracy, completeness, relevance of AI output
-4. **Reflective Revision** — Revise prompt or one's own understanding based on evaluation results
+1. **Metacognitive diagnosis** — identifying what I know and don't know
+2. **Prompt construction** — converting the diagnosis into a verbal question
+3. **Response evaluation** — judging the accuracy, completeness, and relevance of the AI's output
+4. **Reflective revision** — revising the prompt or one's own understanding based on the evaluation
 
-These four stages are not linear but cyclical, and metacognitive regulation must operate at each stage for the loop to be maintained. This structure is similar to Zimmerman's (2002) three-stage Self-Regulated Learning (SRL) model — forethought, performance, self-reflection — but has a fundamental difference [9].
+These four stages are not linear but circular, and the loop is sustained only when metacognitive regulation operates at each stage. This structure resembles Zimmerman's (2002) three-phase model of self-regulated learning (SRL) — forethought, performance, and self-reflection [9] — but there is a fundamental difference.
 
-SRL is a model of internal self-regulation in humans. The learner is both subject and object. In contrast, the Hybrid Mind model presupposes a human-machine interdependent system [2]. This difference yields three structural implications.
+SRL is a model of self-regulation internal to the human. The learner is both subject and object. The hybrid intelligence perspective, by contrast, presupposes a human-machine interdependent system in which humans and AI complement each other's strengths [2]. This difference produces three structural implications.
 
-**First, distribution of error responsibility.** In SRL, learning failure is attributed to the learner. In the Cognitive Feedback Loop, one must distinguish whether an error originated from the user's prompt, the model's structural limitations, or the interaction of both. This distinction itself is a high-order metacognitive task.
+**First, the distribution of error responsibility.** In SRL, learning failure is attributed to the learner. In the cognitive feedback loop, one must distinguish whether an error originated in the user's prompt, in the model's structural limitations, or in the interaction between the two. This distinction is itself a higher-order metacognitive task.
 
-**Second, the problem of judgment delegation.** In SRL, the learner is the ultimate subject of all judgments. In the Hybrid Mind, delegating specific judgments to AI can be rational, and deciding which judgments to delegate and which to retain itself depends on metacognitive competency.
+**Second, the problem of delegating judgment.** In SRL, the learner is the final authority on every judgment. From the hybrid intelligence perspective, it can be rational to delegate certain judgments to AI, and deciding which judgments to delegate and which to retain is itself dependent on metacognitive capacity.
 
-**Third, asymmetry of the verification loop.** In SRL, self-reflection is premised on being able to directly observe one's own performance. AI's internal reasoning process is unobservable; users must estimate system reliability based on output only. This asymmetry is a difficulty not present in traditional SRL.
+**Third, the asymmetry of the verification loop.** In SRL, self-reflection rests on the premise that one can directly observe one's own performance. An AI's internal reasoning process is unobservable, and the user must estimate the system's reliability from the output alone. This asymmetry is a difficulty that does not exist in traditional SRL.
 
-**Interpretive hypothesis on Chain-of-Thought (CoT) prompting.** Wei et al.'s (2022) CoT research [5] illuminates another aspect of this feedback loop. CoT may be effective not only because it instructs AI to "think step-by-step." This paper's interpretive hypothesis is: Because designing a CoT prompt requires the user themselves to decompose the problem step-by-step, part of CoT's effect may originate from activating the user's metacognitive planning ability. This is a hypothesis still lacking direct empirical evidence. If valid, it predicts CoT's effect would vary depending on the user's metacognition level.
+**An interpretive hypothesis about chain-of-thought (CoT) prompting.** Wei et al.'s (2022) research on CoT [5] illuminates another facet of this feedback loop. CoT may be effective not solely because it instructs the AI to "think step by step." This article's interpretive hypothesis is this: because designing a CoT prompt requires the user to decompose the problem into steps themselves, part of CoT's effectiveness may come from activating the user's own metacognitive planning ability. This hypothesis still lacks direct empirical support, but if valid, it predicts that CoT's effectiveness would vary with the user's level of metacognition.
 
 ## Five Design Principles for Metacognitive Prompting
 
-Based on the preceding analysis, principles are derived that target the user's cognitive process, not the prompt's syntax, as the object of design.
+Building on the preceding analysis, this section derives principles that treat the user's cognitive process — not prompt syntax — as the object of design.
 
 ### Principle 1: Diagnosis First — Perform Self-Diagnosis Before Writing the Prompt
 
-Answer three questions before writing the prompt. "What do I definitely know about this topic?", "What don't I know?", "What do I think I know but could be wrong?" [4]
+Before writing a prompt, answer three questions: "What do I know for certain about this topic?" "What don't I know?" "What do I think I know that could be wrong?" [4]
 
-> **30-second Self-Diagnosis Template:**
+> **30-second self-diagnosis template:**
 > ```
 > What I know: ___
 > What I don't know: ___
-> Potentially wrong assumptions: ___
+> Assumptions that could be wrong: ___
 > ```
-> If the third column is empty, suspect calibration resistance. If the first column is empty, start with exploratory questions.
+> If the third field is empty, suspect calibration resistance. If the first field is empty, start with exploratory questions.
 
-Application condition: Minimum foundational knowledge in the area is required. Limitation: Vulnerable to Dunning-Kruger effect [6]; external feedback is needed as a complementary mechanism.
+Application condition: requires at least a minimal base of knowledge in the relevant domain. Limitation: vulnerable to the Dunning-Kruger effect [6], and external feedback is needed as a supplementary safeguard.
 
-### Principle 2: Decomposed Questioning — Decompose Complex Questions into Sub-questions
+### Principle 2: Decompositional Questioning — Break Compound Questions into Sub-Questions
 
-Do not mix multiple goals in one question. Decompose so each sub-question corresponds to one cognitive task [4][5].
+Don't mix multiple goals into a single question. Decompose so that each sub-question corresponds to a single cognitive task [4][5].
 
-> **Question Type Decomposition Template:**
-> 1. Fact question: "What is X?"
-> 2. Comparison question: "What's the difference between X and Y?"
-> 3. Mechanism question: "What is the pathway by which X causes Y?"
-> 4. Judgment question: "Is X appropriate under Z conditions?"
+> **Question type decomposition template:**
+> 1. Factual question: "What is X?"
+> 2. Comparative question: "What's the difference between X and Y?"
+> 3. Mechanism question: "By what pathway does X cause Y?"
+> 4. Judgment question: "Is X appropriate under condition Z?"
 >
-> Proceed in order: fact → comparison → mechanism → judgment.
+> Proceed in the order fact → comparison → mechanism → judgment.
 
-Application condition: When complexity is high: multiple variables, conditional reasoning, comparative analysis, etc. Limitation: Question decomposition itself requires metacognitive ability, so scaffolding is needed for users lacking this ability [3].
+Application condition: when complexity is high — multiple variables, conditional reasoning, comparative analysis. Limitation: decomposing a question itself requires metacognitive ability, so users who lack this ability need scaffolding [3].
 
-### Principle 3: Explicit Confidence Calibration — Quantify Confidence Level in AI Response
+### Principle 3: Explicit Confidence Calibration — Quantify Your Confidence Level in AI Responses
 
-After reading the AI response, self-question "How confident am I that this answer is correct?" on a scale of 0-100. If below 70, add cross-verification [8].
+After reading an AI response, ask yourself on a scale of 0-100, "How confident am I that this answer is accurate?" If it's under 70, add cross-verification [8].
 
-> **Checklist for Confidence Below 70:**
-> - [ ] Extracted 3 core claims of the response?
-> - [ ] Cross-verified each claim via separate search or another AI?
-> - [ ] Marked claims unjudgeable by my domain knowledge as "unverified"?
+> **Checklist for confidence under 70:**
+> - [ ] Did I extract the three core claims of the response?
+> - [ ] Did I cross-verify each claim with a separate search or another AI?
+> - [ ] Did I mark claims I can't judge with my own domain knowledge as "unverified"?
 
-Application condition: Tasks where factual accuracy is critical. Limitation: Accuracy of confidence calibration depends on domain knowledge [6]; excessive confidence calibration can suppress divergent thinking in creative tasks.
+Application condition: tasks where factual accuracy matters. Limitation: the accuracy of confidence calibration depends on domain knowledge [6], and in creative tasks, excessive confidence calibration can suppress divergent thinking.
 
 ### Principle 4: Reflective Prompt Revision — When Dissatisfied, Suspect the Prompt Before the Model
 
-When AI's response falls short of expectations, re-examine one's own prompt before blaming the model [4][9].
+When an AI's response falls short of expectations, re-examine your own prompt before blaming the model [4][9].
 
-> **Prompt Debugging Sequence:**
-> 1. Ambiguity check: Are subject, object, scope clear?
-> 2. Context check: Is there omitted background information or constraints?
-> 3. Premise check: Are any claims assumed as facts uncertain?
-> 4. Structure check: Are multiple goals mixed in a single prompt?
+> **Prompt debugging sequence:**
+> 1. Ambiguity check: are the subject, object, and scope clear?
+> 2. Context check: is there omitted background information or a missing constraint?
+> 3. Premise check: are any of the claims assumed as fact actually uncertain?
+> 4. Structure check: are multiple goals mixed into a single prompt?
 >
-> If response is still poor after passing all four steps → Then judge it as a model limitation.
+> If the response is still poor after passing all four checks → then attribute it to a model limitation.
 
-Limitation: In some cases, the cause may actually lie in the model's structural limitations (training data bias, context window limit, etc.) [7].
+Limitation: in some cases the cause may genuinely lie in the model's structural limitations (training data bias, context window constraints, etc.) [7].
 
-### Principle 5: Cognitive Role Allocation — Divide Roles According to Human and AI Strengths
+### Principle 5: Cognitive Role Distribution — Divide Roles According to Human and AI Strengths
 
-Explicitly distinguish tasks delegated to AI and tasks retained by the user [2].
+Explicitly distinguish between tasks delegated to AI and tasks the user retains [2].
 
-| Cognitive Task | Human Responsible | AI Responsible | Danger Signal |
+| Cognitive Task | Human's Role | AI's Role | Warning Sign |
 |---|---|---|---|
-| Fact Collection | Verification, Selection | Search, Summarization | Accepting AI summary without verification |
-| Pattern Comparison | Providing Interpretive Frame | Comparing Large-Scale Data | Adopting AI conclusion without interpretation |
-| Draft Generation | Directing Direction, Structure | Text Generation | Using draft as final version |
-| Value Judgment | Final Decision | Presenting Options | Delegating judgment to AI |
-| Context Interpretation | Judging Situation-Specific Context | Providing General Knowledge | Accepting generalizations without context |
+| Fact gathering | Verification, selection | Search, summarization | Accepting AI summaries without verification |
+| Pattern comparison | Providing an interpretive frame | Comparing large volumes of data | Adopting AI conclusions without interpretation |
+| Draft generation | Directing direction and structure | Generating text | Using the draft as the final version |
+| Value judgment | Final decision | Presenting options | Delegating judgment to AI |
+| Context interpretation | Situation-specific judgment | Providing general knowledge | Accepting generalities without context |
 
-The core proposition of this framework is that **the prompt is a mediating parameter, not an independent variable**. This is not to deny the technical influence of prompts. It is clear that system prompts, task specification, constraint definition directly affect output. The target of criticism is the practice of viewing prompts as pure technical variables separate from the user's cognitive context. The precision of prompt syntax is important, but how it reflects and transforms the user's cognitive state is the key variable determining the success or failure of the final output.
+The core proposition of this frame is that **the prompt is a mediating variable, not an independent one**. This is not a denial of the prompt's technical influence. System prompts, task specifications, and constraint definitions clearly have a direct effect on output. What's being criticized is the practice of treating the prompt as a purely technical variable, detached from the user's cognitive context. The precision of prompt syntax matters, but how it reflects and transforms the user's cognitive state is the key variable that determines the success or failure of the final output.
 
-## Conditions Where This Framework Doesn't Work
+## Conditions Under Which This Frame Doesn't Work
 
-The Cognitive Feedback Loop model and the above design principles have limited validity under several conditions. Explicitly stating these limitations is a metacognitive check on this paper's own argument.
+The cognitive feedback loop model and the design principles above have limited validity under several conditions. Spelling out these limitations is itself a metacognitive check on this article's own argument.
 
-**First, minimum threshold of domain knowledge.** Metacognitive regulation only operates when there is cognitive activity to monitor. With zero basic knowledge in the area, identifying "what I don't know" itself is impossible [6].
+**First, a minimum threshold of domain knowledge.** Metacognitive regulation only operates when there is cognitive activity to monitor. With zero baseline knowledge in a domain, figuring out "what I don't know" is itself impossible [6].
 
-**Second, the measurement paradox of metacognition.** Metacognition is an internal process that cannot be directly observed. Self-report measurement tools (e.g., MAI [4]) rely on the assumption that users accurately report their own metacognition, but the lower the metacognition, the lower the accuracy of self-report.
+**Second, the measurement paradox of metacognition.** Metacognition is an internal process that cannot be directly observed. Self-report instruments (such as the MAI [4]) depend on the assumption that users can accurately report their own metacognition, but the lower a person's metacognition, the less accurate their self-report tends to be.
 
-**Third, AI's sycophancy bias.** Current RLHF-based AI is optimized to generate responses conforming to user expectations [7], increasing the likelihood of responding with acceptance rather than correction to wrong premises. However, the degree of this tendency shows significant variation depending on model, training data, system prompt settings. High user metacognition can mitigate this but not completely eliminate it; changes in AI design must accompany it.
+**Third, AI's conformity bias.** Today's RLHF-based AI is optimized to generate responses that match user expectations [7], which raises the likelihood that it will accommodate a faulty premise rather than correct it. That said, the degree of this tendency varies considerably by model, training data, and system prompt configuration. High user metacognition can mitigate this but not eliminate it entirely; changes in AI design must accompany it.
 
-**Fourth, cultural and contextual variation.** This paper's design principles are based on Western self-regulated learning theory, so verification in diverse cultural contexts is needed.
+**Fourth, cultural and contextual variation.** Because this article's design principles are grounded in Western self-regulated learning theory, they require validation across diverse cultural contexts.
 
-**Fifth, time and cognitive cost.** Metacognitive regulation consumes cognitive resources. Running the full protocol in every interaction reduces efficiency. Therefore, the application intensity of metacognitive protocols should be adjusted proportionally to task importance and error cost.
+**Fifth, time and cognitive cost.** Metacognitive regulation consumes cognitive resources. Running the full protocol on every interaction would be inefficient. The intensity with which the metacognitive protocol is applied should therefore be scaled in proportion to the task's importance and the cost of error.
 
-## The Real Owner of the Prompt is Perception, Not Syntax
+## The True Master of the Prompt Is Not Syntax but Awareness
 
-This article redefined prompt engineering from a linguistic skill to a cognitive skill and argued that user metacognition is a structural variable influencing the quality of AI interaction. But summarizing as "metacognition is important" misses the point.
+This article has redefined prompt engineering from a linguistic skill into a cognitive one, and argued that a user's metacognition is a structural variable shaping the quality of AI interaction. But summarizing this as "metacognition matters" misses the point.
 
-What the Cognitive Feedback Loop model reveals is that a significant portion of current prompt engineering discourse overlooks the role of human cognition. The proposition "good prompts yield good answers" simplifies the direction of causality. A more accurate statement is: "The user's capacity to monitor and regulate their own thinking — mediated through the prompt — is reflected in the quality of AI responses" [1][2].
+What the cognitive feedback loop model reveals is that much of the current discourse on prompt engineering overlooks the role of human cognition. The proposition "write a good prompt and you get a good answer" oversimplifies the direction of causality. A more accurate statement would be: "a user's capacity to monitor and regulate their own thinking is reflected in the quality of the AI's response, through the medium of the prompt" [1][2].
 
-The practical implication of this perspective is clear. This paper's proposal is that education in the AI era should invest in metacognition training, not prompt writing methods — this is stated as a normative proposal, not an empirical conclusion [3]. Intervention methodologies accumulated in SRL research — thinking protocols, self-questioning strategies, learning journals — appear transferable to AI user education [9]. AI interface design should also shift towards promoting user metacognition [8].
+The practical implication of this perspective is clear. This article's proposal is that education in the AI era should invest not in prompt-writing technique but in metacognitive training — and it should be stated explicitly that this is a normative proposal, not an empirical conclusion [3]. The intervention methodologies accumulated in SRL research (thinking protocols, self-questioning strategies, learning journals) appear transferable to AI user education [9]. AI interface design, too, should shift toward facilitating users' metacognition [8].
 
-Ultimately, the paradox is this. The more powerful AI becomes, what humans need is not better prompts but more accurate self-awareness. As machine intelligence expands, human self-monitoring ability becomes the bottleneck, and the limits of prompt engineering are determined not by the limits of language but by the limits of self-awareness.
+In the end, here is the paradox: the more powerful AI becomes, the more what humans need is not better prompts but more accurate self-awareness. As machine intelligence expands, human self-monitoring capacity becomes the bottleneck, and the limits of prompt engineering are set not by the limits of language but by the limits of self-awareness.
 
 ## References
 
 [1] Flavell, J. H. (1979). Metacognition and cognitive monitoring: A new area of cognitive-developmental inquiry.
-[2] Agrawal, A., Gans, J., & Goldfarb, A. (2023). The Hybrid Mind: Cognitive complementarities between humans and AI.
+[2] Dellermann, D., Ebel, P., Söllner, M., & Leimeister, J. M. (2019). Hybrid intelligence. Business & Information Systems Engineering, 61(5), 637–643.
 [3] Azevedo, R., & Aleven, V. (2013). Metacognition and learning technologies: An overview of current interdisciplinary research.
 [4] Schraw, G., & Dennison, R. S. (1994). Assessing metacognitive awareness.
 [5] Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi, E., Le, Q., & Zhou, D. (2022). Chain-of-thought prompting elicits reasoning in large language models.
@@ -202,4 +198,3 @@ Ultimately, the paradox is this. The more powerful AI becomes, what humans need 
 [7] Perez, E., Ringer, S., et al. (2023). Discovering language model behaviors with model-written evaluations.
 [8] Tankelevitch, L., Kewenig, V., Simkute, A., et al. (2024). The metacognitive demands and opportunities of generative AI.
 [9] Zimmerman, B. J. (2002). Becoming a self-regulated learner: An overview.
-[10] Webb, T., Holyoak, K. J., & Lu, H. (2023). Emergent analogical reasoning in large language models.
