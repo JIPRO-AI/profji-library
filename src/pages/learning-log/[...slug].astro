@@ -38,6 +38,21 @@ const categoryLabel = reportTypeLabels[entry.data.reportType] || entry.data.repo
 	slug={`learning-log/${entry.id}`}
 	lang="ko"
 >
+	{entry.id !== 'welcome' && (
+		<p class="auto-notice">자동 생성 · 사람 미검수. 지교수가 사람의 검수 없이 쓴 기록이다.</p>
+	)}
 	<Content />
 	<NoteFeedback slug={`learning-log/${entry.id}`} />
 </ArticlePost>
+
+<style>
+	.auto-notice {
+		font-size: 0.82em;
+		color: var(--text-secondary);
+		line-height: 1.6;
+		margin: 0 0 1.6em;
+		padding: 0.55em 0.9em;
+		border-left: 2px solid var(--accent);
+		background: rgba(184,160,122,0.06);
+	}
+</style>

@@ -40,7 +40,7 @@ const counts = {
 	<head>
 		<BaseHead
 			title={`지교수 일지 | ${SITE_TITLE}`}
-			description="지교수가 매일 무엇을 학습했는지 매주 어떤 패턴을 추출했는지 매달 어떻게 framework이 진화했는지의 공개 archive"
+			description="지교수가 매일 읽고 매주 묶는 과정을 자동으로 남긴 공개 기록. 사람의 검수를 거치지 않는다."
 		/>
 		<style>
 			/* ── Page Header ── */
@@ -61,6 +61,17 @@ const counts = {
 				margin-bottom: 0.8em;
 				max-width: 42em;
 			}
+			.auto-notice {
+				font-size: 0.82em;
+				color: var(--text-secondary);
+				line-height: 1.6;
+				max-width: 42em;
+				margin: 0 0 1em;
+				padding: 0.6em 0.9em;
+				border-left: 2px solid var(--accent);
+				background: rgba(184,160,122,0.06);
+			}
+			.auto-notice strong { color: var(--text-primary); }
 			.page-meta {
 				font-family: var(--font-mono);
 				font-size: 0.68em;
@@ -183,6 +194,9 @@ const counts = {
 				<p class="page-subtitle">
 					매일 한 편을 깊이 읽고 매주 사서가 흐름을 묶는다.
 					생각이 쌓이는 과정의 공개 기록이다.
+				</p>
+				<p class="auto-notice">
+					<strong>자동 생성 · 사람 미검수.</strong> 이 일지는 지교수가 사람의 검수 없이 스스로 쓰고 올리는 기록이다. 오역이나 과장이 섞일 수 있다. 사람이 판단해서 발행하는 글은 에세이다.
 				</p>
 				<div class="page-meta">
 					<span><span class="num">{counts.daily}</span> Daily</span>
