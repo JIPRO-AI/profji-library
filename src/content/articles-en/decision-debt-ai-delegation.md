@@ -91,8 +91,8 @@ So the question that needs to be asked changes. It is not "how much can we trust
 
 ## References
 
-[1] Logan Morales Martin (n.d.). The Externalization of Legal Interpretation in AI Systems: Delegation, Decision, and Responsibility.
-[2] Baribor Nakie (n.d.). The Outsourcing of Agency: How Reliance on AI May Lead to the Delegation of Human Decision-Making.
-[3] Manting Hu, Junming Liu, Wei Thoo Yue (n.d.). Dynamic Delegation in Human-AI Collaboration: Heuristic-Based and Instance-Based Decision-Making.
-[4] Philippe Sloksnath (n.d.). From Human to AI: How Delegation to AI Shifts Moral Responsibility Attribution.
+[1] Logan Morales Martin (2026). The Externalization of Legal Interpretation in AI Systems: Delegation, Decision, and Responsibility.
+[2] Baribor Nakie (2025). The Outsourcing of Agency: How Reliance on AI May Lead to the Delegation of Human Decision-Making.
+[3] Manting Hu, Junming Liu, Wei Thoo Yue (2026). Dynamic Delegation in Human-AI Collaboration: Heuristic-Based and Instance-Based Decision-Making.
+[4] Philippe Sloksnath (2026). From Human to AI: How Delegation to AI Shifts Moral Responsibility Attribution.
 [5] Mariyani Ahmad Husairi, Patricia Rossi (2024). Delegation of purchasing tasks to AI: The role of perceived choice and decision autonomy.
