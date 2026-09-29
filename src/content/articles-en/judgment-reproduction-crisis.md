@@ -80,7 +80,7 @@ A natural question follows. Are all organizations equally at risk? They are not.
 
 Not all damage sits on the same level. Individual-level weakening can be recovered with a relatively short retraining cycle. But once the training pipeline itself collapses, the problem rises to the organizational and industrial scale. We call this difference the **Reversibility Boundary**. Some damage repairs with retraining. Other damage occurs after the structure that creates the next generation has already broken, and at that point reversal becomes much harder.
 
-| Layer | Threshold Signal | Analogy | Priority Response |
+| Layer | Threshold Signal (illustrative, advisory) | Analogy | Priority Response |
 |---|---|---|---|
 | **Individual (0–1 year)** | Mentor–apprentice contact frequency −50% (3 cohorts) | A weeklong vacation that briefly clouds memory | Retraining, self-assessment |
 | **Team / Organization (months–2–3 years)** | New-hire core competency ≤70% (2 cohorts) | New hires deployed to the field without the basics | Preceptor cohort, process redesign |
