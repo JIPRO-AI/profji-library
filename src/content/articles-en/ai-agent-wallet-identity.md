@@ -31,7 +31,7 @@ The table below contrasts the core differences between the existing two-layer mo
 | Category | Traditional API-Based Two-Layer Model | Blockchain-Based Three-Layer Model |
 |:---|:---|:---|
 | Identity verification method | Linked to human account (OAuth, etc.) | Decentralized identifier (DID) or self-sovereign identity |
-| Path of accountability attribution | Ambiguous, ultimately attributed to the human operator | Automatically attributed by smart contract |
+| Path of accountability attribution | Ambiguous, ultimately attributed to the human operator | Attribution evidence recorded by smart contract |
 | Immutability of transaction records | Managed on a central server, alterable/deletable | Recorded on a distributed ledger, verifiable |
 | Agent's legal status | None, exists only as the human's proxy | Can be recognized as an independent economic actor |
 | Feasibility of A2A transactions | Limited, requires a trusted institution | Direct transactions possible in a trustless environment |
@@ -62,13 +62,13 @@ An agent's decentralized identifier (DID) should be logically separate from its 
 
 ### Principle 2: Conduct Records Must Be Immutable and Machine-Readable
 
-An agent's decision log must be stored in a form the next agent — not a human — can trust. This is guaranteed only by the permanence of the blockchain. Blockchain and smart contracts are the foundation of an ecosystem that runs without a central authority, and removing the central administrator strengthens the agent's security and privacy[4]. What matters is that a machine can read it. It is not a human interpreting the log — the next agent must be able to verify it on its own and execute according to its conditions. Only then can A2A transactions scale.
+An agent's decision log must be stored in a form the next agent — not a human — can trust. The permanence of the blockchain backs this up. Blockchain and smart contracts are the foundation of an ecosystem that runs without a central authority, and removing the central administrator strengthens the agent's security and privacy[4]. What matters is that a machine can read it. It is not a human interpreting the log — the next agent must be able to verify it on its own and execute according to its conditions. Only then can A2A transactions scale.
 
 Consider an operational-AI scenario. A logistics agent adjusts warehouse inventory in real time. The adjustment order is recorded on the blockchain, and the next agent (a shipping agent) reads it to plan the optimal route. "When an error occurs, who missed which obligation?" If inventory was over-ordered, the decision log remains as an unalterable record, so the cause can be traced. A Web2 central database would leave room for the log to be manipulated; a blockchain record removes that room.
 
-### Principle 3: Responsibility Splits Automatically
+### Principle 3: Responsibility Sharing Is Set by Prior Agreement
 
-When an incident occurs, the responsibility-sharing ratio between the human operator and the agent must execute automatically according to pre-set smart contract conditions. Decentralized agent designs equipped with smart contract governance strengthen security and make the accountability mechanism programmable[8]. This is fundamentally different from Web2's OAuth. OAuth only handles authentication and does not address responsibility after the fact at all. In Web3 smart contracts, the conditions of responsibility are embedded in code at the moment of execution, so they split automatically, without post-hoc disputes.
+When an incident occurs, the responsibility-sharing ratio between the human operator and the agent is applied according to pre-set smart contract conditions. Decentralized agent designs equipped with smart contract governance strengthen security and make the accountability mechanism programmable[8]. This is fundamentally different from Web2's OAuth. OAuth only handles authentication and does not address responsibility after the fact at all. In Web3 smart contracts, the conditions of responsibility are embedded in code at the moment of execution, which reduces the room for post-hoc disputes. Still, a split executed by code is not the same as a legal determination of liability.
 
 Consider a decision-support AI scenario. A medical diagnosis-assistance agent suggests a diagnosis to a physician. If a diagnostic error occurs, the agent's entire suggestion process — input data, algorithm version, output probability distribution — remains on the blockchain, and a smart contract automatically calculates the responsibility ratio based on whether the physician made the final call and the agent's warning level. "When an error occurs, who missed which obligation?" The record clearly settles whether the physician ignored a warning or the agent produced a wrong probability. The dispute over responsibility ends on the record, not on testimony.
 
