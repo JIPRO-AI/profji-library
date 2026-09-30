@@ -52,7 +52,7 @@ Now we look at how the same mechanism appears across organizations. Two cases st
 
 ### JPMorgan — The Vanishing Training Pathway for Junior Analysts
 
-JPMorgan's LLM Suite has been deployed to 250,000 employees. Half of them use it daily. Each saves three to six hours per week[6].
+In 2024, JPMorgan announced it would roll out its in-house generative AI tool, LLM Suite, to 140,000 employees. It put the potential AI-related upside at up to $2 billion. It is also assessing whether every process in the bank can be redesigned with AI[6].
 
 The numbers are impressive. But the library has already pointed at a deeper cost.
 
@@ -153,7 +153,7 @@ AX produces short-term efficiency. At the same time, it can erode the path throu
 
 [5] Parasuraman, R., & Manzey, D. H. (2010). "Complacency and Bias in Human Use of Automation: An Attentional Integration." *Human Factors*, 52(3), 381–410. — Empirical analysis of automation bias.
 
-[6] CIO Dive (2026). "JPMorgan Chase to Equip 250K Workers with LLM Suite." — 250K employees, 50% DAU, scaling roadmap from 450 to 1,000 use cases.
+[6] CIO Dive (2024). "JPMorgan Chase to equip 140K workers with generative AI tool." — LLM Suite rollout to 140,000 employees, up to $2 billion in expected AI-related upside, assessment of AI optimization across every process.
 
 [7] Wharton Knowledge (2026). "Is AI Pushing Us to Break the Talent Pipeline?" — 35% decline in entry-level analyst positions and the "Editor Problem."
 

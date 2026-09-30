@@ -69,7 +69,7 @@ AI가 80% 맞을 때 사람이 가장 위험하다. 90% 맞을 때 사람은 검
 
 ### JP모건 — 신입 분석가의 사라진 훈련 경로
 
-JP모건의 LLM Suite는 25만 명 직원에게 배포되었고 절반이 매일 쓴다. 직원 한 사람이 주당 3-6시간을 절약하는 것으로 추산된다[6].
+JP모건은 2024년 사내 생성형 AI 도구 LLM Suite를 직원 14만 명에게 보급한다고 밝혔다. AI로 얻을 이익은 최대 20억 달러로 내다봤다. 모든 업무 과정을 AI로 다시 짤 수 있는지도 검토하고 있다[6].
 
 수치는 인상적이다. 그러나 라이브러리는 더 깊은 비용을 짚었다.
 
@@ -178,7 +178,7 @@ AX는 효율을 만든다. 하지만 동시에 인간 판단력이 만들어지�
 
 [5] Parasuraman, R., & Manzey, D. H. (2010). "Complacency and Bias in Human Use of Automation: An Attentional Integration." *Human Factors*, 52(3), 381–410. — 자동화 편향(automation bias)의 실증 분석.
 
-[6] CIO Dive (2026). "JPMorgan Chase to Equip 250K Workers with LLM Suite." — 25만 직원, 50% DAU, 450→1000 use cases 확장 로드맵.
+[6] CIO Dive (2024). "JPMorgan Chase to equip 140K workers with generative AI tool." — LLM Suite 14만 명 보급, AI 기대 이익 최대 20억 달러, 전 업무 과정의 AI 최적화 검토.
 
 [7] Wharton Knowledge (2026). "Is AI Pushing Us to Break the Talent Pipeline?" — 신입 분석가 35% 감소, 'Editor Problem' 분석.
 
