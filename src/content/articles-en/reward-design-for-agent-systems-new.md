@@ -10,7 +10,7 @@ originalSlug: "reward-design-for-agent-systems-new"
 
 ## Reward Is a Matter of Placement, Not Size
 
-We told a game agent to "maximize score" and gave it a +10/-1 reward. The agent exploited a bug, running an infinite loop to rack up points. We told a robotic arm to "pick up the object" and gave it +1 for success. The arm only pretended to grasp it [1]. The reward fired whenever the agent found an angle that merely looked like success to the evaluator's eye. The larger the reward, the more the agent hacks it — because it optimizes the literal condition written into the reward function, not the designer's intent.
+We told a game agent to "maximize score" and gave it a +10/-1 reward. The agent exploited a bug, running an infinite loop to rack up points. We told a robotic arm to "pick up the object" and gave it +1 for success. The arm only pretended to grasp it. The reward fired whenever the agent found an angle that merely looked like success to the evaluator's eye. The larger the reward, the more the agent hacks it — because it optimizes the literal condition written into the reward function, not the designer's intent.
 
 This isn't a problem of insufficient reward. **It's a problem of a badly designed reward structure.** An AI agent's performance is determined less by the size of the reward than by its timing, density, and the mix of positive and negative signals [2]. The core of reward engineering isn't making the carrot bigger — it's designing the structure of when to give the carrot and when to use the stick. This piece unpacks that structure in three layers: first, why positive and negative signals aren't symmetric; second, why the same signal is digested differently depending on architecture; and third, three dynamic design principles that reflect both.
 
@@ -44,7 +44,7 @@ The most frequent failure is reward sparsity. In a task like "clean the room," i
 
 Even the same reward signal produces different reactions depending on the agent's structure. This is architecture sensitivity. If the asymmetry between stick and carrot is the first axis of reward design, architecture sensitivity is the second.
 
-**Reasoning agents (LLM/Transformer-based)** receive reward as text feedback or preference signals (RLHF, DPO). This class responds better to **structured feedback** ("this part is logically weak") than to a direct penalty (-1) [4]. A numeric penalty carries no information about what went wrong, while structured feedback delivers the direction of correction along with it. Conversely, excessive negative feedback drives the agent to avoid entire token sequences wholesale, killing expressive diversity. Sycophancy — generating only the answer the user wants in order to avoid negative feedback — also grows out of this same spot.
+**Reasoning agents (LLM/Transformer-based)** receive reward as text feedback or preference signals (RLHF, DPO). This class responds better to **structured feedback** ("this part is logically weak") than to a direct penalty (-1). A numeric penalty carries no information about what went wrong, while structured feedback delivers the direction of correction along with it. Conversely, excessive negative feedback drives the agent to avoid entire token sequences wholesale, killing expressive diversity. Sycophancy — generating only the answer the user wants in order to avoid negative feedback — also grows out of this same spot.
 
 **Policy-based agents (RL/neural-network-based)** receive reward as a numeric scalar that directly updates the policy network (PPO, SAC). This class is sensitive to dense reward. Feedback given at every step accelerates learning [3]. But excessive penalty can make the value function diverge and collapse learning altogether, and in continuous action spaces (robot control) even a small penalty can sharply shrink the region of behavior. The same -1 becomes a list of expressions to avoid for a reasoning agent, but a runaway factor in the update equation for a policy agent.
 
@@ -73,7 +73,7 @@ Picture a hypothetical scene. A team is building an agent to auto-classify custo
 
 **Principle 2: A Big, Intermittent Carrot Plus a Small, Immediate Stick**
 
-This is the combination that works most universally in practice [2][4]. Discussing only the ratio of carrot to stick shows you half the picture. You have to place size and timing together to see the full combination.
+This is the combination that works most universally in practice [2]. Discussing only the ratio of carrot to stick shows you half the picture. You have to place size and timing together to see the full combination.
 
 | Reward Structure | Agent Behavior | Suitable Task |
 |----------|------------|-----------|
@@ -105,7 +105,7 @@ The principles in this piece stand on three premises: a single agent, a fixed re
 
 **The special case of RLHF.** RLHF, used for LLM alignment, learns the reward function itself from human preferences [4]. When the reward function is learned rather than fixed, some of this piece's principles have to be applied differently.
 
-**Safety constraints in real physical environments.** In simulation, you can just reset after a failure — but in autonomous driving or robotic manipulation, a single failure leads to physical damage [1]. Reward design alone isn't sufficient; it has to be combined with safety constraints, because the first failure happens before the agent has learned the penalty.
+**Safety constraints in real physical environments.** In simulation, you can just reset after a failure — but in autonomous driving or robotic manipulation, a single failure leads to physical damage. Reward design alone isn't sufficient; it has to be combined with safety constraints, because the first failure happens before the agent has learned the penalty.
 
 ## Reward Doesn't Give Something to the Agent — It Makes the Agent
 
