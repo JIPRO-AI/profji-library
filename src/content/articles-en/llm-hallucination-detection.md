@@ -24,9 +24,9 @@ Lumping hallucination together as a single phenomenon blurs the detection strate
 
 | Type | Definition | Detection Path |
 |------|------|----------|
-| **Fabrication** | Generating facts, sources, or figures that do not exist | Cross-check against external DB/knowledge base [7] |
-| **Unsupported Inference** | Grounding exists, but the conclusion overreaches it | Claim-evidence consistency check [1] |
-| **Retrieval Contamination** | The retrieved source itself is wrong or biased | Source credibility assessment + cross-verification [2] |
+| **Fabrication** | Generating facts, sources, or figures that do not exist | Cross-check against external DB/knowledge base [6] |
+| **Unsupported Inference** | Grounding exists, but the conclusion overreaches it | Claim-evidence consistency check (e.g., embedding-distance detection [1]) |
+| **Retrieval Contamination** | The retrieved source itself is wrong or biased | Source credibility assessment + cross-verification |
 | **Instruction-induced Overclaim** | Pressure to answer causes confident assertion of uncertain content | Compare uncertainty score vs. expressed confidence |
 | **Reasoning Drift** | Logic goes off track during intermediate reasoning | Step-by-step reasoning verification |
 | **Tool-use Fabrication** | Inventing results for tools that were never executed | Cross-check against execution logs |
@@ -41,30 +41,30 @@ Four verification dimensions can be brought to bear against hallucination. None 
 
 | Dimension | Strength | Failure Mode | Cost/Speed |
 |------|------|----------|----------|
-| **Internal Probability** | Fast, low-cost, real-time | Probability and truth diverge [4]; meaningless on out-of-distribution (OOD) input | Lowest |
-| **RAG/External Retrieval** | Provides grounding, detects fabrication | Retrieval failure; source contamination; context overload [2] | Medium |
+| **Internal Probability** | Fast, low-cost, real-time | Probability and truth diverge; meaningless on out-of-distribution (OOD) input | Lowest |
+| **RAG/External Retrieval** | Provides grounding, detects fabrication | Retrieval failure; source contamination; context overload | Medium |
 | **Multi-agent Cross-verification** | Compares independent perspectives | Shares common error distribution; false consensus | High |
-| **Human Review** | Detects nuance, ethics, logical traps [5] | High cost, low speed, does not scale | Highest |
+| **Human Review** | Detects nuance, ethics, logical traps | High cost, low speed, does not scale | Highest |
 
 ### Limits of Internal Probability
 
-An LLM is a statistical predictor. It merely selects the most plausible next token; it does not know whether that token is true. Low token probability does not always mean error, and high probability does not always mean truth [4]. Especially in complex reasoning or code generation, the model explores multiple paths and the probability distribution naturally wobbles as a result, so relying on internal signals alone can drive up false alarms.
+An LLM is a statistical predictor. It merely selects the most plausible next token; it does not know whether that token is true. Low token probability does not always mean error, and high probability does not always mean truth. Especially in complex reasoning or code generation, the model explores multiple paths and the probability distribution naturally wobbles as a result, so relying on internal signals alone can drive up false alarms.
 
-There is also an approach that uses small language models (SLMs) as auxiliary detectors; it works well for simple queries, but precision drops sharply on abstract concepts or logical traps [4]. Internal signals should be used in a restricted role, as an "identifier of high-uncertainty zones," not as an "obvious-error filter."
+There is also an approach that uses small language models (SLMs) as auxiliary detectors [4]. It may work well for simple queries, but precision can drop on abstract concepts or logical traps. Internal signals should be used in a restricted role, as an "identifier of high-uncertainty zones," not as an "obvious-error filter."
 
 As a speculative reading of its own, this article ventures a connection between critical-transition theory from complex-systems science and hallucination detection. One strand of that theory holds that complex systems—ecosystems, financial markets—display statistical warning signs just before they tip into an unstable state: rising autocorrelation, a spike in variance, a shift in skewness. Carrying that lens over to LLM output streams, one could hypothesize that it might be possible to catch precursor signals just before a hallucination occurs. But this is not a technique validated on LLMs—it is closer to an analogy borrowed from theory built for another field. It should be read as no more than one candidate for an early-warning system that reaches beyond simple probability-value monitoring.
 
 ### Failure Modes of RAG
 
-RAG fails in three ways [2].
+RAG fails in three ways.
 
 **Retrieval absence**: When no relevant documents are found, RAG falls back on internal knowledge and reproduces hallucination. What's more dangerous is when the fact that "no retrieval results were found" never gets communicated to the user.
 
-**Source contamination**: If the knowledge base itself is inaccurate or carries bias, RAG attaches a source to the falsehood and raises its perceived credibility [6]. A simple retrieval-consistency check cannot block this case [1].
+**Source contamination**: If the knowledge base itself is inaccurate or carries bias, RAG attaches a source to the falsehood and raises its perceived credibility. A simple retrieval-consistency check cannot block this case.
 
-**Context overload**: When too many documents fill the context window, the model misses key information or over-integrates irrelevant content [2]. The RETA-LLM research warns that retrieval scope and context-allocation strategy critically shape the reliability of the result.
+**Context overload**: When too many documents fill the context window, the model misses key information or over-integrates irrelevant content. Retrieval scope and context-allocation strategy can strongly shape the reliability of the result.
 
-**RAG adds grounding but does not guarantee truth.** Properly designed external verification—claim cross-checking against a relational-DB schema, as in Thucy, for example [7]—can be a powerful reliability tool, but even this only works in domains where structured data exists.
+**RAG adds grounding but does not guarantee truth.** Properly designed external verification—claim cross-checking against a relational-DB schema, as in Thucy, for example [6]—can be a reliability tool, but even this only works in domains where structured data exists.
 
 ### Limits of Multi-agent Cross-verification
 
@@ -90,10 +90,10 @@ Answer Generation
   → Claim Confidence Scoring (per-claim uncertainty score)
   → Routing Decision (score-based verification-path branching)
      ├─ Low risk: output directly
-     ├─ Medium risk: external verification (RAG/DB cross-check) [7]
+     ├─ Medium risk: external verification (RAG/DB cross-check)
      ├─ High risk: multi-agent cross-verification
-     └─ Very high risk: human escalation [5]
-  → Evidence Matching (claim-evidence consistency check) [1]
+     └─ Very high risk: human escalation
+  → Evidence Matching (claim-evidence consistency check)
   → Aggregate Decision
      ├─ Respond (verification passed)
      ├─ Partial response (some claims removed/weakened)
@@ -109,7 +109,7 @@ Selective abstention is the first principle. The pressure to answer every questi
 
 ### Principle 2: Verification Cost Is Proportional to Risk
 
-Ask about the weather in casual chat, and an internal filter alone is enough. Ask about a drug interaction in a medical-diagnosis assistant, and it requires DB cross-checking plus human confirmation [5]. Applying identical verification to every answer is both a waste of cost and a source of added latency.
+Ask about the weather in casual chat, and an internal filter alone is enough. Ask about a drug interaction in a medical-diagnosis assistant, and it requires DB cross-checking plus human confirmation. In the medical domain, research suggests that general-domain hallucination detectors struggle [5]. Applying identical verification to every answer is both a waste of cost and a source of added latency.
 
 ### Principle 3: Feedback Trains the System
 
@@ -119,7 +119,7 @@ Collecting human-verification results, false-alarm logs, and escalation records,
 
 - **Informal chat/general queries**: Apply only Stage 1 (internal filter). Prioritize low latency.
 - **Business reports/analysis**: Apply up through Stage 2 (external verification). Cite the evidentiary source for key claims.
-- **Medical/legal/financial**: Stage 3 (multi-agent) plus mandatory human confirmation. Record an evidence trail for every claim [5][6].
+- **Medical/legal/financial**: Stage 3 (multi-agent) plus mandatory human confirmation. Record an evidence trail for every claim.
 
 ## 4. Measurement Framework: Standardization Starts with Measurement
 
@@ -149,13 +149,13 @@ This article's position on the LLM hallucination problem compresses into three s
 That is why multi-layered verification routing is necessary. The claim-level verification pipeline proposed in this article is a structure that measures uncertainty at the claim level, branches the verification path according to risk, and halts the response when confidence is insufficient. Laid out layer by layer, that structure looks like this:
 
 - **Layer 1: Uncertainty Sensing** — internal probability + volatility monitoring
-- **Layer 2: Evidence Retrieval** — RAG + structured DB cross-check [7]
-- **Layer 3: Claim Verification** — claim-evidence consistency check [1]
+- **Layer 2: Evidence Retrieval** — RAG + structured DB cross-check
+- **Layer 3: Claim Verification** — claim-evidence consistency check
 - **Layer 4: Cross-model Adjudication** — multi-agent disagreement detection
-- **Layer 5: Human Escalation** — expert review in high-risk domains [5]
+- **Layer 5: Human Escalation** — expert review in high-risk domains
 - **Layer 6: Feedback & Governance** — RLHF + measurement + dynamic threshold adjustment
 
-Most current research in this area concentrates on improving the performance of individual layers [1][2][4]. The integrated pipeline and measurement framework proposed here are design principles drawn from existing research, not a system whose entirety has been empirically validated. Precursor-signal-based early warning and claim-level routing, in particular, remain at the level of conceptual proposals.
+Most current research in this area appears to concentrate on improving the performance of individual layers. The integrated pipeline and measurement framework proposed here are design principles drawn from existing research, not a system whose entirety has been empirically validated. Precursor-signal-based early warning and claim-level routing, in particular, remain at the level of conceptual proposals.
 
 Even so, the direction is clear. **The core of LLM reliability lies not in making the model sound more plausible, but in designing when to make it stop talking.** The standard of the future is more likely to be a system with more sophisticated verification routing than simply a bigger model.
 
@@ -166,5 +166,4 @@ Even so, the direction is clear. **The core of LLM reliability lies not in makin
 [3] Kaustubh D. Dhole (2025). To Retrieve or Not to Retrieve? Uncertainty Detection for Dynamic Retrieval Augmented Generation.
 [4] Ming Cheung (2025). Hallucination Detection with Small Language Models.
 [5] Suhas BN, Han-Chin Shing, Lei Xu (2025). Fact-Controlled Diagnosis of Hallucinations in Medical Text Summarization.
-[6] Haoran Huan, Mihir Prabhudesai, Mengning Wu (2025). Can LLMs Lie? Investigation beyond Hallucination.
-[7] Michael Theologitis, Dan Suciu (2025). Thucy: An LLM-based Multi-Agent System for Claim Verification across Relational Databases.
+[6] Michael Theologitis, Dan Suciu (2025). Thucy: An LLM-based Multi-Agent System for Claim Verification across Relational Databases.
