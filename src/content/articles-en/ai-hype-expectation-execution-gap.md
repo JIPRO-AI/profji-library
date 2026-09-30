@@ -34,7 +34,7 @@ This expectation is not a lie. Cases exist where AI genuinely cuts costs and imp
 
 The key is in the last column. **Every participant omits "specific execution."** Media shows only results, vendors show only demos, leadership gives only direction, and consultants draw only frameworks. The answer to "So what do I actually do on Monday morning?" is nowhere to be found.
 
-This isn't anyone's fault. It's a **structural omission** created by each incentive structure [2]. The real problem with overheated expectations isn't exaggeration, but omission.
+This isn't anyone's fault. It's a **structural omission** created by each incentive structure. The real problem with overheated expectations isn't exaggeration, but omission. In the face of blind faith surrounding Big Data and AI, some argue for untethering machine learning practice from hype and fear cycles [2].
 
 ## The 3-Layer Structure of the Expectation-Execution Gap — Both Sides Have Their Reasons
 
@@ -47,7 +47,7 @@ Competitors are adopting AI and reporting real results. Staying still means fall
 When a team lead says, "Try using AI," it's not irresponsible; it's because they themselves have no experience applying AI to their work. They might have used ChatGPT to plan a trip, but they've never integrated AI into a quarterly sales forecasting process. It's not a lack of AI literacy, but a lack of **AI application experience** [4]. These are different — knowing what AI is and knowing how to use it for **my** work are separate competencies.
 
 **Frontline — "How, and with what?" is a legitimate question.**
-Frontline workers are experts in their own tasks. But AI is a general-purpose technology. Excel has a clear purpose — organizing numbers. ERP has a clear purpose — processing tasks. AI is "capable of anything," which paradoxically makes the starting point unclear. Training is mostly "How to use ChatGPT," not "How to apply AI to my work" [5].
+Frontline workers are experts in their own tasks. But AI is a general-purpose technology. Excel has a clear purpose — organizing numbers. ERP has a clear purpose — processing tasks. AI is "capable of anything," which paradoxically makes the starting point unclear. Training is mostly "How to use ChatGPT," not "How to apply AI to my work".
 
 | Layer | Rational Reason | But... | Result |
 |----|----------|---------|------|
