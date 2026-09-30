@@ -8,15 +8,15 @@ tags: ["AI","JRC","judgment","measurement-asymmetry","decision-debt","reproducti
 originalSlug: "judgment-reproduction-crisis"
 ---
 
-## A Company That Fired 700 Chatbots and Hired Humans Back
+## A Company That Handed 700 People's Work to a Chatbot, Then Hired Humans Back
 
 In early 2024, the fintech Klarna announced that its AI assistant was handling the workload of 700 customer service agents. It did not fire 700 people. Hiring had been frozen since 2023 and vacancies went unfilled, so headcount fell from 5,500 to 3,400.
 
 The early KPIs moved well. Response time got faster. Throughput rose. The cost line looked better.
 
-But in the spring of 2025, CEO Sebastian Siemiatkowski delivered the opposite message in a Bloomberg interview[1]. The AI's output was "lower quality output." The chatbot could not handle empathy or nuanced problem-solving. The company began hiring people again.
+But in the spring of 2025, CEO Sebastian Siemiatkowski delivered the opposite message in a Bloomberg interview[1]. The result of focusing too much on efficiency and cost was lower quality. The chatbot could not handle empathy or nuanced problem-solving. The company began hiring people again.
 
-The problem does not end with degraded customer service. The deeper loss is that during that one year, the **early judgment experience** people would have gained by doing the work themselves was completely missing. The organization did not just lose results. It lost the **process by which the next person is trained**. The cost of recovering from 0 back to 10 is greater than the cost of building the original 10.
+The problem does not end with degraded customer service. The deeper loss is that during that gap period, the **early judgment experience** people would have gained by doing the work themselves was completely missing. The organization did not just lose results. It lost the **process by which the next person is trained**. The cost of recovering from 0 back to 10 is greater than the cost of building the original 10.
 
 The core argument of this essay is simple. **AI can speed up the work. But it can simultaneously weaken the structure through which the next generation learns to judge.** This problem we call the **Judgment Reproduction Crisis (JRC)**. Put plainly, the path through which the next generation learns to judge is being cut.
 
@@ -44,7 +44,7 @@ The psychology runs in the same direction.
 
 > **The essence of automation bias is not that AI gets things wrong. AI is right most of the time. The problem is that **because it is right most of the time**, humans stop imagining the possibility of error.**
 
-Humans are most at risk when AI is 80% correct. When AI is 90% correct, humans skip verification altogether[5]. The cost of skipping is not measured that day. It is billed six months later, when someone pulls the decision back into a meeting room.
+Humans are most at risk when AI is 80% correct. As accuracy rises further, humans tend to skip verification altogether. Automation bias occurs in both novices and experts[5]. The cost of skipping is not measured that day. It is billed six months later, when someone pulls the decision back into a meeting room.
 
 ## Two Cases, One Mechanism
 
@@ -62,11 +62,11 @@ The path from junior analyst to senior was simple. Draft yourself. A senior revi
 
 When an LLM takes over the draft, senior review frequency drops. The **traces of struggle** once embedded in the draft also disappear. The senior's own sense of what to teach becomes blurred.
 
-There are warnings that when organizations stop hiring juniors, the ladder that develops experts breaks[7]. No small number of engineering leaders say they will hire fewer juniors because seniors can handle more work with copilots[8]. Who, then, makes the next senior?
+There are warnings that when organizations stop hiring juniors, the ladder that develops experts breaks[7]. An article on the software engineering profession also warns that without hiring junior developers, the talent pipeline will collapse[8]. No small number of engineering leaders say they will not hire juniors because seniors can handle more work with copilots. Who, then, makes the next senior?
 
 ### Klarna Revisited — The Asymmetry of Recovery Cost
 
-Back to Klarna. What Siemiatkowski admitted was not only the chatbot's limit. It was the **asymmetry of recovery cost**. The library compressed it into one sentence.
+Back to Klarna. What Siemiatkowski admitted was not only the chatbot's limit[1]. It was the **asymmetry of recovery cost**. The library compressed it into one sentence.
 
 > **Efficiency was 10. Thanks to AI it became 20. Then that person left, and it became 0. 10→20→0.**
 
