@@ -21,7 +21,7 @@ In distributed AI environments, the accountability chain breaks at three points.
 
 **Second, formalization of approval.** As the quality of AI outputs improves, human approvers review content less. It is not sustainable for an organization to meticulously read outputs that are 90% correct every time. Consequently, approval quickly becomes a formal pass-through. [2] diagnoses that AI's black-box nature makes understanding and verification difficult, which is a key unresolved challenge for achieving trustworthy AI. As AI becomes more capable, the substantive judgment of the approver becomes shallower. When a problem arises, the record shows "a human approved it," but in reality, a gap remains where no one made a deep judgment. The gap between apparent process and actual control renders accountability attribution meaningless.
 
-**Third, lack of interaction traceability.** When multiple agents call each other and modify responses, the path to the final output often isn't logged. [3] points out that organizations lack a systematic foundation for recording execution histories, verifying, and ensuring accountability when running AI agents in business processes. The AEGIS framework suggests a direction for standardizing agent execution logs in a format that allows for external audit. Without a record of the path, when an incident occurs, we cannot reconstruct "where the judgment went wrong." There is no way to assign accountability to an irrecoverable mistake. The same applies to preventing recurrence.
+**Third, lack of interaction traceability.** When multiple agents call each other and modify responses, the path to the final output often isn't logged. [3] points out that organizations lack a systematic foundation for recording execution histories, verifying, and ensuring accountability when running AI agents in business processes. The AEGIS framework targets a cryptographically verifiable, independent third-party recording standard for agent execution. Without a record of the path, when an incident occurs, we cannot reconstruct "where the judgment went wrong." There is no way to assign accountability to an irrecoverable mistake. The same applies to preventing recurrence.
 
 When these three points combine, accountability doesn't disappear. It becomes distributed, scattered, and attaches to no one. This is why the phrase "the AI made a mistake" actually works within organizations. Because there is no specific accountable party. And having no accountable party means there is also no design owner to prevent the next mistake.
 
@@ -48,13 +48,13 @@ To divide accountability by layer, we must be able to verify post-hoc whether ea
 
 ### Principle 1: Traceability
 
-The decision path and interactions of every agent must be logged. It must be possible to reconstruct chronologically which model received which input, produced which output, and how that output was passed to the next agent. This is the direction suggested by the AEGIS framework [3]. Logs are not administrative residue for audit; they are the raw material for judging whose accountability it is. Without logs, distinguishing accountability across the four layers reverts to subjective estimation.
+The decision path and interactions of every agent must be logged. It must be possible to reconstruct chronologically which model received which input, produced which output, and how that output was passed to the next agent. The AEGIS framework [3] points the same way, proposing a reference architecture for recording, verifying, and ensuring accountability for agent execution. Logs are not administrative residue for audit; they are the raw material for judging whose accountability it is. Without logs, distinguishing accountability across the four layers reverts to subjective estimation.
 
 **Application Constraint:** In environments without real-time log collection infrastructure, only post-hoc reconstruction is possible, making real-time intervention impossible. In some edge/embedded environments, snapshot-based sampling becomes an alternative.
 
 ### Principle 2: Uncertainty Reporting
 
-Agents must report numerical confidence and uncertainty regarding their own outputs. [6] empirically demonstrated that uncertainty estimation in edge-device-based multi-agent learning is a key factor for improving not only performance but also reliability. Without uncertainty figures, approvers have no choice but to treat all outputs with the same level of trust, which solidifies formal approval. With figures, approvers can concentrate review resources on high-uncertainty sections and pass over low-uncertainty sections with only a record.
+Agents must report numerical confidence and uncertainty regarding their own outputs. [6] made determining the confidence level of learning outcomes a key focus in edge-device-based multi-agent learning and proposed managing uncertainty with Bayesian neural networks. Without uncertainty figures, approvers have no choice but to treat all outputs with the same level of trust, which solidifies formal approval. With figures, approvers can concentrate review resources on high-uncertainty sections and pass over low-uncertainty sections with only a record.
 
 **Application Constraint:** For out-of-distribution inputs, uncertainty estimation itself can become inaccurate. In such cases, Principle 2 can instead foster false confidence. Separate verification (calibration) of estimation accuracy must precede.
 
@@ -66,7 +66,7 @@ The range of actions an agent can take must be dynamically adjusted based on sys
 
 ### Principle 4: Mandatory Human-in-the-Loop
 
-The system must be forced to automatically request human approval in situations of high uncertainty or when safety thresholds are exceeded. This is akin to how human oversight is embedded as a system component in the regulated insurer case of [5]. Humans don't review every decision. They only see borderline decisions. This is the only condition preventing approvers from regressing to formal pass-through.
+The system must be forced to automatically request human approval in situations of high uncertainty or when safety thresholds are exceeded. An approach that embeds human oversight as a system component is needed, as in the regulated insurer case of [5]. Humans don't review every decision. They only see borderline decisions. This is the only condition preventing approvers from regressing to formal pass-through.
 
 **Application Constraint:** If intervention requests are too frequent, alert fatigue accumulates, leading back to formal approval. If thresholds are too low, intervention is neutralized; if too high, incidents occur. Thresholds themselves must be designed at an operable level and periodically readjusted.
 
