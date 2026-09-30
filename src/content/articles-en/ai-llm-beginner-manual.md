@@ -15,7 +15,7 @@ This isn't a one-off coincidence. Type "recommend a good restaurant" and you get
 
 Of course, real performance differences exist between free and paid models. Paid models genuinely have the edge in context length, reasoning ability, and tool integration. But **most of the frustration beginners experience happens well before that performance gap ever comes into play — it happens at the level of how the tool is used.** The difference in outcomes between two people using the identical free model can't be explained by parameter count. What actually drives the difference is how the user understands the tool in the first place — in other words, their **mental model (the internal instruction manual they carry around for what AI is)**.
 
-The frame this article proposes is a **cognitive interface error** — in plain terms, a usage error that comes from misunderstanding the tool. It's the structural mismatch that occurs when habits learned from search engines get applied directly to AI [3]. And this article doesn't stop at the generic advice to "ask better questions." What it offers instead is a **task-based operating manual**: a working system for first identifying what type of task you're facing, choosing the right conversational approach for it, and calibrating how carefully you verify the output to match how much the task matters.
+The frame this article proposes is a **cognitive interface error** — in plain terms, a usage error that comes from misunderstanding the tool. It's the structural mismatch that occurs when habits learned from search engines get applied directly to AI. One study found that expectations carried over from instructing other people, and a tendency to overgeneralize, kept non-experts from designing effective prompts [2]. And this article doesn't stop at the generic advice to "ask better questions." What it offers instead is a **task-based operating manual**: a working system for first identifying what type of task you're facing, choosing the right conversational approach for it, and calibrating how carefully you verify the output to match how much the task matters.
 
 ## An LLM Is Not a Search Engine — The Difference Between Four Tools
 
@@ -25,11 +25,11 @@ To use AI properly, you first need to understand what this tool **isn't**.
 
 **It is not an encyclopedia.** Wikipedia's information is verified by editors and comes with citations. AI's output has no such editorial process behind it.
 
-**It is not a human expert.** An expert says "I don't know" when they don't know. AI generates confident-sounding sentences even about things it doesn't know [5].
+**It is not a human expert.** An expert says "I don't know" when they don't know. AI generates confident-sounding sentences even about things it doesn't know. A conversational AI can create the illusion of a thinking creature, yet it is fundamentally not like us [4].
 
 **It is not a calculator.** It doesn't "calculate" math — it only generates text that looks like math.
 
-So what is AI, then? Put simply, it's a system trained on massive amounts of text that **statistically predicts "what word comes next."** The academic term for this is a **stochastic parrot** [1]. Much like a role-play partner, it selects and outputs whatever text pattern fits the role and context the user gives it [5]. This distinction matters for a simple reason: **when tools work differently, the optimal way to use them is completely different too.**
+So what is AI, then? Put simply, it's a system trained on massive amounts of text that **statistically predicts "what word comes next."** The academic term for this is a **stochastic parrot** [1]. Much like a role-play partner, it selects and outputs whatever text pattern fits the role and context the user gives it. This distinction matters for a simple reason: **when tools work differently, the optimal way to use them is completely different too.**
 
 | Axis | Search Engine | Encyclopedia | Human Expert | AI (LLM) |
 |---|---|---|---|---|
@@ -39,7 +39,7 @@ So what is AI, then? Put simply, it's a system trained on massive amounts of tex
 | **What happens when it's wrong** | A bad link — you can click through and check | Missing information | A biased opinion | Fiction that looks like fact (hallucination) |
 | **What grounds your trust** | Checking the source directly | Trusting the editorial process | Credentials and reputation | **None** — direct verification required |
 
-The key difference is in the last two rows. When a search engine is wrong, you can click the link and check. When AI is wrong? The error hides inside a smooth sentence, and it's hard to catch without separate verification [2]. The reasoning "AI said it confidently, so it must be right" — this is the textbook case of a usage error born from misunderstanding the tool.
+The key difference is in the last two rows. When a search engine is wrong, you can click the link and check. When AI is wrong? The error hides inside a smooth sentence, and it's hard to catch without separate verification. The reasoning "AI said it confidently, so it must be right" — this is the textbook case of a usage error born from misunderstanding the tool.
 
 ## Five Usage Errors Beginners Fall Into
 
@@ -53,9 +53,9 @@ Misunderstanding the tool doesn't produce just one kind of error. There are five
 | **4. Skipped-context mistake** | Assumes AI already knows their situation | Asks without providing context | Generic advice that fits anyone |
 | **5. Fluency-equals-accuracy mistake** | Mistakes polished prose for accurate information | Accepts it because the writing sounds clean | A plausible-sounding but factually wrong answer |
 
-**Error 1 is the most common.** The A/B example above is exactly this. Type "competitor analysis" into Google and you get links to relevant reports. Type the same words into AI, and since it has no information about which industry, which competitors, or for whom, it answers with the most generic pattern available [3].
+**Error 1 is the most common.** The A/B example above is exactly this. Type "competitor analysis" into Google and you get links to relevant reports. Type the same words into AI, and since it has no information about which industry, which competitors, or for whom, it answers with the most generic pattern available.
 
-**Error 5 is the most dangerous.** The less a user knows about a subject, the less able they are to judge the accuracy of AI's fluent sentences. This is the Dunning-Kruger effect at work [6]. **Fluent writing is no guarantee whatsoever of accurate information.** AI turns even completely fabricated content into grammatically flawless sentences [1]. A human expert stumbles over their words when uncertain, but AI maintains the exact same fluency regardless of its actual confidence level.
+**Error 5 is the most dangerous.** The less a user knows about a subject, the less able they are to judge the accuracy of AI's fluent sentences. This is the Dunning-Kruger effect at work [5]. **Fluent writing is no guarantee whatsoever of accurate information.** AI turns even completely fabricated content into grammatically flawless sentences [1]. A human expert stumbles over their words when uncertain, but AI maintains the exact same fluency regardless of its actual confidence level.
 
 ## Four Principles You Can Use Right Away — The 3 Essentials That Solve Most Problems
 
@@ -70,7 +70,7 @@ These three corrections address the search-engine mistake, the one-shot expectat
 
 **Principle 1. Give It Context (Context Specification)**
 
-AI cannot guess your situation. You have to tell it directly who you are, what you're trying to do, and what constraints apply [7]. The richer the context you provide, the better the answer fits your actual situation.
+AI cannot guess your situation. You have to tell it directly who you are, what you're trying to do, and what constraints apply. The richer the context you provide, the better the answer fits your actual situation.
 
 > **A copy-paste-ready template:**
 > ```
@@ -81,7 +81,7 @@ AI cannot guess your situation. You have to tell it directly who you are, what y
 > ```
 > **Example:** "I'm a marketing manager at a startup (2 years in) and I need a competitor pricing comparison table to present to our CEO tomorrow. Make a table comparing three B2B SaaS companies on features, pricing, and support. In Korean, one A4 page long."
 
-When you can skip this: simple fact-checks like "What's the Python function for sorting a list?" Limitation: free models can ignore the middle portion of a long context [7].
+When you can skip this: simple fact-checks like "What's the Python function for sorting a list?" Limitation: models can ignore the middle portion of a long context [6].
 
 **Principle 2. Don't Try to Finish in One Shot (Progressive Dialogue)**
 
@@ -96,7 +96,7 @@ When you can skip this: clear, single-shot tasks like translation or a one-sente
 
 **Principle 3. Assign It a Role (Role Assignment)**
 
-Specifying "You are a [role]" adjusts the tone and depth of AI's answer to fit that role [2]. This doesn't turn AI into an actual expert — it activates the text patterns associated with that role. **"Sounding like" an expert and having expert-level "accuracy" are two different things.**
+Specifying "You are a [role]" adjusts the tone and depth of AI's answer to fit that role. This doesn't turn AI into an actual expert — it activates the text patterns associated with that role. **"Sounding like" an expert and having expert-level "accuracy" are two different things.**
 
 > **Example:** "You are a UX researcher with 10 years of experience. Explain user-interview design methodology to a startup founder from a practical-application perspective."
 
@@ -104,7 +104,7 @@ When you can skip this: for simple fact-checks or calculations, assigning a role
 
 **Principle 4. Always Verify What Matters (Verification Habit)**
 
-AI's output is a draft. It is not a final version. Verification isn't optional — it's a structural precondition for using AI at all [4].
+AI's output is a draft. It is not a final version. Generative AI asks users to evaluate its output and decide how far to rely on it [3]. Verification isn't optional — it's a structural precondition for using AI at all.
 
 > **Verification checklist:**
 > - [ ] Did you cross-check proper nouns, figures, and dates against another source?
@@ -128,7 +128,7 @@ Even knowing the principles, there's a point where people get stuck: **"How do I
 | **Current information** | Mandatory external verification | 1-2 turns | **Verify unconditionally** | "2026 Korean AI regulations" → must confirm via search |
 | **High-risk (legal, medical, etc.)** | All 4 principles + an expert | Multiple times | **Never trust AI alone** | "Analyze contract clause risk" → expert final review |
 
-**The key point of this table: task type determines how intensely you should verify.** In idea generation, even a hallucination can be a useful input, but in legal judgment, using AI's output as-is is itself a risk [4].
+**The key point of this table: task type determines how intensely you should verify.** In idea generation, even a hallucination can be a useful input, but in legal judgment, using AI's output as-is is itself a risk.
 
 > **The 10-second check before you ask AI anything:**
 > 1. **What type is this?** — Summary? Analysis? Generation? Judgment?
@@ -139,11 +139,11 @@ Even knowing the principles, there's a point where people get stuck: **"How do I
 
 The principles and operating methods above substantially improve the quality of your AI use, but there are areas they can't solve. This needs to be said honestly.
 
-**First, with zero background knowledge, you can't even formulate the question.** You need to know what you don't know to ask a good question. If you know nothing about a domain, you have no basis for deciding what context to add or what follow-up to ask [6]. In this case, you can use AI as an exploratory tool first — "Tell me the 5 key things someone new to this field should know" — but you must not accept that output as final knowledge.
+**First, with zero background knowledge, you can't even formulate the question.** You need to know what you don't know to ask a good question. If you know nothing about a domain, you have no basis for deciding what context to add or what follow-up to ask [5]. In this case, you can use AI as an exploratory tool first — "Tell me the 5 key things someone new to this field should know" — but you must not accept that output as final knowledge.
 
-**Second, free models have real technical limitations.** The tendency to ignore the middle of a long document [7], not knowing anything after the training data's cutoff date, degraded performance on complex multi-step reasoning — these are structural constraints that no amount of clever questioning can work around.
+**Second, free models have real technical limitations.** The tendency to ignore the middle of a long document [6], not knowing anything after the training data's cutoff date, degraded performance on complex multi-step reasoning — these are structural constraints that even clever questioning can hardly work around.
 
-**Third, Korean performs worse than English.** Most AI models are trained predominantly on English-language data. The gap becomes especially visible in Korean questions that involve technical terminology [2]. It helps to include key technical terms in both languages (e.g., "reinforcement learning (강화학습)").
+**Third, Korean performs worse than English.** Most AI models are trained predominantly on English-language data. The gap becomes especially visible in Korean questions that involve technical terminology. It helps to include key technical terms in both languages (e.g., "reinforcement learning (강화학습)").
 
 **Fourth, you should not trust AI on math, real-time information, or legal/medical professional advice.** These are the areas marked "verify unconditionally / never trust AI alone" in the table above. In these domains, no matter how carefully you design your question, accurate output is not guaranteed.
 
@@ -169,14 +169,13 @@ Compress everything in this article down to one page, and this is what you get. 
 >
 > **Step 5: AI's answer is a draft** — the final judgment is always made by a human
 
-These five steps are the summary of this entire article. The difference between free and paid AI becomes a secondary variable next to whether or not you actually execute these five steps [3]. In the end, the core capability behind using AI well isn't technical knowledge about AI — it's **knowing precisely "what I actually need right now"** [4]. And no tool can do that for you.
+These five steps are the summary of this entire article. The difference between free and paid AI becomes a secondary variable next to whether or not you actually execute these five steps. In the end, the core capability behind using AI well isn't technical knowledge about AI — it's **knowing precisely "what I actually need right now".** Research arguing that generative AI use should be understood through the lens of metacognition points the same way [3]. And no tool can do that for you.
 
 ## References
 
 [1] Bender, E. M., Gebru, T., McMillan-Major, A., & Shmitchell, S. (2021). On the dangers of stochastic parrots: Can language models be too big? *FAccT*.
-[2] Zhao, W. X., et al. (2023). A survey of large language models. *arXiv preprint*.
-[3] Zamfirescu-Pereira, J. D., et al. (2023). Why Johnny can't prompt: How non-AI experts try (and fail) to design LLM prompts. *CHI '23*.
-[4] Tankelevitch, L., et al. (2024). The metacognitive demands and opportunities of generative AI.
-[5] Shanahan, M. (2024). Talking about large language models. *Communications of the ACM*.
-[6] Kruger, J., & Dunning, D. (1999). Unskilled and unaware of it.
-[7] Liu, N. F., et al. (2024). Lost in the middle: How language models use long contexts. *TACL*.
+[2] Zamfirescu-Pereira, J. D., et al. (2023). Why Johnny can't prompt: How non-AI experts try (and fail) to design LLM prompts. *CHI '23*.
+[3] Tankelevitch, L., et al. (2024). The metacognitive demands and opportunities of generative AI.
+[4] Shanahan, M. (2024). Talking about large language models. *Communications of the ACM*.
+[5] Kruger, J., & Dunning, D. (1999). Unskilled and unaware of it.
+[6] Liu, N. F., et al. (2024). Lost in the middle: How language models use long contexts. *TACL*.
