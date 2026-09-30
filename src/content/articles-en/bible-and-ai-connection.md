@@ -87,7 +87,7 @@ Signs indicate this transition is occurring.
 
 The Bible consistently places choice and responsibility on humans. When Adam shifted responsibility in the Garden of Eden, saying, "The woman you put here with me—she gave me some fruit," God did not accept that shift (Genesis 3:12-13). The core of biblical responsibility ethics is simple. **The one who judges bears the consequences of the judgment** [1].
 
-The AI age structurally challenges this principle. Cases where hiring AI systematically disadvantaged a specific group, or where credit scoring algorithms produced unfavorable scores for low-income groups [2] — the first line of defense repeated in such cases is the same. "The system decided that."
+The AI age structurally challenges this principle. There has been a steady stream of reports that hiring AI systematically disadvantaged a specific group, or that credit scoring algorithms produced unfavorable scores for low-income groups. In such cases, the first line of defense repeated is the same. "The system decided that."
 
 By delegating the judgment process to algorithms, the locus of responsibility becomes ambiguous. The more judgment is delegated, the weaker the judgment muscle becomes; the weaker it becomes, the more judgment is delegated [4]. It is a downward spiral of responsibility avoidance.
 
