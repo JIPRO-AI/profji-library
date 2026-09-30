@@ -72,7 +72,7 @@ AI fatigue is usually explained as information overload. Too many articles, too 
 
 The fatigue does not come from too much to read. It comes from there being nothing in your hand after reading. Hearing "we need to adopt AI" for the fifth time stops being information and becomes a repeating, unfinished signal. The head has processed the signal; the body has nowhere to go.
 
-The oldest finding in technology acceptance research points at the same place. What makes a person actually use a new tool is not the size of the discourse but the perception that it is useful for one's own work[2]. That perceived usefulness does not come from industry-level messaging. It forms only when one tries the tool inside one's own task and confirms it. No amount of accumulated discourse can produce that perception on someone's behalf.
+The oldest finding in technology acceptance research points at the same place. What makes a person actually use a new tool is the perception that it is useful for one's own work[2]. That perceived usefulness does not come from industry-level messaging. It forms only when one tries the tool inside one's own task and confirms it. No amount of accumulated discourse can produce that perception on someone's behalf.
 
 Discourse multiplies fast. The cognitive cost of translating that discourse into one's own work does not multiply at the same rate[3]. Information taken in fails to convert into action and stays piled up in the head. That backlog is what fatigue actually is.
 
@@ -126,7 +126,7 @@ The next time someone asks "so what am I supposed to do?" — **the question is 
 
 [1] Simis, M. J., Madden, H., Cacciatore, M. A., & Yeo, S. K. (2016). "The lure of rationality: Why does the deficit model persist in science communication?" *Public Understanding of Science*, 25(4), 400–414. — Why the deficit model survives repeated refutation. The repetition structure of AI discourse lands on the same spot.
 
-[2] Davis, F. D. (1989). "Perceived Usefulness, Perceived Ease of Use, and User Acceptance of Information Technology." *MIS Quarterly*, 13(3), 319–340. — The founding claim of the technology acceptance model: what drives tool use is perceived usefulness, not discourse.
+[2] Davis, F. D. (1989). "Perceived Usefulness, Perceived Ease of Use, and User Acceptance of Information Technology." *MIS Quarterly*, 13(3), 319–340. — The founding statement of the technology acceptance model: perceived usefulness is strongly linked to usage and predicts it better than perceived ease of use.
 
 [3] Brynjolfsson, E., Rock, D., & Syverson, C. (2021). "The Productivity J-Curve." *American Economic Journal: Macroeconomics*, 13(1), 333–372. — The lag before the effect of new technology appears. Explains the time gap between discourse and actual change.
 

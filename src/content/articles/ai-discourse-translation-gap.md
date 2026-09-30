@@ -85,7 +85,7 @@ connections:
 
 피로는 읽을 게 많아서 오지 않는다. 읽고 나서 손에 잡히는 게 없을 때 온다. "AI를 도입해야 한다"는 말도 다섯 번째쯤 들으면 정보가 아니라 반복되는 반쪽짜리 신호일 뿐이다. 머리는 처리했지만 몸은 어디로도 움직이지 못한다.
 
-기술 수용 연구의 가장 오래된 발견도 같은 곳을 가리킨다. 사람이 새 도구를 실제로 쓰게 만드는 힘은 담론의 크기가 아니라 "내 일에 쓸모가 있다"는 지각이라는 것이다[2]. 그 지각된 유용성(perceived usefulness)은 산업 단위의 메시지에서 생기지 않는다. 자기 작업 단위에서 써 보고 확인할 때만 생긴다. 담론이 아무리 쌓여도 이 지각을 대신 만들어 주지는 못한다.
+기술 수용 연구의 가장 오래된 발견도 같은 곳을 가리킨다. 사람이 새 도구를 실제로 쓰게 만드는 힘은 "내 일에 쓸모가 있다"는 지각이라는 것이다[2]. 그 지각된 유용성(perceived usefulness)은 산업 단위의 메시지에서 생기지 않는다. 자기 작업 단위에서 써 보고 확인할 때만 생긴다. 담론이 아무리 쌓여도 이 지각을 대신 만들어 주지는 못한다.
 
 담론은 빠르게 늘어난다. 그러나 그 담론을 자기 작업으로 옮기는 데 드는 머릿속 비용은 그만큼 빨리 늘지 못한다[3]. 받아들인 정보가 행동으로 바뀌지 못한 채 머리에 쌓인다. 그 쌓임이 곧 피로다.
 
@@ -141,7 +141,7 @@ AI 담론은 풍부하다. 그러나 풍부함이 곧 실행으로 이어지지�
 
 [1] Simis, M. J., Madden, H., Cacciatore, M. A., & Yeo, S. K. (2016). "The lure of rationality: Why does the deficit model persist in science communication?" *Public Understanding of Science*, 25(4), 400–414. — 정보를 더 부으면 행동이 따라온다는 결핍 모델이 거듭 반박되고도 살아남는 이유. AI 담론의 반복 구조와 맞닿는다.
 
-[2] Davis, F. D. (1989). "Perceived Usefulness, Perceived Ease of Use, and User Acceptance of Information Technology." *MIS Quarterly*, 13(3), 319–340. — 도구 사용을 결정하는 것은 지각된 유용성이라는 기술 수용 모델의 출발점. 행동을 만드는 것은 담론이 아니라 작업 단위의 쓸모라는 근거.
+[2] Davis, F. D. (1989). "Perceived Usefulness, Perceived Ease of Use, and User Acceptance of Information Technology." *MIS Quarterly*, 13(3), 319–340. — 지각된 유용성이 사용과 강하게 연관되고 사용 용이성보다 강한 예측 변수임을 보인 기술 수용 모델의 출발점.
 
 [3] Brynjolfsson, E., Rock, D., & Syverson, C. (2021). "The Productivity J-Curve." *American Economic Journal: Macroeconomics*, 13(1), 333–372. — 신기술의 효과가 나타나기까지의 지연. 담론과 실제 변화의 시간 차이를 설명.
 
