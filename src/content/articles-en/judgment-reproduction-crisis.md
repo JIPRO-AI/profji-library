@@ -62,7 +62,7 @@ The path from junior analyst to senior was simple. Draft yourself. A senior revi
 
 When an LLM takes over the draft, senior review frequency drops. The **traces of struggle** once embedded in the draft also disappear. The senior's own sense of what to teach becomes blurred.
 
-In the US, entry-level positions have already declined by 35%[7]. No small number of engineering leaders say they will hire fewer juniors because seniors can handle more work with copilots[8]. Who, then, makes the next senior?
+There are warnings that when organizations stop hiring juniors, the ladder that develops experts breaks[7]. No small number of engineering leaders say they will hire fewer juniors because seniors can handle more work with copilots[8]. Who, then, makes the next senior?
 
 ### Klarna Revisited — The Asymmetry of Recovery Cost
 
@@ -155,7 +155,7 @@ AX produces short-term efficiency. At the same time, it can erode the path throu
 
 [6] CIO Dive (2024). "JPMorgan Chase to equip 140K workers with generative AI tool." — LLM Suite rollout to 140,000 employees, up to $2 billion in expected AI-related upside, assessment of AI optimization across every process.
 
-[7] Wharton Knowledge (2026). "Is AI Pushing Us to Break the Talent Pipeline?" — 35% decline in entry-level analyst positions and the "Editor Problem."
+[7] Knowledge at Wharton (2025). "Is AI Pushing Us to Break the Talent Pipeline?" — A warning that when entry-level roles disappear, the career ladder that once developed future leaders breaks.
 
 [8] Russinovich, M., & Hanselman, S. (2026). "Redefining the Software Engineering Profession for AI." *Communications of the ACM*. — Senior "AI boost" vs junior "AI drag" diagnosis; preceptor cohort proposal, piloted internally at Microsoft.
 

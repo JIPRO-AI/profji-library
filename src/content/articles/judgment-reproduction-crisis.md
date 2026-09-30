@@ -79,7 +79,7 @@ JP모건은 2024년 사내 생성형 AI 도구 LLM Suite를 직원 14만 명에�
 
 LLM이 초안을 담당하면 시니어의 검토 빈도는 줄어든다. 초안에 담겼던 **고민의 흔적**도 사라진다. 시니어는 무엇을 가르쳐야 할지 자체가 흐려진다.
 
-미국에서는 신입 분석가 채용이 이미 35% 줄었다는 분석이 나온다[7]. 시니어가 코파일럿으로 더 많이 처리할 수 있으니 신입을 뽑지 않겠다는 엔지니어링 리더도 적지 않다[8]. 다음 시니어는 누가 만드는가.
+신입을 뽑지 않으면 전문가를 키우는 사다리가 끊긴다는 경고가 나온다[7]. 시니어가 코파일럿으로 더 많이 처리할 수 있으니 신입을 뽑지 않겠다는 엔지니어링 리더도 적지 않다[8]. 다음 시니어는 누가 만드는가.
 
 ### 클라나 재방문 — 회복비용의 비대칭
 
@@ -180,7 +180,7 @@ AX는 효율을 만든다. 하지만 동시에 인간 판단력이 만들어지�
 
 [6] CIO Dive (2024). "JPMorgan Chase to equip 140K workers with generative AI tool." — LLM Suite 14만 명 보급, AI 기대 이익 최대 20억 달러, 전 업무 과정의 AI 최적화 검토.
 
-[7] Wharton Knowledge (2026). "Is AI Pushing Us to Break the Talent Pipeline?" — 신입 분석가 35% 감소, 'Editor Problem' 분석.
+[7] Knowledge at Wharton (2025). "Is AI Pushing Us to Break the Talent Pipeline?" — 신입 역할이 사라지면 미래의 리더를 키우던 경력 사다리가 끊긴다는 경고.
 
 [8] Russinovich, M., & Hanselman, S. (2026). "Redefining the Software Engineering Profession for AI." *Communications of the ACM*. — 시니어의 'AI 부스트'와 주니어의 'AI 드래그' 진단, 프리셉터(preceptor) 코호트 제안. Microsoft가 사내 파일럿 중.
 
