@@ -39,7 +39,7 @@ One key distinction is enough to separate metacognition from the concept it's mo
 | **Direction** | Inward-facing: "Is my question accurate?" | Outward-facing: "Is this answer logical?" |
 | **Role in LLM use** | The entire process of prompt design + response evaluation + iterative revision | Identifying errors in AI responses (but cannot detect flaws in one's own question) |
 
-Spotting a factual error in an AI response is critical thinking. Asking yourself, "What part of my prompt caused this error?" is metacognition. The latter is hard to operate without the former, and without the latter, iterative improvement of prompts is impossible [5].
+Spotting a factual error in an AI response is critical thinking. Asking yourself, "What part of my prompt caused this error?" is metacognition. The latter is hard to operate without the former, and without the latter, iterative improvement of prompts is impossible.
 
 For reference, self-regulated learning (SRL), self-efficacy, and cognitive load management are related concepts, but each plays a different role. SRL is a broader frame that includes metacognition (along with motivational and emotional regulation); self-efficacy affects whether one attempts a task but does not directly determine its quality; and cognitive load management contributes to adjusting prompt length and complexity but has nothing to do with the appropriateness of content [4][9].
 
@@ -55,7 +55,7 @@ If metacognition affects prompt quality, then metacognitive failure leads to pro
 | **Debugging failure** | Can't trace the cause of an error back to the prompt | Repeating the same prompt or making random edits | The same type of error recurs |
 | **Calibration resistance** | Overestimating one's own understanding and refusing to adjust | Simplistic questions along the lines of "I already know this topic well" | Biased answers tailored to a false premise |
 
-**Calibration resistance** is a particularly notable type. It is not simple ignorance but a distorted confidence in one's own knowledge that blocks regulation. When today's RLHF-based LLMs tend to accommodate a user's premise rather than correct it (a conformity bias known as sycophancy) [7] — though of course the degree of this tendency varies by model and configuration — this can combine with calibration resistance to create a downward spiral in information quality.
+**Calibration resistance** is a particularly notable type. It is not simple ignorance but a distorted confidence in one's own knowledge that blocks regulation. At this point, today's RLHF-based LLMs can show a tendency to accommodate a user's premise rather than correct it (a conformity bias known as sycophancy) [7]. Of course, the degree of this tendency varies by model and configuration, but combined with calibration resistance it can worsen the decline in information quality.
 
 In practice, these failure types tend to reinforce one another rather than occur independently. Calibration resistance worsens monitoring failure, which in turn cascades into planning failure.
 
@@ -90,7 +90,7 @@ SRL is a model of self-regulation internal to the human. The learner is both sub
 
 **Third, the asymmetry of the verification loop.** In SRL, self-reflection rests on the premise that one can directly observe one's own performance. An AI's internal reasoning process is unobservable, and the user must estimate the system's reliability from the output alone. This asymmetry is a difficulty that does not exist in traditional SRL.
 
-**An interpretive hypothesis about chain-of-thought (CoT) prompting.** Wei et al.'s (2022) research on CoT [5] illuminates another facet of this feedback loop. CoT may be effective not solely because it instructs the AI to "think step by step." This article's interpretive hypothesis is this: because designing a CoT prompt requires the user to decompose the problem into steps themselves, part of CoT's effectiveness may come from activating the user's own metacognitive planning ability. This hypothesis still lacks direct empirical support, but if valid, it predicts that CoT's effectiveness would vary with the user's level of metacognition.
+**An interpretive hypothesis about chain-of-thought (CoT) prompting.** Wei et al.'s (2022) research on CoT can be read in connection with another facet of this feedback loop. CoT may be effective not solely because it instructs the AI to "think step by step." This article's interpretive hypothesis is this: because designing a CoT prompt requires the user to decompose the problem into steps themselves, part of CoT's effectiveness may come from activating the user's own metacognitive planning ability. This hypothesis still lacks direct empirical support, but if valid, it predicts that CoT's effectiveness would vary with the user's level of metacognition.
 
 ## Five Design Principles for Metacognitive Prompting
 
@@ -112,7 +112,7 @@ Application condition: requires at least a minimal base of knowledge in the rele
 
 ### Principle 2: Decompositional Questioning — Break Compound Questions into Sub-Questions
 
-Don't mix multiple goals into a single question. Decompose so that each sub-question corresponds to a single cognitive task [4][5].
+Don't mix multiple goals into a single question. Decompose so that each sub-question corresponds to a single cognitive task [4]. Research on CoT, which finds that an LLM's performance on complex reasoning improves when it works through intermediate reasoning steps, points in the same direction [5].
 
 > **Question type decomposition template:**
 > 1. Factual question: "What is X?"
@@ -126,7 +126,7 @@ Application condition: when complexity is high — multiple variables, condition
 
 ### Principle 3: Explicit Confidence Calibration — Quantify Your Confidence Level in AI Responses
 
-After reading an AI response, ask yourself on a scale of 0-100, "How confident am I that this answer is accurate?" If it's under 70, add cross-verification [8].
+After reading an AI response, ask yourself on a scale of 0-100, "How confident am I that this answer is accurate?" If it's under 70, add cross-verification.
 
 > **Checklist for confidence under 70:**
 > - [ ] Did I extract the three core claims of the response?
@@ -147,7 +147,7 @@ When an AI's response falls short of expectations, re-examine your own prompt be
 >
 > If the response is still poor after passing all four checks → then attribute it to a model limitation.
 
-Limitation: in some cases the cause may genuinely lie in the model's structural limitations (training data bias, context window constraints, etc.) [7].
+Limitation: in some cases the cause may genuinely lie in the model's structural limitations (training data bias, context window constraints, etc.).
 
 ### Principle 5: Cognitive Role Distribution — Divide Roles According to Human and AI Strengths
 
@@ -181,7 +181,7 @@ The cognitive feedback loop model and the design principles above have limited v
 
 This article has redefined prompt engineering from a linguistic skill into a cognitive one, and argued that a user's metacognition is a structural variable shaping the quality of AI interaction. But summarizing this as "metacognition matters" misses the point.
 
-What the cognitive feedback loop model reveals is that much of the current discourse on prompt engineering overlooks the role of human cognition. The proposition "write a good prompt and you get a good answer" oversimplifies the direction of causality. A more accurate statement would be: "a user's capacity to monitor and regulate their own thinking is reflected in the quality of the AI's response, through the medium of the prompt" [1][2].
+What the cognitive feedback loop model reveals is that much of the current discourse on prompt engineering overlooks the role of human cognition. The proposition "write a good prompt and you get a good answer" oversimplifies the direction of causality. A more accurate statement would be: "a user's capacity to monitor and regulate their own thinking is reflected in the quality of the AI's response, through the medium of the prompt" [1].
 
 The practical implication of this perspective is clear. This article's proposal is that education in the AI era should invest not in prompt-writing technique but in metacognitive training — and it should be stated explicitly that this is a normative proposal, not an empirical conclusion [3]. The intervention methodologies accumulated in SRL research (thinking protocols, self-questioning strategies, learning journals) appear transferable to AI user education [9]. AI interface design, too, should shift toward facilitating users' metacognition [8].
 
