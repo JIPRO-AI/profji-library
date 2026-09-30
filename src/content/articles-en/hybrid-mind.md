@@ -79,7 +79,7 @@ The benefits of Hybrid Mind are not given automatically. Collaboration without d
 
 ### Judgment Delegation
 
-This is the moment AI shifts from idea-proposer to judgment-leader. A structure that began as "AI writes the draft, the human revises" turns, at some point, into "AI reaches the conclusion, the human approves." Judgment delegation begins the moment humans stop critically reviewing AI's output and start accepting it simply because it seems plausible. This is a cognitive variant of the automation complacency that Parasuraman and Riley warned against [6].
+This is the moment AI shifts from idea-proposer to judgment-leader. A structure that began as "AI writes the draft, the human revises" turns, at some point, into "AI reaches the conclusion, the human approves." Judgment delegation begins the moment humans stop critically reviewing AI's output and start accepting it simply because it seems plausible. This is a cognitive variant of the over-reliance on automation (misuse) that Parasuraman and Riley warned against [6].
 
 ### Cognitive Offloading Drift
 
@@ -108,7 +108,7 @@ For Hybrid Mind to function as cognitive expansion, design is required [7]. Good
 
 ### Principle 1: Humans Must Retain Ownership of Framing
 
-Problem definition, goal-setting, and value judgments must be held by the human [8]. Before asking AI to "solve this problem," the human must first define "why this is a problem" in the first place. The moment framing is handed to AI, the human ends up solving a problem that AI has defined, in a way that AI has defined. At that point, the human's role shrinks from being the subject of thought to being the supervisor of execution.
+In light of the principles of autonomy and explicability (including accountability), problem definition, goal-setting, and value judgments must be held by the human [8]. Before asking AI to "solve this problem," the human must first define "why this is a problem" in the first place. The moment framing is handed to AI, the human ends up solving a problem that AI has defined, in a way that AI has defined. At that point, the human's role shrinks from being the subject of thought to being the supervisor of execution.
 
 ### Principle 2: AI Should Be a Falsification Engine, Not an Answer Generator
 
