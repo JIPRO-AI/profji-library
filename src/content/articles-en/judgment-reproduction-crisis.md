@@ -44,7 +44,7 @@ The psychology runs in the same direction.
 
 > **The essence of automation bias is not that AI gets things wrong. AI is right most of the time. The problem is that **because it is right most of the time**, humans stop imagining the possibility of error.**
 
-Humans are most at risk when AI is 80% correct. As accuracy rises further, humans tend to skip verification altogether. Automation bias occurs in both novices and experts[5]. The cost of skipping is not measured that day. It is billed six months later, when someone pulls the decision back into a meeting room.
+Humans are most at risk when AI is 80% correct. The more often it is right, the more readily humans skip verification altogether. Even experts fall into this trap, and training cannot prevent it[5]. The cost of skipping is not measured that day. It is billed six months later, when someone pulls the decision back into a meeting room.
 
 ## Two Cases, One Mechanism
 
@@ -52,7 +52,7 @@ Now we look at how the same mechanism appears across organizations. Two cases st
 
 ### JPMorgan — The Vanishing Training Pathway for Junior Analysts
 
-In 2024, JPMorgan announced it would roll out its in-house generative AI tool, LLM Suite, to 140,000 employees. It put the potential AI-related upside at up to $2 billion. It is also assessing whether every process in the bank can be redesigned with AI[6].
+In 2024, JPMorgan announced it would roll out its in-house generative AI tool, LLM Suite, to 140,000 employees. It put the potential AI-related upside at up to $2 billion and is also looking at redesigning every process in the bank with AI[6].
 
 The numbers are impressive. But the library has already pointed at a deeper cost.
 
@@ -62,7 +62,7 @@ The path from junior analyst to senior was simple. Draft yourself. A senior revi
 
 When an LLM takes over the draft, senior review frequency drops. The **traces of struggle** once embedded in the draft also disappear. The senior's own sense of what to teach becomes blurred.
 
-There are warnings that when organizations stop hiring juniors, the ladder that develops experts breaks[7]. An article on the software engineering profession also warns that without hiring junior developers, the talent pipeline will collapse[8]. No small number of engineering leaders say they will not hire juniors because seniors can handle more work with copilots. Who, then, makes the next senior?
+No small number of engineering leaders say they will not hire juniors because seniors can handle more work with copilots. When junior roles disappear, the career ladder that used to develop future leaders breaks[7]. Without hiring junior developers, the software engineering talent pipeline collapses[8]. Who, then, makes the next senior?
 
 ### Klarna Revisited — The Asymmetry of Recovery Cost
 
