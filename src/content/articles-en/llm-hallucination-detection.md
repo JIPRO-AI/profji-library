@@ -50,7 +50,7 @@ Four verification dimensions can be brought to bear against hallucination. None 
 
 An LLM is a statistical predictor. It merely selects the most plausible next token; it does not know whether that token is true. Low token probability does not always mean error, and high probability does not always mean truth. Especially in complex reasoning or code generation, the model explores multiple paths and the probability distribution naturally wobbles as a result, so relying on internal signals alone can drive up false alarms.
 
-There is also an approach that uses small language models (SLMs) as auxiliary detectors [4]. It may work well for simple queries, but precision can drop on abstract concepts or logical traps. Internal signals should be used in a restricted role, as an "identifier of high-uncertainty zones," not as an "obvious-error filter."
+There is also an approach that uses several small language models (SLMs) as auxiliary detectors to verify answers sentence by sentence [4]. But there is no reason to assume that what works for simple queries will work just as well on abstract concepts or logical traps. Internal signals should be used in a restricted role, as an "identifier of high-uncertainty zones," not as an "obvious-error filter."
 
 As a speculative reading of its own, this article ventures a connection between critical-transition theory from complex-systems science and hallucination detection. One strand of that theory holds that complex systems—ecosystems, financial markets—display statistical warning signs just before they tip into an unstable state: rising autocorrelation, a spike in variance, a shift in skewness. Carrying that lens over to LLM output streams, one could hypothesize that it might be possible to catch precursor signals just before a hallucination occurs. But this is not a technique validated on LLMs—it is closer to an analogy borrowed from theory built for another field. It should be read as no more than one candidate for an early-warning system that reaches beyond simple probability-value monitoring.
 
@@ -62,9 +62,9 @@ RAG fails in three ways.
 
 **Source contamination**: If the knowledge base itself is inaccurate or carries bias, RAG attaches a source to the falsehood and raises its perceived credibility. A simple retrieval-consistency check cannot block this case.
 
-**Context overload**: When too many documents fill the context window, the model misses key information or over-integrates irrelevant content. Retrieval scope and context-allocation strategy can strongly shape the reliability of the result.
+**Context overload**: When too many documents fill the context window, the model misses key information or over-integrates irrelevant content. Retrieval scope and context-allocation strategy shape the reliability of the result.
 
-**RAG adds grounding but does not guarantee truth.** Properly designed external verification—claim cross-checking against a relational-DB schema, as in Thucy, for example [6]—can be a reliability tool, but even this only works in domains where structured data exists.
+**RAG adds grounding but does not guarantee truth.** Properly designed external verification—claim cross-checking against a relational-DB schema, as in Thucy, for example [6]—can be a powerful reliability tool, but even this only works in domains where structured data exists.
 
 ### Limits of Multi-agent Cross-verification
 
@@ -109,7 +109,7 @@ Selective abstention is the first principle. The pressure to answer every questi
 
 ### Principle 2: Verification Cost Is Proportional to Risk
 
-Ask about the weather in casual chat, and an internal filter alone is enough. Ask about a drug interaction in a medical-diagnosis assistant, and it requires DB cross-checking plus human confirmation. In the medical domain, research suggests that general-domain hallucination detectors struggle [5]. Applying identical verification to every answer is both a waste of cost and a source of added latency.
+Ask about the weather in casual chat, and an internal filter alone is enough. Ask about a drug interaction in a medical-diagnosis assistant, and it requires DB cross-checking plus human confirmation. In research on medical dialogue summarization as well, general-domain hallucination detectors struggled to catch clinical hallucinations [5]. Applying identical verification to every answer is both a waste of cost and a source of added latency.
 
 ### Principle 3: Feedback Trains the System
 
@@ -155,7 +155,7 @@ That is why multi-layered verification routing is necessary. The claim-level ver
 - **Layer 5: Human Escalation** — expert review in high-risk domains
 - **Layer 6: Feedback & Governance** — RLHF + measurement + dynamic threshold adjustment
 
-Most current research in this area appears to concentrate on improving the performance of individual layers. The integrated pipeline and measurement framework proposed here are design principles drawn from existing research, not a system whose entirety has been empirically validated. Precursor-signal-based early warning and claim-level routing, in particular, remain at the level of conceptual proposals.
+Most of the research examined here concentrates on improving the performance of individual layers. The integrated pipeline and measurement framework proposed here are design principles drawn from existing research, not a system whose entirety has been empirically validated. Precursor-signal-based early warning and claim-level routing, in particular, remain at the level of conceptual proposals.
 
 Even so, the direction is clear. **The core of LLM reliability lies not in making the model sound more plausible, but in designing when to make it stop talking.** The standard of the future is more likely to be a system with more sophisticated verification routing than simply a bigger model.
 
