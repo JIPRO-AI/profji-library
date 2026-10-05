@@ -19,7 +19,7 @@ Bainbridge (1983) pointed out the irony of automation 40 years ago—as automati
 
 We must first clarify what AI burnout is **not**.
 
-Work burnout is commonly understood to arise when the volume of work is excessive. AI burnout occurs even when the volume of work decreases. Technostress, as classified by Salanova et al. (2013), is the anxiety and fatigue that come from using technology, along with compulsive overuse [6]. AI burnout hits harder those who are already proficient with the tool. The better you are, the more work flows to you.
+Burnout usually brings to mind having too much work. AI burnout occurs even when the volume of work decreases. Technostress usually brings to mind the burden of learning a new tool. Yet Salanova et al. (2013) counted excessive, compulsive use of technology as technostress too [6]. AI burnout likewise hits harder those who are already proficient with the tool. The better you are, the more work flows to you.
 
 | Distinction | Work Burnout | Technostress | AI Burnout |
 |------|----------|-----------|---------|
@@ -29,9 +29,9 @@ Work burnout is commonly understood to arise when the volume of work is excessiv
 
 ## Why Are We More Tired When AI Reduced Our Work? — The Shift in Cognitive Cost
 
-When AI takes over simple tasks, one might expect rest to fill that space, but what actually fills it is **high-intensity judgment work**. There are three key mechanisms.
+When AI takes over simple tasks, one might expect rest to fill that space, but what actually fills it is **high-intensity judgment work**. When many tasks pile up at once, the attention that watches over automation is the first to slacken [2]. There are three key mechanisms.
 
-**First, verification is more expensive than generation.** AI drafts a report in 5 minutes. But verifying it requires reading from start to finish while constantly judging: "Is this figure correct?", "Is any logic missing?", "Does this fit our situation?" When writing yourself, verification happens simultaneously. AI output is like reviewing someone else's writing. Every editor knows this fact—reviewing someone else's writing is more tiring than writing yourself. And AI output is fluent. Perfect grammar, clean structure. So errors hide within smooth sentences. **Finding errors in well-written text is cognitively far more expensive than fixing poorly written text.** When people monitor automation while juggling other tasks, that monitoring tends to grow lax [2].
+**First, verification is more expensive than generation.** AI drafts a report in 5 minutes. But verifying it requires reading from start to finish while constantly judging: "Is this figure correct?", "Is any logic missing?", "Does this fit our situation?" When writing yourself, verification happens simultaneously. AI output is like reviewing someone else's writing. Every editor knows this fact—reviewing someone else's writing is more tiring than writing yourself. And AI output is fluent. Perfect grammar, clean structure. So errors hide within smooth sentences. **Finding errors in well-written text is cognitively far more expensive than fixing poorly written text.**
 
 **Second, micro-decisions explode.** Writing one report without AI involves 5-6 major decisions. Asking AI? Prompt design, output evaluation, revision instructions, re-evaluation, version selection, final confirmation... Dozens of micro-decisions. According to the ego depletion model shown by Baumeister et al. (1998), decision-making consumes finite cognitive resources, and cumulative depletion sharply reduces judgment quality [3].
 
@@ -59,7 +59,7 @@ Many organizations are introducing processes to review AI analysis results along
 
 But what actually happens on the ground is this. AI proposes a specific figure. They ask the person in charge for their opinion. The person's calculation: to suggest a different number, I need stronger evidence than AI. Since AI is data-driven, it seems more objective than my intuition. If it's wrong? If I followed AI, it's a "data-driven decision," but if I followed my own judgment and was wrong, it becomes "why did you ignore AI?" **Agreeing with AI is politically safe.**
 
-The anchoring effect shown by Tversky and Kahneman (1974) can operate here too [4]. If AI proposes a number first, human judgment is pulled toward it. Combined with a liability insurance structure—following AI provides a defense even if it fails, but opposing it and being wrong is personal responsibility. Over time, "review together" changes to "AI decides, people approve." Judgment muscles atrophy.
+The anchoring effect shown by Tversky and Kahneman (1974) operates here [4]. If AI proposes a number first, human judgment is pulled toward it. Combined with a liability insurance structure—following AI provides a defense even if it fails, but opposing it and being wrong is personal responsibility. Over time, "review together" changes to "AI decides, people approve." Judgment muscles atrophy.
 
 ## Solution Principles — As Sharp as the Diagnosis
 
