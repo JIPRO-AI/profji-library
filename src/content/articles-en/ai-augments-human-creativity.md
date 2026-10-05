@@ -39,13 +39,13 @@ However, there is a condition for the surprise effect to translate into creativi
 
 The more powerful AI becomes, the easier it is for humans to fall into two traps.
 
-**Anchoring effect**: This is the phenomenon where the first answer AI presents becomes the reference point for all subsequent judgments. After a marketing planner sees AI's first suggestion, they end up evaluating the remaining options only by "how different is this from the first one." Chaeyeon Lim proposes a design direction for metacognition-based intervention strategies to mitigate this bias [3]. Put into practice, this becomes a structure where the user first forms their own hypothesis before receiving AI output, then compares it against the AI output.
+**Anchoring effect**: This is the phenomenon where the first answer AI presents becomes the reference point for all subsequent judgments. After a marketing planner sees AI's first suggestion, they end up evaluating the remaining options only by "how different is this from the first one." Chaeyeon Lim proposes a design direction for metacognition-based intervention strategies to mitigate this bias [3]. The practice is simple. Before receiving AI output, form your own hypothesis first, then compare it against the AI output.
 
 **Automation bias**: This is the tendency to automatically trust AI's answers. The moment "because AI said so" becomes the basis for judgment, human critical thinking capacity begins to degrade. Katelyn Xiaoying Mei and Nic Weber distinguish two design directions by which AI augments critical thinking [4]. One supplements thinking the human has already performed (Performed); the other grows the human's thinking capacity itself by showing examples of good thinking (Demonstrated). This distinction remains at the level of design principle, but it points to an important direction: when building AI systems, they should be designed not as "tools that give answers" but as "partners that demonstrate how to think."
 
 Yun Dai emphasizes that student agency is a core variable of creativity in AI-assisted learning environments [5]. Here, agency is not mere control but the capacity to receive external stimuli, interpret them for oneself, and assign meaning. When this agency is maintained during collaboration with AI, cognitive amplification occurs; when agency disappears, it degenerates into cognitive delegation.
 
-In sum, the core risk of cognitive delegation is the gradual erosion of capability. A single act of delegation is convenient. But if repeated, judgment ability in that domain can atrophy [1]. This is precisely why deliberate friction must be designed into practical workflows.
+In sum, the core risk of cognitive delegation is the gradual erosion of capability. A single act of delegation is convenient. But if repeated, judgment ability in that domain weakens like "muscle loss." This is precisely why deliberate friction must be designed into practical workflows.
 
 ## 4. Practical Workflow: Turning an Abstract Frame into an Operating Model
 
