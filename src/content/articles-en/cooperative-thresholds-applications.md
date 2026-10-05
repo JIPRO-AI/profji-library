@@ -23,7 +23,7 @@ We name this framework **Structural Leverage at Criticality**. Structural levera
 
 This article draws on knowledge from three distinct layers. To avoid confusion, we first distinguish the role of each layer.
 
-**Layer 1 — Physical Inspiration (Analogy and Intuition)**: Phase transition theory in physics offers the intuition that "local change triggers global transition." The mechanism by which a propagating magnetic-field wave drives a dynamical symmetry-breaking phase transition in an XY ferromagnet [1] illustrates the physical mechanisms of critical transitions. So do the fluctuation patterns in the turbulence-to-phase-transition process in cold atom gases [4]. This layer is **analogy and inspiration**. Physical systems and socio-technical systems differ in their dynamics, so they should be read not as direct correspondences but as structural similarities.
+**Layer 1 — Physical Inspiration (Analogy and Intuition)**: Phase transition theory in physics offers the intuition that "local change triggers global transition." Drive an XY ferromagnet with a magnetic-field wave, and a dynamical symmetry-breaking phase transition appears [1]. When a cold atom gas crosses into a turbulent phase, its fluctuations settle into ordered patterns [4]. Both illustrate the physical mechanisms of critical transitions. This layer is **analogy and inspiration**. Physical systems and socio-technical systems differ in their dynamics, so they should be read not as direct correspondences but as structural similarities.
 
 **Layer 2 — Structural Formulation (Network Science)**: Theoretical results showing that phase transitions in complex networks are sensitive to structural metrics such as edge density and triangle density [7] mathematically formalize the physical analogy. That small changes in network topology — removing key edges, reinforcing triangular structures — can induce or suppress a system-wide phase transition is not an analogy but a graph-theoretic result. Research on precursor signals [3][5] further provides a statistical basis for detecting the approach of a critical point in advance.
 
@@ -49,7 +49,7 @@ The key insight of this table: **at stage 6, uniformly strengthening everything 
 
 ## 3. The Strength of Targeted Intervention — and Its Limits
 
-The logic of targeted intervention is strong. Identifying hubs with network centrality metrics and concentrating intervention there can shift the critical point of the entire system. IRM4MLS simulation [6] can model multi-level systems, which lets intervention effects be tried out in advance. The Hanabi experiments [8] and AOAD-MAT [9] show that microscopic rule changes improve macroscopic cooperation.
+The logic of targeted intervention is strong. Identifying hubs with network centrality metrics and concentrating intervention there can shift the critical point of the entire system. Multi-level simulation such as IRM4MLS [6] lets intervention effects be tested in advance. The Hanabi experiments [8] and AOAD-MAT [9] show that microscopic rule changes improve macroscopic cooperation.
 
 But **targeted intervention can also be wrong.** Failing to acknowledge this limit turns the frame into an overclaim.
 
@@ -92,7 +92,7 @@ Precursor signals should therefore be used **not as a standalone decision criter
 | **Warning Lead Time** | Time from precursor-signal detection to the actual transition | Longer means more room to intervene |
 | **Marginal Utility Curve** | Marginal utility of adding further agents/nodes | Identifies the point of diminishing returns |
 
-Multi-level simulation methodologies such as IRM4MLS provide a framework for representing complex systems across multiple scales [6]. Such a framework can be used to try out these intervention effects before deployment. Consider a hypothetical example. If a structural intervention on the key nodes making up 10% of the entire network raised system efficiency by 20%, the Intervention Leverage Ratio would be 2.0. By contrast, achieving that same 20% by uniformly improving the remaining 90% would cost nine times as much, and the Leverage Ratio would fall to 0.22.
+With multi-level simulation methodologies such as IRM4MLS [6], these intervention effects can be tested before deployment. Consider a hypothetical example. If a structural intervention on the key nodes making up 10% of the entire network raised system efficiency by 20%, the Intervention Leverage Ratio would be 2.0. By contrast, achieving that same 20% by uniformly improving the remaining 90% would cost nine times as much, and the Leverage Ratio would fall to 0.22.
 
 This difference is the core of structural leverage. **Strengthening every agent by 10% and strengthening three key agents by 100% can produce completely different macroscopic effects even when the total input is the same.**
 
@@ -100,7 +100,7 @@ This difference is the core of structural leverage. **Strengthening every agent 
 
 The frame proposed in this article — **Structural Leverage at Criticality** — compresses into three sentences.
 
-- **Criticality lies in structure**: macroscopic transitions in multi-agent systems arise not from the number of agents but from critical conditions in network topology. Phase transitions in complex networks likewise depend on structural conditions such as edge and triangle density [7].
+- **Criticality lies in structure**: macroscopic transitions in multi-agent systems arise not from the number of agents but from critical conditions in network topology.
 - **Leverage lies in the hub**: targeted intervention on a small number of key nodes has greater cost-effectiveness than uniformly strengthening everything. That said, not every system is hub-dominant, and concentrating on hubs can raise vulnerability along with effectiveness.
 - **Warning lies in variability**: the approach of a critical point can be detected through precursor signals such as a sharp rise in susceptibility [3] or critical slowing down [5]. That said, noise and domain dependence mean it must be combined with structural analysis.
 
