@@ -35,7 +35,7 @@ The US data environment isn't a cure-all either. Information access is relativel
 
 Worth noting in the regulatory framework: China's regulation doesn't reduce to simple "censorship." China implemented Interim Measures for generative AI in 2023, and in 2025 additionally brought into force labeling rules for AI-generated content and related national standards. This is a structure that combines "control + industrial cultivation + public-service discipline." Within this structure, political censorship does, of course, limit the scope of technical experimentation. But summarizing it as "just censorship" misses the complexity of the actual regulatory structure.
 
-The US regulatory environment isn't a straight line either. There is criticism that the rapid spread of generative AI has outpaced the development of ethical guidelines, opening a gap between principle and practice in research settings [3]. And a case study of OpenAI's ethical AI discourse reports that AI ethics is framed differently across actors and stakeholders, and that safety and risk discourse dominates at OpenAI [4]. In short, it is hard to say the US holds an ethically consistent frame.
+The US regulatory environment isn't a straight line either. There is criticism that the rapid spread of generative AI has outpaced the development of ethical guidelines, opening a gap between principle and practice in research settings [3]. And a case study of OpenAI's ethics discourse finds that AI ethics is framed differently by each actor. In OpenAI's own public documents, safety and risk talk dominates, and academic ethics frameworks are barely used [4]. In short, it is hard to say the US holds an ethically consistent frame.
 
 ## Redefining the Open-Source Paradox: Where Is the Real Paradox?
 
