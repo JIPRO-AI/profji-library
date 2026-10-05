@@ -17,11 +17,11 @@ This article analyzes the four competencies an AI superuser must possess, in ord
 
 Prompt engineering is no longer simple command writing. It is a design act that clearly defines 'why this task is necessary, in what context this result will be used,' not just 'do this.'
 
-There is a line of discussion that connects with this difference. Research on designing AI systems that support human critical thinking distinguishes between demonstrating critical thinking and actually performing it, and argues that AI should be designed to help people actually perform it [2]. This is a proposal at the level of a design framework, written with information search and reasoning tasks in mind, so the same effect cannot be expected across every type of work. Even so, the direction that goal-oriented prompts shape result quality is worth testing widely in practice.
+Writing down the 'why' is a way of not handing your thinking over to AI. Research on designing AI systems that support human critical thinking divides critical thinking into thinking that is demonstrated on the surface and thinking that is actually performed [2]. AI easily fills in the first kind. The second is still up to people. This distinction is a proposal about design direction, not a study that measured an effect. Even so, the direction that goal-oriented prompts shape result quality is worth testing widely in practice.
 
 Interestingly, pursuing only 'convenience' in prompt design can backfire. Research on AI interfaces designed with intentional cognitive dissonance shows that interfaces that are too smooth weaken users' critical thinking [4]. A slight tension—for example, the AI indicating "My confidence in this answer is medium" or presenting alternative perspectives—actually increases the depth of user thought. In other words, an appropriately uncomfortable AI yields better results than a perfectly comfortable one. But if the discomfort is inserted at the wrong moment, the flow of thought itself breaks. That is why context-aware support, which detects the user's state of focus and chooses when to intervene, is being studied alongside it [7].
 
-Furthermore, high-risk decision-making environments require dynamic prompts, not static ones. For high-stakes decisions in which evidence and hypotheses keep shifting, a mixed-initiative approach has been proposed in which humans and AI construct, validate, and adapt hypotheses together [6]. The ability to flexibly present conditional logic like "if A occurs, consider B" and have the AI reflect it in real time is useful here.
+Furthermore, high-risk decision-making environments require dynamic prompts, not static ones. When the evidence changes, the hypotheses have to change with it. One study on AI decision support proposed a framework in which humans and AI build, test, and revise hypotheses together, and demonstrated it with a skin cancer diagnosis prototype [6]. In a prompt, this means setting conditions flexibly, such as "if A occurs, consider B," and having the AI revise its judgment each time it receives new evidence.
 
 **Field Checklist: Prompt Design 5 Principles**
 
@@ -54,7 +54,7 @@ This verification loop is even more critical in remote work environments. As phy
 
 As the areas where AI makes autonomous decisions expand, the question "Who is responsible when an error occurs?" is becoming increasingly acute. When AI produces biased results in high-risk areas like medical diagnosis, financial investment, or hiring recommendations, should responsibility be assigned to the AI developer, the user, or the approving manager?
 
-The current consensus on this question is clear. Humans must exercise final approval authority. Research on human rights frameworks for military AI likewise proposes a three-stage framework that examines human rights concerns from the design stage through deployment and use [8]. How much this actually reduces violations has not yet been measured. Still, the fact that discussion converges on giving final authority to humans even in the most extreme domain is a strong enough signal for the civilian sphere.
+The current consensus on this question is clear. Humans must exercise final approval authority. Research on human rights frameworks for military AI likewise holds that autonomous weapons can threaten the right to life when they make decisions without human input. It therefore proposes a three-stage framework that builds human rights review in from the design stage and carries it through deployment and use [8]. How much this actually reduces violations has not yet been measured. Still, the fact that discussion converges on giving final authority to humans even in the most extreme domain is a strong enough signal for the civilian sphere.
 
 What does this mean concretely in the workplace?
 
@@ -75,7 +75,7 @@ Using a general-purpose AI tool as-is and reconstructing AI to fit your workflow
 
 General-purpose tools give average answers to everyone. But your work is not average. Your team has its own classification criteria, report formats, review procedures, and data structures. Teaching this to AI and creating an agent optimized for that context is the domain of a true superuser.
 
-Zhu et al. studied feature engineering in human-AI collaboration. Data science practitioners saw features from humans and from AI as different yet complementary, and chose among them depending on who created them and how clear their meaning was [5]. This study focuses on the specific domain of data science, but the principle of the 'active user who adapts tools to their own context' applies to all professions.
+Zhu et al. showed data science practitioners feature suggestions from both humans and AI. The practitioners chose among them based on who had made each suggestion and how clear its meaning was [5]. This is an observation from the narrow domain of data science. But the picture of an active user who weighs AI output instead of accepting it as-is holds across professions.
 
 Research on human-AI collaboration utilizing data storytelling tools also reports that customized AI tools lower expertise barriers and improve work efficiency [10]. As non-experts could grasp the core of data analysis, humans could focus on more complex creative thinking.
 
@@ -86,7 +86,7 @@ Research on human-AI collaboration utilizing data storytelling tools also report
 3.  **Design a feedback loop**: Create a structure to review the agent's output each time and provide corrective feedback if there are errors. This process itself improves the agent's performance and simultaneously maintains your domain knowledge.
 4.  **Team sharing stage**: Share the verified agent with team members and let them adapt it to their own contexts. The moment personal agents expand into a team ecosystem, an organizational-level distributed cognitive structure forms.
 
-There is also discussion that generative AI has strong potential to support real-time reflection during conversations [9]. Agents can be useful in tasks like drafting communication before and after meetings or reviewing logical errors. The core difference is whether AI becomes an 'extension of your intelligence' or a 'replacement of your judgment.' The former is growth; the latter is degradation.
+Agents also operate effectively in tasks like drafting communication before and after meetings or reviewing logical errors. Research on real-time reflection sees great potential for generative AI in helping people reflect during a conversation. It also notes that designing that help so it does not break the flow of the conversation is hard [9]. The core difference is whether AI becomes an 'extension of your intelligence' or a 'replacement of your judgment.' The former is growth; the latter is degradation.
 
 ## 5 AI Superuser Habits for Immediate Daily Use
 
@@ -102,7 +102,7 @@ Becoming an AI superuser is not about using the latest tools first. It is about 
 
 Summarizing the core points covered in this article: Prompt design must include 'why' and 'in what context,' not just 'what.' AI output must go through a verification loop, and the verification process itself is a mechanism for maintaining expertise. Ethical final approval authority belongs to humans, and "can I put my name on it?" is the approval criterion. And moving beyond consuming general-purpose tools to directly designing and evolving agents suited to your work is the true domain of a superuser.
 
-Research showing metacognitive education reduces cognitive bias [1], research showing critical thinking-assisting AI improves task quality [2], and research showing interfaces utilizing cognitive dissonance increase thought depth [4] all point in the same direction. Using AI well is not about entrusting more to AI; it is about strengthening human judgment more in the interaction with AI.
+Research that designs metacognitive interventions [1], discussion of systems that support critical thinking [2], and the proposal for interfaces that use cognitive dissonance [4] all point in the same direction. Using AI well is not about entrusting more to AI; it is about strengthening human judgment more in the interaction with AI.
 
 Future tasks require developing adaptive AI interfaces tailored to individual cognitive levels and work contexts, and empirical research institutionalizing verification loops and approval structures at the organizational level. AI technology will continue to evolve. Within that evolution, human value comes from 'judgment,' not 'generation.'
 
