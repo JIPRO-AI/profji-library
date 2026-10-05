@@ -15,7 +15,7 @@ This isn't a one-off coincidence. Type "recommend a good restaurant" and you get
 
 Of course, real performance differences exist between free and paid models. Paid models genuinely have the edge in context length, reasoning ability, and tool integration. But **most of the frustration beginners experience happens well before that performance gap ever comes into play — it happens at the level of how the tool is used.** The difference in outcomes between two people using the identical free model can't be explained by parameter count. What actually drives the difference is how the user understands the tool in the first place — in other words, their **mental model (the internal instruction manual they carry around for what AI is)**.
 
-The frame this article proposes is a **cognitive interface error** — in plain terms, a usage error that comes from misunderstanding the tool. It's the structural mismatch that occurs when habits learned from search engines get applied directly to AI. One study found that expectations carried over from instructing other people, and a tendency to overgeneralize, kept non-experts from designing effective prompts [2]. And this article doesn't stop at the generic advice to "ask better questions." What it offers instead is a **task-based operating manual**: a working system for first identifying what type of task you're facing, choosing the right conversational approach for it, and calibrating how carefully you verify the output to match how much the task matters.
+The frame this article proposes is a **cognitive interface error** — in plain terms, a usage error that comes from misunderstanding the tool. It's the structural mismatch that occurs when habits learned from search engines get applied directly to AI. A study that observed non-experts designing prompts likewise found that expectations carried over from instructing other people, along with a tendency to overgeneralize, got in the way [2]. And this article doesn't stop at the generic advice to "ask better questions." What it offers instead is a **task-based operating manual**: a working system for first identifying what type of task you're facing, choosing the right conversational approach for it, and calibrating how carefully you verify the output to match how much the task matters.
 
 ## An LLM Is Not a Search Engine — The Difference Between Four Tools
 
@@ -25,7 +25,7 @@ To use AI properly, you first need to understand what this tool **isn't**.
 
 **It is not an encyclopedia.** Wikipedia's information is verified by editors and comes with citations. AI's output has no such editorial process behind it.
 
-**It is not a human expert.** An expert says "I don't know" when they don't know. AI generates confident-sounding sentences even about things it doesn't know. A conversational AI can create the illusion of a thinking creature, yet it is fundamentally not like us [4].
+**It is not a human expert.** An expert says "I don't know" when they don't know. AI generates confident-sounding sentences even about things it doesn't know. Talk with a conversational AI for a while and you get the illusion of facing a thinking creature. But underneath, it is nothing like us [4].
 
 **It is not a calculator.** It doesn't "calculate" math — it only generates text that looks like math.
 
@@ -81,7 +81,7 @@ AI cannot guess your situation. You have to tell it directly who you are, what y
 > ```
 > **Example:** "I'm a marketing manager at a startup (2 years in) and I need a competitor pricing comparison table to present to our CEO tomorrow. Make a table comparing three B2B SaaS companies on features, pricing, and support. In Korean, one A4 page long."
 
-When you can skip this: simple fact-checks like "What's the Python function for sorting a list?" Limitation: models can ignore the middle portion of a long context [6].
+When you can skip this: simple fact-checks like "What's the Python function for sorting a list?" Limitation: give it a long context and it can miss the middle part [6].
 
 **Principle 2. Don't Try to Finish in One Shot (Progressive Dialogue)**
 
@@ -104,7 +104,7 @@ When you can skip this: for simple fact-checks or calculations, assigning a role
 
 **Principle 4. Always Verify What Matters (Verification Habit)**
 
-AI's output is a draft. It is not a final version. Generative AI asks users to evaluate its output and decide how far to rely on it [3]. Verification isn't optional — it's a structural precondition for using AI at all.
+AI's output is a draft. It is not a final version. Verification isn't optional — it's a structural precondition for using AI at all.
 
 > **Verification checklist:**
 > - [ ] Did you cross-check proper nouns, figures, and dates against another source?
@@ -141,7 +141,7 @@ The principles and operating methods above substantially improve the quality of 
 
 **First, with zero background knowledge, you can't even formulate the question.** You need to know what you don't know to ask a good question. If you know nothing about a domain, you have no basis for deciding what context to add or what follow-up to ask [5]. In this case, you can use AI as an exploratory tool first — "Tell me the 5 key things someone new to this field should know" — but you must not accept that output as final knowledge.
 
-**Second, free models have real technical limitations.** The tendency to ignore the middle of a long document [6], not knowing anything after the training data's cutoff date, degraded performance on complex multi-step reasoning — these are structural constraints that even clever questioning can hardly work around.
+**Second, free models have real technical limitations.** The tendency to ignore the middle of a long document [6], not knowing anything after the training data's cutoff date, degraded performance on complex multi-step reasoning — these are structural constraints that no amount of clever questioning can work around.
 
 **Third, Korean performs worse than English.** Most AI models are trained predominantly on English-language data. The gap becomes especially visible in Korean questions that involve technical terminology. It helps to include key technical terms in both languages (e.g., "reinforcement learning (강화학습)").
 
@@ -169,7 +169,7 @@ Compress everything in this article down to one page, and this is what you get. 
 >
 > **Step 5: AI's answer is a draft** — the final judgment is always made by a human
 
-These five steps are the summary of this entire article. The difference between free and paid AI becomes a secondary variable next to whether or not you actually execute these five steps. In the end, the core capability behind using AI well isn't technical knowledge about AI — it's **knowing precisely "what I actually need right now".** Research arguing that generative AI use should be understood through the lens of metacognition points the same way [3]. And no tool can do that for you.
+These five steps are the summary of this entire article. The difference between free and paid AI becomes a secondary variable next to whether or not you actually execute these five steps. In the end, the core capability behind using AI well isn't technical knowledge about AI — it's **knowing precisely "what I actually need right now".** What generative AI demands of its users, too, is metacognition: the ability to watch and steer one's own thinking [3]. And no tool can do that for you.
 
 ## References
 
