@@ -59,7 +59,7 @@ Managing the dangers of automation bias systematically requires classifying the 
 
 **1. Detection failure**: Humans fail to catch AI errors. The higher the accuracy, the rarer errors become, and rare events are harder to detect.
 
-**2. Escalation failure**: Even when doubt exists, it never rises into a verification procedure. An organizational atmosphere of "AI did it, so it must be fine" suppresses the raising of objections. This suppression can arise as human-AI team cognition is reorganized [3].
+**2. Escalation failure**: Even when doubt exists, it never rises into a verification procedure. An organizational atmosphere of "AI did it, so it must be fine" suppresses the raising of objections. When AI joins a team, the way the team thinks together gets rebuilt. In that gap, team coordination can slip [3].
 
 **3. Accountability diffusion**: When an error occurs, responsibility blurs between the AI and the human. The logic of "the AI recommended it and I followed it" lets both sides evade responsibility.
 
@@ -94,7 +94,7 @@ Mechanism-level answers for why these three principles work are also emerging. T
 Compress the technical, educational, and policy alternatives into one, and they become the following five operating principles.
 
 **Principle 1: Mandate human verification for high-stakes decisions.**
-Build a step of independent human judgment into the procedure before an AI recommendation is accepted. Replace "view the AI result, then approve" with "the human forms a hypothesis first, then compares it against the AI result." This design makes people perform critical thinking rather than merely demonstrate it [2].
+Build a step of independent human judgment into the procedure before an AI recommendation is accepted. Replace "view the AI result, then approve" with "the human forms a hypothesis first, then compares it against the AI result."
 
 **Principle 2: Always attach uncertainty cues to displays of confidence.**
 Don't display "95% accuracy" alone. Display, alongside it, "the conditions under which this prediction could be wrong." Focus the design not on the moment the user feels confident, but on the moment the user starts to doubt [6].
