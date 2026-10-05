@@ -108,7 +108,7 @@ For Hybrid Mind to function as cognitive expansion, design is required [7]. Good
 
 ### Principle 1: Humans Must Retain Ownership of Framing
 
-In light of the principles of autonomy and explicability (including accountability), problem definition, goal-setting, and value judgments must be held by the human [8]. Before asking AI to "solve this problem," the human must first define "why this is a problem" in the first place. The moment framing is handed to AI, the human ends up solving a problem that AI has defined, in a way that AI has defined. At that point, the human's role shrinks from being the subject of thought to being the supervisor of execution.
+Problem definition, goal-setting, and value judgments must be held by the human [8]. Before asking AI to "solve this problem," the human must first define "why this is a problem" in the first place. The moment framing is handed to AI, the human ends up solving a problem that AI has defined, in a way that AI has defined. At that point, the human's role shrinks from being the subject of thought to being the supervisor of execution.
 
 ### Principle 2: AI Should Be a Falsification Engine, Not an Answer Generator
 
