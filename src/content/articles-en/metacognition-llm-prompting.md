@@ -55,7 +55,7 @@ If metacognition affects prompt quality, then metacognitive failure leads to pro
 | **Debugging failure** | Can't trace the cause of an error back to the prompt | Repeating the same prompt or making random edits | The same type of error recurs |
 | **Calibration resistance** | Overestimating one's own understanding and refusing to adjust | Simplistic questions along the lines of "I already know this topic well" | Biased answers tailored to a false premise |
 
-**Calibration resistance** is a particularly notable type. It is not simple ignorance but a distorted confidence in one's own knowledge that blocks regulation. At this point, today's RLHF-based LLMs can show a tendency to accommodate a user's premise rather than correct it (a conformity bias known as sycophancy) [7]. Of course, the degree of this tendency varies by model and configuration, but combined with calibration resistance it can worsen the decline in information quality.
+**Calibration resistance** is a particularly notable type. It is not simple ignorance but a distorted confidence in one's own knowledge that blocks regulation. At this point, today's RLHF-based LLMs show a tendency to accommodate a user's premise rather than correct it (a conformity bias known as sycophancy) [7]. When this tendency meets calibration resistance, it can create a downward spiral in information quality. Of course, its degree varies by model and configuration.
 
 In practice, these failure types tend to reinforce one another rather than occur independently. Calibration resistance worsens monitoring failure, which in turn cascades into planning failure.
 
@@ -90,7 +90,7 @@ SRL is a model of self-regulation internal to the human. The learner is both sub
 
 **Third, the asymmetry of the verification loop.** In SRL, self-reflection rests on the premise that one can directly observe one's own performance. An AI's internal reasoning process is unobservable, and the user must estimate the system's reliability from the output alone. This asymmetry is a difficulty that does not exist in traditional SRL.
 
-**An interpretive hypothesis about chain-of-thought (CoT) prompting.** Wei et al.'s (2022) research on CoT can be read in connection with another facet of this feedback loop. CoT may be effective not solely because it instructs the AI to "think step by step." This article's interpretive hypothesis is this: because designing a CoT prompt requires the user to decompose the problem into steps themselves, part of CoT's effectiveness may come from activating the user's own metacognitive planning ability. This hypothesis still lacks direct empirical support, but if valid, it predicts that CoT's effectiveness would vary with the user's level of metacognition.
+**An interpretive hypothesis about chain-of-thought (CoT) prompting.** Wei et al. (2022) showed that when an LLM works through intermediate reasoning steps, its performance on complex reasoning rises substantially [5]. CoT may be effective not solely because it instructs the AI to "think step by step." This article's interpretive hypothesis is this: because designing a CoT prompt requires the user to decompose the problem into steps themselves, part of CoT's effectiveness may come from activating the user's own metacognitive planning ability. This hypothesis still lacks direct empirical support, but if valid, it predicts that CoT's effectiveness would vary with the user's level of metacognition.
 
 ## Five Design Principles for Metacognitive Prompting
 
@@ -112,7 +112,7 @@ Application condition: requires at least a minimal base of knowledge in the rele
 
 ### Principle 2: Decompositional Questioning — Break Compound Questions into Sub-Questions
 
-Don't mix multiple goals into a single question. Decompose so that each sub-question corresponds to a single cognitive task [4]. Research on CoT, which finds that an LLM's performance on complex reasoning improves when it works through intermediate reasoning steps, points in the same direction [5].
+Don't mix multiple goals into a single question. Decompose so that each sub-question corresponds to a single cognitive task [4].
 
 > **Question type decomposition template:**
 > 1. Factual question: "What is X?"
