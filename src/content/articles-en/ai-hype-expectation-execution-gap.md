@@ -34,7 +34,7 @@ This expectation is not a lie. Cases exist where AI genuinely cuts costs and imp
 
 The key is in the last column. **Every participant omits "specific execution."** Media shows only results, vendors show only demos, leadership gives only direction, and consultants draw only frameworks. The answer to "So what do I actually do on Monday morning?" is nowhere to be found.
 
-This isn't anyone's fault. It's a **structural omission** created by each incentive structure. The real problem with overheated expectations isn't exaggeration, but omission. In the face of blind faith surrounding Big Data and AI, some argue for untethering machine learning practice from hype and fear cycles [2].
+This isn't anyone's fault. It's a **structural omission** created by each incentive structure. Elish and Boyd argued that the "magic" myth around Big Data and AI hides the actual methods and their limits. They called for untethering practice from hype and fear cycles [2]. The real problem with overheated expectations isn't exaggeration, but omission.
 
 ## The 3-Layer Structure of the Expectation-Execution Gap — Both Sides Have Their Reasons
 
